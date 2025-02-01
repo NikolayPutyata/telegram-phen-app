@@ -1,3 +1,10 @@
+.dock {
+  padding-bottom: env(safe-area-inset-bottom) !important;
+  height: calc(4rem + env(safe-area-inset-bottom)) !important;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
 @import 'tailwindcss';
 @plugin "daisyui" {
   themes: dark --default;
