@@ -1,9 +1,3 @@
-.dock {
-  padding-bottom: 0 !important;
-  height: 5rem !important; /* Фиксированная высота */
-  box-sizing: border-box;
-}
-
 @import 'tailwindcss';
 @plugin "daisyui" {
   themes: dark --default;
