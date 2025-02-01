@@ -4,7 +4,7 @@ const Footer = () => {
   const location = useLocation();
 
   return (
-    <div className="dock bg-neutral text-neutral-content rounded-tl-4xl rounded-tr-4xl">
+    <div className="dock bg-neutral text-neutral-content rounded-tl-4xl rounded-tr-4xl pb-safe-bottom">
       <Link to={'/'} className={location.pathname === '/' ? 'dock-active' : ''}>
         <img src="/assets/home.svg" alt="" width={24}/>
         <span className="dock-label">Home</span>
