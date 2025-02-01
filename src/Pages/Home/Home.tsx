@@ -28,7 +28,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="">
+    <div className="mb-48">
       <div className="flex justify-center items-center h-13">
         <h2
           className={`${s.font} text-zinc-300 text-center my-3 text-lg element`}
