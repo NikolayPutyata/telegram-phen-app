@@ -78,7 +78,7 @@ const Tasks = () => {
         </ul>
       </div>
       <h2 className="text-zinc-400 ml-8 my-2">Special Tasks</h2>
-      <div className="bg-neutral-900 rounded-3xl p-3 mx-3 mb-48">
+      <div className="bg-neutral-900 rounded-3xl p-3 mx-3 mb-40">
         <ul className="flex flex-col gap-5">
           <li className="flex text-center justify-between px-4 items-center">
             <div className="flex gap-1">
