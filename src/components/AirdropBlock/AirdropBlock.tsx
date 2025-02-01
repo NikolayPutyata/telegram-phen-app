@@ -3,7 +3,7 @@ import s from '/src/App.module.css';
 const AirdropBlock = () => {
   return (
     <div>
-      <h2 className={`${s.font} text-zinc-300 ml-4 my-4 text-sm`}>
+      <h2 className={`${s.font} text-zinc-300 ml-4 my-4`}>
         Airdrop 🎁
       </h2>
       <div className="flex flex-col px-6 mb-3">
@@ -14,7 +14,7 @@ const AirdropBlock = () => {
             className="object-cover w-full h-full"
           />
         </div>
-        <p className={`${s.font} text-zinc-400 text-sm text-center mb-3`}>
+        <p className={`${s.font} text-zinc-400 text-center mb-3`}>
           To participate in the airdrop, purchase tokens worth $50 during the presale.
         </p>
         <button

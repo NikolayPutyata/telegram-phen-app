@@ -3,7 +3,7 @@ import s from '/src/App.module.css';
 const FarmBlock = () => {
   return (
     <div>
-      <h2 className={`${s.font} text-zinc-300 ml-4 my-4 text-sm mt-8`}>
+      <h2 className={`${s.font} text-zinc-300 ml-4 my-4 mt-8`}>
         Farm PHEN Tokens 💰
       </h2>
       <div className="flex flex-col justify-center px-3 my-3 mb-8">
