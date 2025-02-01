@@ -1,0 +1,22 @@
+<svg width="662" height="741" viewBox="0 0 662 741" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M529.967 370.819C529.967 177.519 415.842 20.8186 275.063 20.8186C134.283 20.8186 20.1581 177.519 20.1581 370.819C20.1581 564.118 134.283 720.819 275.063 720.819C415.842 720.819 529.967 564.118 529.967 370.819Z" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M275.063 720.819L417.443 720.819C438.827 720.834 459.946 716.554 479.269 708.29C498.592 700.026 515.634 687.984 529.158 673.039C598.149 596.669 641.094 489.509 641.094 370.819C641.094 252.129 598.171 144.969 529.158 68.5986C515.634 53.6532 498.592 41.6116 479.269 33.3473C459.946 25.083 438.827 20.8033 417.443 20.8186H275.063" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M639.532 370.819H534.478" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M622.919 254.149L517.865 254.149" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M576.049 137.489H529.967" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M622.918 487.489H519.017" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M574.775 604.149H468.169" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+<g filter="url(#filter0_b_99_16)">
+<path d="M304.447 268.892C307.136 259.172 276.913 194 265.709 194C254.505 194 197.589 293.79 197.589 301.566C197.589 309.341 221.093 321.72 229.608 324.312C238.123 326.904 301.758 278.612 304.447 268.892Z" fill="white"/>
+<path d="M111.113 461.614C108.872 453.839 140.56 378.181 149.972 376.237C159.383 374.293 241.665 414.799 242.561 425.167C243.457 435.535 228.512 461.476 222.238 468.604C215.963 475.732 113.354 469.39 111.113 461.614Z" fill="white"/>
+<path d="M317.4 477.591C308.885 463.984 318.174 357.036 324 352.5C329.826 347.964 326.813 348 339 348H339.094C343.105 348 347.664 347.999 353 352.5C356.358 358.952 428.331 475.011 412.5 482.5C409.142 495.481 373.049 493.568 373.049 493.568C373.049 493.568 325.915 491.199 317.4 477.591Z" fill="white"/>
+</g>
+<defs>
+<filter id="filter0_b_99_16" x="51" y="134" width="423.772" height="419.667" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="30"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_99_16"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_99_16" result="shape"/>
+</filter>
+</defs>
+</svg>

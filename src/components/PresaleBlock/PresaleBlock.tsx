@@ -1,0 +1,26 @@
+import s from '/src/App.module.css';
+
+const PresaleBlock = () => {
+  return (
+    <div>
+      <h2 className={`${s.font} text-zinc-300 ml-4 my-4 text-sm`}>
+        Presale 🚀
+      </h2>
+      <div className="flex flex-col justify-center px-3 my-3">
+        <div className="flex flex-col px-6 my-4">
+          <div className="flex justify-between ">
+            <p className={`${s.font} text-zinc-400 text-sm`}>Presale price</p>
+            <p className={`${s.font} text-zinc-400 text-sm tracking-wider`}>
+              $0.0015
+            </p>
+          </div>
+        </div>
+        <button className="btn btn-primary w-56 rounded-4xl self-center">
+          Buy
+        </button>
+      </div>
+    </div>
+  )
+}
+
+export default PresaleBlock
