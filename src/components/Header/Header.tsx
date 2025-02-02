@@ -2,7 +2,7 @@ import s from '/src/App.module.css';
 
 const Header = () => {
   return (
-    <div className="collapse bg-neutral rounded-b-3xl p-0.5">
+    <div className="collapse rounded-tl-none rounded-tr-none bg-neutral rounded-b-3xl p-0.5">
       <input type="checkbox" />
       <div className="collapse-title font-semibold flex justify-between items-center px-5">
         <p className={`${s.font} text-zinc-400 text-sm`}>Your address</p>
