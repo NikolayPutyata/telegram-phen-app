@@ -4,6 +4,7 @@ import s from '/src/App.module.css';
 import FarmBlock from '../../components/FarmBlock/FarmBlock';
 import PresaleBlock from '../../components/PresaleBlock/PresaleBlock';
 import AirdropBlock from '../../components/AirdropBlock/AirdropBlock';
+import FamilyBlock from '../../components/FamilyBlock/FamilyBlock';
 import Socials from '../../components/Socials/Socials';
 
 const Home = () => {
@@ -36,7 +37,7 @@ const Home = () => {
           Welcome Commandor!
         </h2>
       </div>
-      <div className="px-3 mb-3">
+      <div className="px-6 mb-3">
         <div className="relative w-full h-44 overflow-hidden rounded-4xl ">
           <img
             src="/assets/cosmo_4.webp"
@@ -67,6 +68,7 @@ const Home = () => {
       <FarmBlock />
       <PresaleBlock />
       <AirdropBlock />
+      <FamilyBlock />
     </div>
   );
 };
