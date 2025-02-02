@@ -1,5 +1,14 @@
 const TasksDetails = () => {
   return (
+    <><div className="px-3 mb-3">
+        <div className="relative w-full h-44 overflow-hidden rounded-4xl ">
+          <img
+            src="/assets/work.jpg"
+            alt=""
+            className="object-cover w-full h-full"
+          />
+        </div>
+    </div>
     <div>
       <h2 className="text-zinc-400 ml-8 my-2">Gaming Tasks</h2>
       <div className="bg-neutral-900 rounded-3xl p-3 mx-3">
@@ -10,7 +19,7 @@ const TasksDetails = () => {
               <div className="flex flex-col justify-start">
                 <p className="flex justify-start text-lg">Task 1</p>
                 <span className="flex items-center gap-1.5">
-                  <p className="text-zinc-300">Reward: 5</p>{' '}
+                  <p className="text-zinc-300">Reward: 5</p>
                   <img src="/assets/Group_62.svg" alt="" width={16} />
                 </span>
               </div>
@@ -23,7 +32,7 @@ const TasksDetails = () => {
               <div className="flex flex-col justify-start">
                 <p className="flex justify-start text-lg">Task 1</p>
                 <span className="flex items-center gap-1.5">
-                  <p className="text-zinc-300">Reward: 5</p>{' '}
+                  <p className="text-zinc-300">Reward: 5</p>
                   <img src="/assets/Group_62.svg" alt="" width={16} />
                 </span>
               </div>
@@ -41,7 +50,7 @@ const TasksDetails = () => {
               <div className="flex flex-col justify-start">
                 <p className="flex justify-start text-lg">Task 1</p>
                 <span className="flex items-center gap-1.5">
-                  <p className="text-zinc-300">Reward: 5</p>{' '}
+                  <p className="text-zinc-300">Reward: 5</p>
                   <img src="/assets/Group_62.svg" alt="" width={16} />
                 </span>
               </div>
@@ -54,7 +63,7 @@ const TasksDetails = () => {
               <div className="flex flex-col justify-start">
                 <p className="flex justify-start text-lg">Task 1</p>
                 <span className="flex items-center gap-1.5">
-                  <p className="text-zinc-300">Reward: 5</p>{' '}
+                  <p className="text-zinc-300">Reward: 5</p>
                   <img src="/assets/Group_62.svg" alt="" width={16} />
                 </span>
               </div>
@@ -67,7 +76,7 @@ const TasksDetails = () => {
               <div className="flex flex-col justify-start">
                 <p className="flex justify-start text-lg">Task 1</p>
                 <span className="flex items-center gap-1.5">
-                  <p className="text-zinc-300">Reward: 5</p>{' '}
+                  <p className="text-zinc-300">Reward: 5</p>
                   <img src="/assets/Group_62.svg" alt="" width={16} />
                 </span>
               </div>
@@ -80,7 +89,7 @@ const TasksDetails = () => {
               <div className="flex flex-col justify-start">
                 <p className="flex justify-start text-lg">Task 1</p>
                 <span className="flex items-center gap-1.5">
-                  <p className="text-zinc-300">Reward: 5</p>{' '}
+                  <p className="text-zinc-300">Reward: 5</p>
                   <img src="/assets/Group_62.svg" alt="" width={16} />
                 </span>
               </div>
@@ -98,7 +107,7 @@ const TasksDetails = () => {
               <div className="flex flex-col justify-start">
                 <p className="flex justify-start text-lg">Task 1</p>
                 <span className="flex items-center gap-1.5">
-                  <p className="text-zinc-300">Reward: 5</p>{' '}
+                  <p className="text-zinc-300">Reward: 5</p>
                   <img src="/assets/Group_62.svg" alt="" width={16} />
                 </span>
               </div>
@@ -111,7 +120,7 @@ const TasksDetails = () => {
               <div className="flex flex-col justify-start">
                 <p className="flex justify-start text-lg">Task 1</p>
                 <span className="flex items-center gap-1.5">
-                  <p className="text-zinc-300">Reward: 5</p>{' '}
+                  <p className="text-zinc-300">Reward: 5</p>
                   <img src="/assets/Group_62.svg" alt="" width={16} />
                 </span>
               </div>
@@ -120,7 +129,8 @@ const TasksDetails = () => {
           </li>
         </ul>
       </div>
-    </div>
+    </div></>
+    
   );
 };
 

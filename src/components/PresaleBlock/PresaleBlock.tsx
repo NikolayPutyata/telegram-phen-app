@@ -2,11 +2,11 @@ import s from '/src/App.module.css';
 
 const PresaleBlock = () => {
   return (
-    <div>
+    <div className='my-5'>
       <h2 className={`${s.font} text-zinc-300 ml-4 my-4`}>
         Presale 🚀
       </h2>
-      <div className="flex flex-col justify-center px-3 my-3">
+      <div className="flex flex-col justify-center px-3 my-8">
         <div className="flex flex-col px-6 my-4">
           <div className="flex justify-between ">
             <p className={`${s.font} text-zinc-400 `}>Presale price</p>

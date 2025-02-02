@@ -27,7 +27,7 @@ const Tasks = () => {
           </NavLink>
         </div>
       </div>
-      
+  
       <Outlet />
     </>
   );
