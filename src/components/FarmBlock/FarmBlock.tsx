@@ -12,15 +12,15 @@ const FarmBlock = () => {
             <span className={`${s.font} text-zinc-400 text-3xl`}>0</span>
           </div>
         </div>
-        <div className='grid grid-cols-[2fr_1fr] grid-rows-1 items-center justify-center gap-3'>
+        <div className='grid grid-cols-[1fr_1fr] grid-rows-1 items-center justify-center gap-3'>
   <button
-    className="btn btn-primary w-56 rounded-4xl self-center"
+    className="btn btn-primary rounded-4xl"
     disabled={false}
   >
     Farm
   </button>
   <button
-    className="btn btn-primary w-56 rounded-4xl self-center"
+    className="btn btn-primary rounded-4xl"
     disabled={true}
   >
     Claim
