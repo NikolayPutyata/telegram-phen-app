@@ -1,6 +1,12 @@
 import s from '/src/App.module.css';
+type BoostsItemProps = {
+  imgSrc: string; 
+  title: string; 
+  desc: string; 
+  price: string; 
+};
 
-const BoostsItem = ({ imgSrc, title, desc, price }) => (
+const BoostsItem: React.FC<BoostsItemProps> = ({ imgSrc, title, desc, price }) => (
   <li className="flex justify-center px-3 gap-7">
     <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
       <img src={imgSrc} alt={title} className="object-cover w-full h-full" />
