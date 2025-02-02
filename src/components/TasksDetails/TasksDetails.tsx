@@ -3,7 +3,7 @@ const TasksDetails = () => {
     <><div className="px-3 mb-3">
         <div className="relative w-full h-44 overflow-hidden rounded-4xl ">
           <img
-            src="/assets/work.jpg"
+            src="/assets/work.webp"
             alt=""
             className="object-cover w-full h-full"
           />

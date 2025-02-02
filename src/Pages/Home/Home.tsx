@@ -39,7 +39,7 @@ const Home = () => {
       <div className="px-3 mb-3">
         <div className="relative w-full h-44 overflow-hidden rounded-4xl ">
           <img
-            src="/assets/cosmo_4.jpg"
+            src="/assets/cosmo_4.webp"
             alt=""
             className="object-cover w-full h-full"
           />

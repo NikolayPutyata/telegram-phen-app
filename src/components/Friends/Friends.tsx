@@ -5,7 +5,7 @@ const Friends = () => {
       <><div className="px-3 mb-3">
         <div className="relative w-full h-44 overflow-hidden rounded-4xl ">
           <img
-            src="/assets/friends.jpg"
+            src="/assets/friends.webp"
             alt=""
             className="object-cover w-full h-full"
           />
