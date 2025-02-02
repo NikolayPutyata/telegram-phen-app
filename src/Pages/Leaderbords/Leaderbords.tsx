@@ -11,7 +11,7 @@ const Leaderboards = () => {
   { imgSrc: "/assets/shuttle-2.webp", title: "Flagship", desc: "20x Farming Boost", price: "0.20 TON" },
     { imgSrc: "/assets/shuttle-1.webp", title: "Space Cruiser", desc: "15x Farming Boost", price: "0.15 TON" },
     
-    { imgSrc: "/assets/shuttle-3.webp", title: "Additional Shuttle", desc: "10x Farming Boost", price: "0.10 TON" },
+    { imgSrc: "/assets/shuttle-3.webp", title: "Shuttle", desc: "10x Farming Boost", price: "0.10 TON" },
   ];
 
   return (

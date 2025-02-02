@@ -14,7 +14,7 @@ const AirdropBlock = () => {
             className="object-cover w-full h-full"
           />
         </div>
-        <p className={`${s.font} text-zinc-400 text-center mb-3`}>
+        <p className={`${s.font} text-zinc-400 text-center mb-3 tracking-wider`}>
           To participate in the airdrop, purchase tokens worth $50 during the presale.
         </p>
         <button
