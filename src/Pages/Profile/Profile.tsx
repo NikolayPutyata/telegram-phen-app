@@ -7,7 +7,7 @@ const Profile = () => {
     <div className="flex flex-col items-center bg-neutral-900 rounded-3xl p-3 m-4">
   <div className="avatar">
     <div className="w-24 rounded-full">
-      <img src="/public/assets/avatar.webp" alt="standart avatar" />
+      <img src="/assets/avatar.webp" alt="standart avatar" />
     </div>
   </div>
   <h2 className={`${s.font} text-zinc-300 text-center my-3 text-lg tracking-wider`}>NICKNAME</h2>
