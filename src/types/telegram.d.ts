@@ -1,4 +1,3 @@
-// telegram.d.ts
 
 declare global {
   interface TelegramUser {
@@ -9,16 +8,11 @@ declare global {
     language_code?: string;
   }
 
-//   interface TelegramWebAppData {
-//     user: TelegramUser;
-//     [key: string]: any;  // Дополнительные поля, которые могут быть переданы
-//   }
-
   interface Window {
     Telegram: {
       WebApp: {
         ready: () => void;
-        initDataUnsafe: TelegramWebAppData;  // Указываем тип данных, которые передаются через WebApp
+        initDataUnsafe: TelegramWebAppData; 
       };
     };
   }

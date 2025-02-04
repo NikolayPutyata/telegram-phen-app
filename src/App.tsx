@@ -7,19 +7,23 @@ import Leaderbords from './Pages/Leaderbords/Leaderbords.js';
 import Profile from './Pages/Profile/Profile.js';
 import Friends from './components/Friends/Friends.js';
 import TasksDetails from './components/TasksDetails/TasksDetails.js';
+import { useEffect } from 'react';
 
 const App = () => {
+
+  useEffect(() => {
+    const initUser = async () => {
     if (window.Telegram && window.Telegram.WebApp) {
-      // Инициализация WebApp
       window.Telegram.WebApp.ready();
       
-      // Логирование данных, которые могут быть полезны
-      console.log(window.Telegram.WebApp.initDataUnsafe);
-
-      // Дополнительная логика, например, для обработки данных
-    } else {
-      console.error('WebApp не доступен. Убедитесь, что это работает в Telegram.');
-    }
+      console.log(window.Telegram.WebApp.initDataUnsafe.user);
+  } 
+    };
+    
+    initUser();
+    
+  }, []);
+  
   return (
     <div>
       <Header />
