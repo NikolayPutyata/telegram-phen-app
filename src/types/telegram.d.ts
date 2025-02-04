@@ -12,7 +12,7 @@ declare global {
     Telegram: {
       WebApp: {
         ready: () => void;
-        initData: TelegramWebAppData; 
+        initDataUnsafe: TelegramWebAppData; 
       };
     };
   }
