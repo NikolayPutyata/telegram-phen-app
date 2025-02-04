@@ -8,8 +8,12 @@ import Profile from './Pages/Profile/Profile.js';
 import Friends from './components/Friends/Friends.js';
 import TasksDetails from './components/TasksDetails/TasksDetails.js';
 import { useEffect } from 'react';
+import { initUserFromServer } from './redux/operations.js';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from './redux/store.ts';
 
 const App = () => {
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     const initUser = async () => {
@@ -23,17 +27,16 @@ const App = () => {
         last_name: window.Telegram.WebApp.initDataUnsafe.user.last_name,
         photo_url: window.Telegram.WebApp.initDataUnsafe.user.photo_url,
         language_code: window.Telegram.WebApp.initDataUnsafe.user.language_code,
-      }
+      };
 
-      console.log(user);
+      dispatch(initUserFromServer(user));
+      } 
       
-
-  } 
     };
     
     initUser();
     
-  }, []);
+  }, [dispatch]);
   
   return (
     <div>
@@ -53,3 +56,5 @@ const App = () => {
 };
 
 export default App;
+
+
