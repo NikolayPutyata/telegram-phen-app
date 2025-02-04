@@ -16,7 +16,7 @@ const App = () => {
     if (window.Telegram && window.Telegram.WebApp) {
       window.Telegram.WebApp.ready();
       
-      console.log(window.Telegram.WebApp.initDataUnsafe.user);
+      console.log(window.Telegram.WebApp.initDataUnsafe);
   } 
     };
     
