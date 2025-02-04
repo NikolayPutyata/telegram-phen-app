@@ -9,14 +9,17 @@ import Friends from './components/Friends/Friends.js';
 import TasksDetails from './components/TasksDetails/TasksDetails.js';
 
 const App = () => {
-    window.Telegram.WebApp.init();
+    if (window.Telegram && window.Telegram.WebApp) {
+      // Инициализация WebApp
+      window.Telegram.WebApp.init();
+      
+      // Логирование данных, которые могут быть полезны
+      console.log(window.Telegram.WebApp.initDataUnsafe);
 
-  const user = window.Telegram.WebApp.initDataUnsafe;
-  
-  console.log(user.id);
-  console.log(user.username);
-  console.log(user.first_name);
-  
+      // Дополнительная логика, например, для обработки данных
+    } else {
+      console.error('WebApp не доступен. Убедитесь, что это работает в Telegram.');
+    }
   return (
     <div>
       <Header />
