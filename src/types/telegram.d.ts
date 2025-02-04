@@ -17,7 +17,7 @@ declare global {
   interface Window {
     Telegram: {
       WebApp: {
-        init: () => void;
+        ready: () => void;
         initDataUnsafe: TelegramWebAppData;  // Указываем тип данных, которые передаются через WebApp
       };
     };

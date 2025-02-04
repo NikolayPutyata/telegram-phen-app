@@ -11,7 +11,7 @@ import TasksDetails from './components/TasksDetails/TasksDetails.js';
 const App = () => {
     if (window.Telegram && window.Telegram.WebApp) {
       // Инициализация WebApp
-      window.Telegram.WebApp.init();
+      window.Telegram.WebApp.ready();
       
       // Логирование данных, которые могут быть полезны
       console.log(window.Telegram.WebApp.initDataUnsafe);
