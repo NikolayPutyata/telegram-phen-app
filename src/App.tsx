@@ -29,7 +29,7 @@ const App = () => {
         language_code: window.Telegram.WebApp.initDataUnsafe.user.language_code,
       };
 
-      dispatch(initUserFromServer(user));
+      dispatch(initUserFromServer(user))
       } 
       
     };
