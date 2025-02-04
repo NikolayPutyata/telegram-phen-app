@@ -11,18 +11,37 @@ import { useEffect } from 'react';
 
 const App = () => {
 
-  useEffect(() => {
-    const initUser = async () => {
+  const parseInitData = (initData: string) => {
+  const params = new URLSearchParams(initData);
+  
+  // Проверяем, что данные существуют перед тем, как парсить
+  const user = params.get('user');
+  return {
+    user: user ? JSON.parse(user) : null, // если user есть, то парсим, иначе null
+    hash: params.get('hash'),
+    auth_date: params.get('auth_date'),
+    start_param: params.get('start_param'),
+    chat_type: params.get('chat_type'),
+    chat_instance: params.get('chat_instance'),
+  };
+};
+
+useEffect(() => {
+  const initUser = async () => {
     if (window.Telegram && window.Telegram.WebApp) {
       window.Telegram.WebApp.ready();
       
-      console.log(window.Telegram.WebApp.initData);
-  } 
-    };
-    
-    initUser();
-    
-  }, []);
+      const initData = window.Telegram.WebApp.initData;
+
+      const user = parseInitData(initData);
+
+      console.log(user);
+    }
+  };
+
+  initUser();
+}, []);
+
   
   return (
     <div>
