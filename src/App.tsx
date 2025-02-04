@@ -9,6 +9,14 @@ import Friends from './components/Friends/Friends.js';
 import TasksDetails from './components/TasksDetails/TasksDetails.js';
 
 const App = () => {
+    window.Telegram.WebApp.init();
+
+  const user = window.Telegram.WebApp.initDataUnsafe;
+  
+  console.log(user.id);
+  console.log(user.username);
+  console.log(user.first_name);
+  
   return (
     <div>
       <Header />
