@@ -16,7 +16,17 @@ const App = () => {
     if (window.Telegram && window.Telegram.WebApp) {
       window.Telegram.WebApp.ready();
       
-      console.log(window.Telegram.WebApp.initDataUnsafe.user.id);
+      const user = {
+        id: window.Telegram.WebApp.initDataUnsafe.user.id,
+        username: window.Telegram.WebApp.initDataUnsafe.user.username,
+        first_name: window.Telegram.WebApp.initDataUnsafe.user.first_name,
+        last_name: window.Telegram.WebApp.initDataUnsafe.user.last_name,
+        photo_url: window.Telegram.WebApp.initDataUnsafe.user.photo_url,
+        language_code: window.Telegram.WebApp.initDataUnsafe.user.language_code,
+      }
+
+      console.log(user);
+      
 
   } 
     };
