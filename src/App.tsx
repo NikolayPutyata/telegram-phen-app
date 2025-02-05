@@ -30,8 +30,8 @@ const App = () => {
           photo_url: telegramUser.photo_url,
           language_code: telegramUser.language_code,
         };
-
         dispatch(initUserFromServer(user));
+        
       }
 
       
