@@ -7,8 +7,8 @@ const initialState: UserState = {
   username: '',
   photo_url: null,
   language_code: null,
-  // tokens: 0,
-  // friends: []
+  tokens: 0,
+  friends: []
 };
 
 const userSlice = createSlice({
@@ -22,8 +22,8 @@ const userSlice = createSlice({
       state.username = usersData.username;
       state.photo_url = usersData.photo_url;
       state.language_code = usersData.language_code;
-      // state.tokens = usersData.tokens;
-      // state.friends = usersData.friends;
+      state.tokens = usersData.tokens;
+      state.friends = usersData.friends;
     });
   },
 });

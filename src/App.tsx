@@ -12,14 +12,14 @@ import { initUserFromServer } from './redux/operations.js';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './redux/store.ts';
 
-type TelegramUser = {
-  id: number;
-  username?: string;
-  first_name: string;
-  last_name?: string;
-  photo_url?: string;
-  language_code?: string;
-};
+// type TelegramUser = {
+//   id: number;
+//   username?: string;
+//   first_name: string;
+//   last_name?: string;
+//   photo_url?: string;
+//   language_code?: string;
+// };
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -42,6 +42,8 @@ const App = () => {
 
         dispatch(initUserFromServer(user));
       }
+
+      
     };
 
     initUser();
