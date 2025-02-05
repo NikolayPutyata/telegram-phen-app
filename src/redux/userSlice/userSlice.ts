@@ -5,6 +5,7 @@ import { UserState } from '../../types/State';
 const initialState: UserState = {
   id: null,
   username: '',
+  first_name: '',
   photo_url: null,
   language_code: null,
   tokens: 0,
@@ -20,6 +21,7 @@ const userSlice = createSlice({
       const usersData: UserState = action.payload.data;
       state.id = usersData.id;
       state.username = usersData.username;
+      state.first_name = usersData.first_name;
       state.photo_url = usersData.photo_url;
       state.language_code = usersData.language_code;
       state.tokens = usersData.tokens;
