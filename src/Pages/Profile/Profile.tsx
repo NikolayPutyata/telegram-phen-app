@@ -17,7 +17,7 @@ const Profile = () => {
       <img src="/assets/avatar.webp" alt="standart avatar" />
     </div>
   </div>
-      <h2 className={`${s.font} text-zinc-300 text-center my-3 text-lg tracking-wider`}>{username === null ? firstName : username}</h2>
+      <h2 className={`${s.font} text-zinc-300 text-center my-3 text-lg tracking-wider`}>{username || firstName}</h2>
   <div className="flex justify-between w-full px-4">
     <p className={`${s.font} text-zinc-400 tracking-wider`}>Total tokens</p>
     <p className={`${s.font} text-zinc-400 tracking-wider`}>{tokens} PHEN</p>
