@@ -8,7 +8,7 @@ export const initUserFromServer = createAsyncThunk(
   'user/fetchUser',
   async (user, thunkAPI) => {
     try {
-      const { data } = await axios.post('/initUser', user);
+      const  data  = await axios.post('/initUser', user);
       return data;
     } catch (e: unknown) {
       if (e instanceof Error) {
