@@ -26,29 +26,22 @@ const App = () => {
 
   useEffect(() => {
     const initUser = async () => {
-      // if (window.Telegram && window.Telegram.WebApp) {
-      //   window.Telegram.WebApp.ready();
+      if (window.Telegram && window.Telegram.WebApp) {
+        window.Telegram.WebApp.ready();
 
-      //   const telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
+        const telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
 
-      //   const user: TelegramUser = {
-      //     id: telegramUser.id,
-      //     username: telegramUser.username,
-      //     first_name: telegramUser.first_name,
-      //     last_name: telegramUser.last_name,
-      //     photo_url: telegramUser.photo_url,
-      //     language_code: telegramUser.language_code,
-      //   };
+        const user: TelegramUser = {
+          id: telegramUser.id,
+          username: telegramUser.username,
+          first_name: telegramUser.first_name,
+          last_name: telegramUser.last_name,
+          photo_url: telegramUser.photo_url,
+          language_code: telegramUser.language_code,
+        };
 
-      // }
-      dispatch(
-        initUserFromServer({
-          id: 234209834,
-          username: 'anton',
-          language_code: 'ua',
-          photo_url: 'Http:sgdf',
-        }),
-      );
+        dispatch(initUserFromServer(user));
+      }
     };
 
     initUser();
