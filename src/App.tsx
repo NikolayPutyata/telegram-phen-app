@@ -12,33 +12,48 @@ import { initUserFromServer } from './redux/operations.js';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './redux/store.ts';
 
+type TelegramUser = {
+  id: number;
+  username?: string;
+  first_name: string;
+  last_name?: string;
+  photo_url?: string;
+  language_code?: string;
+};
+
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     const initUser = async () => {
-    if (window.Telegram && window.Telegram.WebApp) {
-      window.Telegram.WebApp.ready();
-      
-      const user = {
-        id: window.Telegram.WebApp.initDataUnsafe.user.id,
-        username: window.Telegram.WebApp.initDataUnsafe.user.username,
-        first_name: window.Telegram.WebApp.initDataUnsafe.user.first_name,
-        last_name: window.Telegram.WebApp.initDataUnsafe.user.last_name,
-        photo_url: window.Telegram.WebApp.initDataUnsafe.user.photo_url,
-        language_code: window.Telegram.WebApp.initDataUnsafe.user.language_code,
-      };
+      // if (window.Telegram && window.Telegram.WebApp) {
+      //   window.Telegram.WebApp.ready();
 
-      
-      dispatch(initUserFromServer(user))
-      } 
-      
+      //   const telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
+
+      //   const user: TelegramUser = {
+      //     id: telegramUser.id,
+      //     username: telegramUser.username,
+      //     first_name: telegramUser.first_name,
+      //     last_name: telegramUser.last_name,
+      //     photo_url: telegramUser.photo_url,
+      //     language_code: telegramUser.language_code,
+      //   };
+
+      // }
+      dispatch(
+        initUserFromServer({
+          id: 234209834,
+          username: 'anton',
+          language_code: 'ua',
+          photo_url: 'Http:sgdf',
+        }),
+      );
     };
-    
+
     initUser();
-    
   }, [dispatch]);
-  
+
   return (
     <div>
       <Header />
@@ -47,7 +62,7 @@ const App = () => {
         <Route path="/boosts" element={<Leaderbords />} />
         <Route path="/tasks" element={<Tasks />}>
           <Route path="/tasks" element={<TasksDetails />} />
-          <Route path='friends' element={<Friends />} />
+          <Route path="friends" element={<Friends />} />
         </Route>
         <Route path="/profile" element={<Profile />} />
       </Routes>
@@ -57,5 +72,3 @@ const App = () => {
 };
 
 export default App;
-
-
