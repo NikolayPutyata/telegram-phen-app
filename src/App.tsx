@@ -31,7 +31,7 @@ const App = () => {
 
         const telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
 
-        const user: TelegramUser = {
+        const user = {
           id: telegramUser.id,
           username: telegramUser.username,
           first_name: telegramUser.first_name,
