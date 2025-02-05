@@ -6,7 +6,7 @@ axios.defaults.baseURL =
 
 export const initUserFromServer = createAsyncThunk(
   'user/fetchUser',
-  async (user: object, thunkAPI) => {
+  async (user, thunkAPI) => {
     try {
       const { data } = await axios.post('/initUser', user);
       return data;
