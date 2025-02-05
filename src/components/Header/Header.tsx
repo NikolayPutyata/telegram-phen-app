@@ -1,6 +1,11 @@
+import { useSelector } from 'react-redux';
+import { selectUserTokens } from '../../redux/selectors';
 import s from '/src/App.module.css';
 
 const Header = () => {
+
+  const tokens = useSelector(selectUserTokens);
+
   return (
     <div className="collapse rounded-tl-none rounded-tr-none bg-neutral rounded-b-3xl p-0.5">
       <input type="checkbox" />
@@ -43,7 +48,7 @@ const Header = () => {
               />
               <p>$PHEN</p>
             </div>
-            <span>200</span>
+            <span>{tokens}</span>
           </li>
           <li className="flex justify-between">
             <div className="flex items-center gap-2">
