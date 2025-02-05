@@ -1,9 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { initUserFromServer } from "../operations";
+import { createSlice } from '@reduxjs/toolkit';
+import { initUserFromServer } from '../operations';
+import { UserState } from '../../types/State';
 
-const initialState = {
+const initialState: UserState = {
   id: null,
-  username: "",
+  username: '',
   photo_url: null,
   language_code: null,
   // tokens: 0,
@@ -11,17 +12,18 @@ const initialState = {
 };
 
 const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(initUserFromServer.fulfilled, (state, action) => {
-      state.id = action.payload.data.id;
-      state.username = action.payload.data.username;
-      state.photo_url = action.payload.data.photo_url;
-      state.language_code = action.payload.data.language_code;
-      // state.tokens = action.payload.tokens;
-      // state.friends = action.payload.friends;
+      const usersData: UserState = action.payload.data;
+      state.id = usersData.id;
+      state.username = usersData.username;
+      state.photo_url = usersData.photo_url;
+      state.language_code = usersData.language_code;
+      // state.tokens = usersData.tokens;
+      // state.friends = usersData.friends;
     });
   },
 });
