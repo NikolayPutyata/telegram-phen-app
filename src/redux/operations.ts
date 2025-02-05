@@ -1,15 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { UserState } from '../types/State';
-
-type ApiResponse = {
-  data: UserState;
-};
 
 axios.defaults.baseURL =
   'https://telegram-phen-app-server-0kju.onrender.com/user';
 
-export const initUserFromServer = createAsyncThunk<ApiResponse, object>(
+export const initUserFromServer = createAsyncThunk(
   'user/fetchUser',
   async (user: object, thunkAPI) => {
     try {
