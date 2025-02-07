@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 axios.defaults.baseURL =
-  'https://telegram-phen-app-server-0kju.onrender.com/user';
+  'https://telegram-phen-app-server-scjhs.ondigitalocean.app/user';
 
 export const initUserFromServer = createAsyncThunk(
   'user/fetchUser',
