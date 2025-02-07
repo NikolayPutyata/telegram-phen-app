@@ -6,11 +6,18 @@ import {
   selectUserTokens,
   selectUserUsername,
 } from '../../redux/selectors.ts';
+import { useState } from 'react';
+import Modal from '../../components/Modal/Modal.tsx';
 
 const Profile = () => {
   const username = useSelector(selectUserUsername);
   const tokens = useSelector(selectUserTokens);
   const firstName = useSelector(selectUserFirstName);
+
+  const [isModalOpenBoosts, setIsModalOpenBoosts] = useState(false);
+  const [isModalOpenSkins, setIsModalOpenSkins] = useState(false);
+  const [isModalOpenSettings, setIsModalOpenSettings] = useState(false);
+  const [isModalOpenLanguage, setIsModalOpenLanguage] = useState(false);
 
   return (
     <div className="flex flex-col items-center bg-neutral-900 rounded-3xl p-3 m-4">
@@ -37,6 +44,7 @@ const Profile = () => {
         <li className="w-full py-1 items-center  flex justify-between ">
           <button
             type="button"
+            onClick={() => setIsModalOpenBoosts(true)}
             className="w-full items-center pr-6 flex justify-between "
           >
             Boosts
@@ -50,6 +58,7 @@ const Profile = () => {
         <li className="w-full py-1 items-center flex justify-between ">
           <button
             type="button"
+            onClick={() => setIsModalOpenSkins(true)}
             className="w-full items-center pr-6 flex justify-between  "
           >
             Skins
@@ -63,6 +72,7 @@ const Profile = () => {
         <li className="w-full py-1 items-center flex justify-between ">
           <button
             type="button"
+            onClick={() => setIsModalOpenLanguage(true)}
             className="w-full items-center pr-6 flex justify-between  "
           >
             Language
@@ -76,6 +86,7 @@ const Profile = () => {
         <li className="w-full py-1 items-center flex justify-between ">
           <button
             type="button"
+            onClick={() => setIsModalOpenSettings(true)}
             className="w-full items-center pr-6 flex justify-between  "
           >
             Settings
@@ -89,6 +100,30 @@ const Profile = () => {
       </ul>
       <button className="btn w-72 btn-primary my-4">Connect TON Wallet</button>
       <Socials />
+
+      <Modal
+        isOpen={isModalOpenBoosts}
+        changeModal="boosts"
+        onClose={() => setIsModalOpenBoosts(false)}
+      />
+
+      <Modal
+        isOpen={isModalOpenSkins}
+        changeModal="skins"
+        onClose={() => setIsModalOpenSkins(false)}
+      />
+
+      <Modal
+        isOpen={isModalOpenSettings}
+        changeModal="settings"
+        onClose={() => setIsModalOpenSettings(false)}
+      />
+
+      <Modal
+        isOpen={isModalOpenLanguage}
+        changeModal="language"
+        onClose={() => setIsModalOpenLanguage(false)}
+      />
     </div>
   );
 };
