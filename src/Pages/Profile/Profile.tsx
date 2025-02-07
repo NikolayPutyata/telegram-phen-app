@@ -1,31 +1,95 @@
-import { useSelector } from "react-redux";
-import Socials from "../../components/Socials/Socials";
+import { useSelector } from 'react-redux';
+import Socials from '../../components/Socials/Socials';
 import s from '/src/App.module.css';
-import { selectUserFirstName, selectUserTokens, selectUserUsername } from "../../redux/selectors.ts";
+import {
+  selectUserFirstName,
+  selectUserTokens,
+  selectUserUsername,
+} from '../../redux/selectors.ts';
 
 const Profile = () => {
-
   const username = useSelector(selectUserUsername);
   const tokens = useSelector(selectUserTokens);
   const firstName = useSelector(selectUserFirstName);
 
   return (
-
     <div className="flex flex-col items-center bg-neutral-900 rounded-3xl p-3 m-4">
-  <div className="avatar">
-    <div className="w-24 rounded-full">
-      <img src="/assets/avatar.webp" alt="standart avatar" />
-    </div>
-  </div>
-      <h2 className={`${s.font} text-zinc-300 text-center my-3 text-lg tracking-wider`}>{username || firstName}</h2>
-  <div className="flex justify-between w-full px-4">
-    <p className={`${s.font} text-zinc-400 tracking-wider`}>Total tokens</p>
-    <p className={`${s.font} text-zinc-400 tracking-wider`}>{tokens} PHEN</p>
-  </div>
-  <button className="btn w-72 btn-primary my-4">Connect TON Wallet</button>
-  <Socials />
-</div>
+      <div className="avatar">
+        <div className="w-24 rounded-full">
+          <img src="/assets/avatar.webp" alt="standart avatar" />
+        </div>
+      </div>
+      <h2
+        className={`${s.font} text-zinc-300 text-center my-3 text-lg tracking-wider`}
+      >
+        {username || firstName}
+      </h2>
+      <div className="flex mb-6 justify-between w-full px-4">
+        <p className={`${s.font} text-zinc-300 tracking-wider`}>Total tokens</p>
+        <p className={`${s.font} text-zinc-300 tracking-wider`}>
+          {tokens} PHEN
+        </p>
+      </div>
 
+      <ul
+        className={`w-full ${s.font} px-4 mb-5 flex flex-col text-sm tracking-wider text-zinc-400 items-center`}
+      >
+        <li className="w-full py-1 items-center  flex justify-between ">
+          <button
+            type="button"
+            className="w-full items-center pr-6 flex justify-between "
+          >
+            Boosts
+            <img
+              src="/public/assets/circle-arrow-left.svg "
+              alt="standart avatar"
+              className="w-5"
+            />
+          </button>
+        </li>
+        <li className="w-full py-1 items-center flex justify-between ">
+          <button
+            type="button"
+            className="w-full items-center pr-6 flex justify-between  "
+          >
+            Skins
+            <img
+              src="/public/assets/circle-arrow-left.svg "
+              alt="standart avatar"
+              className="w-5"
+            />
+          </button>
+        </li>
+        <li className="w-full py-1 items-center flex justify-between ">
+          <button
+            type="button"
+            className="w-full items-center pr-6 flex justify-between  "
+          >
+            Language
+            <img
+              src="/public/assets/circle-arrow-left.svg "
+              alt="standart avatar"
+              className="w-5"
+            />
+          </button>
+        </li>
+        <li className="w-full py-1 items-center flex justify-between ">
+          <button
+            type="button"
+            className="w-full items-center pr-6 flex justify-between  "
+          >
+            Settings
+            <img
+              src="/public/assets/circle-arrow-left.svg "
+              alt="standart avatar"
+              className="w-5"
+            />
+          </button>
+        </li>
+      </ul>
+      <button className="btn w-72 btn-primary my-4">Connect TON Wallet</button>
+      <Socials />
+    </div>
   );
 };
 
