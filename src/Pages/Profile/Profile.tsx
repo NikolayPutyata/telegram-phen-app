@@ -8,6 +8,7 @@ import {
 } from '../../redux/selectors.ts';
 import { useState } from 'react';
 import Modal from '../../components/Modal/Modal.tsx';
+import ProfileListItem from './ProfileListItem.tsx';
 
 const Profile = () => {
   const username = useSelector(selectUserUsername);
@@ -38,66 +39,33 @@ const Profile = () => {
         </p>
       </div>
 
-      <ul
-        className={`w-full ${s.font} px-4 mb-5 flex flex-col text-sm tracking-wider text-zinc-400 items-center`}
-      >
-        <li className="w-full py-1 items-center  flex justify-between ">
-          <button
-            type="button"
-            onClick={() => setIsModalOpenBoosts(true)}
-            className="w-full items-center pr-6 flex justify-between "
-          >
-            Boosts
-            <img
-              src="/public/assets/circle-arrow-left.svg "
-              alt="standart avatar"
-              className="w-5"
-            />
-          </button>
-        </li>
-        <li className="w-full py-1 items-center flex justify-between ">
-          <button
-            type="button"
-            onClick={() => setIsModalOpenSkins(true)}
-            className="w-full items-center pr-6 flex justify-between  "
-          >
-            Skins
-            <img
-              src="/public/assets/circle-arrow-left.svg "
-              alt="standart avatar"
-              className="w-5"
-            />
-          </button>
-        </li>
-        <li className="w-full py-1 items-center flex justify-between ">
-          <button
-            type="button"
-            onClick={() => setIsModalOpenLanguage(true)}
-            className="w-full items-center pr-6 flex justify-between  "
-          >
-            Language
-            <img
-              src="/public/assets/circle-arrow-left.svg "
-              alt="standart avatar"
-              className="w-5"
-            />
-          </button>
-        </li>
-        <li className="w-full py-1 items-center flex justify-between ">
-          <button
-            type="button"
-            onClick={() => setIsModalOpenSettings(true)}
-            className="w-full items-center pr-6 flex justify-between  "
-          >
-            Settings
-            <img
-              src="/public/assets/circle-arrow-left.svg "
-              alt="standart avatar"
-              className="w-5"
-            />
-          </button>
-        </li>
-      </ul>
+      <ul className={`w-full ${s.font} px-4 mb-5 flex flex-col text-sm tracking-wider text-zinc-400 items-center`}>
+  <ProfileListItem 
+    onClickFu={() => setIsModalOpenBoosts(true)} 
+    title="Boosts" 
+    imgSrc="/assets/circle-arrow-left.svg" 
+    imgAlt="standart avatar" 
+  />
+  <ProfileListItem 
+    onClickFu={() => setIsModalOpenSkins(true)} 
+    title="Skins" 
+    imgSrc="/assets/circle-arrow-left.svg" 
+    imgAlt="standart avatar" 
+  />
+  <ProfileListItem 
+    onClickFu={() => setIsModalOpenLanguage(true)} 
+    title="Language" 
+    imgSrc="/assets/circle-arrow-left.svg" 
+    imgAlt="standart avatar" 
+  />
+  <ProfileListItem 
+    onClickFu={() => setIsModalOpenSettings(true)} 
+    title="Settings" 
+    imgSrc="/assets/circle-arrow-left.svg" 
+    imgAlt="standart avatar" 
+  />
+</ul>
+
       <button className="btn w-72 btn-primary my-4">Connect TON Wallet</button>
       <Socials />
 

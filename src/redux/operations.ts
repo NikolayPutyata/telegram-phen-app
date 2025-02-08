@@ -19,53 +19,36 @@ export const initUserFromServer = createAsyncThunk(
   },
 );
 
-export const startFarming = createAsyncThunk(
-  'farm/startFarming',
-  async (
-    { id, boostMultiplier }: { id: number; boostMultiplier: number },
-    { rejectWithValue },
-  ) => {
-    try {
-      await axios.post('/farmStart', { id, boostMultiplier });
-      return { id, boostMultiplier };
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        return rejectWithValue(e.message);
-      }
-      return rejectWithValue('Unknown error');
-    }
-  },
-);
+// export const startFarming = createAsyncThunk(
+//   'farm/startFarming',
+//   async (
+//     { id, boostMultiplier }: { id: number; boostMultiplier: number },
+//     { rejectWithValue },
+//   ) => {
+//     try {
+//       await axios.post('/farmStart', { id, boostMultiplier });
+//       return { id, boostMultiplier };
+//     } catch (e: unknown) {
+//       if (e instanceof Error) {
+//         return rejectWithValue(e.message);
+//       }
+//       return rejectWithValue('Unknown error');
+//     }
+//   },
+// );
 
-export const farmUpdate = createAsyncThunk(
-  'farm/farmUpdate',
-  async (
-    { id, boostMultiplier }: { id: number; boostMultiplier: number },
-    { rejectWithValue },
-  ) => {
-    try {
-      await axios.post('/farmUpdate', { id, boostMultiplier });
-      return { id, boostMultiplier };
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        return rejectWithValue(e.message);
-      }
-      return rejectWithValue('Unknown error');
-    }
-  },
-);
 
-export const claimTokens = createAsyncThunk(
-  'farm/claimTokens',
-  async (id: number, { rejectWithValue }) => {
-    try {
-      const response = await axios.post('/claimTokens', { id });
-      return response.data;
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        return rejectWithValue(e.message);
-      }
-      return rejectWithValue('Unknown error');
-    }
-  },
-);
+// export const claimTokens = createAsyncThunk(
+//   'farm/claimTokens',
+//   async (id: number, { rejectWithValue }) => {
+//     try {
+//       const response = await axios.post('/claimTokens', { id });
+//       return response.data;
+//     } catch (e: unknown) {
+//       if (e instanceof Error) {
+//         return rejectWithValue(e.message);
+//       }
+//       return rejectWithValue('Unknown error');
+//     }
+//   },
+// );

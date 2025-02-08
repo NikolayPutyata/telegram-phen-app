@@ -1,44 +1,43 @@
 import { useSelector } from 'react-redux';
 import s from '/src/App.module.css';
 import { selectUserTokens } from '../../redux/selectors';
-import { useState } from 'react';
-import anime from 'animejs';
+
 
 const FarmBlock = () => {
   const tokens = useSelector(selectUserTokens);
 
-  const [isFarmDisabled, setIsFarmDisabled] = useState<boolean>(false);
-  const [isClaimDisabled, setIsClaimDisabled] = useState<boolean>(true);
+  // const [isFarmDisabled, setIsFarmDisabled] = useState<boolean>(false);
+  // const [isClaimDisabled, setIsClaimDisabled] = useState<boolean>(true);
 
-  const handleClick = (): void => {
-    setIsFarmDisabled(true);
-    setIsClaimDisabled(true);
+  // const handleClick = (): void => {
+  //   setIsFarmDisabled(true);
+  //   setIsClaimDisabled(true);
 
-    // Запуск анімації
-    anime({
-      targets: '.farm-button',
-      innerHTML: [0.003, 88], // Замініть 1000 на кінцеве значення, яке ви хочете показати після 8 годин
-      easing: 'linear',
-      duration: 28800000,
-      round: false,
-      update: (anim) => {
-        const value = parseFloat(anim.animations[0].currentValue.toString());
-        const formattedValue =
-          value % 1 === 0 ? value.toFixed(0) : value.toFixed(3); // Відображати цілі або дробові числа
-        anim.animatables[0].target.innerHTML = formattedValue;
-      },
-      complete: () => {
-        setIsClaimDisabled(false);
-      },
-    });
-  };
+  //   // Запуск анімації
+  //   anime({
+  //     targets: '.farm-button',
+  //     innerHTML: [0.003, 88], // Замініть 1000 на кінцеве значення, яке ви хочете показати після 8 годин
+  //     easing: 'linear',
+  //     duration: 28800000,
+  //     round: false,
+  //     update: (anim) => {
+  //       const value = parseFloat(anim.animations[0].currentValue.toString());
+  //       const formattedValue =
+  //         value % 1 === 0 ? value.toFixed(0) : value.toFixed(3); // Відображати цілі або дробові числа
+  //       anim.animatables[0].target.innerHTML = formattedValue;
+  //     },
+  //     complete: () => {
+  //       setIsClaimDisabled(false);
+  //     },
+  //   });
+  // };
 
-  // 28800000,
+  // // 28800000,
 
-  const handleClaimClick = (): void => {
-    setIsClaimDisabled(true);
-    setIsFarmDisabled(false);
-  };
+  // const handleClaimClick = (): void => {
+  //   setIsClaimDisabled(true);
+  //   setIsFarmDisabled(false);
+  // };
 
   return (
     <div className="my-5">
@@ -54,15 +53,13 @@ const FarmBlock = () => {
         <div className="grid grid-cols-[1fr_1fr] grid-rows-1 items-center justify-center gap-3">
           <button
             className="btn btn-primary rounded-4xl"
-            onClick={handleClick}
-            disabled={isFarmDisabled}
+
           >
             <span className="farm-button">Farm</span>
           </button>
           <button
             className="btn btn-primary rounded-4xl"
-            onClick={handleClaimClick}
-            disabled={isClaimDisabled}
+
           >
             Claim
           </button>

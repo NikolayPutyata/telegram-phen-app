@@ -20,7 +20,7 @@ const SkinsModal = () => {
             <p
               className={`${s.font} text-zinc-400 text-sm mb-2 tracking-wider`}
             >
-              X3 - 0.003
+              X3
             </p>
           </div>
         </li>
@@ -39,7 +39,7 @@ const SkinsModal = () => {
             <p
               className={`${s.font} text-zinc-400 text-sm mb-3 tracking-wider`}
             >
-              X6 - 0.006
+              X6
             </p>
           </div>
         </li>
@@ -58,7 +58,7 @@ const SkinsModal = () => {
             <p
               className={`${s.font} text-zinc-400 text-sm mb-3 tracking-wider`}
             >
-              X12 - 0.012
+              X12
             </p>
           </div>
         </li>
