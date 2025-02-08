@@ -1,6 +1,5 @@
 import SkinsModal from '../SkinsModal/SkinsModal.tsx';
 import BoostsModal from '../BoostsModal/BoostsModal.tsx';
-import TasksModal from '../TasksModal/TasksModal.tsx';
 import SettingsModal from '../SettingsModal/SettingsModal.tsx';
 import LanguageModal from '../LanguageModal/LanguageModal.tsx';
 import s from '/src/App.module.css';
@@ -18,8 +17,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, changeModal }) => {
         return <BoostsModal />;
       case 'skins':
         return <SkinsModal />;
-      case 'tasks':
-        return <TasksModal />;
       case 'settings':
         return <SettingsModal />;
       case 'language':

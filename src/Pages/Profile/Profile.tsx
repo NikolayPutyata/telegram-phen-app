@@ -39,7 +39,7 @@ const Profile = () => {
         </p>
       </div>
 
-      <ul className={`w-full ${s.font} px-4 mb-5 flex flex-col text-sm tracking-wider text-zinc-400 items-center`}>
+      <ul className={`w-full ${s.font} flex flex-col px-4 mb-5 gap-2 text-sm tracking-wider text-zinc-400 items-center`}>
   <ProfileListItem 
     onClickFu={() => setIsModalOpenBoosts(true)} 
     title="Boosts" 
