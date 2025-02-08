@@ -3,6 +3,7 @@ import BoostsModal from '../BoostsModal/BoostsModal.tsx';
 import TasksModal from '../TasksModal/TasksModal.tsx';
 import SettingsModal from '../SettingsModal/SettingsModal.tsx';
 import LanguageModal from '../LanguageModal/LanguageModal.tsx';
+import s from '/src/App.module.css';
 
 type ModalProps = {
   isOpen: boolean;
@@ -24,7 +25,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, changeModal }) => {
       case 'language':
         return <LanguageModal />;
       default:
-        return <p>No content</p>;
+        return (
+          <p className={`${s.font} text-zinc-300 tracking-wider`}>No content</p>
+        );
     }
   };
 
