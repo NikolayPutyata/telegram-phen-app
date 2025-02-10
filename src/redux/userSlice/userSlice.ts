@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { initUserFromServer } from '../operations';
+import { claimTokens, initUserFromServer } from '../operations';
 import { UserState } from '../../types/State';
 
 const initialState: UserState = {
@@ -34,6 +34,8 @@ const userSlice = createSlice({
       state.boosts = usersData.boosts;
       state.activeSkins = usersData.activeSkins;
       state.currentBoost = usersData.currentBoost;
+    }).addCase(claimTokens.fulfilled, (state, action) => {
+      state.tokens = action.payload.tokens
     });
   },
 });
