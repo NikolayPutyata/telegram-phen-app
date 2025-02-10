@@ -7,7 +7,7 @@ import { selectUserId } from '../../redux/selectors';
 import { claimTokens, startFarming } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 
-const FARM_DURATION = 288; 
+const FARM_DURATION = 28800000; 
 const START_VALUE = 0.001;
 const END_VALUE = 86.4;
 
