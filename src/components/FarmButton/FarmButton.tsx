@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom';
 import anime from 'animejs';
 import s from '/src/App.module.css';
 
-const FARM_DURATION = 28800; // 8 годин в мілісекундах
+const FARM_DURATION = 28800000; // 8 годин в мілісекундах
 const START_VALUE = 0.001;
-const END_VALUE = 50;
+const END_VALUE = 86.4;
 
 const FarmBlock = () => {
   const location = useLocation();
