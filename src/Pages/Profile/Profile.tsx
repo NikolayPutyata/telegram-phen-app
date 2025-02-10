@@ -9,8 +9,10 @@ import {
 import { useState } from 'react';
 import Modal from '../../components/Modal/Modal.tsx';
 import ProfileListItem from './ProfileListItem.tsx';
+import { useTranslation } from 'react-i18next';
 
 const Profile = () => {
+  const { t } = useTranslation();
   const username = useSelector(selectUserUsername);
   const tokens = useSelector(selectUserTokens);
   const firstName = useSelector(selectUserFirstName);
@@ -33,9 +35,11 @@ const Profile = () => {
         {username || firstName}
       </h2>
       <div className="flex mb-6 justify-between w-full px-4">
-        <p className={`${s.font} text-zinc-300 tracking-wider`}>Total tokens</p>
         <p className={`${s.font} text-zinc-300 tracking-wider`}>
-          {tokens} PHEN
+          {t('Total tokens')}
+        </p>
+        <p className={`${s.font} text-zinc-300 tracking-wider`}>
+          {tokens} {t('PHEN')}
         </p>
       </div>
 
@@ -44,32 +48,32 @@ const Profile = () => {
       >
         <ProfileListItem
           onClickFu={() => setIsModalOpenBoosts(true)}
-          title="Boosts"
+          title={t('Boosts')}
           imgSrc="/assets/circle-arrow-left.svg"
           imgAlt="standart avatar"
         />
         <ProfileListItem
           onClickFu={() => setIsModalOpenSkins(true)}
-          title="Skins"
+          title={t('Skins')}
           imgSrc="/assets/circle-arrow-left.svg"
           imgAlt="standart avatar"
         />
         <ProfileListItem
           onClickFu={() => setIsModalOpenLanguage(true)}
-          title="Language"
+          title={t('Language')}
           imgSrc="/assets/circle-arrow-left.svg"
           imgAlt="standart avatar"
         />
         <ProfileListItem
           onClickFu={() => setIsModalOpenSettings(true)}
-          title="Settings"
+          title={t('Settings')}
           imgSrc="/assets/circle-arrow-left.svg"
           imgAlt="standart avatar"
         />
       </ul>
 
       <button className="btn w-72 btn-primary rounded-4xl my-4">
-        Connect TON Wallet
+        {t('Connect TON Wallet')}
       </button>
       <Socials />
 

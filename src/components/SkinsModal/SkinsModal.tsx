@@ -4,7 +4,9 @@ const SkinsModal = () => {
   return (
     <div>
       <ul className="flex flex-col  gap-4">
-        <h2 className={`${s.font} text-zinc-300  my-3`}>Active skins 👑</h2>
+        <h2 className={`${s.font} text-zinc-300 tracking-wider my-3`}>
+          Active skins 👑
+        </h2>
 
         <li className="flex pl-2  gap-10">
           <div className="flex flex-col justify-center w-20 h-20 overflow-hidden rounded-3xl">
