@@ -1,41 +1,47 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import anime from 'animejs';
 import s from '/src/App.module.css';
 
-const FARM_DURATION = 288000; // 28800000, 8 годин в мілісекундах
-const START_VALUE = 0.003;
-const END_VALUE = 46;
+const FARM_DURATION = 28800; // 8 годин в мілісекундах
+const START_VALUE = 0.001;
+const END_VALUE = 50;
 
 const FarmBlock = () => {
-  const location = useLocation(); // Для відстеження змін маршруту
-
+  const location = useLocation();
   const [currentValue, setCurrentValue] = useState(START_VALUE);
   const [isFarmDisabled, setIsFarmDisabled] = useState<boolean>(false);
   const [isClaimDisabled, setIsClaimDisabled] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState(true);
 
+  const animationRef = useRef<anime.AnimeInstance | null>(null);
+
   const startAnimation = (fromValue: number, remainingTime: number) => {
-    anime({
+    if (animationRef.current) {
+      animationRef.current.pause(); // Останавливаем старую анимацию
+      animationRef.current = null;
+    }
+
+    anime.remove('.farm-span'); // Удаляем старую анимацию
+
+    animationRef.current = anime({
       targets: '.farm-span',
-      innerHTML: [fromValue, END_VALUE], // Замініть 1000 на кінцеве значення
+      innerHTML: [fromValue, END_VALUE],
       easing: 'linear',
       duration: remainingTime,
       round: false,
       update: (anim) => {
-        const value = parseFloat(anim.animations[0].currentValue.toString());
-        const formattedValue =
-          value % 1 === 0 ? value.toFixed(0) : value.toFixed(3); // Відображення числа
-        anim.animatables[0].target.innerHTML = formattedValue;
+        const value = fromValue + (END_VALUE - fromValue) * (anim.progress / 100);
         setCurrentValue(value);
       },
       complete: () => {
-        setIsClaimDisabled(false); // Кнопка "Claim" активується після завершення анімації
+        setIsClaimDisabled(false);
+        setCurrentValue(END_VALUE);
+        animationRef.current = null;
       },
     });
   };
 
-  // Функція перевірки статусу фарму
   const checkFarmStatus = useCallback(() => {
     const storedStartTime = localStorage.getItem('farmStartTime');
     if (storedStartTime) {
@@ -48,8 +54,7 @@ const FarmBlock = () => {
         setCurrentValue(END_VALUE);
       } else {
         const progress = elapsedTime / FARM_DURATION;
-        const animatedStartValue =
-          START_VALUE + (END_VALUE - START_VALUE) * progress;
+        const animatedStartValue = START_VALUE + (END_VALUE - START_VALUE) * progress;
 
         setCurrentValue(animatedStartValue);
         setIsFarmDisabled(true);
@@ -60,37 +65,51 @@ const FarmBlock = () => {
     setIsLoading(false);
   }, []);
 
-  // Викликаємо перевірку при завантаженні сторінки та зміні маршруту
   useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        setTimeout(() => {
+          checkFarmStatus();
+        }, 100);
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
     checkFarmStatus();
-  }, [location.pathname, checkFarmStatus]); // Тепер ефект спрацьовує і при зміні маршруту
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [location.pathname, checkFarmStatus]);
 
   const handleClick = () => {
-    // Записуємо час початку фарму
     const startTime = Date.now();
     localStorage.setItem('farmStartTime', startTime.toString());
 
-    setIsFarmDisabled(true); // Вимикаємо кнопку фарму
-    setIsClaimDisabled(true); // Вимикаємо кнопку "Claim"
-    setCurrentValue(START_VALUE); // Скидаємо значення
-    startAnimation(START_VALUE, FARM_DURATION); // Запускаємо анімацію
+    setIsFarmDisabled(true);
+    setIsClaimDisabled(true);
+    setCurrentValue(START_VALUE);
+    startAnimation(START_VALUE, FARM_DURATION);
   };
 
   const handleClaimClick = (): void => {
-    // Якщо користувач хоче забрати токени, очищаємо час початку і відновлюємо стан
     localStorage.removeItem('farmStartTime');
-    setIsClaimDisabled(true); // Вимикаємо кнопку "Claim"
-    setIsFarmDisabled(false); // Вмикаємо кнопку фарму
-    setCurrentValue(START_VALUE); // Відновлюємо початкове значення
+    setIsClaimDisabled(true);
+    setIsFarmDisabled(false);
+    setCurrentValue(START_VALUE);
+
+    if (animationRef.current) {
+      animationRef.current.pause();
+      animationRef.current = null;
+    }
+    anime.remove('.farm-span'); // Удаляем любую активную анимацию
   };
 
   return (
     <div className="grid grid-cols-[1fr_1fr] grid-rows-1 items-center justify-center gap-3">
       {!isLoading && !isFarmDisabled && (
         <button
-          className={`btn btn-primary rounded-4xl  ${
-            isFarmDisabled ? 'hidden' : ''
-          }`}
+          className={`btn btn-primary rounded-4xl ${isFarmDisabled ? 'hidden' : ''}`}
           onClick={handleClick}
           disabled={isFarmDisabled}
         >
@@ -107,9 +126,7 @@ const FarmBlock = () => {
         {currentValue.toFixed(3)}
       </span>
       <button
-        className={`btn btn-primary rounded-4xl ${
-          isLoading ? 'opacity-0' : 'opacity-100'
-        }`}
+        className={`btn btn-primary rounded-4xl ${isLoading ? 'opacity-0' : 'opacity-100'}`}
         onClick={handleClaimClick}
         disabled={isClaimDisabled}
       >
