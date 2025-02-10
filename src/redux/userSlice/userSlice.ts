@@ -3,13 +3,17 @@ import { initUserFromServer } from '../operations';
 import { UserState } from '../../types/State';
 
 const initialState: UserState = {
-  id: null,
+  id: 0,
   username: '',
   first_name: '',
   photo_url: null,
   language_code: null,
   tokens: 0,
-  friends: []
+  friends: [],
+  skins: [],
+  boosts: [],
+  activeSkins: [],
+  currentBoost: 0,
 };
 
 const userSlice = createSlice({
@@ -26,6 +30,10 @@ const userSlice = createSlice({
       state.language_code = usersData.language_code;
       state.tokens = usersData.tokens;
       state.friends = usersData.friends;
+      state.skins = usersData.skins;
+      state.boosts = usersData.boosts;
+      state.activeSkins = usersData.activeSkins;
+      state.currentBoost = usersData.currentBoost;
     });
   },
 });

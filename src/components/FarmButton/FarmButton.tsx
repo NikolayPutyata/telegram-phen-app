@@ -2,8 +2,12 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import anime from 'animejs';
 import s from '/src/App.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUserId } from '../../redux/selectors';
+import { claimTokens, startFarming } from '../../redux/operations';
+import { AppDispatch } from '../../redux/store';
 
-const FARM_DURATION = 28800000; // 8 годин в мілісекундах
+const FARM_DURATION = 288; 
 const START_VALUE = 0.001;
 const END_VALUE = 86.4;
 
@@ -14,15 +18,18 @@ const FarmBlock = () => {
   const [isClaimDisabled, setIsClaimDisabled] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState(true);
 
+  const userId = useSelector(selectUserId);
+  const dispatch = useDispatch<AppDispatch>();
+
   const animationRef = useRef<anime.AnimeInstance | null>(null);
 
   const startAnimation = (fromValue: number, remainingTime: number) => {
     if (animationRef.current) {
-      animationRef.current.pause(); // Останавливаем старую анимацию
+      animationRef.current.pause(); 
       animationRef.current = null;
     }
 
-    anime.remove('.farm-span'); // Удаляем старую анимацию
+    anime.remove('.farm-span'); 
 
     animationRef.current = anime({
       targets: '.farm-span',
@@ -82,7 +89,10 @@ const FarmBlock = () => {
     };
   }, [location.pathname, checkFarmStatus]);
 
-  const handleClick = () => {
+  const handleClick = async () => {
+    await dispatch(startFarming({ id: userId, boostsIdsArray: [] }));
+
+
     const startTime = Date.now();
     localStorage.setItem('farmStartTime', startTime.toString());
 
@@ -92,7 +102,10 @@ const FarmBlock = () => {
     startAnimation(START_VALUE, FARM_DURATION);
   };
 
-  const handleClaimClick = (): void => {
+  const handleClaimClick = async (): Promise<void> => {
+
+    await dispatch(claimTokens(userId));
+
     localStorage.removeItem('farmStartTime');
     setIsClaimDisabled(true);
     setIsFarmDisabled(false);
@@ -102,7 +115,7 @@ const FarmBlock = () => {
       animationRef.current.pause();
       animationRef.current = null;
     }
-    anime.remove('.farm-span'); // Удаляем любую активную анимацию
+    anime.remove('.farm-span');
   };
 
   return (
