@@ -39,34 +39,38 @@ const Profile = () => {
         </p>
       </div>
 
-      <ul className={`w-full ${s.font} flex flex-col px-4 mb-5 gap-2 text-sm tracking-wider text-zinc-400 items-center`}>
-  <ProfileListItem 
-    onClickFu={() => setIsModalOpenBoosts(true)} 
-    title="Boosts" 
-    imgSrc="/assets/circle-arrow-left.svg" 
-    imgAlt="standart avatar" 
-  />
-  <ProfileListItem 
-    onClickFu={() => setIsModalOpenSkins(true)} 
-    title="Skins" 
-    imgSrc="/assets/circle-arrow-left.svg" 
-    imgAlt="standart avatar" 
-  />
-  <ProfileListItem 
-    onClickFu={() => setIsModalOpenLanguage(true)} 
-    title="Language" 
-    imgSrc="/assets/circle-arrow-left.svg" 
-    imgAlt="standart avatar" 
-  />
-  <ProfileListItem 
-    onClickFu={() => setIsModalOpenSettings(true)} 
-    title="Settings" 
-    imgSrc="/assets/circle-arrow-left.svg" 
-    imgAlt="standart avatar" 
-  />
-</ul>
+      <ul
+        className={`w-full ${s.font} flex flex-col px-4 mb-5 gap-2 text-sm tracking-wider text-zinc-400 items-center`}
+      >
+        <ProfileListItem
+          onClickFu={() => setIsModalOpenBoosts(true)}
+          title="Boosts"
+          imgSrc="/assets/circle-arrow-left.svg"
+          imgAlt="standart avatar"
+        />
+        <ProfileListItem
+          onClickFu={() => setIsModalOpenSkins(true)}
+          title="Skins"
+          imgSrc="/assets/circle-arrow-left.svg"
+          imgAlt="standart avatar"
+        />
+        <ProfileListItem
+          onClickFu={() => setIsModalOpenLanguage(true)}
+          title="Language"
+          imgSrc="/assets/circle-arrow-left.svg"
+          imgAlt="standart avatar"
+        />
+        <ProfileListItem
+          onClickFu={() => setIsModalOpenSettings(true)}
+          title="Settings"
+          imgSrc="/assets/circle-arrow-left.svg"
+          imgAlt="standart avatar"
+        />
+      </ul>
 
-      <button className="btn w-72 btn-primary my-4">Connect TON Wallet</button>
+      <button className="btn w-72 btn-primary rounded-4xl my-4">
+        Connect TON Wallet
+      </button>
       <Socials />
 
       <Modal
