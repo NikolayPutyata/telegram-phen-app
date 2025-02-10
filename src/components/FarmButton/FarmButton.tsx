@@ -7,7 +7,7 @@ import { selectUserId } from '../../redux/selectors';
 import { claimTokens, startFarming } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 
-const FARM_DURATION = 28800000; 
+const FARM_DURATION = 2880;
 const START_VALUE = 0.001;
 const END_VALUE = 86.4;
 
@@ -25,21 +25,20 @@ const FarmBlock = () => {
 
   const startAnimation = (fromValue: number, remainingTime: number) => {
     if (animationRef.current) {
-      animationRef.current.pause(); 
+      animationRef.current.pause();
       animationRef.current = null;
     }
 
-    anime.remove('.farm-span'); 
+    anime.remove('.farm-span');
 
     animationRef.current = anime({
-      targets: '.farm-span',
-      innerHTML: [fromValue, END_VALUE],
+      targets: { value: fromValue },
+      value: END_VALUE,
       easing: 'linear',
       duration: remainingTime,
       round: false,
       update: (anim) => {
-        const value = fromValue + (END_VALUE - fromValue) * (anim.progress / 100);
-        setCurrentValue(value);
+        setCurrentValue(Number(anim.animations[0].currentValue));
       },
       complete: () => {
         setIsClaimDisabled(false);
@@ -61,7 +60,8 @@ const FarmBlock = () => {
         setCurrentValue(END_VALUE);
       } else {
         const progress = elapsedTime / FARM_DURATION;
-        const animatedStartValue = START_VALUE + (END_VALUE - START_VALUE) * progress;
+        const animatedStartValue =
+          START_VALUE + (END_VALUE - START_VALUE) * progress;
 
         setCurrentValue(animatedStartValue);
         setIsFarmDisabled(true);
@@ -81,17 +81,16 @@ const FarmBlock = () => {
       }
     };
 
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     checkFarmStatus();
 
     return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [location.pathname, checkFarmStatus]);
 
   const handleClick = async () => {
     await dispatch(startFarming({ id: userId, boostsIdsArray: [] }));
-
 
     const startTime = Date.now();
     localStorage.setItem('farmStartTime', startTime.toString());
@@ -103,7 +102,6 @@ const FarmBlock = () => {
   };
 
   const handleClaimClick = async (): Promise<void> => {
-
     await dispatch(claimTokens(userId));
 
     localStorage.removeItem('farmStartTime');
@@ -122,7 +120,9 @@ const FarmBlock = () => {
     <div className="grid grid-cols-[1fr_1fr] grid-rows-1 items-center justify-center gap-3">
       {!isLoading && !isFarmDisabled && (
         <button
-          className={`btn btn-primary rounded-4xl ${isFarmDisabled ? 'hidden' : ''}`}
+          className={`btn btn-primary rounded-4xl ${
+            isFarmDisabled ? 'hidden' : ''
+          }`}
           onClick={handleClick}
           disabled={isFarmDisabled}
         >
@@ -130,16 +130,17 @@ const FarmBlock = () => {
         </button>
       )}
       <span
-        key={currentValue.toFixed(3)}
         className={`border-3 border-[#605dff] py-[6px] flex justify-center items-center farm-span 
             w-full tracking-wider text-base bg-transparent text-zinc-300 rounded-4xl ${
               s.font
-            } ${!isFarmDisabled ? 'hidden' : ''} `}
+            } ${!isFarmDisabled ? 'hidden' : ''}`}
       >
         {currentValue.toFixed(3)}
       </span>
       <button
-        className={`btn btn-primary rounded-4xl ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+        className={`btn btn-primary rounded-4xl ${
+          isLoading ? 'opacity-0' : 'opacity-100'
+        }`}
         onClick={handleClaimClick}
         disabled={isClaimDisabled}
       >
