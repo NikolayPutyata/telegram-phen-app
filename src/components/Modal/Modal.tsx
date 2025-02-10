@@ -29,19 +29,25 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, changeModal }) => {
   };
 
   return (
-    <dialog id="my_modal_3" className={`modal ${isOpen ? 'modal-open' : ''}`}>
-      <div className="modal-box">
+    <dialog
+      id="my_modal_3"
+      className={`modal ${isOpen ? 'modal-open' : ''}`}
+      onClick={onClose}
+    >
+      <div className="modal-box relative" onClick={(e) => e.stopPropagation()}>
         <form method="dialog">
           <button
             type="button"
-            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            className="btn btn-sm btn-circle btn-ghost absolute right-4 z-10 top-2"
             onClick={onClose}
           >
             ✕
           </button>
         </form>
 
-        {renderModalContent()}
+        <div className="max-h-[70vh] overflow-y-auto mt-3">
+          {renderModalContent()}
+        </div>
       </div>
     </dialog>
   );
