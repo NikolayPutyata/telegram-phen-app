@@ -28,6 +28,7 @@ const App = () => {
         const refCode = window.Telegram.WebApp.initData;
 
         console.log(refCode);
+        console.log(window.Telegram.WebApp.initDataUnsafe)
         
 
         const user = {
