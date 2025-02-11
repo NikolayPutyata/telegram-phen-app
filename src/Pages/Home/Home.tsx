@@ -5,9 +5,13 @@ import FarmBlock from '../../components/FarmBlock/FarmBlock';
 import PresaleBlock from '../../components/PresaleBlock/PresaleBlock';
 import AirdropBlock from '../../components/AirdropBlock/AirdropBlock';
 import FamilyBlock from '../../components/FamilyBlock/FamilyBlock';
+// import SkinsChange from '../../components/SkinsChange/SkinsChange.tsx';
 import Socials from '../../components/Socials/Socials';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     const typed = new Typed('.element', {
       strings: [
@@ -18,7 +22,6 @@ const Home = () => {
         '歡迎指揮官!',
         'स्वागत है कमांडर!',
         'Welcome Commandor!',
-        
       ],
       typeSpeed: 100,
     });
@@ -47,24 +50,30 @@ const Home = () => {
         </div>
         <div className="flex flex-col px-6 my-4">
           <div className="flex justify-between ">
-            <p className={`${s.font} text-zinc-400 text-sm`}>Listing price</p>
+            <p className={`${s.font} text-zinc-400 text-sm`}>
+              {t('Listing price')}
+            </p>
             <p className={`${s.font} text-zinc-400 text-sm tracking-wider`}>
               $0.0025
             </p>
           </div>
           <div className="flex justify-between ">
-            <p className={`${s.font} text-zinc-400 text-sm`}>Farming end</p>
+            <p className={`${s.font} text-zinc-400 text-sm`}>
+              {t('Farming end')}
+            </p>
             <p className={`${s.font} text-zinc-400 text-sm tracking-wider`}>
               2025.08.20
             </p>
           </div>
         </div>
         <p className="italic text-center text-xs my-6 text-zinc-500">
-          The vesting date will be announced by the team closer to the listing.
-          Stay tuned for updates.
+          {t(
+            'The vesting date will be announced by the team closer to the listing. Stay tuned for updates.',
+          )}
         </p>
       </div>
       <Socials />
+      {/* <SkinsChange /> */}
       <FarmBlock />
       <PresaleBlock />
       <AirdropBlock />

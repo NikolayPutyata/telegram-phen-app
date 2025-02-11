@@ -20,7 +20,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, changeModal }) => {
       case 'settings':
         return <SettingsModal />;
       case 'language':
-        return <LanguageModal />;
+        return <LanguageModal onClose={onClose} />;
       default:
         return (
           <p className={`${s.font} text-zinc-300 tracking-wider`}>No content</p>

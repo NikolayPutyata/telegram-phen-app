@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUserId } from '../../redux/selectors';
 import { claimTokens, startFarming } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
+import { useTranslation } from 'react-i18next';
 
 const FARM_DURATION = 28800000;
 const START_VALUE = 0.001;
@@ -13,6 +14,7 @@ const END_VALUE = 86.4;
 
 const FarmBlock = () => {
   const location = useLocation();
+  const { t } = useTranslation();
   const [currentValue, setCurrentValue] = useState(START_VALUE);
   const [isFarmDisabled, setIsFarmDisabled] = useState<boolean>(false);
   const [isClaimDisabled, setIsClaimDisabled] = useState<boolean>(true);
@@ -126,7 +128,7 @@ const FarmBlock = () => {
           onClick={handleClick}
           disabled={isFarmDisabled}
         >
-          Farm
+          {t('Farm')}
         </button>
       )}
       <span
@@ -144,7 +146,7 @@ const FarmBlock = () => {
         onClick={handleClaimClick}
         disabled={isClaimDisabled}
       >
-        Claim
+        {t('Claim')}
       </button>
     </div>
   );
