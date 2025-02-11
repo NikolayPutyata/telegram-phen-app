@@ -30,8 +30,10 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ onClose }) => {
         {languages.map(({ code, name }) => (
           <li
             key={code}
-            className={`p-2 ${s.font} tracking-wider  text-zinc-300 text-lg ${
-              i18n.language === code ? `mb-2 text-zinc-100 tracking-wider` : ''
+            className={`p-2 ${s.font} tracking-wider   text-lg ${
+              i18n.language === code
+                ? `mb-2 text-zinc-100 tracking-wider`
+                : 'text-zinc-400'
             }`}
             onClick={() => handleLanguageChange(code)}
           >
