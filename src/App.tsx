@@ -25,12 +25,13 @@ const App = () => {
 
         const telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
 
-        const refCode = window.Telegram.WebApp.initData;
-
-        console.log(refCode);
-        console.log(window.Telegram.WebApp.initDataUnsafe)
         console.log(window.location.search);
         
+        const searchParams = new URLSearchParams(window.location.search);
+        
+        const refCode = searchParams.get("ref");
+        
+        console.log(refCode);
         
 
         const user = {
