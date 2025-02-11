@@ -15,6 +15,7 @@ declare global {
         ready: () => void;
         openTelegramLink: (url: string) => void;
         initDataUnsafe: TelegramWebAppData; 
+        initData: string;
       };
     };
   }
