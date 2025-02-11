@@ -16,7 +16,7 @@ const Friends = () => {
   const invateFriendFu = (): void => {
 
     const refCode = `ref${userId}`;
-    const inviteLink = `https://t.me/test127826871_bot?start=${refCode}`;
+    const inviteLink = `https://t.me/test127826871/webapp?start_param=${refCode}`;
 
     window.Telegram.WebApp.openTelegramLink(`https://t.me/share/url?url=${encodeURIComponent(inviteLink)}&text=${encodeURIComponent("Присоединяйся ко мне в этом крутом мини-приложении!")}`);
 
