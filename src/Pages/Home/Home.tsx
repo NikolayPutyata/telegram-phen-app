@@ -40,7 +40,7 @@ const Home = () => {
       <div className="px-6 mb-3">
         <div className="relative w-full h-44 overflow-hidden rounded-4xl ">
           <img
-            src="/assets/cosmo_4.webp"
+            src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261354/cosmo_4_gphulr.webp"
             alt=""
             className="object-cover w-full h-full"
           />

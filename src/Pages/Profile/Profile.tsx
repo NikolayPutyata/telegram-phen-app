@@ -26,7 +26,7 @@ const Profile = () => {
     <div className="flex flex-col items-center bg-neutral-900 rounded-3xl p-3 m-4">
       <div className="avatar">
         <div className="w-24 rounded-full">
-          <img src="/assets/avatar.webp" alt="standart avatar" />
+          <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261816/avatar_fngbet.webp" alt="standart avatar" />
         </div>
       </div>
       <h2

@@ -11,6 +11,9 @@ import { useEffect } from 'react';
 import { initUserFromServer } from './redux/operations.js';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './redux/store.ts';
+import Boosts from './components/Boosts/Boosts.tsx';
+import Skins from './components/Skins/Skins.tsx';
+import Special from './components/Special/Special.tsx';
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -45,7 +48,11 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/boosts" element={<Leaderbords />} />
+        <Route path="/boosts" element={<Leaderbords />} >
+          <Route path="/boosts" element={<Boosts />} />
+          <Route path="skins" element={<Skins />} />
+          <Route path="special" element={<Special />} />
+        </Route>
         <Route path="/tasks" element={<Tasks />}>
           <Route path="/tasks" element={<TasksDetails />} />
           <Route path="friends" element={<Friends />} />
