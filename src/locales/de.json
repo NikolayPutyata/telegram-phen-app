@@ -1,4 +1,9 @@
 {
-  "greeting": "Hallo",
-  "selectLanguage": "Sprache auswählen"
+  "Total tokens": "Gesamt-Tokens",
+  "PHEN": "PHEN",
+  "Boosts": "Boosts",
+  "Skins": "Skins",
+  "Language": "Sprache",
+  "Settings": "Einstellungen",
+  "Connect TON Wallet": "TON-Wallet verbinden"
 }
