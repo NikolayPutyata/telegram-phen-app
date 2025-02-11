@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import s from '/src/App.module.css';
 
 interface LanguageModalProps {
-  onClose: () => void; // Додаємо можливість закрити модалку
+  onClose: () => void;
 }
 
 const LanguageModal: React.FC<LanguageModalProps> = ({ onClose }) => {
@@ -17,7 +17,7 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ onClose }) => {
     { code: 'pl', name: 'Polski' },
   ];
   const handleLanguageChange = (code: string) => {
-    i18n.changeLanguage(code); // Міняємо мову
+    i18n.changeLanguage(code);
     onClose(); // Закриваємо модалку
   };
 

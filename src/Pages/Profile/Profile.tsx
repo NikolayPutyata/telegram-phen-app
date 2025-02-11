@@ -46,7 +46,7 @@ const Profile = () => {
         </p>
       </div>
 
-      <ul
+      <div
         className={`w-full ${s.font} flex flex-col px-5 mb-5 gap-2 text-sm tracking-wider text-zinc-400 items-center`}
       >
         <ProfileListItem
@@ -73,7 +73,7 @@ const Profile = () => {
           imgSrc="/assets/circle-arrow-left.svg"
           imgAlt="standart avatar"
         />
-      </ul>
+      </div>
 
       <button className="btn w-72 btn-primary rounded-4xl my-4">
         {t('Connect TON Wallet')}
