@@ -29,6 +29,8 @@ const App = () => {
 
         console.log(refCode);
         console.log(window.Telegram.WebApp.initDataUnsafe)
+        console.log(window.location.search);
+        
         
 
         const user = {
