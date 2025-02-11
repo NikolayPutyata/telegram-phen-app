@@ -36,7 +36,6 @@ const App = () => {
         dispatch(initUserFromServer(user));
         
       }
-
       
     };
 

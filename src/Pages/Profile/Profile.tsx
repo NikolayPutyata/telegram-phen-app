@@ -69,7 +69,7 @@ const Profile = () => {
       </ul>
 
       <button className="btn w-72 btn-primary rounded-4xl my-4">
-        Connect TON Wallet
+        Connect Wallet
       </button>
       <Socials />
 
