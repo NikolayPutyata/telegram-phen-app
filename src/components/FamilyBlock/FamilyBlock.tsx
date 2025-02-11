@@ -10,7 +10,7 @@ const FamilyBlock = () => {
         <div className="px-6 my-3">
           <div className="relative w-full h-44 overflow-hidden rounded-4xl ">
           <img
-            src="/assets/family.webp"
+            src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261763/family_kwki0h.webp"
             alt=""
             className="object-cover w-full h-full"
           />
