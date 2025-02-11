@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { claimTokens, initUserFromServer } from '../operations';
 import { UserState } from '../../types/State';
 
+
 const initialState: UserState = {
   id: 0,
   username: '',

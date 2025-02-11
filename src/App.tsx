@@ -24,7 +24,7 @@ const App = () => {
         window.Telegram.WebApp.ready();
 
         const telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
-
+      
         const user = {
           id: telegramUser.id,
           username: telegramUser.username,
@@ -36,7 +36,6 @@ const App = () => {
         dispatch(initUserFromServer(user));
         
       }
-
       
     };
 

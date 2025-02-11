@@ -1,16 +1,27 @@
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import s from '/src/App.module.css';
 import { useTranslation } from 'react-i18next';
-// import { selectUserFriends } from '../../redux/selectors';
-// import FriendsList from './FriendsList';
-
-// interface Friend {
-//   name: string;
-// }
+import { selectUserId } from '../../redux/selectors';
+import { selectUserFriends } from '../../redux/selectors';
+import FriendsList from './FriendsList';
 
 const Friends = () => {
-  // const friends = useSelector(selectUserFriends) as Friend[];
   const { t } = useTranslation();
+  const userId = useSelector(selectUserId);
+
+  const invateFriendFu = (): void => {
+    const refCode = `${userId}`;
+    const inviteLink = `https://t.me/test127826871_bot?start=${refCode}`;
+
+    window.Telegram.WebApp.openTelegramLink(
+      `https://t.me/share/url?url=${encodeURIComponent(
+        inviteLink,
+      )}&text=${encodeURIComponent(
+        'Присоединяйся ко мне в этом крутом мини-приложении!',
+      )}`,
+    );
+  };
+  const friends = useSelector(selectUserFriends);
 
   return (
     <>
@@ -29,16 +40,21 @@ const Friends = () => {
         </h2>
       </div>
 
-      <div className="flex flex-col justify-center gap-5 items-center my-4">
-        <p className={`${s.font} text-zinc-400 text-sm`}>
-          {t('No friends yet')} 😔
-        </p>
-      </div>
+      {friends.length === 0 ? (
+        <div className="flex flex-col justify-center gap-5 items-center my-4">
+          <p className={`${s.font} text-zinc-400 text-sm`}>
+            {t('No friends yet')} 😔
+          </p>
+        </div>
+      ) : null}
 
-      {/* {friends.length > 0 ? <FriendsList /> : null} */}
+      {friends.length > 0 ? <FriendsList /> : null}
 
       <div className="flex justify-center">
-        <button className="btn btn-wide bg-gray-100 text-black rounded-3xl">
+        <button
+          className="btn btn-wide bg-gray-100 text-black rounded-3xl"
+          onClick={invateFriendFu}
+        >
           {t('Invite')}
         </button>
       </div>
