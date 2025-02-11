@@ -1,16 +1,17 @@
 import { useSelector } from 'react-redux';
 import { selectUserTokens } from '../../redux/selectors';
 import s from '/src/App.module.css';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
-
   const tokens = useSelector(selectUserTokens);
+  const { t } = useTranslation();
 
   return (
     <div className="collapse rounded-tl-none rounded-tr-none bg-neutral rounded-b-3xl p-0.5">
       <input type="checkbox" />
       <div className="collapse-title font-semibold flex justify-between items-center px-5">
-        <p className={`${s.font} text-zinc-400 text-sm`}>Your address</p>
+        <p className={`${s.font} text-zinc-400 text-sm`}>{t('Your address')}</p>
         <div className="flex items-center gap-4">
           <span className={`${s.font} text-zinc-400 text-sm`}>$0</span>
           <img
