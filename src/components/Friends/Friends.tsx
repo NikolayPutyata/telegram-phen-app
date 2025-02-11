@@ -17,7 +17,7 @@ const Friends = () => {
       `https://t.me/share/url?url=${encodeURIComponent(
         inviteLink,
       )}&text=${encodeURIComponent(
-        'Присоединяйся ко мне в этом крутом мини-приложении!',
+        'Play Phenerium with me! Farm coins, collect skins, use boosts. Listing coming soon!',
       )}`,
     );
   };
