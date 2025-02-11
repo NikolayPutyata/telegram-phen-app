@@ -12,7 +12,7 @@ const BoostsModal = () => {
 
       {/* {skins.map((skin) => ( */}
       <li className="flex pl-2  gap-10">
-        <div className="flex flex-col justify-center w-20 h-20 overflow-hidden rounded-3xl">
+        <div className="flex flex-col justify-center w-22 h-22 overflow-hidden rounded-3xl">
           <img src="/assets/engine.webp" alt="standart avatar" />
         </div>
 

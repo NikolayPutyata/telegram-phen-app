@@ -23,10 +23,13 @@ const Profile = () => {
   const [isModalOpenLanguage, setIsModalOpenLanguage] = useState(false);
 
   return (
-    <div className="flex flex-col items-center bg-neutral-900 rounded-3xl p-3 m-4">
+    <div className="flex flex-col items-center bg-neutral-900 rounded-3xl p-3 pt-6 m-4">
       <div className="avatar">
         <div className="w-24 rounded-full">
-          <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261816/avatar_fngbet.webp" alt="standart avatar" />
+          <img
+            src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261816/avatar_fngbet.webp"
+            alt="standart avatar"
+          />
         </div>
       </div>
       <h2
@@ -34,7 +37,7 @@ const Profile = () => {
       >
         {username || firstName}
       </h2>
-      <div className="flex mb-6 justify-between w-full px-4">
+      <div className="flex mb-5 justify-between w-full px-4">
         <p className={`${s.font} text-zinc-300 tracking-wider`}>
           {t('Total tokens')}
         </p>
@@ -44,7 +47,7 @@ const Profile = () => {
       </div>
 
       <ul
-        className={`w-full ${s.font} flex flex-col px-4 mb-5 gap-2 text-sm tracking-wider text-zinc-400 items-center`}
+        className={`w-full ${s.font} flex flex-col px-5 mb-5 gap-2 text-sm tracking-wider text-zinc-400 items-center`}
       >
         <ProfileListItem
           onClickFu={() => setIsModalOpenBoosts(true)}
