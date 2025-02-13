@@ -1,4 +1,20 @@
-interface Friend {
+
+
+export interface Task {
+  id: number,
+  name: string,
+  svg_url: string,
+  task_bonus: number,
+  completed: boolean
+
+}
+
+interface compTask {
+  id: number,
+  task: string
+}
+
+export interface Friend {
   id: number;
   name: string;
 }
@@ -15,4 +31,10 @@ export type UserState = {
   boosts: object[];
   activeSkins: object[];
   currentBoost: number;
+  completedTasks: compTask[],
+ usersTasks: {
+    gaming: Task[];
+    partners: Task[];
+    special: Task[];
+  };
 };
