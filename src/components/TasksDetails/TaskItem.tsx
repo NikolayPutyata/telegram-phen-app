@@ -20,7 +20,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ src, title, bonus, completed }) => 
           </span>
         </div>
       </div>
-      <button className="btn btn-outline rounded-3xl px-8">Go</button>
+      {completed === false ? <button className="btn btn-outline rounded-3xl px-8">Go</button> : null}
     </li>
   );
 };
