@@ -7,7 +7,7 @@ const PresaleBlock = () => {
   const [placeholder, setPlaceholder] = useState('PHEN');
 
   const handleTokenChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPlaceholder(event.target.value === 'usdt' ? 'USDT' : 'SOLANA');
+    setPlaceholder(event.target.value === 'usdt' ? 'USDT' : 'TON');
   };
 
   return (
@@ -24,7 +24,7 @@ const PresaleBlock = () => {
           <div className="mt-4 mb-3 flex flex-col justify-center items-center">
             <div className="flex mb-6 gap-4">
               <div className="flex flex-col items-center gap-4">
-                <p className={`${s.font} text-zinc-300 text-sm`}>DT-0.015</p>
+                <p className={`${s.font} text-zinc-300 text-sm`}>USDT-0.015</p>
                 <label className="flex justify-center items-center">
                   <input
                     type="radio"
@@ -44,20 +44,20 @@ const PresaleBlock = () => {
               </div>
 
               <div className="flex flex-col items-center gap-4">
-                <p className={`${s.font} text-zinc-300 text-sm`}>SL-0.020</p>
+                <p className={`${s.font} text-zinc-300 text-sm`}>TON-0.020</p>
                 <label className="flex justify-center items-center">
                   <input
                     type="radio"
                     name="token"
-                    value="solana"
+                    value="ton"
                     className="peer hidden"
                     onChange={handleTokenChange}
                   />
-                  <span className="w-32 h-16 flex justify-center items-center outline-2 rounded-4xl outline-[#605dff] peer-checked:outline-4">
+                  <span className="w-32 h-16 flex justify-center items-center outline-2 rounded-4xl outline-[#0088cc] peer-checked:outline-4">
                     <img
-                      src="/assets/icons-solana.svg"
-                      className="w-13 h-13"
-                      alt="icons-solana"
+                      src="/public/assets/ton.svg"
+                      className="w-10 h-10"
+                      alt="icons-ton"
                     />
                   </span>
                 </label>
