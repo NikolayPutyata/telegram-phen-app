@@ -33,10 +33,10 @@ const PresaleBlock = () => {
                     className="peer hidden"
                     onChange={handleTokenChange}
                   />
-                  <span className="w-36 h-18 flex justify-center items-center outline-2 rounded-t-lg outline-[#26a69a] peer-checked:outline-4">
+                  <span className="w-32 h-16 flex justify-center items-center outline-2 rounded-4xl outline-[#26a69a] peer-checked:outline-4">
                     <img
                       src="/public/assets/icons-usdt.svg"
-                      className="w-14 h-14"
+                      className="w-12 h-12"
                       alt="icons-usdt"
                     />
                   </span>
@@ -53,10 +53,10 @@ const PresaleBlock = () => {
                     className="peer hidden"
                     onChange={handleTokenChange}
                   />
-                  <span className="w-36 h-18 flex justify-center items-center outline-2 rounded-t-lg outline-[#605dff] peer-checked:outline-4">
+                  <span className="w-32 h-16 flex justify-center items-center outline-2 rounded-4xl outline-[#605dff] peer-checked:outline-4">
                     <img
                       src="/assets/icons-solana.svg"
-                      className="w-15 h-15"
+                      className="w-13 h-13"
                       alt="icons-solana"
                     />
                   </span>
