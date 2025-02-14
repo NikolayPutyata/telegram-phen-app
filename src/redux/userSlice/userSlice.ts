@@ -15,6 +15,71 @@ const initialState: UserState = {
   boosts: [],
   activeSkins: [],
   currentBoost: 0,
+  completedTasks: [],
+  usersTasks: {
+    gaming: [
+      {
+        id: 151,
+        name: "Subscribe to Telegram",
+        svg_url: "/assets/telegram-svgrepo-com.svg",
+        task_bonus: 200,
+        completed: false,
+      },
+      {
+        id: 152,
+        name: "Subscribe to YouTube",
+        svg_url: "/assets/youtube-svgrepo-com.svg",
+        task_bonus: 200,
+        completed: false,
+      },
+      {
+        id: 153,
+        name: "Subscribe to X",
+        svg_url: "/assets/twitter-x.svg",
+        task_bonus: 200,
+        completed: false,
+      },
+    ],
+    partners: [
+      {
+        id: 154,
+        name: "Invite 1 friend",
+        svg_url: "/assets/user.svg",
+        task_bonus: 200,
+        completed: false,
+      },
+      {
+        id: 155,
+        name: "Invite 5 friends",
+        svg_url: "/assets/users.svg",
+        task_bonus: 200,
+        completed: false,
+      },
+      {
+        id: 156,
+        name: "Invite 10 friends",
+        svg_url: "/assets/group-user.svg",
+        task_bonus: 200,
+        completed: false,
+      },
+    ],
+    special: [
+      {
+        id: 157,
+        name: "Some special task 1",
+        svg_url: "/assets/user.svg",
+        task_bonus: 200,
+        completed: false,
+      },
+      {
+        id: 158,
+        name: "Some special task 2",
+        svg_url: "/assets/users.svg",
+        task_bonus: 200,
+        completed: false,
+      },
+    ],
+  },
 };
 
 const userSlice = createSlice({
@@ -35,6 +100,7 @@ const userSlice = createSlice({
       state.boosts = usersData.boosts;
       state.activeSkins = usersData.activeSkins;
       state.currentBoost = usersData.currentBoost;
+      state.usersTasks = usersData.usersTasks;
     }).addCase(claimTokens.fulfilled, (state, action) => {
       state.tokens = action.payload.tokens
     });
