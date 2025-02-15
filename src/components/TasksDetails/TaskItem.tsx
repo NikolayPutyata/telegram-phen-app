@@ -19,7 +19,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
         {completed === false ? (
           <img src={src} className="mr-1 w-7 h-7" />
         ) : (
-          <img src="/public/assets/complete.svg" className="mr-1 w-7 h-7" />
+          <img src="assets/complete.svg" className="mr-1 w-7 h-7" />
         )}
         <div className="flex flex-col justify-start">
           <p className={` ${s.font} flex justify-start text-sm`}>{title}</p>
