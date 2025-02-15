@@ -16,11 +16,17 @@ const TaskItem: React.FC<TaskItemProps> = ({
   return (
     <li className="flex text-center justify-between px-4 items-center">
       <div className="flex items-center gap-1">
-        <img src={src} className="mr-1 w-7 h-7" />
+        {completed === false ? (
+          <img src={src} className="mr-1 w-7 h-7" />
+        ) : (
+          <img src="/public/assets/complete.svg" className="mr-1 w-7 h-7" />
+        )}
         <div className="flex flex-col justify-start">
           <p className={` ${s.font} flex justify-start text-sm`}>{title}</p>
           <span className="flex items-center gap-1.5">
-            <p className="text-zinc-300 text-sm">Reward: {bonus}</p>
+            <p className="text-zinc-400 tracking-wider text-sm">
+              Reward: {bonus}
+            </p>
             <img src="/assets/Group_62.svg" alt="" width={13} />
           </span>
         </div>
