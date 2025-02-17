@@ -1,11 +1,15 @@
+import { useSelector } from 'react-redux';
+import { handleCheckClick } from '../../utils/getUserFriends.ts';
 import s from '/src/App.module.css';
+import { selectUserId } from '../../redux/selectors.ts';
+
 
 interface TaskItemProps {
   src: string;
   title: string;
   bonus: number;
   completed: boolean;
-  // userId: number;
+  taskId: number;
 }
 
 const TaskFriends: React.FC<TaskItemProps> = ({
@@ -13,26 +17,10 @@ const TaskFriends: React.FC<TaskItemProps> = ({
   title,
   bonus,
   completed,
-  // userId,
+  taskId
 }) => {
-  const handleCheckClick = async () => {
-    try {
-      const response = await fetch(
-        `https://telegram-phen-app-server-scjhs.ondigitalocean.app/user/getFriends`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ id: 696412766 }),
-        },
-      );
-      const data = await response.json();
-      console.log('Friends Data:', data);
-    } catch (error) {
-      console.error('Error fetching friends:', error);
-    }
-  };
+
+  const userId = useSelector(selectUserId);
 
   return (
     <li className="flex text-center justify-between px-4 items-center">
@@ -54,12 +42,12 @@ const TaskFriends: React.FC<TaskItemProps> = ({
       </div>
       {completed === false ? (
         <button
-          onClick={handleCheckClick}
+          onClick={() => handleCheckClick(taskId, userId)}
           className="btn btn-outline rounded-3xl px-7"
         >
           Check
         </button>
-      ) : null}
+      ) : <img src="assets/complete.svg" className="mr-1 w-7 h-7" />}
     </li>
   );
 };

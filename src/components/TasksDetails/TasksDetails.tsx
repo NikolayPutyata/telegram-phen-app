@@ -5,7 +5,6 @@ import TaskFriends from './TaskFriends';
 
 const TasksDetails = () => {
   const tasks = useSelector(selectUserTasks);
-  // const id = useSelector(selectUserId);
 
   return (
     <>
@@ -44,7 +43,8 @@ const TasksDetails = () => {
                 title={task.name}
                 bonus={task.task_bonus}
                 completed={task.completed}
-                // userId={id}
+                taskId={task.id}
+                
               />
             ))}
           </ul>
