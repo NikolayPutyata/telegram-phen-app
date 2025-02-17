@@ -16,9 +16,11 @@ const initialState: UserState = {
   currentBoost: 0,
   completedTasks: [],
   usersTasks: {
-    gaming: [],
+    gaming: [
+    ],
     partners: [],
-    special: [],
+    special: [
+      ],
   },
 };
 
