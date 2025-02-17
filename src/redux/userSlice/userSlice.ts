@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { claimTokens, initUserFromServer } from '../operations';
+import { claimTokens, initUserFromServer, taskCompleted } from '../operations';
 import { UserState } from '../../types/State';
 
 const initialState: UserState = {
@@ -47,6 +47,9 @@ const userSlice = createSlice({
       })
       .addCase(claimTokens.fulfilled, (state, action) => {
         state.tokens = action.payload.tokens;
+      })
+      .addCase(taskCompleted.fulfilled, (state, action) => {
+        state.usersTasks = action.payload.usersTasks;
       });
   },
 });

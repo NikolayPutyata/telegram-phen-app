@@ -1,7 +1,8 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { handleCheckClick } from '../../utils/getUserFriends.ts';
 import s from '/src/App.module.css';
 import { selectUserId } from '../../redux/selectors.ts';
+import { AppDispatch } from '../../redux/store.ts';
 
 
 interface TaskItemProps {
@@ -21,6 +22,7 @@ const TaskFriends: React.FC<TaskItemProps> = ({
 }) => {
 
   const userId = useSelector(selectUserId);
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <li className="flex text-center justify-between px-4 items-center">
@@ -42,7 +44,7 @@ const TaskFriends: React.FC<TaskItemProps> = ({
       </div>
       {completed === false ? (
         <button
-          onClick={() => handleCheckClick(taskId, userId)}
+          onClick={() => handleCheckClick(taskId, userId, dispatch)}
           className="btn btn-outline rounded-3xl px-7"
         >
           Check

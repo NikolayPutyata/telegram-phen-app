@@ -1,3 +1,6 @@
+import { AppDispatch } from './../redux/store';
+import { taskCompleted } from "../redux/operations";
+
 interface FriendsResponse {
   data: number;
 }
@@ -9,7 +12,8 @@ interface TaskResponse {
 
 export const handleCheckClick = async (
   taskId: number,
-  userId: number
+  userId: number,
+  dispatch: AppDispatch,
 ): Promise<TaskResponse | null> => {
 
     const response = await fetch(
@@ -33,17 +37,9 @@ export const handleCheckClick = async (
     };
 
     if (taskConditions[taskId] !== undefined && friendCount >= taskConditions[taskId]) {
-      const taskResponse = await fetch(
-        `https://telegram-phen-app-server-scjhs.ondigitalocean.app/tasks/completed`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ id: userId, taskId: taskId }),
-        }
-      );
-      return await taskResponse.json();
+      
+      dispatch(taskCompleted({ userId, taskId }));
+      
     }
 
   return null;

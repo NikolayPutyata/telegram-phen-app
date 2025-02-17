@@ -52,3 +52,21 @@ export const claimTokens = createAsyncThunk(
     }
   },
 );
+
+export const taskCompleted = createAsyncThunk(
+  "farm/taskCompleted",
+  async (
+    { userId, taskId }: { userId: number; taskId: number },
+    { rejectWithValue }
+  ) => {
+    try {
+      const {data} = await axios.post("tasks/completed", { id: userId, taskId });
+      return data;
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        return rejectWithValue(e.message);
+      }
+      return rejectWithValue("Unknown error");
+    }
+  }
+);
