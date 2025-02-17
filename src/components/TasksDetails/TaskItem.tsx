@@ -18,9 +18,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
       <div className="flex items-center gap-1">
         {completed === false ? (
           <img src={src} className="mr-1 w-7 h-7" />
-        ) : (
-          <img src="assets/complete.svg" className="mr-1 w-7 h-7" />
-        )}
+        ) : null}
         <div className="flex flex-col justify-start">
           <p className={` ${s.font} flex justify-start text-sm`}>{title}</p>
           <span className="flex items-center gap-1.5">
@@ -33,7 +31,9 @@ const TaskItem: React.FC<TaskItemProps> = ({
       </div>
       {completed === false ? (
         <button className="btn btn-outline rounded-3xl px-7">Go</button>
-      ) : null}
+      ) : (
+        <img src="assets/complete.svg" className="mr-4 w-8 h-8" />
+      )}
     </li>
   );
 };
