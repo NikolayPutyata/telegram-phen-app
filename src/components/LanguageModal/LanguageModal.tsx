@@ -43,11 +43,14 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ onClose }) => {
 
   return (
     <div className="p-6 flex-col flex items-center">
-      <div className="flex justify-center gap-2">
-        <h2 className={`${s.font} text-zinc-300 text-xl tracking-wider mb-3`}>
+      <div className="flex justify-center items-center gap-1 mb-3">
+        <h2 className={`${s.font} text-zinc-300 text-xl tracking-wider`}>
           Select Language
         </h2>
-        <img src="/public/assets/language.svg" className="w-6 h-6" />
+        <div className='w-6 h-6 flex justify-center items-end'>
+          <img src="/assets/language.svg" className="w-5 h-5" />
+        </div>
+        
       </div>
       <ul>
         {languages.map(({ code, name, src }) => (

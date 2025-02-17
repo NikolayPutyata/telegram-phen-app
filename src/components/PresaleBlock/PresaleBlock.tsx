@@ -35,7 +35,7 @@ const PresaleBlock = () => {
                   />
                   <span className="w-32 h-16 flex justify-center items-center outline-2 rounded-4xl outline-[#26a69a] peer-checked:outline-4">
                     <img
-                      src="/public/assets/icons-usdt.svg"
+                      src="/assets/icons-usdt.svg"
                       className="w-12 h-12"
                       alt="icons-usdt"
                     />
@@ -55,7 +55,7 @@ const PresaleBlock = () => {
                   />
                   <span className="w-32 h-16 flex justify-center items-center outline-2 rounded-4xl outline-[#0088cc] peer-checked:outline-4">
                     <img
-                      src="/public/assets/ton.svg"
+                      src="/assets/ton.svg"
                       className="w-10 h-10"
                       alt="icons-ton"
                     />
