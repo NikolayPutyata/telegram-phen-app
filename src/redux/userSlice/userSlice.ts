@@ -49,7 +49,7 @@ const userSlice = createSlice({
         state.tokens = action.payload.tokens;
       })
       .addCase(taskCompleted.fulfilled, (state, action) => {
-        state.usersTasks = action.payload.usersTasks;
+        state.usersTasks = action.payload.userTasks;
       });
   },
 });

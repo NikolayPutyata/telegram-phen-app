@@ -7,7 +7,6 @@ interface FriendsResponse {
 
 interface TaskResponse {
   success: boolean;
-  message?: string;
 }
 
 export const handleCheckClick = async (
