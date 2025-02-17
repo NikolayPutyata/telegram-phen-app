@@ -1,9 +1,11 @@
 import { useSelector } from 'react-redux';
 import { selectUserTasks } from '../../redux/selectors';
 import TaskItem from './TaskItem';
+import TaskFriends from './TaskFriends';
 
 const TasksDetails = () => {
   const tasks = useSelector(selectUserTasks);
+  // const id = useSelector(selectUserId);
 
   return (
     <>
@@ -36,12 +38,13 @@ const TasksDetails = () => {
         <div className="bg-neutral-900 rounded-3xl px-2 py-4 mx-3">
           <ul className="flex flex-col gap-5">
             {tasks.partners.map((task) => (
-              <TaskItem
+              <TaskFriends
                 key={task.id}
                 src={task.svg_url}
                 title={task.name}
                 bonus={task.task_bonus}
                 completed={task.completed}
+                // userId={id}
               />
             ))}
           </ul>
