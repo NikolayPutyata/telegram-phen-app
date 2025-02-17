@@ -9,6 +9,9 @@ declare module 'i18next' {
       fr: typeof import('../locales/fr.json');
       de: typeof import('../locales/de.json');
       es: typeof import('../locales/es.json');
+      ko: typeof import('../locales/ko.json');
+      ja: typeof import('../locales/ja.json');
+      zh: typeof import('../locales/zh.json');
     };
   }
 }

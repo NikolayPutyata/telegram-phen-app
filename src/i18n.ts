@@ -8,6 +8,9 @@ import it from './locales/it.json';
 import fr from './locales/fr.json';
 import de from './locales/de.json';
 import es from './locales/es.json';
+import ko from './locales/ko.json';
+import ja from './locales/ja.json';
+import zh from './locales/zh.json';
 
 const resources = {
   en: { translation: en },
@@ -16,6 +19,9 @@ const resources = {
   fr: { translation: fr },
   de: { translation: de },
   es: { translation: es },
+  ko: { translation: ko },
+  ja: { translation: ja },
+  zh: { translation: zh },
 } as const;
 
 i18n

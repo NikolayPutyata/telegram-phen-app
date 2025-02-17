@@ -35,6 +35,21 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ onClose }) => {
       src: '/assets/italiano.svg',
     },
     { code: 'pl', name: 'Polski', src: '/assets/polski.svg' },
+    {
+      code: 'zh',
+      name: '中文 (简体)',
+      src: '/assets/chinese.svg',
+    },
+    {
+      code: 'ko',
+      name: '한국어',
+      src: '/assets/korean.svg',
+    },
+    {
+      code: 'ja',
+      name: '日本語',
+      src: '/assets/japanese.svg',
+    },
   ];
   const handleLanguageChange = (code: string) => {
     i18n.changeLanguage(code);
@@ -47,10 +62,9 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ onClose }) => {
         <h2 className={`${s.font} text-zinc-300 text-xl tracking-wider`}>
           Select Language
         </h2>
-        <div className='w-6 h-6 flex justify-center items-end'>
+        <div className="w-6 h-6 flex justify-center items-end">
           <img src="/assets/language.svg" className="w-5 h-5" />
         </div>
-        
       </div>
       <ul>
         {languages.map(({ code, name, src }) => (
