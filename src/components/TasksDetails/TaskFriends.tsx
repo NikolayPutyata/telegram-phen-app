@@ -41,9 +41,9 @@ const TaskFriends: React.FC<TaskItemProps> = ({
       {completed === false ? (
         <button
           onClick={() => handleCheckClick(taskId, userId, dispatch)}
-          className="btn btn-outline text-[#0088cc]  border-[#0088cc] rounded-3xl px-7"
+          className="btn btn-outline  border-[#0088cc] rounded-3xl px-5"
         >
-          Dan
+          Done
         </button>
       ) : (
         <img src="assets/complete.svg" className="mr-4 w-8 h-8" />
