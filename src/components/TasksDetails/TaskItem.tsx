@@ -1,10 +1,15 @@
 import s from '/src/App.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleCheckSubscriptionClick } from '../../utils/getUserFriends.ts';
+import { selectUserId } from '../../redux/selectors.ts';
+import { AppDispatch } from '../../redux/store.ts';
 
 interface TaskItemProps {
   src: string;
   title: string;
   bonus: number;
   completed: boolean;
+  taskId: number;
 }
 
 const TaskItem: React.FC<TaskItemProps> = ({
@@ -12,7 +17,11 @@ const TaskItem: React.FC<TaskItemProps> = ({
   title,
   bonus,
   completed,
+  taskId,
 }) => {
+  const userId = useSelector(selectUserId);
+  const dispatch = useDispatch<AppDispatch>();
+
   return (
     <li className="flex text-center justify-between px-4 items-center">
       <div className="flex items-center gap-1">
@@ -30,7 +39,12 @@ const TaskItem: React.FC<TaskItemProps> = ({
         </div>
       </div>
       {completed === false ? (
-        <button className="btn btn-outline rounded-3xl px-7">Go</button>
+        <button
+          onClick={() => handleCheckSubscriptionClick(taskId, userId, dispatch)}
+          className="btn btn-outline rounded-3xl px-7"
+        >
+          Go
+        </button>
       ) : (
         <img src="assets/complete.svg" className="mr-4 w-8 h-8" />
       )}

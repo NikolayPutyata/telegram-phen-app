@@ -34,14 +34,14 @@ const TaskFriends: React.FC<TaskItemProps> = ({
             <p className="text-zinc-400 tracking-wider text-sm">
               Reward: {bonus}
             </p>
-            <img src="/assets/Group_62.svg" alt="" width={13} />
+            <img src="/assets/Group_62.svg" alt="coin" width={13} />
           </span>
         </div>
       </div>
       {completed === false ? (
         <button
           onClick={() => handleCheckClick(taskId, userId, dispatch)}
-          className="btn btn-outline  border-[#0088cc] rounded-3xl px-7"
+          className="btn btn-outline text-[#0088cc]  border-[#0088cc] rounded-3xl px-7"
         >
           Dan
         </button>

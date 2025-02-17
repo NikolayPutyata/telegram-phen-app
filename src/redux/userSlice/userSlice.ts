@@ -62,7 +62,29 @@ const initialState: UserState = {
         completed: false,
       },
     ],
-    special: [],
+    special: [
+      {
+        id: 154,
+        name: 'Invite 1 friend',
+        svg_url: '/assets/user.svg',
+        task_bonus: 200,
+        completed: false,
+      },
+      {
+        id: 155,
+        name: 'Invite 5 friends',
+        svg_url: '/assets/users.svg',
+        task_bonus: 200,
+        completed: false,
+      },
+      {
+        id: 156,
+        name: 'Invite 10 friends',
+        svg_url: '/assets/group-user.svg',
+        task_bonus: 200,
+        completed: false,
+      },
+    ],
   },
 };
 
