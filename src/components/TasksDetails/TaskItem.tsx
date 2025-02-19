@@ -1,8 +1,8 @@
 import s from '/src/App.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { handleCheckSubscriptionClick } from '../../utils/getUserFriends.ts';
-import { selectUserId } from '../../redux/selectors.ts';
-import { AppDispatch } from '../../redux/store.ts';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { handleCheckSubscriptionClick } from '../../utils/getUserFriends.ts';
+// import { selectUserId } from '../../redux/selectors.ts';
+// import { AppDispatch } from '../../redux/store.ts';
 
 interface TaskItemProps {
   src: string;
@@ -17,10 +17,10 @@ const TaskItem: React.FC<TaskItemProps> = ({
   title,
   bonus,
   completed,
-  taskId,
+  // taskId,
 }) => {
-  const userId = useSelector(selectUserId);
-  const dispatch = useDispatch<AppDispatch>();
+  // const userId = useSelector(selectUserId);
+  // const dispatch = useDispatch<AppDispatch>();
 
   return (
     <li className="flex text-center justify-between px-4 items-center">
@@ -40,7 +40,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
       </div>
       {completed === false ? (
         <button
-          onClick={() => handleCheckSubscriptionClick(taskId, userId, dispatch)}
+          // onClick={() => handleCheckSubscriptionClick(taskId, userId, dispatch)}
           className="btn btn-outline rounded-3xl px-7"
         >
           Go
