@@ -25,7 +25,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
   return (
     <li className="flex text-center justify-between px-4 items-center">
       <div className="flex items-center gap-1">
-          <img src={src} className="mr-1 w-7 h-7" />
+        <img src={src} className="mr-1 w-7 h-7" />
         <div className="flex flex-col justify-start">
           <p className={` ${s.font} flex justify-start text-sm`}>{title}</p>
           <span className="flex items-center gap-1.5">
@@ -36,7 +36,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
           </span>
         </div>
       </div>
-      {completed === false ? (
+      {!completed === false ? (
         <button
           // onClick={() => handleCheckSubscriptionClick(taskId, userId, dispatch)}
           className="btn btn-outline rounded-3xl px-7"
