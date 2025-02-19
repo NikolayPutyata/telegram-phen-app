@@ -25,9 +25,7 @@ const TaskFriends: React.FC<TaskItemProps> = ({
   return (
     <li className="flex text-center justify-between px-4 items-center">
       <div className="flex items-center gap-1">
-        {completed === false ? (
           <img src={src} className="mr-1 w-7 h-7" />
-        ) : null}
         <div className="flex flex-col justify-start">
           <p className={` ${s.font} flex justify-start text-sm`}>{title}</p>
           <span className="flex items-center gap-1.5">
