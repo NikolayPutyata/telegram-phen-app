@@ -9,7 +9,7 @@ interface TaskItemProps {
   title: string;
   bonus: number;
   completed: boolean;
-  taskId: number;
+  // taskId: number;
 }
 
 const TaskItem: React.FC<TaskItemProps> = ({
