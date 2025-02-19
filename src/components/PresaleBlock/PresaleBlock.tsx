@@ -67,7 +67,7 @@ const PresaleBlock = () => {
             <input
               type="number"
               placeholder={placeholder}
-              className={`${s.font} input tracking-wider focus:outline-none focus:border-3 input-primary border-2 px-6 text-zinc-300 rounded-4xl py-4`}
+              className={`${s.font} input tracking-wider focus:outline-none focus:border-4 input-primary border-3 px-6 text-zinc-300 rounded-4xl py-4`}
             />
           </div>
         </div>
