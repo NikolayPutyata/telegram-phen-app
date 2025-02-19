@@ -15,6 +15,8 @@ const initialState: UserState = {
   activeSkins: [],
   currentBoost: 0,
   completedTasks: [],
+  loading: false,
+  error: null,
   usersTasks: {
     gaming: [
       {
@@ -90,8 +92,16 @@ const userSlice = createSlice({
       .addCase(claimTokens.fulfilled, (state, action) => {
         state.tokens = action.payload.tokens;
       })
+      .addCase(taskCompleted.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
       .addCase(taskCompleted.fulfilled, (state, action) => {
         state.usersTasks = action.payload.userTasks;
+      })
+      .addCase(taskCompleted.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
