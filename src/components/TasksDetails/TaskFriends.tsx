@@ -38,7 +38,7 @@ const TaskFriends: React.FC<TaskItemProps> = ({
           </span>
         </div>
       </div>
-      {!completed === false ? (
+      {completed === false ? (
         <button
           onClick={() => handleCheckClick(taskId, userId, dispatch)}
           className="btn btn-outline  border-[#0088cc] rounded-3xl px-5"
