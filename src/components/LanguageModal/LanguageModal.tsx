@@ -12,48 +12,48 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ onClose }) => {
     {
       code: 'en',
       name: 'English',
-      src: '/assets/english.svg',
+      src: '/assets/language/english.svg',
     },
     {
       code: 'es',
       name: 'Español',
-      src: '/assets/espanol.svg',
+      src: '/assets/language/espanol.svg',
     },
     {
       code: 'de',
       name: 'Deutsch',
-      src: '/assets/deutsch.svg',
+      src: '/assets/language/deutsch.svg',
     },
     {
       code: 'fr',
       name: 'Français',
-      src: '/assets/francais.svg',
+      src: '/assets/language/francais.svg',
     },
     {
       code: 'it',
       name: 'Italiano',
-      src: '/assets/italiano.svg',
+      src: '/assets/language/italiano.svg',
     },
-    { code: 'pl', name: 'Polski', src: '/assets/polski.svg' },
+    { code: 'pl', name: 'Polski', src: '/assets/language/polski.svg' },
     {
       code: 'zh',
       name: '中文 (简体)',
-      src: '/assets/chinese.svg',
+      src: '/assets/language/chinese.svg',
     },
     {
       code: 'ko',
       name: '한국어',
-      src: '/assets/korean.svg',
+      src: '/assets/language/korean.svg',
     },
     {
       code: 'ja',
       name: '日本語',
-      src: '/assets/japanese.svg',
+      src: '/assets/language/japanese.svg',
     },
     {
       code: 'hi',
       name: 'हिन्दी',
-      src: '/assets/hindi.svg',
+      src: '/assets/language/hindi.svg',
     },
   ];
   const handleLanguageChange = (code: string) => {
@@ -68,7 +68,7 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ onClose }) => {
           Select Language
         </h2>
         <div className="w-6 h-6 flex justify-center items-end">
-          <img src="/assets/language.svg" className="w-5 h-5" />
+          <img src="/assets/language/language.svg" className="w-5 h-5" />
         </div>
       </div>
       <ul>
