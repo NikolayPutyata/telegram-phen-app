@@ -50,6 +50,11 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ onClose }) => {
       name: '日本語',
       src: '/assets/japanese.svg',
     },
+    {
+      code: 'hi',
+      name: 'हिन्दी',
+      src: '/assets/hindi.svg',
+    },
   ];
   const handleLanguageChange = (code: string) => {
     i18n.changeLanguage(code);
