@@ -1,7 +1,7 @@
-// import { useSelector } from 'react-redux';
-// import { transactionFormation } from '../../utils/transactionFormation';
+import { useSelector } from 'react-redux';
+import { transactionFormation } from '../../utils/transactionFormation';
 import s from '/src/App.module.css';
-// import { selectUserId } from '../../redux/selectors';
+import { selectUserId } from '../../redux/selectors';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 
 type BoostsItemProps = {
@@ -20,29 +20,18 @@ const BoostsItem: React.FC<BoostsItemProps> = ({
   title,
   desc,
   price,
-  // collectionId,
-  // idItem
+  collectionId,
+  idItem
 }) => {
 
-  // const userId = useSelector(selectUserId);
+  const userId = useSelector(selectUserId);
   const [tonConnectUI] = useTonConnectUI();
 
 const sendTransactionFu = async () => {
-  // const transaction = await transactionFormation(userId, collectionId, idItem, parseFloat(price));
+  const transaction = await transactionFormation(userId, collectionId, idItem, parseFloat(price));
   
 
-  tonConnectUI.sendTransaction(
-    {
-  validUntil: Date.now() + 5 * 60 * 1000, // 5 minutes
-  messages: [
-    {
-      address:
-        "UQA8vghmZqzHzwfKtATNrFr7PwMZm_5-eF6dovod1b1vrsaz",
-      amount: "20000000", 
-    },
-  ],
-}
-  );
+  tonConnectUI.sendTransaction(transaction);
 
 };
 
