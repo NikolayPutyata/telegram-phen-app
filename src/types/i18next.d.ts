@@ -12,6 +12,7 @@ declare module 'i18next' {
       ko: typeof import('../locales/ko.json');
       ja: typeof import('../locales/ja.json');
       zh: typeof import('../locales/zh.json');
+      hi: typeof import('../locales/hi.json');
     };
   }
 }
