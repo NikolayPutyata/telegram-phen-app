@@ -6,10 +6,11 @@ import {
   selectUserTokens,
   selectUserUsername,
 } from '../../redux/selectors.ts';
-import { useState } from 'react';
+import {  useState } from 'react';
 import Modal from '../../components/Modal/Modal.tsx';
 import ProfileListItem from './ProfileListItem.tsx';
 import { useTranslation } from 'react-i18next';
+import { TonConnectButton } from "@tonconnect/ui-react";
 
 const Profile = () => {
   const { t } = useTranslation();
@@ -17,10 +18,13 @@ const Profile = () => {
   const tokens = useSelector(selectUserTokens);
   const firstName = useSelector(selectUserFirstName);
 
+  
+
   const [isModalOpenBoosts, setIsModalOpenBoosts] = useState(false);
   const [isModalOpenSkins, setIsModalOpenSkins] = useState(false);
   const [isModalOpenSettings, setIsModalOpenSettings] = useState(false);
   const [isModalOpenLanguage, setIsModalOpenLanguage] = useState(false);
+
 
   return (
     <div className="flex flex-col items-center bg-neutral-900 rounded-3xl p-3 pt-6 m-4">
@@ -52,32 +56,22 @@ const Profile = () => {
         <ProfileListItem
           onClickFu={() => setIsModalOpenBoosts(true)}
           title={t('Boosts')}
-          imgSrc="/assets/circle-arrow-left.svg"
-          imgAlt="circle-arrow-left.svg"
         />
         <ProfileListItem
           onClickFu={() => setIsModalOpenSkins(true)}
           title={t('Skins')}
-          imgSrc="/assets/circle-arrow-left.svg"
-          imgAlt="circle-arrow-left.svg"
         />
         <ProfileListItem
           onClickFu={() => setIsModalOpenLanguage(true)}
           title={t('Language')}
-          imgSrc="/assets/circle-arrow-left.svg"
-          imgAlt="circle-arrow-left.svg"
         />
         <ProfileListItem
           onClickFu={() => setIsModalOpenSettings(true)}
           title={t('Settings')}
-          imgSrc="/assets/circle-arrow-left.svg"
-          imgAlt="circle-arrow-left.svg"
         />
       </div>
 
-      <button className="btn w-72 btn-primary rounded-4xl my-4">
-        {t('Connect TON Wallet')}
-      </button>
+      <TonConnectButton className='my-3'/>
       <Socials />
 
       <Modal
