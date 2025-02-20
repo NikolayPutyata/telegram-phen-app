@@ -1,20 +1,22 @@
 import { useSelector } from 'react-redux';
-import { selectUserTokens } from '../../redux/selectors';
+import { selectUserTokens, selectUserTonBalance } from '../../redux/selectors';
 import s from '/src/App.module.css';
 import { useTranslation } from 'react-i18next';
 import PhenTonIcon from './PhenTonIcon';
+import { useTonAddress } from '@tonconnect/ui-react';
+import { sliceWalletAddress } from '../../utils/sliceWalletAddress';
 
 const Header = () => {
   const tokens = useSelector(selectUserTokens);
   const { t } = useTranslation();
-
-
+  const userFriendlyAddress = useTonAddress();
+  const tonBalance = useSelector(selectUserTonBalance);
 
   return (
     <div className="collapse rounded-tl-none rounded-tr-none bg-neutral rounded-b-3xl p-0.5">
       <input type="checkbox" />
       <div className="collapse-title font-semibold flex justify-between items-center px-5">
-        <p className={`${s.font}  text-zinc-400 text-sm tracking-wider`}>{t('PHENERIUM')}</p>
+        <p className={`${s.font}  text-zinc-400 text-sm tracking-wider`}>{userFriendlyAddress ? sliceWalletAddress(userFriendlyAddress) : t('Your Address')}</p>
         <PhenTonIcon />
       </div>
       <div className="collapse-content text-sm">
@@ -41,7 +43,7 @@ const Header = () => {
               />
               <p className={`${s.font} text-zinc-300 text-sm`}>$TON</p>
             </div>
-            <span className={`${s.font} text-zinc-300 text-sm`}>400</span>
+            <span className={`${s.font} text-zinc-300 text-sm`}>{tonBalance}</span>
           </li>
         </ul>
       </div>

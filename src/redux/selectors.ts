@@ -8,3 +8,4 @@ export const selectUserFirstName = (state: RootState) => state.user.first_name;
 export const selectUserFriends = (state: RootState): Friend[] => state.user.friends;
 export const selectUserId = (state: RootState): number => state.user.id;
 export const selectUserTasks = (state: RootState) => state.user.usersTasks;
+export const selectUserTonBalance = (state: RootState) => state.wallet.balance;
