@@ -1,5 +1,5 @@
-import { beginCell } from '@ton/core';
-import { toNano } from '@ton/core';
+import { beginCell } from '@ton/ton';
+import { toNano } from '@ton/ton';
 
 
 
