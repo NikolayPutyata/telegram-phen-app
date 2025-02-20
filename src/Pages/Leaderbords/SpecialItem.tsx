@@ -15,7 +15,7 @@ function SpecialItem() {
           <p className={`${s.font} text-zinc-400 text-sm`}>100</p>
           <img src="/assets/telegram_star.svg" alt="telegram-star" />
         </div>
-        <button className="btn btn-primary w-24 h-9">Buy</button>
+        <button className="btn btn-primary w-24 h-9 rounded-4xl">Buy</button>
       </div>
     </li>
   );

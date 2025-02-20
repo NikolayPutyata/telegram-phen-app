@@ -14,7 +14,7 @@ function SkinsItem() {
 
         <p className={`${s.font} text-zinc-400 text-sm mb-4`}>TON</p>
 
-        <button className="btn btn-primary w-24 h-9">Buy</button>
+        <button className="btn btn-primary w-24 h-9 rounded-4xl">Buy</button>
       </div>
     </li>
   );

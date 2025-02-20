@@ -7,42 +7,22 @@ const Boosts = () => {
       imgSrc: '/assets/engine.webp',
       title: 'V3 Engine',
       desc: '2x Farming Boost',
-      price: '0.02 TON',
-    },
-    {
-      imgSrc: '/assets/commandor.webp',
-      title: 'Co-pilot',
-      desc: '4x Farming Boost',
-      price: '0.04 TON',
-    },
-    {
-      imgSrc: '/assets/rangers.webp',
-      title: 'Ranger Team',
-      desc: '8x Farming Boost',
-      price: '0.08 TON',
-    },
+      price: '0.02',
+      collectionId: 1,
+      idItem: 10
+    }
   ];
   const specialBoosts = [
     {
       imgSrc: '/assets/shuttle-2.webp',
       title: 'Flagship',
       desc: '20x Farming Boost',
-      price: '0.20 TON',
-    },
-    {
-      imgSrc: '/assets/shuttle-1.webp',
-      title: 'Space Cruiser',
-      desc: '15x Farming Boost',
-      price: '0.15 TON',
-    },
-
-    {
-      imgSrc: '/assets/shuttle-3.webp',
-      title: 'Shuttle',
-      desc: '10x Farming Boost',
-      price: '0.10 TON',
-    },
+      price: '0.20',
+      collectionId: 2,
+      idItem: 11
+    }
   ];
+
 
   return (
     <>
