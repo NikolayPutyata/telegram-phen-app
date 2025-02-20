@@ -7,7 +7,7 @@ export const transactionFormation = async (userId:number, idCollection: number, 
             {
                 address: "UQA8vghmZqzHzwfKtATNrFr7PwMZm_5-eF6dovod1b1vrsaz", 
                 amount: (amount * 1_000_000_000).toString(),
-                payload: `ORDER_${userId}_${idCollection}_${idItem}`, 
+                // payload: `ORDER_${userId}_${idCollection}_${idItem}`, 
             },
         ],
     };
