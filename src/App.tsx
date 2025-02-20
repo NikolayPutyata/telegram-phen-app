@@ -14,9 +14,13 @@ import { AppDispatch } from './redux/store.ts';
 import Boosts from './components/Boosts/Boosts.tsx';
 import Skins from './components/Skins/Skins.tsx';
 import Special from './components/Special/Special.tsx';
+// import { setBalance } from './redux/walletSlice/walletSlice.ts';
+// import { getUserTonBalance } from './utils/getUserTonBalance.ts';
+// import { useTonConnectUI } from '@tonconnect/ui-react';
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
+    
 
   useEffect(() => {
     const initUser = async () => {
@@ -41,6 +45,21 @@ const App = () => {
 
     initUser();
   }, [dispatch]);
+
+// const [{ connected, account }] = useTonConnectUI();
+
+// useEffect(() => {
+//   if (!connected || !account?.address) return;
+
+//   const fetchBalance = async () => {
+//     const balance = await getUserTonBalance(account.address);
+//     dispatch(setBalance(balance));
+//   };
+
+//   fetchBalance();
+// }, [connected, account, dispatch]);
+
+
 
   return (
     <div>

@@ -48,7 +48,8 @@ const userSlice = createSlice({
       })
       .addCase(taskCompleted.fulfilled, (state, action) => {
         state.usersTasks = action.payload.userTasks;
-      });
+      })
+      ;
   },
 });
 

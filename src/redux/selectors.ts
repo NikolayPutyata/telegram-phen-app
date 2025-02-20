@@ -2,9 +2,9 @@ import { Friend } from "../types/State";
 import { RootState } from "./store";
 
 
-export const selectUserTokens = (state: RootState) : number => state.tokens;
-export const selectUserUsername = (state: RootState) => state.username;
-export const selectUserFirstName = (state: RootState) => state.first_name;
-export const selectUserFriends = (state: RootState): Friend[] => state.friends;
-export const selectUserId = (state: RootState): number => state.id;
-export const selectUserTasks = (state: RootState) => state.usersTasks;
+export const selectUserTokens = (state: RootState) : number => state.user.tokens;
+export const selectUserUsername = (state: RootState) => state.user.username;
+export const selectUserFirstName = (state: RootState) => state.user.first_name;
+export const selectUserFriends = (state: RootState): Friend[] => state.user.friends;
+export const selectUserId = (state: RootState): number => state.user.id;
+export const selectUserTasks = (state: RootState) => state.user.usersTasks;
