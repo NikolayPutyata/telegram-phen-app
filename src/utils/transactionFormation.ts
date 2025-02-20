@@ -1,5 +1,5 @@
 
-export const transactionFormation = (userId:number, idCollection: number, idItem: number, amount: number) => {
+export const transactionFormation = async (userId:number, idCollection: number, idItem: number, amount: number) => {
 
     const transaction = {
         validUntil: Date.now() + 5 * 60 * 1000,
