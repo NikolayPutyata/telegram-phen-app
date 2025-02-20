@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.1",
     "@tailwindcss/vite": "^4.0.1",
+    "@ton/core": "^0.60.1",
     "@tonconnect/sdk": "^3.0.6",
     "@tonconnect/ui-react": "^2.0.11",
     "@twa-dev/sdk": "^8.0.1",

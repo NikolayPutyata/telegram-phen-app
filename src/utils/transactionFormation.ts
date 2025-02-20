@@ -1,13 +1,24 @@
+import { beginCell } from '@ton/core';
+import { toNano } from '@ton/core';
 
-export const transactionFormation = async (userId:number, idCollection: number, idItem: number, amount: number) => {
+
+
+export const transactionFormation = async (userId: number, idCollection: number, idItem: number, amount: number) => {
+    
+    
+const body = beginCell()
+  .storeUint(0, 32) 
+  .storeStringTail(`ORDER_${userId}_${idCollection}_${idItem}`) 
+        .endCell();
+    
 
     const transaction = {
-        validUntil: Date.now() + 5 * 60 * 1000,
+        validUntil: Math.floor(Date.now() / 1000) + 300,
         messages: [
             {
                 address: "UQA8vghmZqzHzwfKtATNrFr7PwMZm_5-eF6dovod1b1vrsaz", 
-                amount: (amount * 1_000_000_000).toString(),
-                payload: `ORDER_${userId}_${idCollection}_${idItem}`, 
+                amount: toNano(amount).toString(),
+                payload: body.toBoc().toString("base64"), 
             },
         ],
     };
