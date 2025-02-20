@@ -56,26 +56,18 @@ const Profile = () => {
         <ProfileListItem
           onClickFu={() => setIsModalOpenBoosts(true)}
           title={t('Boosts')}
-          imgSrc="/assets/circle-arrow-left.svg"
-          imgAlt="circle-arrow-left.svg"
         />
         <ProfileListItem
           onClickFu={() => setIsModalOpenSkins(true)}
           title={t('Skins')}
-          imgSrc="/assets/circle-arrow-left.svg"
-          imgAlt="circle-arrow-left.svg"
         />
         <ProfileListItem
           onClickFu={() => setIsModalOpenLanguage(true)}
           title={t('Language')}
-          imgSrc="/assets/circle-arrow-left.svg"
-          imgAlt="circle-arrow-left.svg"
         />
         <ProfileListItem
           onClickFu={() => setIsModalOpenSettings(true)}
           title={t('Settings')}
-          imgSrc="/assets/circle-arrow-left.svg"
-          imgAlt="circle-arrow-left.svg"
         />
       </div>
 
