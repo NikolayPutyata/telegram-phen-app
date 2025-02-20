@@ -1,10 +1,10 @@
 import s from '/src/App.module.css';
 
 const PhenTonIcon = () => {
-  
+
   return (
     <div className="flex items-center gap-4">
-          <span className={`${s.font} text-zinc-300 text-sm`}>$0</span>
+          <span className={`${s.font} text-zinc-300 text-sm`}>~ $0</span>
           <img
             src="/assets/Group 60.png"
             alt="coins"

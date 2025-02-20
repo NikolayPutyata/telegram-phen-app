@@ -21,6 +21,9 @@ import { useIsConnectionRestored } from '@tonconnect/ui-react';
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
+
+  const [{ connected, account }] = useTonConnectUI();
+const connectionRestored = useIsConnectionRestored();
     
 
   useEffect(() => {
@@ -47,8 +50,7 @@ const App = () => {
     initUser();
   }, [dispatch]);
 
-const [{ connected, account }] = useTonConnectUI();
-const connectionRestored = useIsConnectionRestored();
+
 
 useEffect(() => {
     if (!connectionRestored || !connected || !account?.address) return;
