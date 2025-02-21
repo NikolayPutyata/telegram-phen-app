@@ -9,7 +9,7 @@ const AddBoosts = () => {
   return (
     <>
       <button
-        className="btn w-full text-lg bg-transparent border-none text-[#605dff] py-4 "
+        className="w-full text-lg text-[#605dff] py-4 "
         onClick={() => setIsModalAddOpenBoosts(true)}
       >
         + Add boosts
