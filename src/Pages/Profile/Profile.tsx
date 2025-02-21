@@ -6,11 +6,11 @@ import {
   selectUserTokens,
   selectUserUsername,
 } from '../../redux/selectors.ts';
-import {  useState } from 'react';
+import { useState } from 'react';
 import Modal from '../../components/Modal/Modal.tsx';
 import ProfileListItem from './ProfileListItem.tsx';
 import { useTranslation } from 'react-i18next';
-import { TonConnectButton } from "@tonconnect/ui-react";
+import { TonConnectButton } from '@tonconnect/ui-react';
 
 const Profile = () => {
   const { t } = useTranslation();
@@ -18,13 +18,10 @@ const Profile = () => {
   const tokens = useSelector(selectUserTokens);
   const firstName = useSelector(selectUserFirstName);
 
-  
-
   const [isModalOpenBoosts, setIsModalOpenBoosts] = useState(false);
   const [isModalOpenSkins, setIsModalOpenSkins] = useState(false);
   const [isModalOpenSettings, setIsModalOpenSettings] = useState(false);
   const [isModalOpenLanguage, setIsModalOpenLanguage] = useState(false);
-
 
   return (
     <div className="flex flex-col items-center bg-neutral-900 rounded-3xl p-3 pt-6 m-4">
@@ -50,7 +47,7 @@ const Profile = () => {
         </p>
       </div>
 
-      <div
+      <ul
         className={`w-full ${s.font} flex flex-col px-5 mb-5 gap-2 text-sm tracking-wider text-zinc-400 items-center`}
       >
         <ProfileListItem
@@ -69,9 +66,9 @@ const Profile = () => {
           onClickFu={() => setIsModalOpenSettings(true)}
           title={t('Settings')}
         />
-      </div>
+      </ul>
 
-      <TonConnectButton className='my-3'/>
+      <TonConnectButton className="my-3" />
       <Socials />
 
       <Modal

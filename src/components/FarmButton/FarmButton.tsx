@@ -119,7 +119,7 @@ const FarmBlock = () => {
   };
 
   return (
-    <div className="grid grid-cols-[1fr_1fr] grid-rows-1 items-center justify-center gap-3">
+    <div className="grid grid-cols-[1fr_1fr] grid-rows-1 mb-8 items-center justify-center gap-3">
       {!isLoading && !isFarmDisabled && (
         <button
           className={`btn btn-primary rounded-4xl ${
