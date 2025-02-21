@@ -6,7 +6,6 @@ import s from '/src/App.module.css';
 
 const ModalAddBoosts = () => {
   // const { t } = useTranslation();
-
   const addBoosts = useSelector(selectUserBoosts);
 
   return;

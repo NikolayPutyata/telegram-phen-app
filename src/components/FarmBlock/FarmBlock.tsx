@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import s from '/src/App.module.css';
 import { selectUserTokens } from '../../redux/selectors';
 import FarmButton from '../FarmButton/FarmButton';
+import ActiveBoosts from '../ActiveBoosts/ActiveBoosts';
 import AddBoosts from '../AddBoosts/AddBoosts';
 import { useTranslation } from 'react-i18next';
 
@@ -21,6 +22,7 @@ const FarmBlock = () => {
           </div>
         </div>
         <FarmButton />
+        <ActiveBoosts />
         <AddBoosts />
       </div>
     </div>
