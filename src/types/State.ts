@@ -30,7 +30,6 @@ export type UserState = {
   currentBoost: number;
   completedTasks: compTask[];
   loading: boolean;
-  error: string | null;
   usersTasks: {
     gaming: Task[];
     partners: Task[];

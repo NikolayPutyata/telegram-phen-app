@@ -16,10 +16,53 @@ const initialState: UserState = {
   currentBoost: 0,
   completedTasks: [],
   loading: false,
-  error: null,
   usersTasks: {
-    gaming: [],
-    partners: [],
+    gaming: [
+      {
+        id: 151,
+        name: 'Subscribe to Telegram',
+        svg_url: '/assets/telegram-svgrepo-com.svg',
+        task_bonus: 200,
+        completed: false,
+      },
+      {
+        id: 152,
+        name: 'Subscribe to YouTube',
+        svg_url: '/assets/youtube-svgrepo-com.svg',
+        task_bonus: 200,
+        completed: false,
+      },
+      {
+        id: 153,
+        name: 'Subscribe to X',
+        svg_url: '/assets/twitter-x.svg',
+        task_bonus: 200,
+        completed: false,
+      },
+    ],
+    partners: [
+      {
+        id: 154,
+        name: 'Invite 1 friend',
+        svg_url: '/assets/user.svg',
+        task_bonus: 200,
+        completed: false,
+      },
+      {
+        id: 155,
+        name: 'Invite 5 friends',
+        svg_url: '/assets/users.svg',
+        task_bonus: 200,
+        completed: false,
+      },
+      {
+        id: 156,
+        name: 'Invite 10 friends',
+        svg_url: '/assets/group-user.svg',
+        task_bonus: 200,
+        completed: false,
+      },
+    ],
     special: [],
   },
 };
@@ -50,14 +93,10 @@ const userSlice = createSlice({
       })
       .addCase(taskCompleted.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
       .addCase(taskCompleted.fulfilled, (state, action) => {
-        state.usersTasks = action.payload.userTasks;
-      })
-      .addCase(taskCompleted.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.usersTasks = action.payload.userTasks;
       });
   },
 });

@@ -11,7 +11,6 @@ interface TaskItemProps {
   completed: boolean;
   taskId: number;
   isLoading: boolean;
-  error: string | null;
 }
 
 const TaskFriends: React.FC<TaskItemProps> = ({
@@ -21,7 +20,6 @@ const TaskFriends: React.FC<TaskItemProps> = ({
   completed,
   taskId,
   isLoading,
-  error,
 }) => {
   const userId = useSelector(selectUserId);
   const dispatch = useDispatch<AppDispatch>();
@@ -40,19 +38,18 @@ const TaskFriends: React.FC<TaskItemProps> = ({
           </span>
         </div>
       </div>
-      {isLoading ? (
-        <img src="assets/loading.svg" className="mr-6 w-6 h-6" />
-      ) : error ? (
-        <img src="assets/error.svg" className="mr-6 w-7 h-7" />
-      ) : completed === false ? (
+
+      {completed ? (
+        <img src="assets/complete.svg" className="mr-4 w-8 h-8" />
+      ) : isLoading ? (
+        <img src="assets/loading.svg" className="mr-6 w-6 h-6 animate-spin" />
+      ) : (
         <button
           onClick={() => handleCheckClick(taskId, userId, dispatch)}
-          className="btn btn-outline  border-[#605dff] rounded-3xl px-5"
+          className="btn btn-outline border-[#605dff] rounded-3xl px-5"
         >
           Done
         </button>
-      ) : (
-        <img src="assets/complete.svg" className="mr-4 w-8 h-8" />
       )}
     </li>
   );

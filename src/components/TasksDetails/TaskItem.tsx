@@ -11,7 +11,6 @@ interface TaskItemProps {
   completed: boolean;
   // taskId: number;
   isLoading: boolean;
-  error: string | null;
 }
 
 const TaskItem: React.FC<TaskItemProps> = ({
@@ -20,7 +19,6 @@ const TaskItem: React.FC<TaskItemProps> = ({
   bonus,
   completed,
   isLoading,
-  error,
   // taskId,
 }) => {
   // const userId = useSelector(selectUserId);
@@ -41,19 +39,17 @@ const TaskItem: React.FC<TaskItemProps> = ({
         </div>
       </div>
 
-      {isLoading ? (
-        <img src="assets/loading.svg" className="mr-6 w-6 h-6" />
-      ) : error ? (
-        <img src="assets/error.svg" className="mr-6 w-7 h-7" />
-      ) : completed === false ? (
+      {completed ? (
+        <img src="assets/complete.svg" className="mr-4 w-8 h-8" />
+      ) : isLoading ? (
+        <img src="assets/loading.svg" className="mr-6 w-6 h-6 animate-spin" />
+      ) : (
         <button
           // onClick={() => handleCheckSubscriptionClick(taskId, userId, dispatch)}
           className="btn btn-outline rounded-3xl px-7"
         >
           Go
         </button>
-      ) : (
-        <img src="assets/complete.svg" className="mr-4 w-8 h-8" />
       )}
     </li>
   );

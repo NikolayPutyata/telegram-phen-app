@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import {
   selectUserTasks,
   selectIsLoading,
-  selectError,
 } from '../../redux/selectors';
 import TaskItem from './TaskItem';
 import TaskFriends from './TaskFriends';
@@ -10,7 +9,6 @@ import TaskFriends from './TaskFriends';
 const TasksDetails = () => {
   const tasks = useSelector(selectUserTasks);
   const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
 
   return (
     <>
@@ -35,7 +33,6 @@ const TasksDetails = () => {
                 bonus={task.task_bonus}
                 completed={task.completed}
                 isLoading={isLoading}
-                error={error}
               />
             ))}
           </ul>
@@ -53,7 +50,6 @@ const TasksDetails = () => {
                 completed={task.completed}
                 taskId={task.id}
                 isLoading={isLoading}
-                error={error}
               />
             ))}
           </ul>
@@ -70,7 +66,6 @@ const TasksDetails = () => {
                 bonus={task.task_bonus}
                 completed={task.completed}
                 isLoading={isLoading}
-                error={error}
               />
             ))}
           </ul>
