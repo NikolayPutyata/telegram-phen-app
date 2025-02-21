@@ -1,18 +1,33 @@
 // import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectUserBoosts } from '../../redux/selectors';
 import s from '/src/App.module.css';
 
+// type Boost = {
+//     id: number;
+//     title: string;
+//     desc: string;
+//     price: string;
+//     imgSrc: string;
+//   };
+
 const ModalAddBoosts = () => {
+    const dispatch = useDispatch();
   // const { t } = useTranslation();
   const addBoosts = useSelector(selectUserBoosts);
 
   return (
   <div>
     <h2 className={`${s.font} text-zinc-300 ml-8 my-3`}>Boosts ⭐</h2>
+
     <ul className="flex flex-col gap-6">
-    {addBoosts.map((boosts, index) => (
-    <li key={index} className="flex justify-center px-3 gap-7">
+    {addBoosts.map((boost) => (
+    <li key={boost.id} className="flex justify-center px-3 gap-7">
+         className={`px-3 rounded-lg flex justify-between items-center cursor-pointer transition-all
+              ${activeBoosts.some(b => b.id === boost.id) ? "bg-blue-500" : "bg-gray-800"}`}
+            onClick={() => dispatch(toggleBoostSelection(boost.id))}
+          >
+
     <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
         <img
             src={boosts.imgSrc}
@@ -35,7 +50,7 @@ const ModalAddBoosts = () => {
         >
             {boosts.price}
         </p>
-        <button onClick={() => sendAddBoost()} className="btn btn-primary w-24 h-9 rounded-4xl" >Add</button>
+        <button onClick={() => dispatch(addSelectedBoosts())} className="btn btn-primary w-24 h-9 rounded-4xl" >Add</button>
     </div>
     </li>
 
