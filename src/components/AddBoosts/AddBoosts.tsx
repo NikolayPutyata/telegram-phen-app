@@ -7,9 +7,9 @@ const AddBoosts = () => {
   const [isModalOpenAddBoosts, setIsModalAddOpenBoosts] = useState(false);
 
   return (
-    <div>
+    <>
       <button
-        className="btn py-4 px-14 mr-5 btn-primary rounded-4xl "
+        className="btn w-full text-lg bg-transparent border-none text-[#605dff] py-4 "
         onClick={() => setIsModalAddOpenBoosts(true)}
       >
         + Add boosts
@@ -20,7 +20,7 @@ const AddBoosts = () => {
         changeModal="addBoosts"
         onClose={() => setIsModalAddOpenBoosts(false)}
       />
-    </div>
+    </>
   );
 };
 

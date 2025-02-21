@@ -11,7 +11,16 @@ const initialState: UserState = {
   tokens: 0,
   friends: [],
   skins: [],
-  boosts: [],
+  boosts: [
+    {
+      imgSrc: '/assets/engine.webp',
+      title: 'V3 Engine',
+      desc: '2x Farming Boost',
+      price: '0.02',
+      collectionId: 1,
+      idItem: 10,
+    },
+  ],
   activeSkins: [],
   currentBoost: 0,
   completedTasks: [],
