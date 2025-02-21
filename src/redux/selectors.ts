@@ -5,6 +5,8 @@ export const selectUserTokens = (state: RootState): number => state.user.tokens;
 export const selectUserUsername = (state: RootState) => state.user.username;
 export const selectUserFirstName = (state: RootState) => state.user.first_name;
 export const selectUserBoosts = (state: RootState) => state.user.boosts;
+export const selectUserActiveBoosts = (state: RootState) =>
+  state.user.activeBoosts;
 export const selectUserFriends = (state: RootState): Friend[] =>
   state.user.friends;
 export const selectUserId = (state: RootState): number => state.user.id;

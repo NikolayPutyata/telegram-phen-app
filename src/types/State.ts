@@ -25,6 +25,7 @@ export type UserState = {
   friends: Friend[];
   tokens: number;
   skins: object[];
+  activeBoosts: [];
   boosts: object[];
   activeSkins: object[];
   currentBoost: number;

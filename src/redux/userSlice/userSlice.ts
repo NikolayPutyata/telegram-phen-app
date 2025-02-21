@@ -11,6 +11,7 @@ const initialState: UserState = {
   tokens: 0,
   friends: [],
   skins: [],
+  activeBoosts: [],
   boosts: [
     {
       imgSrc: '/assets/engine.webp',
