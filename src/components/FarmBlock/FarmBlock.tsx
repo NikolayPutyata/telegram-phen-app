@@ -27,10 +27,7 @@ const FarmBlock = () => {
           </div>
         </div>
         <FarmButton />
-        {activeBoosts !== null ? (
-          <ActiveBoosts activeBoosts={activeBoosts} />
-        ) : null}
-        {/* <ActiveBoosts activeBoosts={activeBoosts} /> */}
+        <ActiveBoosts activeBoosts={activeBoosts} />
         <AddBoosts />
       </div>
     </div>

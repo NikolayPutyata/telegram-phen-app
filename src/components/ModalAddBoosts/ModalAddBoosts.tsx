@@ -34,11 +34,11 @@ const ModalAddBoosts = () => {
     <div className="flex justify-center flex-col">
       <h2 className={`${s.font} text-zinc-300 ml-8 mb-3`}>Boosts ⭐</h2>
 
-      <ul className="flex flex-col p-6 gap-4">
+      <ul className="flex flex-col p-2 gap-2">
         {addBoosts.map((boost) => (
           <li
             key={boost.id}
-            className={`rounded-xl flex gap-14 items-center cursor-pointer transition-all
+            className={`rounded-xl p-2 flex gap-14 items-center cursor-pointer transition-all
        ${selectedBoosts.includes(boost.id) ? 'bg-gray-800' : 'transparent'}`}
             onClick={() => toggleSelection(boost.id)}
           >

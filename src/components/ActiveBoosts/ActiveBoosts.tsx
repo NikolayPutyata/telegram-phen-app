@@ -9,14 +9,14 @@ interface Boost {
 }
 
 interface ActiveBoostsProps {
-  activeBoosts: Boost[]; // Оновлений тип
+  activeBoosts: Boost[];
 }
 
 const ActiveBoosts: React.FC<ActiveBoostsProps> = ({ activeBoosts }) => {
   //   const { t } = useTranslation();
 
   return (
-    <ul className="flex px-4 flex-col gap-2">
+    <ul className="flex px-10 flex-col gap-2">
       {activeBoosts.map((boost) => (
         <li className="flex justify-between">
           <div className="flex justify-center w-8 h-8 overflow-hidden rounded-3xl">
