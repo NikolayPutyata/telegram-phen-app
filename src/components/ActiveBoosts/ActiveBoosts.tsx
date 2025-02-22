@@ -23,7 +23,7 @@ const ActiveBoosts: React.FC<ActiveBoostsProps> = ({ activeBoosts }) => {
             <img src={boost.boost_photo_url} alt={boost.name} />
           </div>
 
-          <h3 className={`${s.font} text-zinc-300 break-words`}>
+          <h3 className={`${s.font} text-zinc-400 break-words`}>
             {boost.name}
           </h3>
 

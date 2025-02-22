@@ -5,7 +5,11 @@ import { addBoostsToActive } from '../../redux/userSlice/userSlice';
 import { useState } from 'react';
 import s from '/src/App.module.css';
 
-const ModalAddBoosts = () => {
+interface LanguageModalProps {
+  onClose: () => void;
+}
+
+const ModalAddBoosts: React.FC<LanguageModalProps> = ({ onClose }) => {
   const dispatch = useDispatch();
   // const { t } = useTranslation();
   const addBoosts = useSelector(selectUserBoosts);
@@ -27,21 +31,22 @@ const ModalAddBoosts = () => {
     );
     dispatch(addBoostsToActive(selectedBoostObjects)); // Додаю вибрані ьусти в редакс
     setSelectedBoosts([]); // Очищую вибір після додавання
+    onClose();
   };
 
   return (
     <div className="flex justify-center mb-2 flex-col">
-      <h2 className={`${s.font} text-zinc-300 ml-8 mb-2`}>Boosts ⭐</h2>
-
-      <ul className="flex flex-col p-2 gap-2">
+      <ul className="flex flex-col p-2 gap-3">
         {addBoosts.map((boost) => (
           <li
             key={boost.id}
-            className={`rounded-xl p-2 flex gap-12 items-center cursor-pointer transition-all
-       ${selectedBoosts.includes(boost.id) ? 'bg-gray-800' : 'transparent'}`}
+            className={`rounded-xl p-2 flex gap-8 items-center transition-all
+            ${
+              selectedBoosts.includes(boost.id) ? 'bg-gray-800' : 'transparent'
+            }`}
             onClick={() => toggleSelection(boost.id)}
           >
-            <div className="flex flex-col justify-center w-22 h-22 overflow-hidden rounded-3xl">
+            <div className="flex flex-col justify-center w-15 h-15 overflow-hidden rounded-3xl">
               <img
                 src={boost.boost_photo_url}
                 alt={boost.name}
@@ -68,7 +73,9 @@ const ModalAddBoosts = () => {
         onClick={handleAddBoosts}
         disabled={selectedBoosts.length === 0}
       >
-        Add Boosts
+        <p className={`${s.font} text-zinc-300 tracking-wider text-sm`}>
+          Add Boosts
+        </p>
       </button>
     </div>
   );
