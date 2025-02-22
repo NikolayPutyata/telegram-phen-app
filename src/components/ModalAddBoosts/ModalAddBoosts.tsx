@@ -64,7 +64,7 @@ const ModalAddBoosts = () => {
         ))}
       </ul>
       <button
-        className="btn btn-primary w-28 rounded-4xl"
+        className="btn btn-primary rounded-4xl"
         onClick={handleAddBoosts}
         disabled={selectedBoosts.length === 0}
       >
