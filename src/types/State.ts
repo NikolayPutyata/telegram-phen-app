@@ -6,6 +6,13 @@ export interface Task {
   completed: boolean;
 }
 
+export interface Boost {
+  id: number;
+  name: string;
+  boost_bonus: string;
+  boost_photo_url: string;
+}
+
 interface compTask {
   id: number;
   task: string;
@@ -25,8 +32,8 @@ export type UserState = {
   friends: Friend[];
   tokens: number;
   skins: object[];
-  activeBoosts: [];
-  boosts: object[];
+  activeBoosts: Boost[];
+  boosts: Boost[];
   activeSkins: object[];
   currentBoost: number;
   completedTasks: compTask[];

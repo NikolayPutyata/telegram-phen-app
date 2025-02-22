@@ -22,7 +22,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, changeModal }) => {
         return <SettingsModal />;
       case 'language':
         return <LanguageModal onClose={onClose} />;
-      case ' addBoosts':
+      case 'addBoosts':
         return <ModalAddBoosts />;
       default:
         return (

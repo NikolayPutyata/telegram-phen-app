@@ -14,12 +14,16 @@ const initialState: UserState = {
   activeBoosts: [],
   boosts: [
     {
-      imgSrc: '/assets/engine.webp',
-      title: 'V3 Engine',
-      desc: '2x Farming Boost',
-      price: '0.02',
-      collectionId: 1,
-      idItem: 10,
+      id: 1,
+      name: 'V3 Engine',
+      boost_bonus: '0.02',
+      boost_photo_url: '/assets/engine.webp',
+    },
+    {
+      id: 2,
+      name: 'Nitro',
+      boost_bonus: '0.05',
+      boost_photo_url: '/public/assets/commandor.webp',
     },
   ],
   activeSkins: [],
@@ -80,7 +84,11 @@ const initialState: UserState = {
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    addBoostsToActive: (state, action) => {
+      state.activeBoosts = [...state.activeBoosts, ...action.payload];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(initUserFromServer.fulfilled, (state, action) => {
@@ -111,4 +119,5 @@ const userSlice = createSlice({
   },
 });
 
+export const { addBoostsToActive } = userSlice.actions;
 export default userSlice.reducer;
