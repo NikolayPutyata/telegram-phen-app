@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import s from '/src/App.module.css';
 import {
   selectUserTokens,
-  // selectUserActiveBoosts,
+  selectUserActiveBoosts,
 } from '../../redux/selectors';
 import FarmButton from '../FarmButton/FarmButton';
 import ActiveBoosts from '../ActiveBoosts/ActiveBoosts';
@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 
 const FarmBlock = () => {
   const tokens = useSelector(selectUserTokens);
-  // const activeBoosts = useSelector(selectUserActiveBoosts);
+  const activeBoosts = useSelector(selectUserActiveBoosts);
 
   const { t } = useTranslation();
 
@@ -27,8 +27,10 @@ const FarmBlock = () => {
           </div>
         </div>
         <FarmButton />
-        {/* {activeBoosts !== null ? <ActiveBoosts /> : null} */}
-        <ActiveBoosts />
+        {activeBoosts !== null ? (
+          <ActiveBoosts activeBoosts={activeBoosts} />
+        ) : null}
+        {/* <ActiveBoosts activeBoosts={activeBoosts} /> */}
         <AddBoosts />
       </div>
     </div>

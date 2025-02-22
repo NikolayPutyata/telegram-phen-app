@@ -1,31 +1,37 @@
 // import { useTranslation } from 'react-i18next';
 import s from '/src/App.module.css';
 
-// interface = activeBoostsProps {
-//   imgSrc: string,
-//   title: string,
-//   price: string,
-//   idItem: number,
-// }
+interface Boost {
+  boost_photo_url: string;
+  name: string;
+  boost_bonus: string;
+  id: number;
+}
 
-// : React.FC<activeBoostsProps> = ({ activeBoosts })
+interface ActiveBoostsProps {
+  activeBoosts: Boost[]; // Оновлений тип
+}
 
-const ActiveBoosts = () => {
+const ActiveBoosts: React.FC<ActiveBoostsProps> = ({ activeBoosts }) => {
   //   const { t } = useTranslation();
 
   return (
     <ul className="flex px-4 flex-col gap-2">
-      {/* {activeBoosts.map((skin) => ( */}
-      <li className="flex justify-between">
-        <div className="flex justify-center w-7 h-7 overflow-hidden rounded-3xl">
-          <img src="/assets/shuttle-2.webp" alt="standart avatar" />
-        </div>
+      {activeBoosts.map((boost) => (
+        <li className="flex justify-between">
+          <div className="flex justify-center w-8 h-8 overflow-hidden rounded-3xl">
+            <img src={boost.boost_photo_url} alt={boost.name} />
+          </div>
 
-        <h3 className={`${s.font} text-zinc-300 break-words`}>Misterium</h3>
+          <h3 className={`${s.font} text-zinc-300 break-words`}>
+            {boost.name}
+          </h3>
 
-        <p className={`${s.font} text-zinc-400 text-sm`}>0.003</p>
-      </li>
-      {/* ))} */}
+          <p className={`${s.font} text-zinc-400 text-sm`}>
+            {boost.boost_bonus}
+          </p>
+        </li>
+      ))}
     </ul>
   );
 };
