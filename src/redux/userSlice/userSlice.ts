@@ -25,6 +25,18 @@ const initialState: UserState = {
       boost_bonus: '0.05',
       boost_photo_url: '/public/assets/commandor.webp',
     },
+    {
+      id: 3,
+      name: 'V3 Engine',
+      boost_bonus: '0.02',
+      boost_photo_url: '/assets/engine.webp',
+    },
+    {
+      id: 4,
+      name: 'Nitro',
+      boost_bonus: '0.05',
+      boost_photo_url: '/public/assets/commandor.webp',
+    },
   ],
   activeSkins: [],
   currentBoost: 0,

@@ -10,13 +10,14 @@ const ModalAddBoosts = () => {
   // const { t } = useTranslation();
   const addBoosts = useSelector(selectUserBoosts);
 
-  const [selectedBoosts, setSelectedBoosts] = useState<number[]>([]);
+  const [selectedBoosts, setSelectedBoosts] = useState<number[]>([]); // зберігаю обєкти поки не відправив
 
   const toggleSelection = (id: number) => {
-    setSelectedBoosts((prev) =>
-      prev.includes(id)
-        ? prev.filter((boostId) => boostId !== id)
-        : [...prev, id],
+    setSelectedBoosts(
+      (prev) =>
+        prev.includes(id)
+          ? prev.filter((boostId) => boostId !== id) // Видаляю ід, якщо вже є в масиві
+          : [...prev, id], // Додаю ід, якщо його ще немає
     );
   };
 
@@ -24,21 +25,19 @@ const ModalAddBoosts = () => {
     const selectedBoostObjects = addBoosts.filter((boost) =>
       selectedBoosts.includes(boost.id),
     );
-    dispatch(addBoostsToActive(selectedBoostObjects));
-    setSelectedBoosts([]); // Очищуємо вибір після додавання
+    dispatch(addBoostsToActive(selectedBoostObjects)); // Додаю вибрані ьусти в редакс
+    setSelectedBoosts([]); // Очищую вибір після додавання
   };
 
-  console.log('Boosts from store:', addBoosts);
-
   return (
-    <div className="flex justify-center flex-col">
-      <h2 className={`${s.font} text-zinc-300 ml-8 mb-3`}>Boosts ⭐</h2>
+    <div className="flex justify-center mb-2 flex-col">
+      <h2 className={`${s.font} text-zinc-300 ml-8 mb-2`}>Boosts ⭐</h2>
 
       <ul className="flex flex-col p-2 gap-2">
         {addBoosts.map((boost) => (
           <li
             key={boost.id}
-            className={`rounded-xl p-2 flex gap-14 items-center cursor-pointer transition-all
+            className={`rounded-xl p-2 flex gap-12 items-center cursor-pointer transition-all
        ${selectedBoosts.includes(boost.id) ? 'bg-gray-800' : 'transparent'}`}
             onClick={() => toggleSelection(boost.id)}
           >
@@ -63,6 +62,7 @@ const ModalAddBoosts = () => {
           </li>
         ))}
       </ul>
+
       <button
         className="btn btn-primary rounded-4xl"
         onClick={handleAddBoosts}
