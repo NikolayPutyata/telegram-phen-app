@@ -14,14 +14,13 @@ const ModalAddBoosts: React.FC<LanguageModalProps> = ({ onClose }) => {
   // const { t } = useTranslation();
   const addBoosts = useSelector(selectUserBoosts);
 
-  const [selectedBoosts, setSelectedBoosts] = useState<number[]>([]); // зберігаю обєкти поки не відправив
+  const [selectedBoosts, setSelectedBoosts] = useState<number[]>([]);
 
   const toggleSelection = (id: number) => {
-    setSelectedBoosts(
-      (prev) =>
-        prev.includes(id)
-          ? prev.filter((boostId) => boostId !== id) // Видаляю ід, якщо вже є в масиві
-          : [...prev, id], // Додаю ід, якщо його ще немає
+    setSelectedBoosts((prev) =>
+      prev.includes(id)
+        ? prev.filter((boostId) => boostId !== id)
+        : [...prev, id],
     );
   };
 
@@ -29,8 +28,8 @@ const ModalAddBoosts: React.FC<LanguageModalProps> = ({ onClose }) => {
     const selectedBoostObjects = addBoosts.filter((boost) =>
       selectedBoosts.includes(boost.id),
     );
-    dispatch(addBoostsToActive(selectedBoostObjects)); // Додаю вибрані ьусти в редакс
-    setSelectedBoosts([]); // Очищую вибір після додавання
+    dispatch(addBoostsToActive(selectedBoostObjects));
+    setSelectedBoosts([]);
     onClose();
   };
 
