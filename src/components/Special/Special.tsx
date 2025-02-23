@@ -16,14 +16,14 @@ const items: Item[] = [
   {
     id: 'case_1',
     title: 'Case 1',
-    price: 100,
+    price: 1,
     description: 'Special Case 1 for your collection',
     imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740330414/case_1_yfog8y.jpg',
   },
   {
     id: 'case_2',
     title: 'Case 2',
-    price: 150,
+    price: 2,
     description: 'Special Case 2 for your collection',
     imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740330414/IMG_2857_cn3jek.jpg',
   },
