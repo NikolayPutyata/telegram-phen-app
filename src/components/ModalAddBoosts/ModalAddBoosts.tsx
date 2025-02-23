@@ -35,6 +35,7 @@ const ModalAddBoosts: React.FC<LanguageModalProps> = ({ onClose }) => {
 
   return (
     <div className="flex justify-center mb-2 flex-col">
+      {addBoosts.length > 0 ? <>
       <ul className="flex flex-col p-2 gap-2">
         {addBoosts?.map((boost) => (
           <li
@@ -75,7 +76,7 @@ const ModalAddBoosts: React.FC<LanguageModalProps> = ({ onClose }) => {
         <p className={`${s.font} text-zinc-300 tracking-wider text-sm`}>
           Add Boosts
         </p>
-      </button>
+      </button></> : <p className={`${s.font} text-zinc-300  break-words tracking-wider text-center p-6 text-sm`}>You dont have any boosts 😔</p>}
     </div>
   );
 };

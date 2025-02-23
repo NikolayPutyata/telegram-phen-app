@@ -12,33 +12,7 @@ const initialState: UserState = {
   friends: [],
   skins: [],
   activeBoosts: [],
-  boosts: [
-    {
-      id: 1,
-      name: 'V3 Engine',
-      boost_bonus: '0.02',
-      boost_photo_url: '/assets/engine.webp',
-    },
-    {
-      id: 2,
-      name: 'Nitro',
-      boost_bonus: '0.05',
-      boost_photo_url: '/assets/commandor.webp',
-    },
-    {
-      id: 3,
-      name: 'V3 Engine',
-      boost_bonus: '0.02',
-      boost_photo_url: '/assets/shuttle-2.webp',
-    },
-    {
-      id: 4,
-      name: 'Nitro',
-      boost_bonus: '0.05',
-      boost_photo_url:
-        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261763/family_kwki0h.webp',
-    },
-  ],
+  boosts: [],
   activeSkins: [],
   currentBoost: 0,
   completedTasks: [],
