@@ -10,6 +10,7 @@ interface TaskItemProps {
   bonus: number;
   completed: boolean;
   taskId: number;
+  isLoading: boolean;
 }
 
 const TaskFriends: React.FC<TaskItemProps> = ({
@@ -18,6 +19,7 @@ const TaskFriends: React.FC<TaskItemProps> = ({
   bonus,
   completed,
   taskId,
+  isLoading,
 }) => {
   const userId = useSelector(selectUserId);
   const dispatch = useDispatch<AppDispatch>();
@@ -25,7 +27,7 @@ const TaskFriends: React.FC<TaskItemProps> = ({
   return (
     <li className="flex text-center justify-between px-4 items-center">
       <div className="flex items-center gap-1">
-          <img src={src} className="mr-1 w-7 h-7" />
+        <img src={src} className="mr-1 w-7 h-7" />
         <div className="flex flex-col justify-start">
           <p className={` ${s.font} flex justify-start text-sm`}>{title}</p>
           <span className="flex items-center gap-1.5">
@@ -36,15 +38,18 @@ const TaskFriends: React.FC<TaskItemProps> = ({
           </span>
         </div>
       </div>
-      {completed === false ? (
+
+      {completed ? (
+        <img src="assets/complete.svg" className="mr-4 w-8 h-8" />
+      ) : isLoading ? (
+        <img src="assets/loading.svg" className="mr-6 w-6 h-6 animate-spin" />
+      ) : (
         <button
           onClick={() => handleCheckClick(taskId, userId, dispatch)}
-          className="btn btn-outline  border-[#605dff] rounded-3xl px-5"
+          className="btn btn-outline border-[#605dff] rounded-3xl px-5"
         >
           Done
         </button>
-      ) : (
-        <img src="assets/complete.svg" className="mr-4 w-8 h-8" />
       )}
     </li>
   );

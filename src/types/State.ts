@@ -1,17 +1,21 @@
-
-
 export interface Task {
-  id: number,
-  name: string,
-  svg_url: string,
-  task_bonus: number,
-  completed: boolean
+  id: number;
+  name: string;
+  svg_url: string;
+  task_bonus: number;
+  completed: boolean;
+}
 
+export interface Boost {
+  id: number;
+  name: string;
+  boost_bonus: string;
+  boost_photo_url: string;
 }
 
 interface compTask {
-  id: number,
-  task: string
+  id: number;
+  task: string;
 }
 
 export interface Friend {
@@ -28,11 +32,13 @@ export type UserState = {
   friends: Friend[];
   tokens: number;
   skins: object[];
-  boosts: object[];
+  activeBoosts: Boost[];
+  boosts: Boost[];
   activeSkins: object[];
   currentBoost: number;
-  completedTasks: compTask[],
- usersTasks: {
+  completedTasks: compTask[];
+  loading: boolean;
+  usersTasks: {
     gaming: Task[];
     partners: Task[];
     special: Task[];

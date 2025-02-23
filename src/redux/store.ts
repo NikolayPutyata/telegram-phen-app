@@ -1,12 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './userSlice/userSlice.ts';
 import walletReducer from './walletSlice/walletSlice.ts';
 
 const store = configureStore({
-    reducer: {
-        user: userReducer,
-        wallet: walletReducer,
-    },
+  reducer: {
+    user: userReducer,
+    wallet: walletReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

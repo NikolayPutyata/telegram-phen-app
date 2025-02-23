@@ -11,10 +11,38 @@ const initialState: UserState = {
   tokens: 0,
   friends: [],
   skins: [],
-  boosts: [],
+  activeBoosts: [],
+  boosts: [
+    {
+      id: 1,
+      name: 'V3 Engine',
+      boost_bonus: '0.02',
+      boost_photo_url: '/assets/engine.webp',
+    },
+    {
+      id: 2,
+      name: 'Nitro',
+      boost_bonus: '0.05',
+      boost_photo_url: '/public/assets/commandor.webp',
+    },
+    {
+      id: 3,
+      name: 'V3 Engine',
+      boost_bonus: '0.02',
+      boost_photo_url: '/assets/shuttle-2.webp',
+    },
+    {
+      id: 4,
+      name: 'Nitro',
+      boost_bonus: '0.05',
+      boost_photo_url:
+        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261763/family_kwki0h.webp',
+    },
+  ],
   activeSkins: [],
   currentBoost: 0,
   completedTasks: [],
+  loading: false,
   usersTasks: {
     gaming: [],
     partners: [],
@@ -25,7 +53,11 @@ const initialState: UserState = {
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    addBoostsToActive: (state, action) => {
+      state.activeBoosts = [...state.activeBoosts, ...action.payload];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(initUserFromServer.fulfilled, (state, action) => {
@@ -40,17 +72,22 @@ const userSlice = createSlice({
         state.skins = usersData.skins;
         state.boosts = usersData.boosts;
         state.activeSkins = usersData.activeSkins;
+        state.activeBoosts = usersData.activeBoosts;
         state.currentBoost = usersData.currentBoost;
         state.usersTasks = usersData.usersTasks;
       })
       .addCase(claimTokens.fulfilled, (state, action) => {
         state.tokens = action.payload.tokens;
       })
-      .addCase(taskCompleted.fulfilled, (state, action) => {
-        state.usersTasks = action.payload.userTasks;
+      .addCase(taskCompleted.pending, (state) => {
+        state.loading = true;
       })
-      ;
+      .addCase(taskCompleted.fulfilled, (state, action) => {
+        state.loading = false;
+        state.usersTasks = action.payload.userTasks;
+      });
   },
 });
 
+export const { addBoostsToActive } = userSlice.actions;
 export default userSlice.reducer;
