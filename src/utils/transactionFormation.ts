@@ -1,28 +1,16 @@
-import { beginCell } from '@ton/ton';
-import { toNano } from '@ton/ton';
+export const transactionFormation = async (userId: number, collectionId: number, idItem: number, price: number) => {
+    const response = await fetch('http://localhost:3000/payment/form-transaction', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId, idCollection: collectionId, idItem, amount: price }),
+    });
 
+    if (!response.ok) {
+      throw new Error('Failed to fetch transaction');
+    }
 
-
-export const transactionFormation = async (userId: number, idCollection: number, idItem: number, amount: number) => {
-    
-    
-const body = beginCell()
-  .storeUint(0, 32) 
-  .storeStringTail(`ORDER_${userId}_${idCollection}_${idItem}`) 
-        .endCell();
-    
-
-    const transaction = {
-        validUntil: Math.floor(Date.now() / 1000) + 300,
-        messages: [
-            {
-                address: "UQA8vghmZqzHzwfKtATNrFr7PwMZm_5-eF6dovod1b1vrsaz", 
-                amount: toNano(amount).toString(),
-                payload: body.toBoc().toString("base64"), 
-            },
-        ],
-    };
-
+    const transaction = await response.json();
     return transaction;
-
 };

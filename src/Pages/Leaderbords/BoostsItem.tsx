@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
-import { transactionFormation } from '../../utils/transactionFormation';
 import s from '/src/App.module.css';
 import { selectUserId } from '../../redux/selectors';
 import { useTonConnectUI } from '@tonconnect/ui-react';
+import { transactionFormation } from '../../utils/transactionFormation';
 
 type BoostsItemProps = {
   imgSrc: string;
