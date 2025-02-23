@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import { selectUserId } from '../../redux/selectors';
 import s from '/src/App.module.css';
 
 interface SpecialItemProps {
@@ -10,6 +12,8 @@ interface SpecialItemProps {
 
 function SpecialItem({ title, imageUrl, price, id, description }: SpecialItemProps) {
 
+  const userId = useSelector(selectUserId);
+
   const handleBuyClick = () => {
     const tg = window.Telegram.WebApp;
 
@@ -20,6 +24,7 @@ function SpecialItem({ title, imageUrl, price, id, description }: SpecialItemPro
       prices: [{ label: 'Price', amount: price }],
       provider_token: '',
       payload: id,
+      chat_id: userId,
     }));
   };
 
