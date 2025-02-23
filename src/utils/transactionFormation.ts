@@ -12,5 +12,5 @@ export const transactionFormation = async (userId: number, collectionId: number,
     }
 
     const transaction = await response.json();
-    return transaction;
+    return transaction.data;
 };
