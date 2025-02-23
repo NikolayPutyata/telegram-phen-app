@@ -1,21 +1,43 @@
 import s from '/src/App.module.css';
 
-function SpecialItem() {
+interface SpecialItemProps {
+  id: string;
+  title: string;
+  imageUrl: string;
+  price: number;
+  description: string;
+}
+
+function SpecialItem({ title, imageUrl, price, id, description }: SpecialItemProps) {
+
+  const handleBuyClick = () => {
+    const tg = window.Telegram.WebApp;
+
+    tg.sendData(JSON.stringify({
+      action: 'pay',
+      title: title,
+      description: description,
+      prices: [{ label: 'Price', amount: price }],
+      provider_token: '',
+      payload: id,
+    }));
+  };
+
   return (
     <li className="flex px-3  justify-start gap-8">
       <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
-        <img src="/assets/shuttle-2.webp" alt="standart avatar" />
+        <img src={imageUrl} alt="standart avatar" />
       </div>
 
       <div className="flex flex-col">
         <h3 className={`${s.font} text-zinc-300 mb-3  break-words`}>
-          Misterium
+         {title}
         </h3>
         <div className="flex items-center gap-1 mb-4">
-          <p className={`${s.font} text-zinc-400 text-sm`}>100</p>
+          <p className={`${s.font} text-zinc-400 text-sm`}>{price}</p>
           <img src="/assets/telegram_star.svg" alt="telegram-star" />
         </div>
-        <button className="btn btn-primary w-24 h-9 rounded-4xl">Buy</button>
+        <button className="btn btn-primary w-24 h-9 rounded-4xl" onClick={handleBuyClick}>Buy</button>
       </div>
     </li>
   );

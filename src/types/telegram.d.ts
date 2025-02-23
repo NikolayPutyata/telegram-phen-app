@@ -16,6 +16,18 @@ declare global {
         openTelegramLink: (url: string) => void;
         initDataUnsafe: TelegramWebAppData; 
         initData: string;
+        MainButton: {
+    setText: (text: string) => void;
+    show: () => void;
+    hide: () => void;
+    onClick: (callback: () => void) => void;
+    offClick: (callback: () => void) => void;
+    setParams: (params: {
+      color?: string;
+      text_color?: string;
+    }) => void;
+        };
+        sendData: (data: string) => void;
       };
     };
   }

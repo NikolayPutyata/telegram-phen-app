@@ -34,7 +34,7 @@ const Leaderbords = () => {
               location.pathname === "/boosts/special" ? "tab-active" : ""
             }`}
           >
-            Special
+            Warehouse
           </NavLink>
         </div>
       </div>
