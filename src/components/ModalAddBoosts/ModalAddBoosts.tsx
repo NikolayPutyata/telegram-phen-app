@@ -35,7 +35,7 @@ const ModalAddBoosts: React.FC<LanguageModalProps> = ({ onClose }) => {
 
   return (
     <div className="flex justify-center mb-2 flex-col">
-      <ul className="flex flex-col p-2 gap-3">
+      <ul className="flex flex-col p-2 gap-2">
         {addBoosts?.map((boost) => (
           <li
             key={boost.id}

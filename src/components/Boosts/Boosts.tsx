@@ -23,7 +23,7 @@ const Boosts = () => {
   ];
 
   return (
-    <div className="flex pl-8 mb-5 flex-col gap-16">
+    <div className="flex pl-6 my-5 flex-col gap-5">
       <ul className="flex flex-col gap-6">
         {boosts.map((product, index) => (
           <BoostsItem key={index} {...product} />
