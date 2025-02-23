@@ -1,5 +1,5 @@
 export const transactionFormation = async (userId: number, collectionId: number, idItem: number, price: number) => {
-    const response = await fetch('http://localhost:3000/payment/form-transaction', {
+    const response = await fetch('https://telegram-phen-app-server-scjhs.ondigitalocean.app/payment/form-transaction', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
