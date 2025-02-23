@@ -23,7 +23,7 @@ const initialState: UserState = {
       id: 2,
       name: 'Nitro',
       boost_bonus: '0.05',
-      boost_photo_url: '/public/assets/commandor.webp',
+      boost_photo_url: '/assets/commandor.webp',
     },
     {
       id: 3,
