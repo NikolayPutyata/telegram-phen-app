@@ -9,7 +9,8 @@ const Special = () => {
   title: string;
   price: number;
   description: string;
-  imageUrl: string;
+    imageUrl: string;
+    collectionId: number;
 }
 
 const items: Item[] = [
@@ -19,6 +20,7 @@ const items: Item[] = [
     price: 1,
     description: 'Special Case 1 for your collection',
     imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389387/case_2_p187b3.webp',
+    collectionId: 4
   },
   {
     id: 2,
@@ -26,6 +28,7 @@ const items: Item[] = [
     price: 2,
     description: 'Special Case 2 for your collection',
     imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389387/case_1_ziutac.webp',
+    collectionId: 4
   },
   
 ];
@@ -41,7 +44,7 @@ const items: Item[] = [
         </div>
       <ul className="flex flex-col gap-4 my-6">
         {items.map((special) => (
-          <SpecialItem key={special.id} id={special.id} description={special.description} title={special.title} imageUrl={special.imageUrl} price={special.price} />
+          <SpecialItem key={special.id} id={special.id} description={special.description} title={special.title} imageUrl={special.imageUrl} price={special.price} collectionId={special.collectionId} />
 
         ))}
       </ul>
