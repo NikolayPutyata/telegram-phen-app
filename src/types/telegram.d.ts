@@ -28,6 +28,8 @@ declare global {
     }) => void;
         };
         sendData: (data: string) => void;
+        openInvoice: (data: string, callback: (status: string) => void) => void;
+        version: number;
       };
     };
   }

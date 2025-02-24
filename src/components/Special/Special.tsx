@@ -5,7 +5,7 @@ const Special = () => {
   // const specials = useSelector(selectSpecialId);
 
   interface Item {
-  id: string;
+  id: number;
   title: string;
   price: number;
   description: string;
@@ -14,14 +14,14 @@ const Special = () => {
 
 const items: Item[] = [
   {
-    id: 'case_1',
+    id: 1,
     title: 'Case 1',
     price: 1,
     description: 'Special Case 1 for your collection',
     imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740330414/case_1_yfog8y.jpg',
   },
   {
-    id: 'case_2',
+    id: 2,
     title: 'Case 2',
     price: 2,
     description: 'Special Case 2 for your collection',
