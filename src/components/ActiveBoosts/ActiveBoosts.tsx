@@ -28,7 +28,7 @@ const ActiveBoosts: React.FC<ActiveBoostsProps> = ({ activeBoosts }) => {
           </h3>
 
           <p className={`${s.font} text-zinc-400 text-sm`}>
-            {boost.boost_bonus}
+            X {boost.boost_bonus}
           </p>
         </li>
       ))}
