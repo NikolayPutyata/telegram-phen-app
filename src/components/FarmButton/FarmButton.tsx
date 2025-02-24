@@ -7,13 +7,15 @@ import { selectUserId } from '../../redux/selectors';
 import { claimTokens, startFarming } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 import { useTranslation } from 'react-i18next';
+import { selectUserActiveBoosts } from '../../redux/selectors';
 
 const FARM_DURATION = 28800000;
 const START_VALUE = 0.001;
 const END_VALUE = 86.4;
 
-const FarmBlock = () => {
+const FarmButton = () => {
   const location = useLocation();
+  const activeBoosts = useSelector(selectUserActiveBoosts);
   const { t } = useTranslation();
   const [currentValue, setCurrentValue] = useState(START_VALUE);
   const [isFarmDisabled, setIsFarmDisabled] = useState<boolean>(false);
@@ -92,7 +94,9 @@ const FarmBlock = () => {
   }, [location.pathname, checkFarmStatus]);
 
   const handleClick = async () => {
-    await dispatch(startFarming({ id: userId, boostsIdsArray: [] }));
+    const boostsIdsArray = activeBoosts.map((boost) => boost.id);
+
+    await dispatch(startFarming({ id: userId, boostsIdsArray }));
 
     const startTime = Date.now();
     localStorage.setItem('farmStartTime', startTime.toString());
@@ -152,4 +156,4 @@ const FarmBlock = () => {
   );
 };
 
-export default FarmBlock;
+export default FarmButton;
