@@ -46,7 +46,6 @@ const userSlice = createSlice({
         state.skins = usersData.skins;
         state.boosts = usersData.boosts;
         state.activeSkins = usersData.activeSkins;
-        state.activeBoosts = usersData.activeBoosts;
         state.currentBoost = usersData.currentBoost;
         state.usersTasks = usersData.usersTasks;
       })
