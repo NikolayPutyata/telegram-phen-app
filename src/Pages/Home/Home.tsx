@@ -40,7 +40,7 @@ const Home = () => {
           Welcome Commandor!
         </h2>
       </div>
-      <div className="px-6 mb-3">
+      <div className="px-3 mb-3">
         <div className="relative w-full h-44 overflow-hidden rounded-4xl ">
           <img
             src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261354/cosmo_4_gphulr.webp"

@@ -1,12 +1,8 @@
 import s from '/src/App.module.css';
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const PresaleBlock = () => {
   const { t } = useTranslation();
-  const [placeholder] = useState('PHEN');
-
-  
 
   return (
     <div className="my-5">
@@ -18,15 +14,15 @@ const PresaleBlock = () => {
           <div className="flex justify-between ">
             <p className={`${s.font} text-zinc-400 `}>{t('Presale price')}</p>
             <p className={`${s.font} text-zinc-400  tracking-wider`}>$0.0015</p>
-          </div>
-
-          
-
-            <input
+            </div>
+            <div className='flex items-center justify-center'>
+              <input
               type="number"
-              placeholder={placeholder}
+              placeholder={'PHEN'}
               className={`${s.font} input tracking-wider focus:outline-none focus:border-2 input-primary border-1 px-6 text-zinc-300 rounded-4xl py-4`}
             />
+            </div>
+
           </div>
         </div>
         <button className="btn btn-primary w-56 rounded-4xl self-center">
