@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { claimTokens, initUserFromServer, taskCompleted } from '../operations';
+import { claimTokens, initUserFromServer, startFarming, taskCompleted } from '../operations';
 import { UserState } from '../../types/State';
 
 const initialState: UserState = {
@@ -46,6 +46,7 @@ const userSlice = createSlice({
         state.skins = usersData.skins;
         state.boosts = usersData.boosts;
         state.activeSkins = usersData.activeSkins;
+        state.activeBoosts = usersData.activeBoosts;
         state.currentBoost = usersData.currentBoost;
         state.usersTasks = usersData.usersTasks;
       })
@@ -58,6 +59,10 @@ const userSlice = createSlice({
       .addCase(taskCompleted.fulfilled, (state, action) => {
         state.loading = false;
         state.usersTasks = action.payload.userTasks;
+      })
+      .addCase(startFarming.fulfilled, (state, action) => {
+        state.boosts = action.payload.boosts;
+        state.activeBoosts = action.payload.activeBoosts;
       });
   },
 });

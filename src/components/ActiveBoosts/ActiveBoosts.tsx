@@ -4,7 +4,7 @@ import s from '/src/App.module.css';
 interface Boost {
   boost_photo_url: string;
   name: string;
-  boost_bonus: string;
+  boost_bonus: number;
   idItem: number;
 }
 

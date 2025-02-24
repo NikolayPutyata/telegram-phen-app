@@ -9,7 +9,7 @@ export interface Task {
 export interface Boost {
   idItem: number;
   name: string;
-  boost_bonus: string;
+  boost_bonus: number;
   boost_photo_url: string;
   collectionId: number;
   desc: string;
