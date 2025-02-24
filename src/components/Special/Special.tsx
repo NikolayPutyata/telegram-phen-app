@@ -18,14 +18,14 @@ const items: Item[] = [
     title: 'Case 1',
     price: 1,
     description: 'Special Case 1 for your collection',
-    imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740330414/case_1_yfog8y.jpg',
+    imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389387/case_2_p187b3.webp',
   },
   {
     id: 2,
     title: 'Case 2',
     price: 2,
     description: 'Special Case 2 for your collection',
-    imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740330414/IMG_2857_cn3jek.jpg',
+    imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389387/case_1_ziutac.webp',
   },
   
 ];
@@ -34,7 +34,7 @@ const items: Item[] = [
     <div className="px-3 mb-24 mt-2 tracking-wider">
       <div className="relative w-full h-44 overflow-hidden rounded-4xl ">
           <img
-            src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1740330414/sklad_p5ztq0.jpg"
+            src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389388/sklad_hustzi.webp"
             alt=""
             className="object-cover w-full h-full"
           />
