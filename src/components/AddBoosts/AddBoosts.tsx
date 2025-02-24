@@ -3,17 +3,26 @@ import { useState } from 'react';
 import Modal from '../Modal/Modal.tsx';
 import s from '/src/App.module.css';
 
-const AddBoosts = () => {
+interface AddBoostsProps {
+  isAddBoostsDisabled: boolean;
+}
+
+const AddBoosts = ({ isAddBoostsDisabled }: AddBoostsProps) => {
   // const { t } = useTranslation();
   const [isModalOpenAddBoosts, setIsModalAddOpenBoosts] = useState(false);
 
   return (
     <>
       <button
-        className="w-full text-lg mt-2 text-[#605dff] "
+        className="w-full text-lg mt-2 text-[#605dff]"
         onClick={() => setIsModalAddOpenBoosts(true)}
+        disabled={isAddBoostsDisabled}
       >
-        <p className={`${s.font} text-zinc-300 tracking-wider text-sm`}>
+        <p
+          className={`${s.font} tracking-wider text-sm ${
+            isAddBoostsDisabled ? 'text-zinc-500' : 'text-zinc-300'
+          }`}
+        >
           + Add boosts
         </p>
       </button>

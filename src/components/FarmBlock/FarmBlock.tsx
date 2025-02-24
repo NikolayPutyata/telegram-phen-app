@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import s from '/src/App.module.css';
 import {
   selectUserTokens,
@@ -12,8 +13,13 @@ import { useTranslation } from 'react-i18next';
 const FarmBlock = () => {
   const tokens = useSelector(selectUserTokens);
   const activeBoosts = useSelector(selectUserActiveBoosts);
+  const [isAddBoostsDisabled, setIsAddBoostsDisabled] = useState(false);
 
   const { t } = useTranslation();
+
+  const handleFarmStatusChange = (isFarmDisabled: boolean) => {
+    setIsAddBoostsDisabled(isFarmDisabled);
+  };
 
   return (
     <div className="my-5">
@@ -26,9 +32,9 @@ const FarmBlock = () => {
             <span className={`${s.font} text-zinc-400 text-3xl`}>{tokens}</span>
           </div>
         </div>
-        <FarmButton />
+        <FarmButton onFarmStatusChange={handleFarmStatusChange} />
         <ActiveBoosts activeBoosts={activeBoosts} />
-        <AddBoosts />
+        <AddBoosts isAddBoostsDisabled={isAddBoostsDisabled} />
       </div>
     </div>
   );
