@@ -28,6 +28,8 @@ const BoostsItem: React.FC<BoostsItemProps> = ({
     const transaction = await transactionFormation(userId, collectionId, idItem, parseFloat(price));
 
     tonConnectUI.sendTransaction(transaction);
+    
+
   };
 
   return (
