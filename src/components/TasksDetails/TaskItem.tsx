@@ -46,7 +46,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
       ) : (
         <button
           // onClick={() => handleCheckSubscriptionClick(taskId, userId, dispatch)}
-          className="btn btn-outline btn-sm rounded-3xl px-6 "
+          className="btn btn-outline btn-sm rounded-3xl px-6 py-4"
         >
           Go
         </button>

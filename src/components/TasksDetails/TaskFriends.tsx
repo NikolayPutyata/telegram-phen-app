@@ -46,7 +46,7 @@ const TaskFriends: React.FC<TaskItemProps> = ({
       ) : (
         <button
           onClick={() => handleCheckClick(taskId, userId, dispatch)}
-          className="btn btn-outline btn-sm rounded-3xl px-5"
+          className="btn btn-outline btn-sm rounded-3xl px-5 py-4"
         >
           Done
         </button>
