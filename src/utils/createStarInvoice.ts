@@ -8,7 +8,7 @@ interface invoiceData {
 }
 
 export const createStarInvoice = async (invoiceData: invoiceData) => {
-    const response = await fetch('http://localhost:3000/payment/create-star-invoice', {
+    const response = await fetch('https://telegram-phen-app-server-scjhs.ondigitalocean.app/payment/create-star-invoice', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(invoiceData) 
