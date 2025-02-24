@@ -110,7 +110,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
   }, [location.pathname, checkFarmStatus]);
 
   const handleClick = async () => {
-    const boostsIdsArray = activeBoosts.map((boost) => boost.id);
+    const boostsIdsArray = activeBoosts.map((boost) => boost.idItem);
 
     await dispatch(startFarming({ id: userId, boostsIdsArray }));
 

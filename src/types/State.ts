@@ -7,10 +7,13 @@ export interface Task {
 }
 
 export interface Boost {
-  id: number;
+  idItem: number;
   name: string;
   boost_bonus: string;
   boost_photo_url: string;
+  collectionId: number;
+  desc: string;
+  price: string;
 }
 
 interface compTask {
