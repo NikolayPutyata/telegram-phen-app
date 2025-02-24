@@ -32,9 +32,9 @@ const TaskFriends: React.FC<TaskItemProps> = ({
           <p className={`${s.font} flex justify-start text-sm tracking-wider`}>{title}</p>
           <span className="flex items-center gap-1">
             <p className={`${s.font} text-zinc-400 tracking-wider text-xs mt-1`}>
-              +{bonus}
+              + {bonus}
             </p>
-            <img src="/assets/Group_62.svg" alt="coin" width={12} />
+            <img src="/assets/Group_62.svg" alt="coin" width={11} height={11}/>
           </span>
         </div>
       </div>
