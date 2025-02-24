@@ -7,7 +7,7 @@ const Boosts = () => {
       title: 'V3 Engine',
       desc: '2x Farming Boost',
       price: '0.02',
-      collectionId: 1,
+      collectionId: 2,
       idItem: 10,
     },
   ];

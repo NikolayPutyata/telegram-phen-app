@@ -1,4 +1,5 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
+import s from '/src/App.module.css';
 
 const Tasks = () => {
   const location = useLocation();
@@ -10,7 +11,7 @@ const Tasks = () => {
           <NavLink
             to="/tasks"
             role="tab"
-            className={`tab ${
+            className={`tab ${s.font} text-[0.7rem] tracking-wider ${
               location.pathname === "/tasks" ? "tab-active" : ""
             }`}
           >
@@ -19,7 +20,7 @@ const Tasks = () => {
           <NavLink
             to="/tasks/friends"
             role="tab"
-            className={`tab ${
+            className={`tab ${s.font} text-[0.7rem] tracking-wider ${
               location.pathname === "/tasks/friends" ? "tab-active" : ""
             }`}
           >

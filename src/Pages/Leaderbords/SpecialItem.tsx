@@ -1,32 +1,35 @@
+
 import { useSelector } from 'react-redux';
-import { selectUserId } from '../../redux/selectors';
+import { createStarInvoice } from '../../utils/createStarInvoice';
 import s from '/src/App.module.css';
+import { selectUserId } from '../../redux/selectors';
 
 interface SpecialItemProps {
-  id: string;
+  id: number;
   title: string;
   imageUrl: string;
   price: number;
   description: string;
+  collectionId: number;
 }
 
-function SpecialItem({ title, imageUrl, price, id, description }: SpecialItemProps) {
+function SpecialItem({ title, imageUrl, price, id, description, collectionId }: SpecialItemProps) {
 
   const userId = useSelector(selectUserId);
 
-  const handleBuyClick = () => {
-    const tg = window.Telegram.WebApp;
 
-    tg.sendData(JSON.stringify({
-      action: 'pay',
+  const handleBuyClick = async () => {
+
+    const invoiceLink = await createStarInvoice({
       title: title,
       description: description,
       prices: [{ label: 'Price', amount: price }],
+      currency: "XTR",
       provider_token: '',
-      payload: id,
-      chat_id: userId,
-    }));
-  };
+      payload: `ORDER_${userId}_${collectionId}_${id}`,
+    });
+
+    window.Telegram.WebApp.openInvoice(invoiceLink)};
 
   return (
     <li className="flex px-3  justify-start gap-8">

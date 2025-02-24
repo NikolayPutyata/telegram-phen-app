@@ -1,4 +1,5 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
+import s from '/src/App.module.css';
 
 
 const Leaderbords = () => {
@@ -12,7 +13,7 @@ const Leaderbords = () => {
           <NavLink
             to="/boosts"
             role="tab"
-            className={`tab ${
+            className={`tab ${s.font} text-[0.7rem] tracking-wider ${
               location.pathname === "/boosts" ? "tab-active" : ""
             }`}
           >
@@ -21,7 +22,7 @@ const Leaderbords = () => {
           <NavLink
             to="/boosts/skins"
             role="tab"
-            className={`tab ${
+            className={`tab ${s.font} text-[0.7rem] tracking-wider ${
               location.pathname === "/boosts/skins" ? "tab-active" : ""
             }`}
           >
@@ -30,7 +31,7 @@ const Leaderbords = () => {
           <NavLink
             to="/boosts/special"
             role="tab"
-            className={`tab ${
+            className={`tab ${s.font} text-[0.7rem] tracking-wider ${
               location.pathname === "/boosts/special" ? "tab-active" : ""
             }`}
           >
