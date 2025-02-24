@@ -26,7 +26,7 @@ const ModalAddBoosts: React.FC<LanguageModalProps> = ({ onClose }) => {
 
   const handleAddBoosts = () => {
     const selectedBoostObjects = addBoosts.filter((boost) =>
-      selectedBoosts.includes(boost.id),
+      selectedBoosts.includes(boost.idItem),
     );
     dispatch(addBoostsToActive(selectedBoostObjects));
     setSelectedBoosts([]);
@@ -39,12 +39,12 @@ const ModalAddBoosts: React.FC<LanguageModalProps> = ({ onClose }) => {
       <ul className="flex flex-col p-2 gap-2">
         {addBoosts?.map((boost) => (
           <li
-            key={boost.id}
+            key={boost.idItem}
             className={`rounded-xl p-2 flex gap-8 items-center transition-all
             ${
-              selectedBoosts.includes(boost.id) ? 'bg-gray-800' : 'transparent'
+              selectedBoosts.includes(boost.idItem) ? 'bg-gray-800' : 'transparent'
             }`}
-            onClick={() => toggleSelection(boost.id)}
+            onClick={() => toggleSelection(boost.idItem)}
           >
             <div className="flex flex-col justify-center w-15 h-15 overflow-hidden rounded-3xl">
               <img
