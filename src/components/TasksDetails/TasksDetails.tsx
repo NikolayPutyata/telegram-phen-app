@@ -23,7 +23,7 @@ const TasksDetails = () => {
       </div>
       <div>
         <h2 className="text-zinc-400 ml-8 my-2">Gaming Tasks</h2>
-        <div className="bg-neutral-900 rounded-3xl px-2 py-4 mx-3">
+        <div className="bg-neutral-900 rounded-3xl px-2 py-5 mx-3">
           <ul className="flex flex-col gap-5">
             {tasks?.gaming.map((task) => (
               <TaskItem
@@ -39,7 +39,7 @@ const TasksDetails = () => {
         </div>
 
         <h2 className="text-zinc-400 ml-8 my-2">Partners Tasks</h2>
-        <div className="bg-neutral-900 rounded-3xl px-2 py-4 mx-3">
+        <div className="bg-neutral-900 rounded-3xl px-2 py-5 mx-3">
           <ul className="flex flex-col gap-5">
             {tasks?.partners.map((task) => (
               <TaskFriends
