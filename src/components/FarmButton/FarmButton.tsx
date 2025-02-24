@@ -13,7 +13,11 @@ const FARM_DURATION = 28800000;
 const START_VALUE = 0.001;
 const END_VALUE = 86.4;
 
-const FarmButton = () => {
+interface FarmButtonProps {
+  onFarmStatusChange: (isFarmDisabled: boolean) => void;
+}
+
+const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
   const location = useLocation();
   const activeBoosts = useSelector(selectUserActiveBoosts);
   const { t } = useTranslation();
@@ -27,30 +31,33 @@ const FarmButton = () => {
 
   const animationRef = useRef<anime.AnimeInstance | null>(null);
 
-  const startAnimation = (fromValue: number, remainingTime: number) => {
-    if (animationRef.current) {
-      animationRef.current.pause();
-      animationRef.current = null;
-    }
-
-    anime.remove('.farm-span');
-
-    animationRef.current = anime({
-      targets: { value: fromValue },
-      value: END_VALUE,
-      easing: 'linear',
-      duration: remainingTime,
-      round: false,
-      update: (anim) => {
-        setCurrentValue(Number(anim.animations[0].currentValue));
-      },
-      complete: () => {
-        setIsClaimDisabled(false);
-        setCurrentValue(END_VALUE);
+  const startAnimation = useCallback(
+    (fromValue: number, remainingTime: number) => {
+      if (animationRef.current) {
+        animationRef.current.pause();
         animationRef.current = null;
-      },
-    });
-  };
+      }
+
+      anime.remove('.farm-span');
+
+      animationRef.current = anime({
+        targets: { value: fromValue },
+        value: END_VALUE,
+        easing: 'linear',
+        duration: remainingTime,
+        round: false,
+        update: (anim) => {
+          setCurrentValue(Number(anim.animations[0].currentValue));
+        },
+        complete: () => {
+          setIsClaimDisabled(false);
+          setCurrentValue(END_VALUE);
+          animationRef.current = null;
+        },
+      });
+    },
+    [setCurrentValue, setIsClaimDisabled],
+  );
 
   const checkFarmStatus = useCallback(() => {
     const storedStartTime = localStorage.getItem('farmStartTime');
@@ -74,7 +81,16 @@ const FarmButton = () => {
       }
     }
     setIsLoading(false);
-  }, []);
+    onFarmStatusChange(isFarmDisabled);
+  }, [
+    onFarmStatusChange,
+    isFarmDisabled,
+    setIsClaimDisabled,
+    setIsFarmDisabled,
+    setCurrentValue,
+    setIsLoading,
+    startAnimation,
+  ]);
 
   useEffect(() => {
     const handleVisibilityChange = () => {
@@ -105,6 +121,7 @@ const FarmButton = () => {
     setIsClaimDisabled(true);
     setCurrentValue(START_VALUE);
     startAnimation(START_VALUE, FARM_DURATION);
+    onFarmStatusChange(true);
   };
 
   const handleClaimClick = async (): Promise<void> => {
@@ -120,6 +137,7 @@ const FarmButton = () => {
       animationRef.current = null;
     }
     anime.remove('.farm-span');
+    onFarmStatusChange(false);
   };
 
   return (
