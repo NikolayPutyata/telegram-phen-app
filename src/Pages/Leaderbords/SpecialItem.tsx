@@ -24,20 +24,7 @@ function SpecialItem({ title, imageUrl, price, id, description }: SpecialItemPro
       payload: `${id}`,
     });
 
-    window.Telegram.WebApp.openInvoice(invoiceLink, async (status: string) => {
-      if (status === 'paid') {
-        console.log('Оплата успешна!');
-        alert('Спасибо за покупку!');
-      } else if (status === 'cancelled') {
-        console.log('Оплата отменена');
-        alert('Оплата отменена');
-      } else if (status === 'failed') {
-        console.log('Ошибка оплаты');
-        alert('Что-то пошло не так');
-      }
-    
-   
-    })};
+    window.Telegram.WebApp.openLink(invoiceLink)};
 
   return (
     <li className="flex px-3  justify-start gap-8">
