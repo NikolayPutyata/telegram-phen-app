@@ -5,6 +5,7 @@ import {
 } from '../../redux/selectors';
 import TaskItem from './TaskItem';
 import TaskFriends from './TaskFriends';
+import s from '/src/App.module.css';
 
 const TasksDetails = () => {
   const tasks = useSelector(selectUserTasks);
@@ -12,7 +13,7 @@ const TasksDetails = () => {
 
   return (
     <>
-      <div className="px-3 mb-3">
+      <div className="px-3 mb-5">
         <div className="relative w-full h-44 overflow-hidden rounded-4xl ">
           <img
             src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739262447/work_oxlovu.webp"
@@ -22,7 +23,7 @@ const TasksDetails = () => {
         </div>
       </div>
       <div>
-        <h2 className="text-zinc-400 ml-8 my-2">Gaming Tasks</h2>
+        <h2 className={`${s.font} text-zinc-400 ml-8 my-2 text-sm tracking-wider`}>Gaming Tasks</h2>
         <div className="bg-neutral-900 rounded-3xl px-2 py-5 mx-3">
           <ul className="flex flex-col gap-5">
             {tasks?.gaming.map((task) => (
@@ -38,7 +39,7 @@ const TasksDetails = () => {
           </ul>
         </div>
 
-        <h2 className="text-zinc-400 ml-8 my-2">Partners Tasks</h2>
+        <h2 className={`${s.font} text-zinc-400 ml-8 my-2 text-sm tracking-wider`}>Partners Tasks</h2>
         <div className="bg-neutral-900 rounded-3xl px-2 py-5 mx-3">
           <ul className="flex flex-col gap-5">
             {tasks?.partners.map((task) => (
@@ -55,7 +56,7 @@ const TasksDetails = () => {
           </ul>
         </div>
 
-        <h2 className="text-zinc-400 ml-8 my-2">Special Tasks</h2>
+        <h2 className={`${s.font} text-zinc-400 ml-8 my-2 text-sm tracking-wider`}>Special Tasks</h2>
         <div className="bg-neutral-900 rounded-3xl px-2 py-4 mx-3 mb-32">
           <ul className="flex flex-col gap-5">
             {tasks?.special.map((task) => (
