@@ -37,15 +37,17 @@ function SpecialItem({ title, imageUrl, price, id, description, collectionId }: 
         <img src={imageUrl} alt="standart avatar" />
       </div>
 
-      <div className="flex flex-col">
-        <h3 className={`${s.font} text-zinc-300 mb-3  break-words`}>
+      <div className="flex flex-col gap-1">
+        <h3 className={`${s.font} text-zinc-300  break-words`}>
          {title}
         </h3>
-        <div className="flex items-center gap-1 mb-4">
-          <p className={`${s.font} text-zinc-400 text-sm`}>{price}</p>
+        <p className={`${s.font} text-zinc-400 text-[0.65rem]`}>{description}</p>
+        <div className="flex items-center gap-1 mt-1">
+
+          <p className={`${s.font} text-zinc-300 text-sm`}>{price}</p>
           <img src="/assets/telegram_star.svg" alt="telegram-star" />
         </div>
-        <button className="btn btn-primary w-24 h-9 rounded-4xl" onClick={handleBuyClick}>Buy</button>
+        <button className="btn btn-primary w-24 h-8 rounded-4xl mt-1" onClick={handleBuyClick}>Buy</button>
       </div>
     </li>
   );
