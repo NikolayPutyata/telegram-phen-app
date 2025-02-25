@@ -32,8 +32,8 @@ function SpecialItem({ title, imageUrl, price, id, description, collectionId }: 
     window.Telegram.WebApp.openInvoice(invoiceLink)};
 
   return (
-    <li className="flex px-3  justify-start gap-8">
-      <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
+    <li className="flex px-3  justify-start gap-4">
+      <div className="flex flex-col justify-center w-26 h-26 overflow-hidden rounded-3xl">
         <img src={imageUrl} alt="standart avatar" />
       </div>
 
