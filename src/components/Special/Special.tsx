@@ -66,7 +66,7 @@ const items: Item[] = [
 ];
 
   return (
-    <div className="px-3 mb-24 mt-2 tracking-wider">
+    <div className="px-3 mb-32 mt-2 tracking-wider">
       <div className="relative w-full h-44 overflow-hidden rounded-4xl ">
           <img
             src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389388/sklad_hustzi.webp"

@@ -52,6 +52,7 @@ const userSlice = createSlice({
         state.usersTasks = usersData.usersTasks;
       })
       .addCase(claimTokens.fulfilled, (state, action) => {
+        state.activeBoosts = action.payload.activeBoosts;
         state.tokens = action.payload.tokens;
       })
       .addCase(taskCompleted.pending, (state) => {
