@@ -37,7 +37,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
       // await dispatch(sendCase({ id: userId, boostsIdsArray })).unwrap(); // unwrap для асинхронного thunk
       setIsAnimating(false);
       onClose();
-    }, 6500);
+    }, 6600); // Загальний час: 1000 + 1000 + 1800 + 300 + 1200 + запас 300 мс = 6600 мс
   }, [onClose]);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
   const backgroundAnimation = {
     initial: { opacity: 0 },
     animate: { opacity: 1, transition: { duration: 1 } }, // Фон плавно з’являється за 1 секунду
-    exit: { opacity: 0, transition: { duration: 0.4 } }, // Фон зникає за 0.4 секунди при закритті
+    exit: { opacity: 0, transition: { duration: 0.5 } }, // Фон зникає за 0.5 секунди при закритті
   };
 
   const caseAnimation = {
@@ -64,18 +64,19 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
   const shakeAnimation = {
     animate: {
       x: [0, 10, -10, 10, -10, 0],
-      transition: { duration: 0.6, repeat: 2.5, ease: 'easeInOut', delay: 2 }, // Трясіння починається через 2 секунди від початку (1 секунда фон + 1 секунди кейс)
-    },
+      transition: { duration: 0.6, repeat: 2.5, ease: 'easeInOut', delay: 1.6 }, // Трясіння починається через 1.6 секунди (0.5 фон + 1 кейс + 0.1 пауза)
+    }, // Тривалість: 0.6 × 3 = 1.8 секунди (з 1.6 до 3.4 секунди)
   };
 
   const boostAnimation = {
-    initial: { opacity: 0, scale: 0 },
+    initial: { opacity: 0, scale: 0, y: 60 },
     animate: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.4, delay: 4.8 }, // Поява триває 0.4 секунди, починається через 4.8 секунди від початку (після трясіння)
+      y: 0,
+      transition: { duration: 0.3, delay: 4.8 }, // Буст з’являється через 4.8 секунди від початку, триває 0.3 секунди (з 4.8 до 5.1 секунди)
     },
-    exit: { opacity: 0, scale: 0, transition: { duration: 1.2 } }, // Буст зникає за 1.2 секунди (з 5.2 до 6.4 секунд)
+    exit: { opacity: 0, scale: 0, transition: { duration: 1.2 } }, // Буст зникає за 1.2 секунди (з 5.1 до 6.3 секунди)
   };
 
   return (
