@@ -3,25 +3,22 @@ import { useLocation } from 'react-router-dom';
 import anime from 'animejs';
 import s from '/src/App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFarmingCycle, selectTokensToGet, selectUserId } from '../../redux/selectors';
+import {  selectUserId } from '../../redux/selectors';
 import { claimTokens, startFarming } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 import { useTranslation } from 'react-i18next';
 import { selectUserActiveBoosts } from '../../redux/selectors';
 
+const FARM_DURATION = 28800000;
+const START_VALUE = 0.001;
+const END_VALUE = 86.4;
 
 interface FarmButtonProps {
   onFarmStatusChange: (isFarmDisabled: boolean) => void;
 }
 
 const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
-  const farmingCycle = useSelector(selectFarmingCycle);
-  const START_VALUE = 0.001;
-const END_VALUE = useSelector(selectTokensToGet);
-  const FARM_DURATION = farmingCycle * 60 * 60 * 1000;
-
-
-
+  
   const location = useLocation();
   const activeBoosts = useSelector(selectUserActiveBoosts);
   const { t } = useTranslation();
@@ -60,7 +57,7 @@ const END_VALUE = useSelector(selectTokensToGet);
         },
       });
     },
-    [setCurrentValue, setIsClaimDisabled, END_VALUE],
+    [setCurrentValue, setIsClaimDisabled],
   );
 
   const checkFarmStatus = useCallback(() => {
@@ -94,8 +91,6 @@ const END_VALUE = useSelector(selectTokensToGet);
     setCurrentValue,
     setIsLoading,
     startAnimation,
-    END_VALUE,
-    FARM_DURATION
   ]);
 
   useEffect(() => {
