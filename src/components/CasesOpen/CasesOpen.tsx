@@ -1,24 +1,13 @@
 import { useState } from 'react';
-import Modal from '../Modal/Modal.tsx';
+import CasesModal from '../CasesModal/CasesModal.tsx';
 
 const CasesOpen = () => {
-  const [isModalOpenCase, setIsModalOpenCase] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
-      <button
-        className="w-full text-lg mt-2 text-[#605dff]"
-        onClick={() => setIsModalOpenCase(true)}
-        disabled={isModalOpenCase}
-      >
-        Cases Open
-      </button>
-
-      <Modal
-        isOpen={isModalOpenCase}
-        changeModal="case"
-        onClose={() => setIsModalOpenCase(false)}
-      />
+      <button onClick={() => setIsModalOpen(true)}>Open Case</button>
+      <CasesModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 };
