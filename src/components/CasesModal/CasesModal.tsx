@@ -32,13 +32,13 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     const randomBoost = getRandomBoost();
     setSelectedBoost(randomBoost);
 
-    // Чекаємо: поява фону (0.5 сек) + поява кейса (0.5 сек + затримка 1 сек) + затримка перед трясінням (2 сек) + трясіння (1.8 сек) + поява буста (0.5 сек) + зникнення буста (0.5 сек)
+    // Чекаємо: поява фону (1 сек) + поява кейса (0.5 сек + затримка 1 сек) + затримка перед трясінням (2 сек) + трясіння (1.8 сек) + поява буста (0.5 сек) + зникнення буста (1.2 сек)
     setTimeout(() => {
       // const boostsIdsArray = [randomBoost.idItem];
       // await dispatch(sendCase({ id: userId, boostsIdsArray })).unwrap(); // unwrap для асинхронного thunk
       setIsAnimating(false);
       onClose(); // Закриваємо модалку після успішної відправки
-    }, 6300); // 500 + 1000 + 2000 + 1800 + 500 + 500 = 6300 мс
+    }, 7500); // 1000 + 1000 + 2000 + 1800 + 500 + 1200 = 7000 мс
   }, [onClose]);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
 
   const backgroundAnimation = {
     initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 0.5 } }, // Фон з’являється за 0.5 секунди
+    animate: { opacity: 1, transition: { duration: 1 } }, // Фон з’являється за 1 секунди
     exit: { opacity: 0, transition: { duration: 0.3 } },
   };
 
@@ -76,7 +76,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
       scale: 1,
       transition: { duration: 0.5, delay: 5.3 },
     }, // Поява через 5 секунди (0.5 фон + 1 кейс + 2 затримка + 1.8 трясіння)
-    exit: { opacity: 0, scale: 0, transition: { duration: 0.5 } }, // Зникнення буста 0.5
+    exit: { opacity: 0, scale: 0, transition: { duration: 1.2 } }, // Зникнення буста 1.2
   };
 
   return (
