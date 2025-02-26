@@ -7,14 +7,19 @@ function SkinsItem() {
         <img src="/assets/shuttle-2.webp" alt="standart avatar" />
       </div>
 
-      <div className="flex flex-col">
-        <h3 className={`${s.font} text-zinc-300 mb-3 break-words`}>
+      <div className="flex flex-col gap-1">
+        <h3 className={`${s.font} text-zinc-300 break-words`}>
           Misterium
         </h3>
 
-        <p className={`${s.font} text-zinc-400 text-sm mb-4`}>TON</p>
+        <p className={`${s.font} text-zinc-400 text-xs mt-1`}>Desc</p>
+        <div className="flex items-center gap-1.5 mt-1">
 
-        <button className="btn btn-primary w-24 h-9 rounded-4xl">Buy</button>
+          <p className={`${s.font} text-zinc-300 text-sm`}>0.3</p>
+          <img src="/assets/ton.svg" alt="telegram-star" width={16}/>
+        </div>
+
+        <button className="btn btn-primary w-24 h-8 rounded-4xl mt-1">Buy</button>
       </div>
     </li>
   );
