@@ -29,7 +29,19 @@ function SpecialItem({ title, imageUrl, price, id, description, collectionId }: 
       payload: `ORDER_${userId}_${collectionId}_${id}`,
     });
 
-    window.Telegram.WebApp.openInvoice(invoiceLink)};
+    window.Telegram.WebApp.openInvoice(invoiceLink, (status) => {
+      if (status === 'paid') {
+        alert('Спасибо за покупку!');
+      } else if (status === 'cancelled') {
+        alert('Оплата отменена');
+      } else if (status === 'failed') {
+        alert('Ошибка оплаты');
+      }
+    });
+
+   
+  
+};
 
   return (
     <li className="flex pl-3  justify-start gap-4">
