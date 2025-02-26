@@ -82,8 +82,8 @@ const Special = () => {
             </div>
 
             <section className="mt-6">
-                <h2 className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider`}>Cases</h2>
-                <ul className="flex flex-col gap-6 my-6">
+                <h2 className={`${s.font} text-zinc-400 ml-4  mt-6 mb-6 text-sm tracking-wider`}>Cases</h2>
+                <ul className="flex flex-col gap-6 ">
                     {items.cases.map((special) => (
                         <SpecialItem 
                             key={special.id}
@@ -99,8 +99,8 @@ const Special = () => {
             </section>
 
             <section className="mt-6">
-                <h2 className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider`}>Robot Assistants</h2>
-                <ul className="flex flex-col gap-6 my-6">
+                <h2 className={`${s.font} text-zinc-400 ml-4 mt-9 mb-6 text-sm tracking-wider`}>Robot Assistants</h2>
+                <ul className="flex flex-col gap-6 ">
                     {items.robots.map((special) => (
                         <SpecialItem 
                             key={special.id}
