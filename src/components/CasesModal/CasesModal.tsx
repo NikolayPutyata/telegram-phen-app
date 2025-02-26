@@ -32,13 +32,12 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     const randomBoost = getRandomBoost();
     setSelectedBoost(randomBoost);
 
-    // Чекаємо: поява фону (1 сек) + поява кейса (0.5 сек + затримка 1 сек) + затримка перед трясінням (2 сек) + трясіння (1.8 сек) + поява буста (0.5 сек) + зникнення буста (1.2 сек)
     setTimeout(() => {
       // const boostsIdsArray = [randomBoost.idItem];
       // await dispatch(sendCase({ id: userId, boostsIdsArray })).unwrap(); // unwrap для асинхронного thunk
       setIsAnimating(false);
-      onClose(); // Закриваємо модалку після успішної відправки
-    }, 7500); // 1000 + 1000 + 2000 + 1800 + 500 + 1200 = 7000 мс
+      onClose();
+    }, 6500);
   }, [onClose]);
 
   useEffect(() => {
@@ -49,8 +48,8 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
 
   const backgroundAnimation = {
     initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 1 } }, // Фон з’являється за 1 секунди
-    exit: { opacity: 0, transition: { duration: 0.3 } },
+    animate: { opacity: 1, transition: { duration: 1 } }, // Фон плавно з’являється за 1 секунду
+    exit: { opacity: 0, transition: { duration: 0.4 } }, // Фон зникає за 0.4 секунди при закритті
   };
 
   const caseAnimation = {
@@ -58,14 +57,14 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     animate: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.5, delay: 1 }, // Кейс з’являється через 1 секунди після фону
+      transition: { duration: 0.5, delay: 0.5 }, // Поява триває 0.5 секунди з затримкою 0.5 секунда після фону (1 секундy від початку)
     },
   };
 
   const shakeAnimation = {
     animate: {
       x: [0, 10, -10, 10, -10, 0],
-      transition: { duration: 0.6, repeat: 2.5, ease: 'easeInOut', delay: 2.5 }, // Трясіння починається через 2 секунди після появи кейса // Трясіння триває 1.8 секунду
+      transition: { duration: 0.6, repeat: 2.5, ease: 'easeInOut', delay: 2 }, // Трясіння починається через 2 секунди від початку (1 секунда фон + 1 секунди кейс)
     },
   };
 
@@ -74,9 +73,9 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     animate: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.5, delay: 5.3 },
-    }, // Поява через 5 секунди (0.5 фон + 1 кейс + 2 затримка + 1.8 трясіння)
-    exit: { opacity: 0, scale: 0, transition: { duration: 1.2 } }, // Зникнення буста 1.2
+      transition: { duration: 0.4, delay: 4.8 }, // Поява триває 0.4 секунди, починається через 4.8 секунди від початку (після трясіння)
+    },
+    exit: { opacity: 0, scale: 0, transition: { duration: 1.2 } }, // Буст зникає за 1.2 секунди (з 5.2 до 6.4 секунд)
   };
 
   return (
