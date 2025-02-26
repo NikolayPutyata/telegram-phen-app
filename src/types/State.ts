@@ -42,6 +42,7 @@ export type UserState = {
   completedTasks: compTask[];
   loading: boolean;
   farmingCycle: number;
+  tokensToGet: number;
   usersTasks: {
     gaming: Task[];
     partners: Task[];

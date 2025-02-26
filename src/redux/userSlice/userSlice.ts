@@ -18,6 +18,7 @@ const initialState: UserState = {
   completedTasks: [],
   loading: false,
   farmingCycle: 0,
+  tokensToGet: 0,
   usersTasks: {
     gaming: [],
     partners: [],
@@ -67,6 +68,8 @@ const userSlice = createSlice({
       .addCase(startFarming.fulfilled, (state, action) => {
         state.boosts = action.payload.boosts;
         state.activeBoosts = action.payload.activeBoosts;
+        state.farmingCycle = action.payload.farmingCycle;
+        state.tokensToGet = action.payload.tokensToGet;
       });
   },
 });
