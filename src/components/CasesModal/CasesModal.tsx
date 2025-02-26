@@ -32,13 +32,13 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     const randomBoost = getRandomBoost();
     setSelectedBoost(randomBoost);
 
-    // Чекаємо завершення анімації трясіння (1 секунда) + появи буста (0.5 секунди + затримка 1 секунда)
+    // Чекаємо завершення анімації трясіння (1.8 секунда) + появи буста (0.5 секунди + затримка 2 секунда)+ зникнення (0.7 сек)
     setTimeout(() => {
       // const boostsIdsArray = [randomBoost.idItem];
       // await dispatch(sendCase({ id: userId, boostsIdsArray })).unwrap(); // unwrap для асинхронного thunk
       setIsAnimating(false);
       onClose(); // Закриваємо модалку після успішної відправки
-    }, 1500); // 1 сек трясіння + 0.5 сек анімація буста
+    }, 3300); // 1.8 сек трясіння + 1 сек анімація буста
   }, [onClose]);
 
   useEffect(() => {
@@ -49,27 +49,31 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
 
   const shakeAnimation = {
     animate: {
-      rotate: [0, 5, -5, 5, -5, 0],
-      transition: { duration: 0.5, repeat: 2 }, // Трясіння триває 1 секунду
+      x: [0, 10, -10, 10, -10, 0],
+      transition: { duration: 0.6, repeat: 2.5, ease: 'easeInOut' }, // Трясіння триває 1.8 секунду
     },
   };
 
   const boostAnimation = {
     initial: { opacity: 0, scale: 0 },
-    animate: { opacity: 1, scale: 1, transition: { duration: 0.5, delay: 1 } }, // Поява через 1 секунду після трясіння
-    exit: { opacity: 0, scale: 0, transition: { duration: 0.3 } }, // Зникнення буста
+    animate: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, delay: 2 },
+    }, // Поява через 2 секунду після трясіння триває 0.5 сек
+    exit: { opacity: 0, scale: 0, transition: { duration: 0.5 } }, // Зникнення буста 0.7
   };
 
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+          className="fixed inset-0 flex items-center justify-center bg-transparent bg-opacity-50 z-50"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div className="relative w-3/4 h-1/2 max-w-lg">
+          <div className="relative w-full h-1/1  max-w-lg">
             <div className="absolute w-full h-full overflow-hidden">
               <img
                 src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389388/sklad_hustzi.webp"
@@ -81,7 +85,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
             <motion.img
               src="/assets/language/case_4.webp"
               alt="Case"
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2  rounded-4xl -translate-y-1/2 z-10 w-72 h-72"
+              className="absolute top-2/3 left-1/2 transform -translate-x-1/2  rounded-4xl -translate-y-1/2 z-10 w-50 h-60"
               {...(isAnimating ? shakeAnimation : {})}
             />
 
@@ -90,7 +94,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
                 <motion.img
                   src={selectedBoost.imgSrc}
                   alt="Boost"
-                  className="absolute top-1/2 left-1/2 transform  rounded-4xl -translate-x-1/2 -translate-y-1/2 z-20 w-32 h-32"
+                  className="absolute top-1/2 left-1/2 transform  rounded-4xl -translate-x-1/2 -translate-y-1/2 z-30 w-30 h-22"
                   initial={boostAnimation.initial}
                   animate={boostAnimation.animate}
                   exit={boostAnimation.exit}

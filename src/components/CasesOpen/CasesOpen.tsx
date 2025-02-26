@@ -6,7 +6,9 @@ const CasesOpen = () => {
 
   return (
     <>
-      <button onClick={() => setIsModalOpen(true)}>Open Case</button>
+      <button className="mt-4" onClick={() => setIsModalOpen(true)}>
+        Open Case
+      </button>
       <CasesModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
