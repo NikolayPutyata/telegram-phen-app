@@ -50,7 +50,7 @@ const items: Item[] = [
     id: 5,
     title: 'X2VR ',
     price: 1,
-    description: 'Increases farming cycle to 12 hours',
+    description: 'Increases the farming cycle to 12 h.',
     imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740498348/robot_2_eddxh1.webp',
     collectionId: 4
   },
@@ -58,7 +58,7 @@ const items: Item[] = [
     id: 6,
     title: 'X5TP ',
     price: 2,
-    description: 'Increases farming cycle to 24 hours',
+    description: 'Increases the farming cycle to 24 h.',
     imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740498348/robot_1_11zon_e9jnzk.webp',
     collectionId: 4
   },
