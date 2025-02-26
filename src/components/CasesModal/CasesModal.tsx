@@ -37,7 +37,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
       // await dispatch(sendCase({ id: userId, boostsIdsArray })).unwrap(); // unwrap для асинхронного thunk
       setIsAnimating(false);
       onClose();
-    }, 9100); // Загальний час: 1000 + 1000 + 1800 + 300 + 1200 + запас 300 мс = 6600 мс
+    }, 6600);
   }, [onClose]);
 
   useEffect(() => {
@@ -48,8 +48,8 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
 
   const backgroundAnimation = {
     initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 1 } }, // Фон плавно з’являється за 1 секунду
-    exit: { opacity: 0, transition: { duration: 0.5 } }, // Фон зникає за 0.5 секунди при закритті
+    animate: { opacity: 1, transition: { duration: 1 } },
+    exit: { opacity: 0, transition: { duration: 0.5 } },
   };
 
   const caseAnimation = {
@@ -57,32 +57,32 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     animate: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.5, delay: 0.5 }, // Поява триває 0.5 секунди з затримкою 0.5 секунда після фону (1 секундy від початку)
+      transition: { duration: 0.5, delay: 0.5 },
     },
   };
 
   const shakeAnimation = {
     animate: {
       x: [0, 10, -10, 10, -10, 0],
-      transition: { duration: 0.6, repeat: 2.5, ease: 'easeInOut', delay: 1.6 }, // Трясіння починається через 1.6 секунди (0.5 фон + 1 кейс + 0.1 пауза)
-    }, // Тривалість: 0.6 × 3 = 1.8 секунди (з 1.6 до 3.4 секунди)
+      transition: { duration: 0.4, repeat: 2.5, ease: 'easeInOut', delay: 1.6 },
+    },
   };
 
   const boostAnimation = {
-    initial: { opacity: 0, scale: 0, y: 60 }, // Буст починається знизу кейса
+    initial: { opacity: 0, scale: 0, y: 60 },
     animate: {
-      opacity: [0, 1, 1, 1, 0], // Поява, пауза, пульсація, пауза, зникнення
-      scale: [0, 1, 1, 1.2, 0], // Знизу до центру, пауза, збільшення до 1.2, виліт
-      y: [60, 0, 0, 0, -300], // Знизу до центру, пауза, пульсація, виліт вверх
-      x: [0, 0, 0, 0, 300], // Без руху, пауза, пульсація, виліт вправо
+      opacity: [0, 1, 1, 1, 0],
+      scale: [0, 1, 1, 1.2, 0],
+      y: [60, 0, 0, 0, -300],
+      x: [0, 0, 0, 0, 300],
       transition: {
-        duration: 4.3, // Загальна тривалість: 0.3 (поява) + 1 (пауза) + 0.5 (пульсація) + 2 (пауза) + 0.5 (виліт)
-        times: [0, 0.0698, 0.3023, 0.4186, 1], // 0.3/4.3 (поява), 1.3/4.3 (початок пульсації), 1.8/4.3 (кінець пульсації), 1 (виліт)
-        delay: 4.8, // Початок анімації буста через 4.8 секунди
-        ease: ['easeOut', 'linear', 'easeInOut', 'easeIn'], // Поява плавна, пауза лінійна, пульсація плавна, виліт прискорений
+        duration: 3.8,
+        times: [0, 0.0698, 0.3023, 0.4186, 1],
+        delay: 2.8,
+        ease: ['easeOut', 'linear', 'easeInOut', 'easeIn'],
       },
     },
-    exit: { opacity: 0, scale: 0, transition: { duration: 0 } }, // Миттєве зникнення після вильоту
+    exit: { opacity: 0, scale: 0, transition: { duration: 0 } },
   };
 
   return (
@@ -111,7 +111,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
             <motion.img
               src="/assets/language/case_4.webp"
               alt="Case"
-              className="absolute bottom-[6px] left-1/2 transform -translate-x-1/2  rounded-4xl -translate-y-1/3 z-10 w-60 h-50"
+              className="absolute bottom-[6px] left-1/2 transform -translate-x-1/2  rounded-4xl -translate-y-1/3 z-10 w-60 h-50 shadow-xl"
               initial={caseAnimation.initial}
               animate={
                 isAnimating
@@ -125,7 +125,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
                 <motion.img
                   src={selectedBoost.imgSrc}
                   alt="Boost"
-                  className="absolute top-1/2 left-1/2 transform  rounded-4xl -translate-x-1/2 -translate-y-1/2 z-30 w-26 h-26"
+                  className="absolute top-1/2 left-1/2 transform  rounded-4xl -translate-x-1/2 -translate-y-1/2 z-30 w-26 h-26 shadow-xl"
                   initial={boostAnimation.initial}
                   animate={boostAnimation.animate}
                   exit={boostAnimation.exit}
