@@ -17,6 +17,7 @@ const initialState: UserState = {
   currentBoost: 0,
   completedTasks: [],
   loading: false,
+  farmingCycle: 0,
   usersTasks: {
     gaming: [],
     partners: [],
@@ -50,6 +51,7 @@ const userSlice = createSlice({
         state.activeBoosts = usersData.activeBoosts;
         state.currentBoost = usersData.currentBoost;
         state.usersTasks = usersData.usersTasks;
+        state.farmingCycle = usersData.farmingCycle;
       })
       .addCase(claimTokens.fulfilled, (state, action) => {
         state.activeBoosts = action.payload.activeBoosts;
