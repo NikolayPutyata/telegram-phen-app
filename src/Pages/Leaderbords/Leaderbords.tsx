@@ -9,7 +9,7 @@ const Leaderbords = () => {
   return (
    <>
       <div className="my-3 ">
-        <div role="tablist" className="tabs tabs-border flex justify-center gap-4">
+        <div role="tablist" className="tabs tabs-border grid grid-cols-3 ">
           <NavLink
             to="/boosts"
             role="tab"
