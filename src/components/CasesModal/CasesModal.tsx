@@ -19,15 +19,15 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
   // const dispatch = useDispatch()<AppDispatch>;
   // const userId = useSelector(selectUserId);
 
-  const boosts = [{ imgSrc: '/assets/engine.webp', idItem: 10 }];
-  const specialBoosts = [{ imgSrc: '/assets/shuttle-2.webp', idItem: 11 }];
-
-  const getRandomBoost = useCallback(() => {
-    const allBoosts = [...boosts, ...specialBoosts];
-    return allBoosts[Math.floor(Math.random() * allBoosts.length)];
-  }, [boosts, specialBoosts]);
-
   const handleOpenCase = useCallback(async () => {
+    const boosts = [{ imgSrc: '/assets/engine.webp', idItem: 10 }];
+    const specialBoosts = [{ imgSrc: '/assets/shuttle-2.webp', idItem: 11 }];
+
+    const getRandomBoost = () => {
+      const allBoosts = [...boosts, ...specialBoosts];
+      return allBoosts[Math.floor(Math.random() * allBoosts.length)];
+    };
+
     setIsAnimating(true);
     const randomBoost = getRandomBoost();
     setSelectedBoost(randomBoost);
@@ -39,7 +39,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
       setIsAnimating(false);
       onClose(); // Закриваємо модалку після успішної відправки
     }, 1500); // 1 сек трясіння + 0.5 сек анімація буста
-  }, [onClose, getRandomBoost]);
+  }, [onClose]);
 
   useEffect(() => {
     if (isOpen && !isAnimating) {
