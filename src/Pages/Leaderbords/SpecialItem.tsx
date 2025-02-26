@@ -8,7 +8,7 @@ interface SpecialItemProps {
   id: number;
   title: string;
   imageUrl: string;
-  price: number;
+  price: string;
   description: string;
   collectionId: number;
 }
@@ -23,7 +23,7 @@ function SpecialItem({ title, imageUrl, price, id, description, collectionId }: 
     const invoiceLink = await createStarInvoice({
       title: title,
       description: description,
-      prices: [{ label: 'Price', amount: price }],
+      prices: [{ label: 'Price', amount: Number(price) }],
       currency: "XTR",
       provider_token: '',
       payload: `ORDER_${userId}_${collectionId}_${id}`,
