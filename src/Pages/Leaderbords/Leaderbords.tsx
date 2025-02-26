@@ -8,8 +8,8 @@ const Leaderbords = () => {
 
   return (
    <>
-      <div className="my-3">
-        <div role="tablist" className="tabs tabs-border">
+      <div className="my-3 ">
+        <div role="tablist" className="tabs tabs-border flex justify-center gap-4">
           <NavLink
             to="/boosts"
             role="tab"
@@ -17,7 +17,7 @@ const Leaderbords = () => {
               location.pathname === "/boosts" ? "tab-active" : ""
             }`}
           >
-            Boosts
+            Cosmo Forge
           </NavLink>
           <NavLink
             to="/boosts/skins"
@@ -26,7 +26,7 @@ const Leaderbords = () => {
               location.pathname === "/boosts/skins" ? "tab-active" : ""
             }`}
           >
-            Skins
+            Shuttle Dock
           </NavLink>
           <NavLink
             to="/boosts/special"
