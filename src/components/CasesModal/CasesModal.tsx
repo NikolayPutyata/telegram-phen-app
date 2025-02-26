@@ -37,7 +37,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
       // await dispatch(sendCase({ id: userId, boostsIdsArray })).unwrap(); // unwrap для асинхронного thunk
       setIsAnimating(false);
       onClose();
-    }, 6600); // Загальний час: 1000 + 1000 + 1800 + 300 + 1200 + запас 300 мс = 6600 мс
+    }, 9600); // Загальний час: 1000 + 1000 + 1800 + 300 + 1200 + запас 300 мс = 6600 мс
   }, [onClose]);
 
   useEffect(() => {
@@ -74,9 +74,15 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
       opacity: 1,
       scale: 1,
       y: 0,
-      transition: { duration: 0.3, delay: 4.8 }, // Буст з’являється через 4.8 секунди від початку, триває 0.3 секунди (з 4.8 до 5.1 секунди)
+      transition: { duration: 0.3, delay: 4.8, ease: 'easeOut' }, // Поява через 4.8 секунди, триває 0.3 секунди (з 4.8 до 5.1 секунди)
     },
-    exit: { opacity: 0, scale: 0, transition: { duration: 1.2 } }, // Буст зникає за 1.2 секунди (з 5.1 до 6.3 секунди)
+    exit: {
+      opacity: 0,
+      scale: 0,
+      x: 300, // Буст вилітає вправо на 300px
+      y: -300, // Буст вилітає вверх на 300px
+      transition: { duration: 0.5, ease: 'easeIn' }, // Виліт триває 0.5 секунди (з 9.1 до 9.6 секунди)
+    },
   };
 
   return (
