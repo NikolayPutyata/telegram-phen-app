@@ -37,7 +37,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
       // await dispatch(sendCase({ id: userId, boostsIdsArray })).unwrap(); // unwrap для асинхронного thunk
       setIsAnimating(false);
       onClose();
-    }, 6600);
+    }, 6800);
   }, [onClose]);
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
       y: [60, 0, 0, 0, -300],
       x: [0, 0, 0, 0, 300],
       transition: {
-        duration: 3.8,
+        duration: 4,
         times: [0, 0.0698, 0.3023, 0.4186, 1],
         delay: 2.8,
         ease: ['easeOut', 'linear', 'easeInOut', 'easeIn'],
