@@ -3,6 +3,7 @@ import BoostsModal from '../BoostsModal/BoostsModal.tsx';
 import SettingsModal from '../SettingsModal/SettingsModal.tsx';
 import LanguageModal from '../LanguageModal/LanguageModal.tsx';
 import ModalAddBoosts from '../ModalAddBoosts/ModalAddBoosts.tsx';
+import CasesModal from '../CasesModal/CasesModal.tsx';
 import s from '/src/App.module.css';
 
 type ModalProps = {
@@ -24,6 +25,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, changeModal }) => {
         return <LanguageModal onClose={onClose} />;
       case 'addBoosts':
         return <ModalAddBoosts onClose={onClose} />;
+      case 'case':
+        return <CasesModal />;
       default:
         return (
           <p className={`${s.font} text-zinc-300 tracking-wider`}>No content</p>
