@@ -32,13 +32,13 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     const randomBoost = getRandomBoost();
     setSelectedBoost(randomBoost);
 
-    // Чекаємо: поява фону (0.5 сек) + поява кейса (0.5 сек + затримка 0.5 сек) + затримка перед трясінням (2 сек) + трясіння (1.8 сек) + поява буста (0.5 сек) + зникнення буста (0.5 сек)
+    // Чекаємо: поява фону (0.5 сек) + поява кейса (0.5 сек + затримка 1 сек) + затримка перед трясінням (2 сек) + трясіння (1.8 сек) + поява буста (0.5 сек) + зникнення буста (0.5 сек)
     setTimeout(() => {
       // const boostsIdsArray = [randomBoost.idItem];
       // await dispatch(sendCase({ id: userId, boostsIdsArray })).unwrap(); // unwrap для асинхронного thunk
       setIsAnimating(false);
       onClose(); // Закриваємо модалку після успішної відправки
-    }, 500 + 1000 + 2000 + 1800 + 500); // 1.8 сек трясіння + 1 сек анімація буста
+    }, 6300); // 500 + 1000 + 2000 + 1800 + 500 + 500 = 6300 мс
   }, [onClose]);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     animate: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.5, delay: 0.5 }, // Кейс з’являється через 0.5 секунди після фону
+      transition: { duration: 0.5, delay: 1 }, // Кейс з’являється через 1 секунди після фону
     },
   };
 
@@ -74,9 +74,9 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     animate: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.5, delay: 4.3 },
-    }, // Поява через 4.3 секунди (0.5 фон + 1 кейс + 2 затримка + 1.8 трясіння)
-    exit: { opacity: 0, scale: 0, transition: { duration: 0.5 } }, // Зникнення буста 0.7
+      transition: { duration: 0.5, delay: 5.3 },
+    }, // Поява через 5 секунди (0.5 фон + 1 кейс + 2 затримка + 1.8 трясіння)
+    exit: { opacity: 0, scale: 0, transition: { duration: 0.5 } }, // Зникнення буста 0.5
   };
 
   return (
@@ -105,7 +105,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
             <motion.img
               src="/assets/language/case_4.webp"
               alt="Case"
-              className="absolute top-2/3 left-1/2 transform -translate-x-1/2  rounded-4xl -translate-y-1/2 z-10 w-60 h-50"
+              className="absolute bottom-[6px] left-1/2 transform -translate-x-1/2  rounded-4xl -translate-y-1/3 z-10 w-60 h-50"
               initial={caseAnimation.initial}
               animate={
                 isAnimating
