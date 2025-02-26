@@ -6,7 +6,7 @@ const FamilyBlock = () => {
   const { t } = useTranslation();
   return (
     <>
-      <h2 className={`${s.font} text-zinc-300 ml-4 my-4 mt-8`}>
+      <h2 className={`${s.font} text-zinc-300 ml-4 my-4 mt-8 tracking-wider`}>
         {t('Join our family')} ❤️
       </h2>
       <div className="px-3 my-3">

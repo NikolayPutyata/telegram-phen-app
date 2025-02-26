@@ -4,6 +4,7 @@ import s from '/src/App.module.css';
 import {
   selectUserTokens,
   selectUserActiveBoosts,
+  selectFarmingCycle,
 } from '../../redux/selectors';
 import FarmButton from '../FarmButton/FarmButton';
 import ActiveBoosts from '../ActiveBoosts/ActiveBoosts';
@@ -14,6 +15,7 @@ const FarmBlock = () => {
   const tokens = useSelector(selectUserTokens);
   const activeBoosts = useSelector(selectUserActiveBoosts);
   const [isAddBoostsDisabled, setIsAddBoostsDisabled] = useState(false);
+  const farmingCycle = useSelector(selectFarmingCycle);
 
   const { t } = useTranslation();
 
@@ -23,13 +25,14 @@ const FarmBlock = () => {
 
   return (
     <div className="my-5">
-      <h2 className={`${s.font} text-zinc-300 ml-4 my-4 mt-8`}>
+      <h2 className={`${s.font} text-zinc-300 ml-4 my-4 mt-8 tracking-wider`}>
         {t('Farm PHEN Tokens')} 💰
       </h2>
+      <h3 className={`${s.font} text-zinc-400 text-xs ml-4 tracking-wider`}>Farming cycle : {farmingCycle} hours</h3>
       <div className="flex flex-col justify-center px-3 my-3 mb-8">
         <div className="flex flex-col px-6 my-4">
           <div className="flex justify-center items-center">
-            <span className={`${s.font} text-zinc-400 text-3xl`}>{tokens}</span>
+            <span className={`${s.font} text-zinc-300 text-3xl`}>{tokens}</span>
           </div>
         </div>
         <FarmButton onFarmStatusChange={handleFarmStatusChange} />

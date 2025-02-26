@@ -9,6 +9,8 @@ import { AppDispatch } from '../../redux/store';
 import { useTranslation } from 'react-i18next';
 import { selectUserActiveBoosts } from '../../redux/selectors';
 
+// const farmingCycle = useSelector(selectFarmingCycle);
+
 const FARM_DURATION = 28800000;
 const START_VALUE = 0.001;
 const END_VALUE = 86.4;

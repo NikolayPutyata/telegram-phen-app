@@ -13,3 +13,4 @@ export const selectUserId = (state: RootState): number => state.user.id;
 export const selectUserTasks = (state: RootState) => state.user.usersTasks;
 export const selectUserTonBalance = (state: RootState) => state.wallet.balance;
 export const selectIsLoading = (state: RootState) => state.user.loading;
+export const selectFarmingCycle = (state: RootState) => state.user.farmingCycle;
