@@ -85,3 +85,15 @@ export const getAllBoostsThunk = createAsyncThunk(
     }
   }
 );
+
+export const paymentInPhenerium = createAsyncThunk("payment/payment-in-phenerium", async ({ memo, amount }: { memo: string; amount: number }, { rejectWithValue }) => {
+  try {
+      const { data } = await axios.post("payment/payment-in-phenerium", { memo, amount });
+      return data;
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        return rejectWithValue(e.message);
+      }
+      return rejectWithValue("Unknown error");
+    }
+})

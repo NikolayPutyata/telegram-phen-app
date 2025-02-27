@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { claimTokens, initUserFromServer, startFarming, taskCompleted } from '../operations';
+import { claimTokens, initUserFromServer, paymentInPhenerium, startFarming, taskCompleted } from '../operations';
 import { UserState } from '../../types/State';
 
 const initialState: UserState = {
@@ -70,6 +70,11 @@ const userSlice = createSlice({
         state.activeBoosts = action.payload.activeBoosts;
         state.farmingCycle = action.payload.farmingCycle;
         state.tokensToGet = action.payload.tokensToGet;
+      })
+      .addCase(paymentInPhenerium.fulfilled, (state, action) => {
+        state.tokens = action.payload.tokens;
+        state.boosts = action.payload.boosts;
+        state.skins = action.payload.skins;
       });
   },
 });

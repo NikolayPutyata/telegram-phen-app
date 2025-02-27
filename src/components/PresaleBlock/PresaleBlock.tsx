@@ -25,7 +25,7 @@ const PresaleBlock = () => {
 
           </div>
         </div>
-        <button className="btn btn-primary w-56 rounded-4xl self-center">
+        <button className="btn btn-primary w-56 rounded-4xl self-center bg-gradient-to-r from-blue-500 to-purple-500">
           {t('Buy')}
         </button>
       </div>

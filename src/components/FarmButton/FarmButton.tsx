@@ -148,7 +148,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
     <div className="grid grid-cols-[1fr_1fr] grid-rows-1 mb-8 items-center justify-center gap-3">
       {!isLoading && !isFarmDisabled && (
         <button
-          className={`btn btn-primary rounded-4xl ${
+          className={`btn bg-gradient-to-r from-blue-500 to-purple-500 btn-primary rounded-4xl ${
             isFarmDisabled ? 'hidden' : ''
           }`}
           onClick={handleClick}
@@ -166,7 +166,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
         {currentValue.toFixed(3)}
       </span>
       <button
-        className={`btn btn-primary rounded-4xl ${
+        className={`btn bg-gradient-to-r from-blue-500 to-purple-500 btn-primary rounded-4xl ${
           isLoading ? 'opacity-0' : 'opacity-100'
         }`}
         onClick={handleClaimClick}

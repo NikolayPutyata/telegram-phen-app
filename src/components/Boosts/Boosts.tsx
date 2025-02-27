@@ -1,11 +1,20 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import BoostsItem from '../../Pages/Leaderbords/BoostsItem';
-import { selectCommonBoosts } from '../../redux/selectors';
+import { selectCommonBoosts, selectUserId } from '../../redux/selectors';
 import s from '/src/App.module.css';
+import { paymentInPhenerium } from '../../redux/operations';
+import { AppDispatch } from '../../redux/store';
 
 
 const Boosts = () => {
   const boosts = useSelector(selectCommonBoosts);
+  const dispatch = useDispatch<AppDispatch>();
+  const userId = useSelector(selectUserId);
+
+  const handeBuyInPhenerium = async (amount: number, idItem: number, collectionId: number) => {
+    const memo = `ORDER_${userId}_${collectionId}_${idItem}`;
+    await dispatch(paymentInPhenerium({ memo, amount }));
+  };
 
   return (
     <div className="px-3 mb-32">
@@ -17,8 +26,6 @@ const Boosts = () => {
     />
   </div>
   <h2 className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}>Farming Boosts</h2>
-
-
       
 
   {boosts.length > 0 && (
@@ -45,6 +52,7 @@ const Boosts = () => {
             <button
               
               className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500"
+              onClick={()=>handeBuyInPhenerium(Number(boosts[0].price), boosts[0].idItem, boosts[0].collectionId)}
               
             >
               Buy
