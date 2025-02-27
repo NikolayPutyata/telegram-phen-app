@@ -1,42 +1,29 @@
 import s from '/src/App.module.css';
-import { useTranslation } from 'react-i18next';
 
 const SkinsChange = () => {
-  const { t } = useTranslation();
 
   return (
     <div>
-      <h2
-        className={`${s.font} text-zinc-300 my-4 ml-4 text-lg tracking-wider`}
-      >
-        {t('Skins change blok')}
-      </h2>
+      
 
-      <div className="flex flex-col px-5 pt-5 pb-10 bg-neutral-900 rounded-3xl mx-4 ">
-        <div className="flex justify-between mb-10">
-          <button
-            className="px-3 border-3 border-[#605dff] text-zinc-300 rounded-3xl"
-            type="button"
-          >
-            Skins change
-          </button>
-
-          <div className="w-46 h-46 overflow-hidden rounded-3xl">
-            <img
-              src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261816/avatar_fngbet.webp"
-              alt="standart avatar"
-            />
-          </div>
+      <div className="px-8 pt-5 pb-5 bg-neutral-900 rounded-3xl mx-4 grid grid-cols-2 gap-4">
+  <div className='bg-red-700 col-span-2 rounded-3xl border-2 border-amber-400 overflow-hidden h-48'><img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1740682767/shut_11zon_g5onzi.webp" alt="" className='object-cover w-full h-full'/></div>
+  <div className='bg-red-300 rounded-3xl border-2 border-amber-400'>3</div>
+  <div className='grid grid-cols-2 gap-2 rounded-3xl'>
+    <div className='bg-red-50 rounded-3xl text-black border-2 border-amber-400  overflow-hidden'><img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1740682426/comandor_1_1_11zon_oxopsf.webp" alt="" className='object-cover w-full h-full'/></div>
+    <div className='bg-red-50 rounded-3xl text-black border-2 border-amber-400 overflow-hidden'><img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1740682664/planet_4_11_11zon_ufeya7.webp" alt="" className='object-cover w-full h-full'/></div>
         </div>
-
-        <div className="flex justify-between ">
-          <p className={`${s.font} text-zinc-300 ml-8 tracking-wider`}>Skins</p>
-
-          <button className="btn py-4 px-14 mr-5 btn-primary rounded-4xl ">
-            Send
-          </button>
-        </div>
+        <div className={`${s.font} flex justify-center text-lg gap-2`}> <span className='flex justify-center items-center gap-1'><div className='flex items-center justify-center'>420</div><img
+                src="/assets/Group 61.png"
+                alt="Phenerium"
+                width={'20px'}
+                height={'25px'}
+              /></span> <div className='flex items-center justify-center'>+ 5%</div></div>
+        <div className='flex flex-col justify-center items-center'>
+        <button className='btn btn-primary w-32 rounded-4xl self-center bg-gradient-to-r from-blue-500 to-purple-500'>Claim</button>
       </div>
+      </div>
+      
     </div>
   );
 };
