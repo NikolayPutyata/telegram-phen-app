@@ -166,7 +166,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
         {currentValue.toFixed(3)}
       </span>
       <button
-        className={`btn bg-gradient-to-r from-blue-500 to-purple-500 btn-primary rounded-4xl ${
+        className={`btn btn-primary rounded-4xl ${
           isLoading ? 'opacity-0' : 'opacity-100'
         }`}
         onClick={handleClaimClick}
