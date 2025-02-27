@@ -72,9 +72,9 @@ const userSlice = createSlice({
         state.tokensToGet = action.payload.tokensToGet;
       })
       .addCase(paymentInPhenerium.fulfilled, (state, action) => {
-        state.tokens = action.payload.tokens;
-        state.boosts = action.payload.boosts;
-        state.skins = action.payload.skins;
+        state.tokens = action.payload.data.tokens;
+        state.boosts = action.payload.data.boosts;
+        state.skins = action.payload.data.skins;
       });
   },
 });
