@@ -28,7 +28,7 @@ const Boosts = () => {
   <h2 className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}>Farming Boosts</h2>
       
 
-  {boosts.length > 0 && (
+  {boosts?.length > 0 && (
         <div className="my-5 px-3 flex justify-start gap-6">
           <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
             <img
@@ -63,7 +63,7 @@ const Boosts = () => {
 
   <div className="flex my-5 flex-col gap-5">
     <ul className="flex flex-col gap-6">
-      {boosts.slice(1).map((product) => (
+      {boosts?.slice(1).map((product) => (
         <BoostsItem
           key={product.idItem}
           idItem={product.idItem}
