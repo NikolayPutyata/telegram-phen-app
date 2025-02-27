@@ -16,3 +16,4 @@ export const selectIsLoading = (state: RootState) => state.user.loading;
 export const selectFarmingCycle = (state: RootState) => state.user.farmingCycle;
 export const selectTokensToGet = (state: RootState) => state.user.tokensToGet;
 export const selectCommonBoosts = (state: RootState) => state.data.commonBoosts;
+export const selectUserSkins = (state: RootState) => state.user.skins;
