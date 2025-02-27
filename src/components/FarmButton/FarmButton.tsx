@@ -115,7 +115,8 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
 
     await dispatch(startFarming({ id: userId, boostsIdsArray }));
 
-    const startTime = Date.now();
+    
+      const startTime = Date.now();
     localStorage.setItem('farmStartTime', startTime.toString());
 
     setIsFarmDisabled(true);
@@ -123,6 +124,8 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
     setCurrentValue(START_VALUE);
     startAnimation(START_VALUE, FARM_DURATION);
     onFarmStatusChange(true);
+    
+    
   };
 
   const handleClaimClick = async (): Promise<void> => {

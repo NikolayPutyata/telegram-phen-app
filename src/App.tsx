@@ -8,7 +8,7 @@ import Profile from './Pages/Profile/Profile.js';
 import Friends from './components/Friends/Friends.js';
 import TasksDetails from './components/TasksDetails/TasksDetails.js';
 import { useEffect } from 'react';
-import { initUserFromServer } from './redux/operations.js';
+import { getAllBoostsThunk, initUserFromServer } from './redux/operations.js';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './redux/store.ts';
 import Boosts from './components/Boosts/Boosts.tsx';
@@ -65,11 +65,17 @@ useEffect(() => {
     fetchBalance();
 }, [connectionRestored, connected, account, dispatch]);
 
-
+  useEffect(() => {
+    const getAllBoosts = async () => {
+      await dispatch(getAllBoostsThunk());
+    };
+    getAllBoosts()
+  }, []);
 
 
 
   return (
+
     <div>
       <Header />
       <Routes>

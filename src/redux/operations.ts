@@ -70,3 +70,18 @@ export const taskCompleted = createAsyncThunk(
     }
   }
 );
+
+export const getAllBoostsThunk = createAsyncThunk(
+  "data/getAllBoosts",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get("data/getAllBoosts");
+      return data;
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        return rejectWithValue(e.message);
+      }
+      return rejectWithValue("Unknown error");
+    }
+  }
+);
