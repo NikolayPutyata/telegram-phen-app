@@ -111,7 +111,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
             <motion.img
               src="/assets/language/case_4.webp"
               alt="Case"
-              className="absolute bottom-[6px] left-1/2 transform -translate-x-1/2  rounded-4xl -translate-y-1/3 z-10 w-60 h-50 shadow-xl"
+              className="absolute bottom-[6px] left-1/2 transform -translate-x-1/2  rounded-4xl -translate-y-1/3 z-10 w-66 h-50 shadow-xl"
               initial={caseAnimation.initial}
               animate={
                 isAnimating
