@@ -37,7 +37,7 @@ const Boosts = () => {
               
             />
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1">
             <h3 className={`${s.font} text-zinc-200 tracking-wider`}>{boosts[0].name}</h3>
             <p className={`${s.font} text-zinc-500 text-sm`}>{boosts[0].desc}</p>
             <div className="flex items-center gap-1">
