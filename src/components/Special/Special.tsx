@@ -1,18 +1,37 @@
 import SpecialItem from '../../Pages/Leaderbords/SpecialItem';
 import s from '/src/App.module.css';
 
+interface Prize {
+  name: string,
+  idItem: number,
+  collectionId: number,
+  type: string,
+  photo_url: string
+
+}
+
 interface Item {
     id: number;
     title: string;
     price: string;
     description: string;
     imageUrl: string;
-    collectionId: number;
+  collectionId: number;
+  prizes: Prize[],
+}
+
+interface robotsItem {
+    id: number;
+    title: string;
+    price: string;
+    description: string;
+    imageUrl: string;
+  collectionId: number;
+ 
 }
 
 interface ItemsCollection {
     cases: Item[];
-    robots: Item[];
 }
 
 const items: ItemsCollection = {
@@ -21,36 +40,55 @@ const items: ItemsCollection = {
             id: 1,
             title: 'Nebula Core',
             price: "1",
-            description: 'Special Case 1 for your collection',
+            description: 'Regular Space Case',
             imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389387/case_2_p187b3.webp',
-            collectionId: 4
+        collectionId: 4,
+        prizes: [{ name: "1000 Tokens", idItem: 1, collectionId: 0, type: "tokens", photo_url: "" },
+          { name: "Medical team", idItem: 14, collectionId: 2, type: "boosts", photo_url: "" },
+          { name: "Skin 1", idItem: 10, collectionId: 1, type: "skins", photo_url: "" },
+          {name: "Skin 2", idItem: 11, collectionId: 1, type: "skins", photo_url: ""}]
+            
         },
         {
             id: 2,
             title: 'CryoVault-X',
             price: "2",
-            description: 'Special Case 2 for your collection',
+            description: 'Creon Constellation Case',
             imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389387/case_1_ziutac.webp',
-            collectionId: 4
+          collectionId: 4,
+            prizes: [{ name: "3000 Tokens", idItem: 2, collectionId: 0, type: "tokens", photo_url: "" },
+          { name: "Research Shuttle", idItem: 15, collectionId: 2, type: "boosts", photo_url: "" },
+          { name: "Skin 1", idItem: 12, collectionId: 1, type: "skins", photo_url: "" },
+          {name: "Skin 2", idItem: 13, collectionId: 1, type: "skins", photo_url: ""}],
         },
         {
             id: 3,
             title: 'Titanium Lockbox',
             price: "1",
-            description: 'Special Case 1 for your collection',
+            description: 'Titanium Case of Andromeda',
             imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740499548/case_3_qifs7i.webp',
-            collectionId: 4
+          collectionId: 4,
+            prizes: [{ name: "5000 Tokens", idItem: 3, collectionId: 0, type: "tokens", photo_url: "" },
+          { name: "Vespene Laser", idItem: 16, collectionId: 2, type: "boosts", photo_url: "" },
+          { name: "Skin 1", idItem: 14, collectionId: 1, type: "skins", photo_url: "" },
+          {name: "Skin 2", idItem: 15, collectionId: 1, type: "skins", photo_url: ""}],
         },
         {
             id: 4,
             title: 'Aurum Prime',
             price: "2",
-            description: 'Special Case 2 for your collection',
+            description: 'Golden Case of Retribution',
             imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740499548/case_4_xrg3rz.webp',
-            collectionId: 4
+          collectionId: 4,
+            prizes: [{ name: "10 000 Tokens", idItem: 4, collectionId: 0, type: "tokens", photo_url: "" },
+          { name: "Escort Squadron", idItem: 17, collectionId: 2, type: "boosts", photo_url: "" },
+          { name: "Skin 1", idItem: 16, collectionId: 1, type: "skins", photo_url: "" },
+          {name: "Skin 2", idItem: 17, collectionId: 1, type: "skins", photo_url: ""}],
         }
-    ],
-    robots: [
+    ]
+};
+
+const robots: robotsItem[] = [
         {
             id: 5,
             title: 'X2VR',
@@ -68,7 +106,6 @@ const items: ItemsCollection = {
             collectionId: 5
         }
     ]
-};
 
 const Special = () => {
     return (
@@ -101,7 +138,7 @@ const Special = () => {
             <section className="mt-6">
                 <h2 className={`${s.font} text-zinc-400 ml-4 mt-9 mb-6 text-sm tracking-wider`}>Robot Assistants</h2>
                 <ul className="flex flex-col gap-6 ">
-                    {items.robots.map((special) => (
+                    {robots.map((special) => (
                         <SpecialItem 
                             key={special.id}
                             id={special.id}
