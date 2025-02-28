@@ -12,7 +12,7 @@ interface CasesModalProps {
 
 const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
-  const [selectedBoost, setSelectedBoost] = useState<{
+  const [selectedSpecial, setSelectedSpecial] = useState<{
     imgSrc: string;
     idItem: number;
   } | null>(null);
@@ -23,18 +23,16 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     const boosts = [{ imgSrc: '/assets/engine.webp', idItem: 10 }];
     const specialBoosts = [{ imgSrc: '/assets/shuttle-2.webp', idItem: 11 }];
 
-    const getRandomBoost = () => {
-      const allBoosts = [...boosts, ...specialBoosts];
-      return allBoosts[Math.floor(Math.random() * allBoosts.length)];
+    const getRandomSpecial = () => {
+      const allSpecial = [...boosts, ...specialBoosts];
+      return allSpecial[Math.floor(Math.random() * allSpecial.length)];
     };
-
     setIsAnimating(true);
-    const randomBoost = getRandomBoost();
-    setSelectedBoost(randomBoost);
+    const randomSpecial = getRandomSpecial();
+    setSelectedSpecial(randomSpecial);
+    // await dispatch(sendCase({ id: userId, specialId: [randomSpecial.idItem] }));
 
     setTimeout(() => {
-      // const boostsIdsArray = [randomBoost.idItem];
-      // await dispatch(sendCase({ id: userId, boostsIdsArray })).unwrap(); // unwrap для асинхронного thunk
       setIsAnimating(false);
       onClose();
     }, 6800);
@@ -121,9 +119,9 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
             />
 
             <AnimatePresence>
-              {selectedBoost && (
+              {selectedSpecial && (
                 <motion.img
-                  src={selectedBoost.imgSrc}
+                  src={selectedSpecial.imgSrc}
                   alt="Boost"
                   className="absolute bottom-[320px] left-1/2 rounded-4xl -translate-x-1/2 z-30 w-26 h-26 shadow-white shadow-xl"
                   initial={boostAnimation.initial}

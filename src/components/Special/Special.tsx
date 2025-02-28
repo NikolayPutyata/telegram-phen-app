@@ -273,7 +273,7 @@ const Special = () => {
           ))}
         </ul>
       </section>
-      <CasesOpen />;
+      <CasesOpen />
     </div>
   );
 };
