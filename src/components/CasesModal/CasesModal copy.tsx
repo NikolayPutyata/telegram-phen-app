@@ -140,3 +140,18 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
 };
 
 export default CasesModal;
+
+{
+  id: 3,
+  title: 'Titanium Lockbox',
+  price: "1",
+  description: 'Titanium Case of Andromeda',
+  imageUrl: 'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740499548/case_3_qifs7i.webp',
+  collectionId: 4,
+  prizes: [
+    { name: "5000 Tokens", idItem: 3, collectionId: 0, type: "tokens", photo_url: "" },
+{ name: "Vespene Laser", idItem: 16, collectionId: 2, type: "boosts", photo_url: "" },
+{ name: "Skin 1", idItem: 14, collectionId: 1, type: "skins", photo_url: "" },
+{name: "Skin 2", idItem: 15, collectionId: 1, type: "skins", photo_url: ""},
+],
+}
