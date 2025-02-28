@@ -59,7 +59,7 @@ function SpecialItem({ title, imageUrl, price, id, description, collectionId }: 
           <p className={`${s.font} text-zinc-300 text-sm`}>{price}</p>
           <img src="/assets/telegram_star.svg" alt="telegram-star" />
         </div>
-        <button className="btn btn-primary w-24 h-8 rounded-4xl mt-1" onClick={handleBuyClick}>Buy</button>
+        <button className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500" onClick={handleBuyClick}>Buy</button>
       </div>
     </li>
   );

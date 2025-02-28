@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import anime from 'animejs';
 import s from '/src/App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUserId } from '../../redux/selectors';
+import {  selectUserId } from '../../redux/selectors';
 import { claimTokens, startFarming } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 import { useTranslation } from 'react-i18next';
@@ -18,6 +18,7 @@ interface FarmButtonProps {
 }
 
 const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
+  
   const location = useLocation();
   const activeBoosts = useSelector(selectUserActiveBoosts);
   const { t } = useTranslation();
@@ -114,7 +115,8 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
 
     await dispatch(startFarming({ id: userId, boostsIdsArray }));
 
-    const startTime = Date.now();
+    
+      const startTime = Date.now();
     localStorage.setItem('farmStartTime', startTime.toString());
 
     setIsFarmDisabled(true);
@@ -122,6 +124,8 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
     setCurrentValue(START_VALUE);
     startAnimation(START_VALUE, FARM_DURATION);
     onFarmStatusChange(true);
+    
+    
   };
 
   const handleClaimClick = async (): Promise<void> => {
@@ -144,7 +148,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
     <div className="grid grid-cols-[1fr_1fr] grid-rows-1 mb-8 items-center justify-center gap-3">
       {!isLoading && !isFarmDisabled && (
         <button
-          className={`btn btn-primary rounded-4xl ${
+          className={`btn bg-gradient-to-r from-blue-500 to-purple-500 btn-primary rounded-4xl ${
             isFarmDisabled ? 'hidden' : ''
           }`}
           onClick={handleClick}

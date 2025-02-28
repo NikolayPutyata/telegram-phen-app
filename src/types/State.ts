@@ -41,6 +41,8 @@ export type UserState = {
   currentBoost: number;
   completedTasks: compTask[];
   loading: boolean;
+  farmingCycle: number;
+  tokensToGet: number;
   usersTasks: {
     gaming: Task[];
     partners: Task[];

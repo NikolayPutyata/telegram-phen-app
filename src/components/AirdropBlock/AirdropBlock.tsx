@@ -6,7 +6,7 @@ const AirdropBlock = () => {
 
   return (
     <div>
-      <h2 className={`${s.font} text-zinc-300 ml-4 my-4`}>{t('Airdrop')} 🎁</h2>
+      <h2 className={`${s.font} text-zinc-300 ml-4 my-4 tracking-wider`}>{t('Airdrop')} 🎁</h2>
       <div className="flex flex-col px-3 mb-3">
         <div className="relative w-full h-44 overflow-hidden rounded-4xl mb-3">
           <img

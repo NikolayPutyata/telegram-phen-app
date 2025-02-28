@@ -7,7 +7,7 @@ const BoostsModal = () => {
 
   return (
     <>
-      {boosts.length > 0 ? (
+      {boosts?.length > 0 ? (
         <ul className={`${s.font} tracking-wider flex flex-col  gap-4`}>
           {boosts.map((boost) => (
             <li key={boost.idItem} className="flex pl-2  gap-8">

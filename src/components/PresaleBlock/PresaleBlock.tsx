@@ -6,7 +6,7 @@ const PresaleBlock = () => {
 
   return (
     <div className="my-5">
-      <h2 className={`${s.font} text-zinc-300 ml-4 my-4`}>{t('Presale')} 🚀</h2>
+      <h2 className={`${s.font} text-zinc-300 ml-4 my-4 tracking-wider`}>{t('Presale')} 🚀</h2>
 
       <div className='flex flex-col'>
         <div className="flex flex-col justify-center px-3 my-4">
@@ -25,7 +25,7 @@ const PresaleBlock = () => {
 
           </div>
         </div>
-        <button className="btn btn-primary w-56 rounded-4xl self-center">
+        <button className="btn btn-primary w-56 rounded-4xl self-center bg-gradient-to-r from-blue-500 to-purple-500">
           {t('Buy')}
         </button>
       </div>

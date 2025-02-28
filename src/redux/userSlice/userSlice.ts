@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { claimTokens, initUserFromServer, startFarming, taskCompleted } from '../operations';
+import { claimTokens, initUserFromServer, paymentInPhenerium, startFarming, taskCompleted } from '../operations';
 import { UserState } from '../../types/State';
 
 const initialState: UserState = {
@@ -17,6 +17,8 @@ const initialState: UserState = {
   currentBoost: 0,
   completedTasks: [],
   loading: false,
+  farmingCycle: 0,
+  tokensToGet: 0,
   usersTasks: {
     gaming: [],
     partners: [],
@@ -50,6 +52,7 @@ const userSlice = createSlice({
         state.activeBoosts = usersData.activeBoosts;
         state.currentBoost = usersData.currentBoost;
         state.usersTasks = usersData.usersTasks;
+        state.farmingCycle = usersData.farmingCycle;
       })
       .addCase(claimTokens.fulfilled, (state, action) => {
         state.activeBoosts = action.payload.activeBoosts;
@@ -65,6 +68,13 @@ const userSlice = createSlice({
       .addCase(startFarming.fulfilled, (state, action) => {
         state.boosts = action.payload.boosts;
         state.activeBoosts = action.payload.activeBoosts;
+        state.farmingCycle = action.payload.farmingCycle;
+        state.tokensToGet = action.payload.tokensToGet;
+      })
+      .addCase(paymentInPhenerium.fulfilled, (state, action) => {
+        state.tokens = action.payload.data.tokens;
+        state.boosts = action.payload.data.boosts;
+        state.skins = action.payload.data.skins;
       });
   },
 });
