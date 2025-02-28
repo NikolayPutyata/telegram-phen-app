@@ -111,7 +111,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
             <motion.img
               src="/assets/language/case_4.png"
               alt="Case"
-              className="absolute bottom-[1px] left-1/2 -translate-x-1/2 z-10 w-86 h-90"
+              className="absolute bottom-[5px] left-1/2 -translate-x-1/2 z-10 w-86 h-90"
               initial={caseAnimation.initial}
               animate={
                 isAnimating
@@ -125,7 +125,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
                 <motion.img
                   src={selectedBoost.imgSrc}
                   alt="Boost"
-                  className="absolute bottom-[220px] left-1/2 rounded-4xl -translate-x-1/2 z-30 w-26 h-26 shadow-white shadow-xl"
+                  className="absolute bottom-[320px] left-1/2 rounded-4xl -translate-x-1/2 z-30 w-26 h-26 shadow-white shadow-xl"
                   initial={boostAnimation.initial}
                   animate={boostAnimation.animate}
                   exit={boostAnimation.exit}
