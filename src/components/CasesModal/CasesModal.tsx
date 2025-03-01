@@ -12,6 +12,7 @@ interface CasesModalProps {
 
 const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isCaseOpen, setIsCaseOpen] = useState(false);
   const [selectedSpecial, setSelectedSpecial] = useState<{
     imgSrc: string;
     idItem: number;
@@ -35,9 +36,13 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     setIsAnimating(true);
 
     setTimeout(() => {
-      setIsAnimating(false);
-      onClose();
-    }, 6800);
+      setIsCaseOpen(true);
+      setTimeout(() => {
+        setIsAnimating(false);
+        setIsCaseOpen(false);
+        onClose();
+      }, 4000);
+    }, 2800);
   }, [onClose]);
 
   useEffect(() => {
@@ -59,6 +64,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
       scale: 1,
       transition: { duration: 0.5, delay: 0.5 },
     },
+    exit: { opacity: 0, transition: { duration: 0.3 } },
   };
 
   const shakeAnimation = {
@@ -66,6 +72,12 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
       x: [0, 10, -10, 10, -10, 0],
       transition: { duration: 0.4, repeat: 2.5, ease: 'easeInOut', delay: 1.6 },
     },
+  };
+
+  const openCaseAnimation = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { duration: 0.3 } }, // Відкритий кейс з’являється за 0.3 секунди
+    exit: { opacity: 0, transition: { duration: 0.5 } }, // Відкритий кейс зникає за 0.5 секунди
   };
 
   const specialAnimation = {
@@ -108,20 +120,37 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
               />
             </motion.div>
 
-            <motion.img
-              src="/assets/language/Chest.png"
-              alt="Case"
-              className="absolute bottom-[90px] left-1/2 -translate-x-1/2 z-10 w-full h-120"
-              initial={caseAnimation.initial}
-              animate={
-                isAnimating
-                  ? { ...caseAnimation.animate, ...shakeAnimation.animate }
-                  : caseAnimation.animate
-              }
-            />
+            <AnimatePresence>
+              {!isCaseOpen && (
+                <motion.img
+                  src="/assets/language/sticker.png"
+                  alt="case-close"
+                  className="absolute bottom-[140px] left-1/2 -translate-x-1/2 z-10 w-70 h-54"
+                  initial={caseAnimation.initial}
+                  animate={
+                    isAnimating
+                      ? { ...caseAnimation.animate, ...shakeAnimation.animate }
+                      : caseAnimation.animate
+                  }
+                />
+              )}
+            </AnimatePresence>
 
             <AnimatePresence>
-              {selectedSpecial && (
+              {isCaseOpen && (
+                <motion.img
+                  src="/public/assets/language/Chest.png"
+                  alt="case-open"
+                  className="absolute bottom-[90px] left-1/2 transform -translate-x-1/2 z-10 w-full h-120 shadow-lg"
+                  initial={openCaseAnimation.initial}
+                  animate={openCaseAnimation.animate}
+                  exit={openCaseAnimation.exit}
+                />
+              )}
+            </AnimatePresence>
+
+            <AnimatePresence>
+              {isCaseOpen && selectedSpecial && (
                 <motion.img
                   src={selectedSpecial.imgSrc}
                   alt="Special"
