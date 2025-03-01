@@ -64,7 +64,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
       scale: 1,
       transition: { duration: 0.5, delay: 0.5 },
     },
-    exit: { opacity: 0, transition: { duration: 0.3 } },
+    exit: { opacity: 0, transition: { duration: 0.5 } },
   };
 
   const shakeAnimation = {
@@ -76,8 +76,8 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
 
   const openCaseAnimation = {
     initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 0.3 } }, // Відкритий кейс з’являється за 0.3 секунди
-    exit: { opacity: 0, transition: { duration: 0.5 } }, // Відкритий кейс зникає за 0.5 секунди
+    animate: { opacity: 1, transition: { duration: 0.5 } },
+    exit: { opacity: 0, transition: { duration: 0.5 } },
   };
 
   const specialAnimation = {
@@ -90,7 +90,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
       transition: {
         duration: 4,
         times: [0, 0.0698, 0.3023, 0.4186, 1],
-        delay: 2.8,
+        delay: 1.1,
         ease: ['easeOut', 'linear', 'easeInOut', 'easeIn'],
       },
     },
@@ -125,7 +125,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
                 <motion.img
                   src="/assets/language/sticker.png"
                   alt="case-close"
-                  className="absolute bottom-[140px] left-1/2 -translate-x-1/2 z-10 w-70 h-54"
+                  className="absolute bottom-[150px] left-1/2 -translate-x-1/2 z-10 w-70 h-50"
                   initial={caseAnimation.initial}
                   animate={
                     isAnimating
@@ -154,7 +154,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
                 <motion.img
                   src={selectedSpecial.imgSrc}
                   alt="Special"
-                  className="absolute bottom-[350px] left-1/2 rounded-4xl -translate-x-1/2 z-30 w-30 h-30 shadow-white shadow-xl"
+                  className="absolute bottom-[330px] left-1/2 rounded-4xl -translate-x-1/2 z-30 w-30 h-30 shadow-white shadow-xl"
                   initial={specialAnimation.initial}
                   animate={specialAnimation.animate}
                   exit={specialAnimation.exit}
