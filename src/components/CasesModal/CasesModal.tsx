@@ -109,9 +109,9 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
             </motion.div>
 
             <motion.img
-              src="/assets/language/case_4.png"
+              src="/assets/language/Chest.png"
               alt="Case"
-              className="absolute bottom-[5px] left-1/2 -translate-x-1/2 z-10 w-86 h-90"
+              className="absolute bottom-[90px] left-1/2 -translate-x-1/2 z-10 w-full h-120"
               initial={caseAnimation.initial}
               animate={
                 isAnimating
@@ -125,7 +125,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
                 <motion.img
                   src={selectedSpecial.imgSrc}
                   alt="Special"
-                  className="absolute bottom-[320px] left-1/2 rounded-4xl -translate-x-1/2 z-30 w-26 h-26 shadow-white shadow-xl"
+                  className="absolute bottom-[350px] left-1/2 rounded-4xl -translate-x-1/2 z-30 w-30 h-30 shadow-white shadow-xl"
                   initial={specialAnimation.initial}
                   animate={specialAnimation.animate}
                   exit={specialAnimation.exit}
