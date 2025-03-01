@@ -125,7 +125,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
                 <motion.img
                   src="/assets/language/sticker.png"
                   alt="case-close"
-                  className="absolute bottom-[150px] left-1/2 -translate-x-1/2 z-10 w-70 h-50"
+                  className="absolute bottom-[130px] left-1/2 -translate-x-1/2 z-10 w-70 h-50"
                   initial={caseAnimation.initial}
                   animate={
                     isAnimating
@@ -141,7 +141,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
                 <motion.img
                   src="/public/assets/language/Chest.png"
                   alt="case-open"
-                  className="absolute bottom-[90px] left-1/2 transform -translate-x-1/2 z-10 w-full h-120 shadow-lg"
+                  className="absolute bottom-[70px] left-1/2 transform -translate-x-1/2 z-10 w-full h-120 shadow-lg"
                   initial={openCaseAnimation.initial}
                   animate={openCaseAnimation.animate}
                   exit={openCaseAnimation.exit}
@@ -154,7 +154,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
                 <motion.img
                   src={selectedSpecial.imgSrc}
                   alt="Special"
-                  className="absolute bottom-[330px] left-1/2 rounded-4xl -translate-x-1/2 z-30 w-30 h-30 shadow-white shadow-xl"
+                  className="absolute bottom-[310px] left-1/2 rounded-4xl -translate-x-1/2 z-30 w-30 h-30 shadow-white shadow-xl"
                   initial={specialAnimation.initial}
                   animate={specialAnimation.animate}
                   exit={specialAnimation.exit}
