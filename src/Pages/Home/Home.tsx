@@ -8,7 +8,6 @@ import FamilyBlock from '../../components/FamilyBlock/FamilyBlock';
 // import SkinsChange from '../../components/SkinsChange/SkinsChange.tsx';
 import Socials from '../../components/Socials/Socials';
 import { useTranslation } from 'react-i18next';
-// import SkinsChange from '../../components/SkinsChange/SkinsChange';
 
 const Home = () => {
   const { t } = useTranslation();

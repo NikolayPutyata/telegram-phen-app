@@ -19,7 +19,7 @@ const BoostsModal = () => {
                 <h3 className="text-zinc-300 mb-2 break-words">{boost.name}</h3>
                 <p className="text-zinc-400 text-sm mb-2">
                   X {boost.boost_bonus}
-                </p>
+                </p><p>{boost.quantity}</p>
               </div>
             </li>
           ))}
