@@ -1,10 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { handleCheckClick } from '../../utils/checkUserFriends.ts';
-import s from '/src/App.module.css';
-import { selectUserFriendsQuantity, selectUserId } from '../../redux/selectors.ts';
-import { AppDispatch } from '../../redux/store.ts';
 import { useState } from 'react';
+import s from '/src/App.module.css';
 import { ClipLoader } from 'react-spinners';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { selectUserId } from '../../redux/selectors';
+// import { AppDispatch } from '../../redux/store';
 
 interface TaskItemProps {
   src: string;
@@ -14,23 +13,21 @@ interface TaskItemProps {
   taskId: number;
 }
 
-const TaskFriends: React.FC<TaskItemProps> = ({
+const TaskSpecial: React.FC<TaskItemProps> = ({
   src,
   title,
   bonus,
   completed,
-  taskId,
+  // taskId
 }) => {
-  const userId = useSelector(selectUserId);
-  const dispatch = useDispatch<AppDispatch>();
-  const friendCount = useSelector(selectUserFriendsQuantity);
   const [isLoading, setIsLoading] = useState(false);
 
-  const checkFriends = async () => {
+  const checkSpecial = async () => {
     setIsLoading(true);
-    await handleCheckClick(taskId, userId, friendCount, dispatch);
+    // await ;
     setIsLoading(false);
   };
+
 
 
   return (
@@ -43,7 +40,7 @@ const TaskFriends: React.FC<TaskItemProps> = ({
             <p className={`${s.font} text-zinc-400 tracking-wider text-[0.65rem]`}>
               + {bonus}
             </p>
-            <img src="/assets/Group_62.svg" alt="coin" width={11} height={11}/>
+            <img src="/assets/Group_62.svg" alt="" width={11} height={11} />
           </span>
         </div>
       </div>
@@ -54,14 +51,14 @@ const TaskFriends: React.FC<TaskItemProps> = ({
         <div className='flex items-center justify-center w-[70px]'><ClipLoader size={15} color={"#ededed"} /></div>
       ) : (
         <button
-          onClick={checkFriends}
-          className="btn btn-outline btn-sm rounded-3xl px-5 py-4"
+          onClick={checkSpecial}
+          className="btn btn-outline btn-sm rounded-3xl px-6 py-4"
         >
-          Done
+          Go
         </button>
       )}
     </li>
   );
 };
 
-export default TaskFriends;
+export default TaskSpecial;

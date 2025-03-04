@@ -1,16 +1,18 @@
+import { useState } from 'react';
 import s from '/src/App.module.css';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { handleCheckSubscriptionClick } from '../../utils/getUserFriends.ts';
-// import { selectUserId } from '../../redux/selectors.ts';
-// import { AppDispatch } from '../../redux/store.ts';
+import { ClipLoader } from 'react-spinners';
+import checkTelegramSub from '../../utils/checkTelegramSub';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUserId } from '../../redux/selectors';
+import { AppDispatch } from '../../redux/store';
 
 interface TaskItemProps {
   src: string;
   title: string;
   bonus: number;
   completed: boolean;
-  // taskId: number;
-  isLoading: boolean;
+  taskId: number;
+  channelId: string;
 }
 
 const TaskItem: React.FC<TaskItemProps> = ({
@@ -18,11 +20,19 @@ const TaskItem: React.FC<TaskItemProps> = ({
   title,
   bonus,
   completed,
-  isLoading,
-  // taskId,
+  taskId,
+  channelId
 }) => {
-  // const userId = useSelector(selectUserId);
-  // const dispatch = useDispatch<AppDispatch>();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const userId = useSelector(selectUserId);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const checkTelegram = async () => {
+      setIsLoading(true);
+    await checkTelegramSub(userId, taskId, channelId, dispatch);
+      setIsLoading(false);
+    };
 
   return (
     <li className="flex text-center justify-between px-4 items-center">
@@ -42,10 +52,10 @@ const TaskItem: React.FC<TaskItemProps> = ({
       {completed ? (
         <img src="assets/complete.svg" className="mr-4 w-8 h-8" />
       ) : isLoading ? (
-        <img src="assets/loading.svg" className="mr-6 w-6 h-6 animate-spin" />
+        <div className='flex items-center justify-center w-[70px]'><ClipLoader size={15} color={"#ededed"} /></div>
       ) : (
         <button
-          // onClick={() => handleCheckSubscriptionClick(taskId, userId, dispatch)}
+          onClick={checkTelegram}
           className="btn btn-outline btn-sm rounded-3xl px-6 py-4"
         >
           Go

@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+
 axios.defaults.baseURL =
   'https://telegram-phen-app-server-scjhs.ondigitalocean.app/';
 
@@ -97,3 +98,8 @@ export const paymentInPhenerium = createAsyncThunk("payment/payment-in-phenerium
       return rejectWithValue("Unknown error");
     }
 })
+
+export const checkChatMember = async (userId: number, channelId: string) => {
+  const data = await axios.post('tasks/getChatMember', { userId, channelId });
+  return data;
+};

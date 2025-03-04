@@ -9,21 +9,73 @@ const initialState: UserState = {
   photo_url: null,
   language_code: null,
   tokens: 0,
-  friends: [],
+  friends: [{id: 1, name: 'Victor'}],
   skins: [],
   activeBoosts: [],
   boosts: [],
   activeSkins: [],
   currentBoost: 0,
   completedTasks: [],
-  loading: false,
   farmingCycle: 0,
   tokensToGet: 0,
   usersTasks: {
-    gaming: [],
-    partners: [],
-    special: [],
+    gaming: [
+      {
+        id: 151,
+        name: "Subscribe to Telegram",
+        svg_url: "/assets/telegram-svgrepo-com.svg",
+        task_bonus: 200,
+        completed: false,
+        channelId: '-4653767745'
+      },
+      {
+        id: 152,
+        name: "Subscribe to YouTube",
+        svg_url: "/assets/youtube-svgrepo-com.svg",
+        task_bonus: 200,
+        completed: false,
+        channelId: '-222222'
+      },
+      {
+        id: 153,
+        name: "Subscribe to X",
+        svg_url: "/assets/twitter-x.svg",
+        task_bonus: 200,
+        completed: false,
+        channelId: '-1111111'
+      },
+    ],
+    partners: [
+      {
+        id: 154,
+        name: "Invite 1 friend",
+        svg_url: "/assets/user.svg",
+        task_bonus: 200,
+        completed: false,
+      },
+      {
+        id: 155,
+        name: "Invite 5 friends",
+        svg_url: "/assets/users.svg",
+        task_bonus: 200,
+        completed: false,
+      },
+      {
+        id: 156,
+        name: "Invite 10 friends",
+        svg_url: "/assets/group-user.svg",
+        task_bonus: 200,
+        completed: false,
+      },
+    ],
+    special: [
+      ],
   },
+  // usersTasks: {
+  //   gaming: [],
+  //   partners: [],
+  //   special: [],
+  // },
   
 };
 
@@ -58,11 +110,7 @@ const userSlice = createSlice({
         state.activeBoosts = action.payload.activeBoosts;
         state.tokens = action.payload.tokens;
       })
-      .addCase(taskCompleted.pending, (state) => {
-        state.loading = true;
-      })
       .addCase(taskCompleted.fulfilled, (state, action) => {
-        state.loading = false;
         state.usersTasks = action.payload.userTasks;
       })
       .addCase(startFarming.fulfilled, (state, action) => {

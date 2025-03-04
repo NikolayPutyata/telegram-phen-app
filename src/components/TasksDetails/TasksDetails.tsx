@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux';
 import {
-  selectUserTasks,
-  selectIsLoading,
+  selectUserTasks
 } from '../../redux/selectors';
-import TaskItem from './TaskItem';
+import TaskTelegram from './TaskTelegram';
 import TaskFriends from './TaskFriends';
 import s from '/src/App.module.css';
+import TaskSpecial from './TaskSpecial';
 
 const TasksDetails = () => {
   const tasks = useSelector(selectUserTasks);
-  const isLoading = useSelector(selectIsLoading);
+
 
   return (
     <>
@@ -27,13 +27,15 @@ const TasksDetails = () => {
         <div className="bg-neutral-900 rounded-3xl px-2 py-5 mx-3">
           <ul className="flex flex-col gap-5">
             {tasks?.gaming.map((task) => (
-              <TaskItem
+              <TaskTelegram
                 key={task.id}
                 src={task.svg_url}
                 title={task.name}
                 bonus={task.task_bonus}
                 completed={task.completed}
-                isLoading={isLoading}
+                taskId={task.id}
+                channelId={task.channelId}
+                
               />
             ))}
           </ul>
@@ -50,7 +52,7 @@ const TasksDetails = () => {
                 bonus={task.task_bonus}
                 completed={task.completed}
                 taskId={task.id}
-                isLoading={isLoading}
+                
               />
             ))}
           </ul>
@@ -60,13 +62,15 @@ const TasksDetails = () => {
         <div className="bg-neutral-900 rounded-3xl px-2 py-4 mx-3 mb-32">
           <ul className="flex flex-col gap-5">
             {tasks?.special.map((task) => (
-              <TaskItem
+              <TaskSpecial
                 key={task.id}
                 src={task.svg_url}
                 title={task.name}
                 bonus={task.task_bonus}
                 completed={task.completed}
-                isLoading={isLoading}
+                taskId={task.id}
+                
+                
               />
             ))}
           </ul>
