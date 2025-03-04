@@ -5,6 +5,7 @@ import checkTelegramSub from '../../utils/checkTelegramSub';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserId } from '../../redux/selectors';
 import { AppDispatch } from '../../redux/store';
+import { taskCompleted } from '../../redux/operations';
 
 interface TaskItemProps {
   src: string;
@@ -29,9 +30,19 @@ const TaskItem: React.FC<TaskItemProps> = ({
   const dispatch = useDispatch<AppDispatch>();
 
   const checkTelegram = async () => {
-      setIsLoading(true);
-    await checkTelegramSub(userId, taskId, channelId, dispatch);
+    
+    setIsLoading(true);
+    
+    const status = await checkTelegramSub(userId, channelId);
+
+    if (status === 'member' || status === 'creator' || status === 'administrator') {
+      dispatch(taskCompleted({ userId, taskId }));
       setIsLoading(false);
+    } else {
+      setIsLoading(false);
+    }
+
+      
     };
 
   return (
