@@ -17,9 +17,11 @@ const BoostsModal = () => {
 
               <div className="flex justify-start flex-col">
                 <h3 className="text-zinc-300 mb-2 break-words">{boost.name}</h3>
-                <p className="text-zinc-400 text-sm mb-2">
+                <div className='flex gap-3'>
+                  <p className="text-zinc-400 text-sm mb-2">
                   X {boost.boost_bonus}
-                </p><p>{boost.quantity}</p>
+                </p><p className="text-zinc-400 text-sm">qty: {boost.quantity}</p>
+                </div>
               </div>
             </li>
           ))}
@@ -36,3 +38,6 @@ const BoostsModal = () => {
 };
 
 export default BoostsModal;
+
+
+
