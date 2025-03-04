@@ -24,7 +24,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
   taskId,
   channelId
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const userId = useSelector(selectUserId);
   const dispatch = useDispatch<AppDispatch>();
