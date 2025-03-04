@@ -143,7 +143,6 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
     setIsClaimDisabled(true);
     setIsFarmDisabled(false);
     setCurrentValue(START_VALUE);
-
     if (animationRef.current) {
       animationRef.current.pause();
       animationRef.current = null;
