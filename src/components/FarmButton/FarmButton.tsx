@@ -3,11 +3,7 @@ import { useLocation } from 'react-router-dom';
 import anime from 'animejs';
 import s from '/src/App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectUserId,
-  selectFarmingCycleInMilisec,
-  selectTokensToGet,
-} from '../../redux/selectors';
+import { selectUserId } from '../../redux/selectors';
 import { claimTokens, startFarming } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 import { useTranslation } from 'react-i18next';
@@ -21,21 +17,15 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
   const location = useLocation();
   const { t } = useTranslation();
   const activeBoosts = useSelector(selectUserActiveBoosts);
-  const farmingCycle = useSelector(selectFarmingCycleInMilisec);
-  const tokensToGet = useSelector(selectTokensToGet);
-
-  const FARM_DURATION = farmingCycle;
+  const userId = useSelector(selectUserId);
+  const dispatch = useDispatch<AppDispatch>();
+  const animationRef = useRef<anime.AnimeInstance | null>(null);
   const START_VALUE = 0.001;
-  const END_VALUE = tokensToGet;
 
   const [currentValue, setCurrentValue] = useState(START_VALUE);
   const [isFarmDisabled, setIsFarmDisabled] = useState<boolean>(false);
   const [isClaimDisabled, setIsClaimDisabled] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState(true);
-
-  const userId = useSelector(selectUserId);
-  const dispatch = useDispatch<AppDispatch>();
-  const animationRef = useRef<anime.AnimeInstance | null>(null);
 
   const startAnimation = useCallback(
     (fromValue: number, remainingTime: number, endValue: number) => {
@@ -43,9 +33,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
         animationRef.current.pause();
         animationRef.current = null;
       }
-
       anime.remove('.farm-span');
-
       animationRef.current = anime({
         targets: { value: fromValue },
         value: endValue,
@@ -67,34 +55,40 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
 
   const checkFarmStatus = useCallback(() => {
     const storedStartTime = localStorage.getItem('farmStartTime');
-    if (storedStartTime) {
+    const storedFarmDuration = localStorage.getItem('farmDuration');
+    const storedEndValue = localStorage.getItem('endValue');
+
+    if (storedStartTime && storedFarmDuration && storedEndValue) {
       const startTime = parseInt(storedStartTime, 10);
+      const farmDuration = parseInt(storedFarmDuration, 10);
+      const endValue = parseFloat(storedEndValue);
       const elapsedTime = Date.now() - startTime;
 
-      if (elapsedTime >= FARM_DURATION) {
+      if (elapsedTime >= farmDuration) {
         setIsClaimDisabled(false);
         setIsFarmDisabled(true);
-        setCurrentValue(END_VALUE);
+        setCurrentValue(endValue);
       } else {
-        const progress = elapsedTime / FARM_DURATION;
+        const progress = elapsedTime / farmDuration;
         const animatedStartValue =
-          START_VALUE + (END_VALUE - START_VALUE) * progress;
-
+          START_VALUE + (endValue - START_VALUE) * progress;
         setCurrentValue(animatedStartValue);
         setIsFarmDisabled(true);
         setIsClaimDisabled(true);
         startAnimation(
           animatedStartValue,
-          FARM_DURATION - elapsedTime,
-          END_VALUE,
+          farmDuration - elapsedTime,
+          endValue,
         );
       }
+    } else {
+      setIsFarmDisabled(false);
+      setIsClaimDisabled(true);
+      setCurrentValue(START_VALUE);
     }
     setIsLoading(false);
     onFarmStatusChange(isFarmDisabled);
   }, [
-    FARM_DURATION,
-    END_VALUE,
     START_VALUE,
     onFarmStatusChange,
     isFarmDisabled,
@@ -113,10 +107,8 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
         }, 100);
       }
     };
-
     document.addEventListener('visibilitychange', handleVisibilityChange);
     checkFarmStatus();
-
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
@@ -125,7 +117,6 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
   const handleClick = async () => {
     const boostsIdsArray = activeBoosts.map((boost) => boost.idItem);
     const result = await dispatch(startFarming({ id: userId, boostsIdsArray }));
-
     if (startFarming.fulfilled.match(result)) {
       const {
         farmingCycle: updatedFarmingCycle,
@@ -134,6 +125,8 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
 
       const startTime = Date.now();
       localStorage.setItem('farmStartTime', startTime.toString());
+      localStorage.setItem('farmDuration', updatedFarmingCycle.toString());
+      localStorage.setItem('endValue', updatedTokensToGet.toString());
       setIsFarmDisabled(true);
       setIsClaimDisabled(true);
       setCurrentValue(START_VALUE);
@@ -144,8 +137,9 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
 
   const handleClaimClick = async (): Promise<void> => {
     await dispatch(claimTokens(userId));
-
     localStorage.removeItem('farmStartTime');
+    localStorage.removeItem('farmDuration');
+    localStorage.removeItem('endValue');
     setIsClaimDisabled(true);
     setIsFarmDisabled(false);
     setCurrentValue(START_VALUE);
