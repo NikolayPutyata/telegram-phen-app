@@ -50,6 +50,7 @@ export type UserState = {
   activeSkins: object[];
   farmingCycleInMilisec: number;
   currentBoost: number;
+  farmStart: number;
   completedTasks: compTask[];
   farmingCycle: number;
   tokensToGet: number;
