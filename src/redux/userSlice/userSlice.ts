@@ -64,6 +64,7 @@ const userSlice = createSlice({
       .addCase(claimTokens.fulfilled, (state, action) => {
         state.activeBoosts = action.payload.activeBoosts;
         state.tokens = action.payload.tokens;
+        state.farmStart = action.payload.farmStart;
       })
       .addCase(taskCompleted.fulfilled, (state, action) => {
         state.usersTasks = action.payload.userTasks;
