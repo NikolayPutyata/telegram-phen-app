@@ -5,17 +5,13 @@ import s from '/src/App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectUserId,
-  selectFarmingCycle,
+  selectFarmingCycleInMilisec,
   selectTokensToGet,
 } from '../../redux/selectors';
 import { claimTokens, startFarming } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 import { useTranslation } from 'react-i18next';
 import { selectUserActiveBoosts } from '../../redux/selectors';
-
-// const FARM_DURATION = 28800000;
-// const START_VALUE = 0.001;
-// const END_VALUE = 86.4;
 
 interface FarmButtonProps {
   onFarmStatusChange: (isFarmDisabled: boolean) => void;
@@ -25,7 +21,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
   const location = useLocation();
   const { t } = useTranslation();
   const activeBoosts = useSelector(selectUserActiveBoosts);
-  const farmingCycle = useSelector(selectFarmingCycle);
+  const farmingCycle = useSelector(selectFarmingCycleInMilisec);
   const tokensToGet = useSelector(selectTokensToGet);
 
   const FARM_DURATION = farmingCycle;
@@ -126,27 +122,11 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
     };
   }, [location.pathname, checkFarmStatus]);
 
-  // const handleClick = async () => {
-  //   const boostsIdsArray = activeBoosts.map((boost) => boost.idItem);
-
-  //   await dispatch(startFarming({ id: userId, boostsIdsArray }));
-
-  //   const startTime = Date.now();
-  //   localStorage.setItem('farmStartTime', startTime.toString());
-
-  //   setIsFarmDisabled(true);
-  //   setIsClaimDisabled(true);
-  //   setCurrentValue(START_VALUE);
-  //   startAnimation(START_VALUE, FARM_DURATION);
-  //   onFarmStatusChange(true);
-  // };
-
   const handleClick = async () => {
     const boostsIdsArray = activeBoosts.map((boost) => boost.idItem);
     const result = await dispatch(startFarming({ id: userId, boostsIdsArray }));
-    // Перевіряємо, чи успішно виконано запит
+
     if (startFarming.fulfilled.match(result)) {
-      // Оновлені дані з сервера доступні в result.payload
       const {
         farmingCycle: updatedFarmingCycle,
         tokensToGet: updatedTokensToGet,
