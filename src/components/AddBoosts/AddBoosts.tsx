@@ -13,7 +13,8 @@ const AddBoosts = ({ isAddBoostsDisabled }: AddBoostsProps) => {
 
   return (
     <>
-      <button
+      {isAddBoostsDisabled ? null : 
+        <button
         className="w-full text-lg mt-2 text-[#605dff]"
         onClick={() => setIsModalAddOpenBoosts(true)}
         disabled={isAddBoostsDisabled}
@@ -26,6 +27,7 @@ const AddBoosts = ({ isAddBoostsDisabled }: AddBoostsProps) => {
           + Add boosts
         </p>
       </button>
+        }
 
       <Modal
         isOpen={isModalOpenAddBoosts}
