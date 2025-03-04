@@ -9,7 +9,7 @@ const initialState: UserState = {
   photo_url: null,
   language_code: null,
   tokens: 0,
-  friends: [{id: 1, name: 'Victor'}],
+  friends: [],
   skins: [],
   activeBoosts: [],
   boosts: [],

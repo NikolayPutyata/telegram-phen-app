@@ -21,7 +21,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
   bonus,
   completed,
   taskId,
-  // channelId
+  channelId
 }) => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -30,7 +30,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
 
   const checkTelegram = async () => {
       setIsLoading(true);
-    await checkTelegramSub(userId, taskId, "-4653767745", dispatch);
+    await checkTelegramSub(userId, taskId, channelId, dispatch);
       setIsLoading(false);
     };
 
