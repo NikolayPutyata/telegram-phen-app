@@ -1,5 +1,9 @@
-import SpecialItem from '../../Pages/Leaderbords/SpecialItem';
+import { useSelector } from 'react-redux';
+import SpecialCaseItem from '../../Pages/Leaderbords/SpecialCaseItem';
+import SpecialRobotItem from '../../Pages/Leaderbords/SpecialRobotItem';
 import s from '/src/App.module.css';
+import { selectFarmingCycle } from '../../redux/selectors';
+
 
 interface Prize {
   name: string,
@@ -108,6 +112,15 @@ const robots: robotsItem[] = [
     ]
 
 const Special = () => {
+
+  const farmingCycle = useSelector(selectFarmingCycle);
+
+  const getShowBuyButton = (robotId: number) => {
+    if (farmingCycle === 24) return false; 
+    if (farmingCycle === 12) return robotId === 6; 
+    if (farmingCycle === 8) return true; 
+  };
+  
     return (
         <div className="px-3 mb-32 mt-2 tracking-wider">
             <div className="relative w-full h-44 overflow-hidden rounded-4xl">
@@ -122,7 +135,7 @@ const Special = () => {
                 <h2 className={`${s.font} text-zinc-400 ml-4  mt-6 mb-6 text-sm tracking-wider`}>Cases</h2>
                 <ul className="flex flex-col gap-6 ">
                     {items.cases.map((special) => (
-                        <SpecialItem 
+                        <SpecialCaseItem 
                             key={special.id}
                             id={special.id}
                             description={special.description}
@@ -139,14 +152,15 @@ const Special = () => {
                 <h2 className={`${s.font} text-zinc-400 ml-4 mt-9 mb-6 text-sm tracking-wider`}>Robot Assistants</h2>
                 <ul className="flex flex-col gap-6 ">
                     {robots.map((special) => (
-                        <SpecialItem 
+                        <SpecialRobotItem 
                             key={special.id}
                             id={special.id}
                             description={special.description}
                             title={special.title}
                             imageUrl={special.imageUrl}
                             price={special.price}
-                            collectionId={special.collectionId}
+                        collectionId={special.collectionId}
+                        showBuyButton={getShowBuyButton(special.id)}
                         />
                     ))}
                 </ul>
