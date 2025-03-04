@@ -1,7 +1,7 @@
 import { checkChatMember, taskCompleted } from "../redux/operations";
 import { AppDispatch } from "../redux/store";
 
-const checkTelegramSub = async (taskId: number, userId: number, channelId: string, dispatch: AppDispatch,) => {
+const checkTelegramSub = async (userId: number, taskId: number, channelId: string, dispatch: AppDispatch,) => {
 
     const data = await checkChatMember(userId, channelId);
     
