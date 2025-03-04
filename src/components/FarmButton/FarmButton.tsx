@@ -117,7 +117,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
   const handleClick = async () => {
     const boostsIdsArray = activeBoosts.map((boost) => boost.idItem);
     const result = await dispatch(startFarming({ id: userId, boostsIdsArray }));
-    if (startFarming.fulfilled.match(result)) {
+    if(startFarming.fulfilled.match(result)) {
       const {
         farmingCycleInMilisec: updatedFarmingCycle,
         tokensToGet: updatedTokensToGet,
