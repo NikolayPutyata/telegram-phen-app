@@ -1,13 +1,13 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { AppDispatch } from '../../redux/store';
+import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
-import anime from 'animejs';
-import s from '/src/App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserId } from '../../redux/selectors';
 import { claimTokens, startFarming } from '../../redux/operations';
-import { AppDispatch } from '../../redux/store';
-import { useTranslation } from 'react-i18next';
 import { selectUserActiveBoosts } from '../../redux/selectors';
+import s from '/src/App.module.css';
+import anime from 'animejs';
 
 interface FarmButtonProps {
   onFarmStatusChange: (isFarmDisabled: boolean) => void;
@@ -16,15 +16,16 @@ interface FarmButtonProps {
 const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
   const location = useLocation();
   const { t } = useTranslation();
+  const dispatch = useDispatch<AppDispatch>();
   const activeBoosts = useSelector(selectUserActiveBoosts);
   const userId = useSelector(selectUserId);
-  const dispatch = useDispatch<AppDispatch>();
   const animationRef = useRef<anime.AnimeInstance | null>(null);
+
   const START_VALUE = 0.001;
 
-  const [currentValue, setCurrentValue] = useState(START_VALUE);
   const [isFarmDisabled, setIsFarmDisabled] = useState<boolean>(false);
   const [isClaimDisabled, setIsClaimDisabled] = useState<boolean>(true);
+  const [currentValue, setCurrentValue] = useState(START_VALUE);
   const [isLoading, setIsLoading] = useState(true);
 
   const startAnimation = useCallback(
@@ -34,6 +35,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
         animationRef.current = null;
       }
       anime.remove('.farm-span');
+
       animationRef.current = anime({
         targets: { value: fromValue },
         value: endValue,
@@ -72,6 +74,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
         const progress = elapsedTime / farmDuration;
         const animatedStartValue =
           START_VALUE + (endValue - START_VALUE) * progress;
+
         setCurrentValue(animatedStartValue);
         setIsFarmDisabled(true);
         setIsClaimDisabled(true);
@@ -86,6 +89,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
       setIsClaimDisabled(true);
       setCurrentValue(START_VALUE);
     }
+
     setIsLoading(false);
     onFarmStatusChange(isFarmDisabled);
   }, [
@@ -107,6 +111,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
         }, 100);
       }
     };
+
     document.addEventListener('visibilitychange', handleVisibilityChange);
     checkFarmStatus();
     return () => {
@@ -117,16 +122,18 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
   const handleClick = async () => {
     const boostsIdsArray = activeBoosts.map((boost) => boost.idItem);
     const result = await dispatch(startFarming({ id: userId, boostsIdsArray }));
-    if(startFarming.fulfilled.match(result)) {
+
+    if (startFarming.fulfilled.match(result)) {
       const {
         farmingCycleInMilisec: updatedFarmingCycle,
         tokensToGet: updatedTokensToGet,
       } = result.payload;
-
       const startTime = Date.now();
+
       localStorage.setItem('farmStartTime', startTime.toString());
       localStorage.setItem('farmDuration', updatedFarmingCycle.toString());
       localStorage.setItem('endValue', updatedTokensToGet.toString());
+
       setIsFarmDisabled(true);
       setIsClaimDisabled(true);
       setCurrentValue(START_VALUE);
@@ -140,13 +147,16 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
     localStorage.removeItem('farmStartTime');
     localStorage.removeItem('farmDuration');
     localStorage.removeItem('endValue');
+
     setIsClaimDisabled(true);
     setIsFarmDisabled(false);
     setCurrentValue(START_VALUE);
+
     if (animationRef.current) {
       animationRef.current.pause();
       animationRef.current = null;
     }
+
     anime.remove('.farm-span');
     onFarmStatusChange(false);
   };
@@ -164,6 +174,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
           {t('Farm')}
         </button>
       )}
+
       <span
         className={`border-3 border-[#605dff] py-[6px] flex justify-center items-center farm-span 
             w-full tracking-wider text-base bg-transparent text-zinc-300 rounded-4xl ${
@@ -172,6 +183,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
       >
         {currentValue.toFixed(3)}
       </span>
+
       <button
         className={`btn btn-primary rounded-4xl ${
           isLoading ? 'opacity-0' : 'opacity-100'
