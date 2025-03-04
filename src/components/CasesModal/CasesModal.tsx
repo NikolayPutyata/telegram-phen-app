@@ -139,7 +139,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
             <AnimatePresence>
               {isCaseOpen && (
                 <motion.img
-                  src="/public/assets/language/Chest.png"
+                  src="/assets/language/Chest.png"
                   alt="case-open"
                   className="absolute bottom-[60px] left-1/2 transform -translate-x-1/2 z-10 w-96 h-120 shadow-lg"
                   initial={openCaseAnimation.initial}
