@@ -22,7 +22,6 @@ const initialState: UserState = {
   activeSkins: [],
   currentBoost: 0,
   completedTasks: [],
-  loading: false,
   farmingCycleInMilisec: 0,
   farmingCycle: 0,
   tokensToGet: 0,
@@ -64,11 +63,7 @@ const userSlice = createSlice({
         state.activeBoosts = action.payload.activeBoosts;
         state.tokens = action.payload.tokens;
       })
-      .addCase(taskCompleted.pending, (state) => {
-        state.loading = true;
-      })
       .addCase(taskCompleted.fulfilled, (state, action) => {
-        state.loading = false;
         state.usersTasks = action.payload.userTasks;
       })
       .addCase(startFarming.fulfilled, (state, action) => {

@@ -6,6 +6,15 @@ export interface Task {
   completed: boolean;
 }
 
+export interface TelegramTask {
+  id: number;
+  name: string;
+  svg_url: string;
+  task_bonus: number;
+  completed: boolean;
+  channelId: string;
+}
+
 export interface Boost {
   idItem: number;
   name: string;
@@ -42,11 +51,10 @@ export type UserState = {
   farmingCycleInMilisec: number;
   currentBoost: number;
   completedTasks: compTask[];
-  loading: boolean;
   farmingCycle: number;
   tokensToGet: number;
   usersTasks: {
-    gaming: Task[];
+    gaming: TelegramTask[];
     partners: Task[];
     special: Task[];
   };
