@@ -106,6 +106,8 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
   ]);
 
   useEffect(() => {
+    checkFarmStatus();
+    
     const handleVisibilityChange = () => {
       if (!document.hidden) {
         setTimeout(() => {
