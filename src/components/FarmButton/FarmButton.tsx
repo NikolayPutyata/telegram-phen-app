@@ -64,7 +64,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
             animationRef.current = null;
           },
         });
-      }, 10);
+      }, 0);
     },
     [setCurrentValue, setIsClaimDisabled],
   );
@@ -132,14 +132,14 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
 
     if (startFarming.fulfilled.match(result)) {
       const {
-        farmingCycle: updatedFarmingCycle,
+        farmingCycleInMilisec: updatedFarmingCycleInMilisec,
         tokensToGet: updatedTokensToGet,
       } = result.payload;
 
       setIsFarmDisabled(true);
       setIsClaimDisabled(true);
       setCurrentValue(START_VALUE);
-      startAnimation(START_VALUE, updatedFarmingCycle, updatedTokensToGet);
+      startAnimation(START_VALUE, updatedFarmingCycleInMilisec, updatedTokensToGet);
       onFarmStatusChange(true);
     }
   };
