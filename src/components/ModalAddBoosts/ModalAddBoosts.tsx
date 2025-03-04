@@ -61,9 +61,9 @@ const ModalAddBoosts: React.FC<LanguageModalProps> = ({ onClose }) => {
                 {boost.name}
               </h3>
               <div className='flex gap-3'>
-                  <p className="text-zinc-400 text-sm traking-wider">
+                  <p className={`${s.font} text-zinc-400 text-sm traking-wider`}>
                   X {boost.boost_bonus}
-                </p><p className="text-zinc-400 text-sm traking-wider">qty: {boost.quantity}</p>
+                </p><p className={`${s.font} text-zinc-400 text-sm traking-wider`}>qty: {boost.quantity}</p>
                 </div>
             </div>
           </li>
