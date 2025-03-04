@@ -18,8 +18,8 @@ const ActiveBoosts: React.FC<ActiveBoostsProps> = ({ activeBoosts }) => {
   return (
     <ul className="flex px-10 flex-col gap-2">
       {activeBoosts?.map((boost) => (
-        <li key={boost.idItem} className="flex justify-between">
-          <div className="flex justify-center w-8 h-8 overflow-hidden rounded-3xl">
+        <li key={boost.idItem} className="flex justify-between items-center">
+          <div className="flex justify-center w-10 h-10 overflow-hidden rounded-3xl ">
             <img src={boost.boost_photo_url} alt={boost.name} />
           </div>
 
@@ -27,7 +27,7 @@ const ActiveBoosts: React.FC<ActiveBoostsProps> = ({ activeBoosts }) => {
             {boost.name}
           </h3>
 
-          <p className={`${s.font} text-zinc-400 text-sm`}>
+          <p className={`${s.font} text-zinc-400`}>
             X {boost.boost_bonus}
           </p>
         </li>

@@ -4,16 +4,21 @@ import { selectCommonBoosts, selectUserId } from '../../redux/selectors';
 import s from '/src/App.module.css';
 import { paymentInPhenerium } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
+import {ClipLoader} from 'react-spinners';
+import { useState } from 'react';
 
 
 const Boosts = () => {
   const boosts = useSelector(selectCommonBoosts);
   const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector(selectUserId);
+  const [IsLoading, setIsLoading] = useState(false);
 
   const handeBuyInPhenerium = async (amount: number, idItem: number, collectionId: number) => {
+    setIsLoading(true);
     const memo = `ORDER_${userId}_${collectionId}_${idItem}`;
     await dispatch(paymentInPhenerium({ memo, amount }));
+    setIsLoading(false);
   };
 
   return (
@@ -55,7 +60,7 @@ const Boosts = () => {
               onClick={()=>handeBuyInPhenerium(Number(boosts[0].price), boosts[0].idItem, boosts[0].collectionId)}
               
             >
-              Buy
+              {IsLoading ? <ClipLoader size={17} color={"#ededed"} /> : "Buy"}
             </button>
           </div>
         </div>

@@ -2,6 +2,8 @@ import { useSelector } from 'react-redux';
 import s from '/src/App.module.css';
 import { selectUserId } from '../../redux/selectors';
 import { createStarInvoice } from '../../utils/createStarInvoice';
+import { useState } from 'react';
+import {ClipLoader} from 'react-spinners';
 
 type BoostsItemProps = {
   boost_photo_url: string;
@@ -24,6 +26,7 @@ const BoostsItem: React.FC<BoostsItemProps> = ({
   idItem
 }) => {
   const userId = useSelector(selectUserId);
+  const [isLoading, setIsLoading] = useState(false);
   // const [tonConnectUI] = useTonConnectUI();
 
   // const sendTransactionFu = async () => {
@@ -34,7 +37,8 @@ const BoostsItem: React.FC<BoostsItemProps> = ({
 
   // };
 
-    const handleBuyClick = async () => {
+  const handleBuyClick = async () => {
+    setIsLoading(true);
   
       const invoiceLink = await createStarInvoice({
         title: name,
@@ -47,11 +51,11 @@ const BoostsItem: React.FC<BoostsItemProps> = ({
   
       window.Telegram.WebApp.openInvoice(invoiceLink, (status) => {
         if (status === 'paid') {
-          alert('Спасибо за покупку!');
+          setIsLoading(false);
         } else if (status === 'cancelled') {
-          alert('Оплата отменена');
+          setIsLoading(false);
         } else if (status === 'failed') {
-          alert('Ошибка оплаты');
+          setIsLoading(false);
         }
       });
   
@@ -77,7 +81,7 @@ const BoostsItem: React.FC<BoostsItemProps> = ({
           className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500"
           onClick={handleBuyClick}
         >
-          Buy
+          {isLoading ? <ClipLoader size={17} color={"#ededed"} /> : "Buy"}
         </button>
       </div>
     </li>

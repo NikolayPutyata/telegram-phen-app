@@ -14,6 +14,7 @@ export interface Boost {
   collectionId: number;
   desc: string;
   price: string;
+  quantity: number;
 }
 
 interface compTask {
