@@ -30,10 +30,11 @@ const TaskItem: React.FC<TaskItemProps> = ({
   const dispatch = useDispatch<AppDispatch>();
 
   const checkTelegram = async () => {
-    
+
     setIsLoading(true);
     
-    const status = await checkTelegramSub(userId, channelId);
+    try {
+      const status = await checkTelegramSub(userId, channelId);
 
     if (status === 'member' || status === 'creator' || status === 'administrator') {
       dispatch(taskCompleted({ userId, taskId }));
@@ -41,6 +42,11 @@ const TaskItem: React.FC<TaskItemProps> = ({
     } else {
       setIsLoading(false);
     }
+    }
+    catch (e) {
+      console.log('Error in checkTelegramSub:', e);
+    }
+    
 
       
     };
