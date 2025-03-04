@@ -119,7 +119,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
     const result = await dispatch(startFarming({ id: userId, boostsIdsArray }));
     if (startFarming.fulfilled.match(result)) {
       const {
-        farmingCycle: updatedFarmingCycle,
+        farmingCycleInMilisec: updatedFarmingCycle,
         tokensToGet: updatedTokensToGet,
       } = result.payload;
 
