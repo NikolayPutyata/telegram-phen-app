@@ -48,26 +48,29 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
 
       anime.remove('.farm-span');
 
-      animationRef.current = anime({
-        targets: { value: fromValue },
-        value: endValue,
-        easing: 'linear',
-        duration: remainingTime,
-        round: false,
-        update: (anim) => {
-          setCurrentValue(Number(anim.animations[0].currentValue));
-        },
-        complete: () => {
-          setIsClaimDisabled(false);
-          setCurrentValue(endValue);
-          animationRef.current = null;
-        },
-      });
+      setTimeout(() => {
+        animationRef.current = anime({
+          targets: { value: fromValue },
+          value: endValue,
+          easing: 'linear',
+          duration: remainingTime,
+          round: false,
+          update: (anim) => {
+            setCurrentValue(Number(anim.animations[0].currentValue));
+          },
+          complete: () => {
+            setIsClaimDisabled(false);
+            setCurrentValue(endValue);
+            animationRef.current = null;
+          },
+        });
+      }, 10);
     },
     [setCurrentValue, setIsClaimDisabled],
   );
 
   const checkFarmStatus = useCallback(() => {
+    if (farmStart) {
       const elapsedTime = Date.now() - farmStart;
 
       if (elapsedTime >= FARM_DURATION) {
@@ -87,7 +90,8 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
           FARM_DURATION - elapsedTime,
           END_VALUE,
         );
-      
+    
+      }
     }
     setIsLoading(false);
     onFarmStatusChange(isFarmDisabled);
