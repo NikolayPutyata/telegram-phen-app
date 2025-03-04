@@ -24,7 +24,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
   taskId,
   channelId
 }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const userId = useSelector(selectUserId);
   const dispatch = useDispatch<AppDispatch>();
@@ -69,7 +69,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
       {completed ? (
         <img src="assets/complete.svg" className="mr-4 w-8 h-8" />
       ) : isLoading ? (
-        <div className='flex items-center justify-center w-[70px]'><ClipLoader size={15} color={"#ededed"} /></div>
+        <div className='flex items-center justify-center w-[70px]'><ClipLoader size={18} color={"#ededed"} /></div>
       ) : (
         <button
           onClick={checkTelegram}
