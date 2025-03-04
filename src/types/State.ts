@@ -48,6 +48,7 @@ export type UserState = {
   activeBoosts: Boost[];
   boosts: Boost[];
   activeSkins: object[];
+  farmingCycleInMilisec: number;
   currentBoost: number;
   completedTasks: compTask[];
   farmingCycle: number;
