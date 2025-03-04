@@ -3,24 +3,34 @@ import { useLocation } from 'react-router-dom';
 import anime from 'animejs';
 import s from '/src/App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import {  selectUserId } from '../../redux/selectors';
+import {
+  selectUserId,
+  selectFarmingCycle,
+  selectTokensToGet,
+} from '../../redux/selectors';
 import { claimTokens, startFarming } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 import { useTranslation } from 'react-i18next';
 import { selectUserActiveBoosts } from '../../redux/selectors';
 
-const FARM_DURATION = 28800000;
-const START_VALUE = 0.001;
-const END_VALUE = 86.4;
+// const FARM_DURATION = 28800000;
+// const START_VALUE = 0.001;
+// const END_VALUE = 86.4;
 
 interface FarmButtonProps {
   onFarmStatusChange: (isFarmDisabled: boolean) => void;
 }
 
 const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
-  
   const location = useLocation();
   const activeBoosts = useSelector(selectUserActiveBoosts);
+  const farmingCycle = useSelector(selectFarmingCycle);
+  const tokensToGet = useSelector(selectTokensToGet);
+
+  const FARM_DURATION = farmingCycle; // const FARM_DURATION = 28800000;
+  const START_VALUE = 0.001;
+  const END_VALUE = tokensToGet; // const END_VALUE = 86.4;
+
   const { t } = useTranslation();
   const [currentValue, setCurrentValue] = useState(START_VALUE);
   const [isFarmDisabled, setIsFarmDisabled] = useState<boolean>(false);
@@ -57,7 +67,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
         },
       });
     },
-    [setCurrentValue, setIsClaimDisabled],
+    [END_VALUE, setCurrentValue, setIsClaimDisabled],
   );
 
   const checkFarmStatus = useCallback(() => {
@@ -84,6 +94,8 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
     setIsLoading(false);
     onFarmStatusChange(isFarmDisabled);
   }, [
+    FARM_DURATION,
+    END_VALUE,
     onFarmStatusChange,
     isFarmDisabled,
     setIsClaimDisabled,
@@ -115,8 +127,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
 
     await dispatch(startFarming({ id: userId, boostsIdsArray }));
 
-    
-      const startTime = Date.now();
+    const startTime = Date.now();
     localStorage.setItem('farmStartTime', startTime.toString());
 
     setIsFarmDisabled(true);
@@ -124,8 +135,6 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
     setCurrentValue(START_VALUE);
     startAnimation(START_VALUE, FARM_DURATION);
     onFarmStatusChange(true);
-    
-    
   };
 
   const handleClaimClick = async (): Promise<void> => {
