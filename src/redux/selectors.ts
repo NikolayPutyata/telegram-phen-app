@@ -20,3 +20,4 @@ export const selectFarmingCycle = (state: RootState) => state.user.farmingCycle;
 export const selectTokensToGet = (state: RootState) => state.user.tokensToGet;
 export const selectCommonBoosts = (state: RootState) => state.data.commonBoosts;
 export const selectUserSkins = (state: RootState) => state.user.skins;
+export const selectFarmStart = (state: RootState) => state.user.farmStart;

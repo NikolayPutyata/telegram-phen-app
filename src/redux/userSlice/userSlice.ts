@@ -23,6 +23,7 @@ const initialState: UserState = {
   currentBoost: 0,
   completedTasks: [],
   farmingCycleInMilisec: 0,
+  farmStart: 0,
   farmingCycle: 0,
   tokensToGet: 0,
   usersTasks: {
@@ -58,6 +59,7 @@ const userSlice = createSlice({
         state.currentBoost = usersData.currentBoost;
         state.usersTasks = usersData.usersTasks;
         state.farmingCycle = usersData.farmingCycle;
+        state.farmStart = usersData.farmStart;
       })
       .addCase(claimTokens.fulfilled, (state, action) => {
         state.activeBoosts = action.payload.activeBoosts;
