@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import Typed from 'typed.js';
 import s from '/src/App.module.css';
 import FarmBlock from '../../components/FarmBlock/FarmBlock';
-import PresaleBlock from '../../components/PresaleBlock/PresaleBlock';
+// import PresaleBlock from '../../components/PresaleBlock/PresaleBlock';
 import AirdropBlock from '../../components/AirdropBlock/AirdropBlock';
 import FamilyBlock from '../../components/FamilyBlock/FamilyBlock';
 // import SkinsChange from '../../components/SkinsChange/SkinsChange.tsx';
@@ -73,9 +73,9 @@ const Home = () => {
         </p>
       </div>
       <Socials />
-      {/* <SkinsChange /> */}
       <FarmBlock />
-      <PresaleBlock />
+      {/* <SkinsChange /> */}
+      {/* <PresaleBlock /> */}
       <AirdropBlock />
       <FamilyBlock />
     </div>
