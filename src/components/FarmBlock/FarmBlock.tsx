@@ -29,7 +29,7 @@ const FarmBlock = () => {
         <h2 className={`${s.font} text-zinc-300 tracking-wider`}>
         {t('Farm PHEN Tokens')} 💰
       </h2>
-      <h2 className={`${s.font} text-zinc-400 tracking-wider`}>🕖{farmingCycle} h.</h2>
+      <h2 className={`${s.font} text-zinc-400 tracking-wider`}>🕖 {farmingCycle} h.</h2>
       </div>
       <div className="flex flex-col justify-center px-3 my-3 mb-8">
         <div className="flex flex-col px-6 my-4">
