@@ -23,15 +23,15 @@ interface FarmButtonProps {
 
 const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
   const location = useLocation();
+  const { t } = useTranslation();
   const activeBoosts = useSelector(selectUserActiveBoosts);
   const farmingCycle = useSelector(selectFarmingCycle);
   const tokensToGet = useSelector(selectTokensToGet);
 
-  const FARM_DURATION = farmingCycle; // const FARM_DURATION = 28800000;
+  const FARM_DURATION = farmingCycle;
   const START_VALUE = 0.001;
-  const END_VALUE = tokensToGet; // const END_VALUE = 86.4;
+  const END_VALUE = tokensToGet;
 
-  const { t } = useTranslation();
   const [currentValue, setCurrentValue] = useState(START_VALUE);
   const [isFarmDisabled, setIsFarmDisabled] = useState<boolean>(false);
   const [isClaimDisabled, setIsClaimDisabled] = useState<boolean>(true);
@@ -39,11 +39,10 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
 
   const userId = useSelector(selectUserId);
   const dispatch = useDispatch<AppDispatch>();
-
   const animationRef = useRef<anime.AnimeInstance | null>(null);
 
   const startAnimation = useCallback(
-    (fromValue: number, remainingTime: number) => {
+    (fromValue: number, remainingTime: number, endValue: number) => {
       if (animationRef.current) {
         animationRef.current.pause();
         animationRef.current = null;
@@ -53,7 +52,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
 
       animationRef.current = anime({
         targets: { value: fromValue },
-        value: END_VALUE,
+        value: endValue,
         easing: 'linear',
         duration: remainingTime,
         round: false,
@@ -62,12 +61,12 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
         },
         complete: () => {
           setIsClaimDisabled(false);
-          setCurrentValue(END_VALUE);
+          setCurrentValue(endValue);
           animationRef.current = null;
         },
       });
     },
-    [END_VALUE, setCurrentValue, setIsClaimDisabled],
+    [setCurrentValue, setIsClaimDisabled],
   );
 
   const checkFarmStatus = useCallback(() => {
@@ -88,7 +87,11 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
         setCurrentValue(animatedStartValue);
         setIsFarmDisabled(true);
         setIsClaimDisabled(true);
-        startAnimation(animatedStartValue, FARM_DURATION - elapsedTime);
+        startAnimation(
+          animatedStartValue,
+          FARM_DURATION - elapsedTime,
+          END_VALUE,
+        );
       }
     }
     setIsLoading(false);
@@ -96,6 +99,7 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
   }, [
     FARM_DURATION,
     END_VALUE,
+    START_VALUE,
     onFarmStatusChange,
     isFarmDisabled,
     setIsClaimDisabled,
@@ -122,19 +126,40 @@ const FarmButton = ({ onFarmStatusChange }: FarmButtonProps) => {
     };
   }, [location.pathname, checkFarmStatus]);
 
+  // const handleClick = async () => {
+  //   const boostsIdsArray = activeBoosts.map((boost) => boost.idItem);
+
+  //   await dispatch(startFarming({ id: userId, boostsIdsArray }));
+
+  //   const startTime = Date.now();
+  //   localStorage.setItem('farmStartTime', startTime.toString());
+
+  //   setIsFarmDisabled(true);
+  //   setIsClaimDisabled(true);
+  //   setCurrentValue(START_VALUE);
+  //   startAnimation(START_VALUE, FARM_DURATION);
+  //   onFarmStatusChange(true);
+  // };
+
   const handleClick = async () => {
     const boostsIdsArray = activeBoosts.map((boost) => boost.idItem);
+    const result = await dispatch(startFarming({ id: userId, boostsIdsArray }));
+    // Перевіряємо, чи успішно виконано запит
+    if (startFarming.fulfilled.match(result)) {
+      // Оновлені дані з сервера доступні в result.payload
+      const {
+        farmingCycle: updatedFarmingCycle,
+        tokensToGet: updatedTokensToGet,
+      } = result.payload;
 
-    await dispatch(startFarming({ id: userId, boostsIdsArray }));
-
-    const startTime = Date.now();
-    localStorage.setItem('farmStartTime', startTime.toString());
-
-    setIsFarmDisabled(true);
-    setIsClaimDisabled(true);
-    setCurrentValue(START_VALUE);
-    startAnimation(START_VALUE, FARM_DURATION);
-    onFarmStatusChange(true);
+      const startTime = Date.now();
+      localStorage.setItem('farmStartTime', startTime.toString());
+      setIsFarmDisabled(true);
+      setIsClaimDisabled(true);
+      setCurrentValue(START_VALUE);
+      startAnimation(START_VALUE, updatedFarmingCycle, updatedTokensToGet);
+      onFarmStatusChange(true);
+    }
   };
 
   const handleClaimClick = async (): Promise<void> => {

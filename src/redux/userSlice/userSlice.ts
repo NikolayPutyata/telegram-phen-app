@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { claimTokens, initUserFromServer, paymentInPhenerium, startFarming, taskCompleted } from '../operations';
+import {
+  claimTokens,
+  initUserFromServer,
+  paymentInPhenerium,
+  startFarming,
+  taskCompleted,
+} from '../operations';
 import { UserState } from '../../types/State';
 
 const initialState: UserState = {
@@ -24,7 +30,6 @@ const initialState: UserState = {
     partners: [],
     special: [],
   },
-  
 };
 
 const userSlice = createSlice({
