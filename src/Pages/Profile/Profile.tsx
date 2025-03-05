@@ -43,7 +43,7 @@ const Profile = () => {
           {t('Total tokens')}
         </p>
         <p className={`${s.font} text-zinc-300 tracking-wider`}>
-          {tokens} {t('PHEN')}
+          {tokens.toFixed(1)} {t('PHEN')}
         </p>
       </div>
 

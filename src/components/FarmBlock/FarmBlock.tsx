@@ -25,16 +25,20 @@ const FarmBlock = () => {
 
   return (
     <div className="my-5">
-      <div className='flex justify-between mx-4 my-4 mt-8 '>
+      <div className="flex justify-between mx-4 my-4 mt-8 ">
         <h2 className={`${s.font} text-zinc-300 tracking-wider`}>
-        {t('Farm tokens')} 💰
-      </h2>
-      <h2 className={`${s.font} text-zinc-400 tracking-wider`}>🕖 {farmingCycle} h.</h2>
+          {t('Farm tokens')} 💰
+        </h2>
+        <h2 className={`${s.font} text-zinc-400 tracking-wider`}>
+          🕖 {farmingCycle} h.
+        </h2>
       </div>
       <div className="flex flex-col justify-center px-3 my-3 mb-8">
         <div className="flex flex-col px-6 my-4">
           <div className="flex justify-center items-center">
-            <span className={`${s.font} text-zinc-300 text-3xl`}>{tokens}</span>
+            <span className={`${s.font} text-zinc-300 text-3xl`}>
+              {tokens.toFixed(1)}
+            </span>
           </div>
         </div>
         <FarmButton onFarmStatusChange={handleFarmStatusChange} />
