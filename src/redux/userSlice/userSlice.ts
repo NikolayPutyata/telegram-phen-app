@@ -5,6 +5,7 @@ import {
   paymentInPhenerium,
   startFarming,
   taskCompleted,
+  getBoostsAndSkins,
 } from '../operations';
 import { UserState } from '../../types/State';
 
@@ -77,6 +78,10 @@ const userSlice = createSlice({
         state.tokens = action.payload.data.tokens;
         state.boosts = action.payload.data.boosts;
         state.skins = action.payload.data.skins;
+      })
+      .addCase(getBoostsAndSkins.fulfilled, (state, action) => {
+        state.boosts = action.payload.boosts;
+        state.skins = action.payload.skins;
       });
   },
 });

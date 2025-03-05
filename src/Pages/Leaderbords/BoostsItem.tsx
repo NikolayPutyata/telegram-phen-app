@@ -1,9 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import s from '/src/App.module.css';
 import { selectUserId } from '../../redux/selectors';
 import { createStarInvoice } from '../../utils/createStarInvoice';
+import { getBoostsAndSkins } from '../../redux/operations';
+import { AppDispatch } from '../../redux/store';
 import { useState } from 'react';
-import {ClipLoader} from 'react-spinners';
+import { ClipLoader } from 'react-spinners';
 
 type BoostsItemProps = {
   boost_photo_url: string;
@@ -15,7 +17,6 @@ type BoostsItemProps = {
   boost_bonus: number;
 };
 
-      
 const BoostsItem: React.FC<BoostsItemProps> = ({
   boost_photo_url,
   name,
@@ -23,44 +24,40 @@ const BoostsItem: React.FC<BoostsItemProps> = ({
   price,
   collectionId,
   boost_bonus,
-  idItem
+  idItem,
 }) => {
   const userId = useSelector(selectUserId);
+  const dispatch = useDispatch<AppDispatch>();
   const [isLoading, setIsLoading] = useState(false);
   // const [tonConnectUI] = useTonConnectUI();
 
   // const sendTransactionFu = async () => {
-    // const transaction = await transactionFormation(userId, collectionId, idItem, parseFloat(price));
+  // const transaction = await transactionFormation(userId, collectionId, idItem, parseFloat(price));
 
-    // tonConnectUI.sendTransaction(transaction);
-    
+  // tonConnectUI.sendTransaction(transaction);
 
   // };
 
   const handleBuyClick = async () => {
     setIsLoading(true);
-  
-      const invoiceLink = await createStarInvoice({
-        title: name,
-        description: desc,
-        prices: [{ label: 'Price', amount: Number(price) }],
-        currency: "XTR",
-        provider_token: '',
-        payload: `ORDER_${userId}_${collectionId}_${idItem}`,
-      });
-  
-      window.Telegram.WebApp.openInvoice(invoiceLink, (status) => {
-        if (status === 'paid') {
-          setIsLoading(false);
-        } else if (status === 'cancelled') {
-          setIsLoading(false);
-        } else if (status === 'failed') {
-          setIsLoading(false);
-        }
-      });
-  
-     
-    
+
+    const invoiceLink = await createStarInvoice({
+      title: name,
+      description: desc,
+      prices: [{ label: 'Price', amount: Number(price) }],
+      currency: 'XTR',
+      provider_token: '',
+      payload: `ORDER_${userId}_${collectionId}_${idItem}`,
+    });
+
+    window.Telegram.WebApp.openInvoice(invoiceLink, (status) => {
+      if (status === 'paid') {
+        dispatch(getBoostsAndSkins(userId));
+        setIsLoading(false);
+      } else if (status === 'cancelled' || status === 'failed') {
+        setIsLoading(false);
+      }
+    });
   };
 
   return (
@@ -70,7 +67,9 @@ const BoostsItem: React.FC<BoostsItemProps> = ({
       </div>
 
       <div className="flex flex-col gap-1">
-        <h3 className={`${s.font} text-zinc-300 break-words tracking-wider`}>{name}</h3>
+        <h3 className={`${s.font} text-zinc-300 break-words tracking-wider`}>
+          {name}
+        </h3>
         <p className={`${s.font} text-zinc-400 text-sm mt-1`}>{desc}</p>
         <div className="flex items-center gap-1.5 mt-1">
           <p className={`${s.font} text-zinc-300 text-sm`}>{price}</p>
@@ -80,8 +79,9 @@ const BoostsItem: React.FC<BoostsItemProps> = ({
         <button
           className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500"
           onClick={handleBuyClick}
+          disabled={isLoading}
         >
-          {isLoading ? <ClipLoader size={17} color={"#ededed"} /> : "Buy"}
+          {isLoading ? <ClipLoader size={17} color={'#ededed'} /> : 'Buy'}
         </button>
       </div>
     </li>
@@ -89,4 +89,3 @@ const BoostsItem: React.FC<BoostsItemProps> = ({
 };
 
 export default BoostsItem;
-
