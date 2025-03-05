@@ -14,7 +14,7 @@ const Header = () => {
     <div className="collapse rounded-tl-none rounded-tr-none bg-neutral rounded-b-3xl p-0.5">
       <input type="checkbox" />
       <div className="collapse-title font-semibold flex justify-between items-center px-5">
-        <div>{userFriendlyAddress ? sliceWalletAddress(userFriendlyAddress) : <div className='flex items-center gap-2'><img src="/assets/Group_66.png" className='w-10'/><p className={`${s.font}  text-zinc-400 text-sm tracking-wider`}>PHENERIUM</p></div>}</div>
+        <div className={`${s.font} text-zinc-400 text-sm tracking-wider`}>{userFriendlyAddress ? sliceWalletAddress(userFriendlyAddress) : <div className='flex items-center gap-2'><img src="/assets/Group_66.png" className='w-10'/><p className={`${s.font}  text-zinc-400 text-sm tracking-wider`}>PHENERIUM</p></div>}</div>
         <PhenTonIcon />
       </div>
       <div className="collapse-content text-sm">
