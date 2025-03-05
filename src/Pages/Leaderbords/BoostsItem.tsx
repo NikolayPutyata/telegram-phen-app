@@ -50,9 +50,9 @@ const BoostsItem: React.FC<BoostsItemProps> = ({
       payload: `ORDER_${userId}_${collectionId}_${idItem}`,
     });
 
-    window.Telegram.WebApp.openInvoice(invoiceLink, (status) => {
+    window.Telegram.WebApp.openInvoice(invoiceLink, async (status) => {
       if (status === 'paid') {
-        dispatch(getBoostsAndSkins(userId));
+        await dispatch(getBoostsAndSkins(userId));
         setIsLoading(false);
       } else if (status === 'cancelled' || status === 'failed') {
         setIsLoading(false);
