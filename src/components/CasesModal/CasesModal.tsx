@@ -123,9 +123,9 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
             <AnimatePresence>
               {!isCaseOpen && (
                 <motion.img
-                  src="/assets/language/sticker.png"
+                  src="/assets/language/sticker.webp"
                   alt="case-close"
-                  className="absolute bottom-[120px] left-1/2 -translate-x-1/2 z-10 w-70 h-50"
+                  className="absolute bottom-[100px] left-1/2 -translate-x-1/2 z-10 w-70 h-54"
                   initial={caseAnimation.initial}
                   animate={
                     isAnimating
@@ -139,9 +139,9 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
             <AnimatePresence>
               {isCaseOpen && (
                 <motion.img
-                  src="/assets/language/Chest.png"
+                  src="/assets/language/sticker.open.webp"
                   alt="case-open"
-                  className="absolute bottom-[60px] left-1/2 transform -translate-x-1/2 z-10 w-96 h-120 shadow-lg"
+                  className="absolute bottom-[100px] left-1/2 transform -translate-x-1/2 z-10 w-70 h-100 shadow-lg"
                   initial={openCaseAnimation.initial}
                   animate={openCaseAnimation.animate}
                   exit={openCaseAnimation.exit}
