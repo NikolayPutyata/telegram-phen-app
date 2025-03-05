@@ -36,9 +36,7 @@ const FarmBlock = () => {
       <div className="flex flex-col justify-center px-3 my-3 mb-8">
         <div className="flex flex-col px-6 my-4">
           <div className="flex justify-center items-center">
-            <span className={`${s.font} text-zinc-300 text-3xl`}>
-              {tokens.toFixed(1)}
-            </span>
+            <span className={`${s.font} text-zinc-300 text-3xl`}>{tokens}</span>
           </div>
         </div>
         <FarmButton onFarmStatusChange={handleFarmStatusChange} />
