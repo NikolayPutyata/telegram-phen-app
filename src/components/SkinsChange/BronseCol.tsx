@@ -2,7 +2,7 @@ import s from '/src/App.module.css';
 
 const BronseCol = () => {
   return (
-    <div className="px-8 pt-5 pb-5 rounded-3xl mx-4 grid grid-cols-2 gap-4">
+    <div className="px-8 pb-5 rounded-3xl mx-4 grid grid-cols-2 gap-4">
   <div className="col-span-2 rounded-3xl border-1 border-[#cd7f32] overflow-hidden h-44">
     <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741782887/shut1_11zon_kaqreh.webp" alt="" className="object-cover w-full h-full"/>
   </div>

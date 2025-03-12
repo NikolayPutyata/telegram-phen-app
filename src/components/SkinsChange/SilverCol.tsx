@@ -2,7 +2,7 @@ import s from '/src/App.module.css';
 
 const SilverCol = () => {
   return (
-    <div className="px-8 pt-5 pb-5 rounded-3xl mx-4 grid grid-cols-2 gap-4">
+    <div className="px-8 pb-5 rounded-3xl mx-4 grid grid-cols-2 gap-4">
   <div className="col-span-2 rounded-3xl border-1 border-[#C0C0C0] overflow-hidden h-44">
     <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783041/sht3_11zon_jlbihy.webp" alt="" className="object-cover w-full h-full"/>
   </div>

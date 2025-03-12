@@ -5,7 +5,7 @@ const GoldCol = () => {
     <div>
       
 
-      <div className="px-8 pt-5 pb-5  rounded-3xl mx-4 grid grid-cols-2 gap-4">
+      <div className="px-8 pb-5  rounded-3xl mx-4 grid grid-cols-2 gap-4">
   <div className='col-span-2 rounded-3xl border-1 border-amber-400 overflow-hidden h-44'><img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1740682767/shut_11zon_g5onzi.webp" alt="" className='object-cover w-full h-full'/></div>
   <div className='rounded-3xl border-1 border-amber-400 overflow-hidden'><img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1740926028/gold_station_clq1ri.webp" alt="" className='object-cover w-full h-full'/></div>
   <div className='grid grid-cols-2 gap-2 rounded-3xl'>
