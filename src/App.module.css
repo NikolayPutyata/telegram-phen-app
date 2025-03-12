@@ -1,3 +1,26 @@
 .font {
   font-family: 'Orbitron', sans-serif;
 }
+.gradientBg {
+  background: linear-gradient(45deg, #3b82f6, purple, pink);
+  background-size: 200% 200%;
+  animation: gradientShift 2s ease infinite;
+}
+
+.gradientBg2 {
+  background: linear-gradient(45deg, #132c6f, #6fa5e7, #1e40af);
+  background-size: 200% 200%;
+  animation: gradientShift 2s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
