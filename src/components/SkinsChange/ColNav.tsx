@@ -7,7 +7,7 @@ const ColNav = () => {
     
   return (
     <>
-      <div className="my-3 mx-2">
+      <div className="my-3 mx-2 flex justify-center">
         <div role="tablist" className="tabs tabs-border">
           <NavLink
             to="/"
@@ -25,7 +25,7 @@ const ColNav = () => {
               location.pathname === "/bronse-col" ? "tab-active" : ""
             } ${isDisabled ? "opacity-50 pointer-events-none" : ""}`}
           >
-            Bronse
+            Bronze
           </NavLink>
           
             <NavLink
