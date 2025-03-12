@@ -10,7 +10,7 @@ const AirdropBlock = () => {
       <div className="flex flex-col px-3 mb-3">
         <div className="relative w-full h-44 overflow-hidden rounded-4xl mb-3">
           <img
-            src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261797/airdrop_mkpylv.webp"
+            src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741786542/airdrop2_11zon_xsqjpl.webp"
             alt=""
             className="object-cover w-full h-full"
           />
