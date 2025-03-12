@@ -24,6 +24,7 @@ const Profile = () => {
   const [isModalOpenLanguage, setIsModalOpenLanguage] = useState(false);
 
   return (
+    <>
     <div className="flex flex-col items-center bg-neutral-900 rounded-3xl p-3 pt-6 m-4">
       <div className="avatar">
         <div className="w-24 rounded-full">
@@ -95,6 +96,8 @@ const Profile = () => {
         onClose={() => setIsModalOpenLanguage(false)}
       />
     </div>
+
+    </>
   );
 };
 

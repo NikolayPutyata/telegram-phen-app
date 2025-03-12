@@ -4,17 +4,17 @@ const SilverCol = () => {
   return (
     <div className="px-8 pt-5 pb-5 bg-neutral-900 rounded-3xl mx-4 grid grid-cols-2 gap-4">
   <div className="col-span-2 rounded-3xl border-1 border-[#C0C0C0] overflow-hidden h-44">
-    <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741774739/Group_67_7_oehn0k.png" alt="" className="object-cover w-full h-full"/>
+    <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783041/sht3_11zon_jlbihy.webp" alt="" className="object-cover w-full h-full"/>
   </div>
   <div className="rounded-3xl border-1 border-[#C0C0C0] overflow-hidden">
     <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741774739/Group_67_7_oehn0k.png" alt="" className="object-cover w-full h-full"/>
   </div>
   <div className="grid grid-cols-2 gap-2 rounded-3xl">
     <div className="bg-red-50 rounded-3xl text-black border-1 border-[#C0C0C0] overflow-hidden">
-      <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741774853/Group_67_8_fyflff.png" alt="" className="object-cover w-full h-full"/>
+      <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783042/comS_11zon_d4gn94.webp" alt="" className="object-cover w-full h-full"/>
     </div>
     <div className="bg-red-50 rounded-3xl text-black border-1 border-[#C0C0C0] overflow-hidden">
-      <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741774853/Group_67_8_fyflff.png" alt="" className="object-cover w-full h-full"/>
+      <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783044/planet3_11zon_kbdrpe.webp" alt="" className="object-cover w-full h-full"/>
     </div>
   </div>
   <div className={`${s.font} flex justify-center text-lg gap-2`}>
