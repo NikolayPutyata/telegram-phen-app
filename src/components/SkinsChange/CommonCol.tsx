@@ -5,7 +5,7 @@ const CommonCol = () => {
     <div>
       
 
-      <div className="px-8 pt-5 pb-5 bg-neutral-900 rounded-3xl mx-4 grid grid-cols-2 gap-4">
+      <div className="px-8 pt-5 pb-5  rounded-3xl mx-4 grid grid-cols-2 gap-4">
   <div className=' col-span-2 rounded-3xl border-1 border-gray-700 overflow-hidden h-44'><img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741774739/Group_67_7_oehn0k.png" alt="" className='object-cover w-full h-full'/></div>
   <div className='rounded-3xl border-1 border-gray-700 overflow-hidden'><img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741774739/Group_67_7_oehn0k.png" alt="" className='object-cover w-full h-full'/></div>
   <div className='grid grid-cols-2 gap-2 rounded-3xl'>
