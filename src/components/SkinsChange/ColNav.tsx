@@ -15,7 +15,7 @@ const ColNav = () => {
           <NavLink
             to="/"
             role="tab"
-            className={`tab ${s.font} text-[0.6rem] tracking-wider ${
+            className={`tab ${s.font} text-[0.55rem] tracking-wider px-3 ${
               location.pathname === "/" ? "tab-active" : ""
             }`}
           >
@@ -24,7 +24,7 @@ const ColNav = () => {
           <NavLink
             to="/bronse-col"
             role="tab"
-            className={`tab ${s.font} text-[0.6rem] tracking-wider ${
+            className={`tab ${s.font} text-[0.55rem] tracking-wider px-3 ${
               location.pathname === "/bronse-col" ? "tab-active" : ""
             } ${isDisabled ? "opacity-50 pointer-events-none" : ""}`}
           >
@@ -34,7 +34,7 @@ const ColNav = () => {
             <NavLink
             to="/silver-col"
             role="tab"
-            className={`tab ${s.font} text-[0.6rem] tracking-wider ${
+            className={`tab ${s.font} text-[0.55rem] tracking-wider px-3 ${
               location.pathname === "/silver-col" ? "tab-active" : ""
             } ${isDisabled ? "opacity-50 pointer-events-none" : ""}`}
           >
@@ -43,7 +43,7 @@ const ColNav = () => {
           <NavLink
             to="/gold-col"
             role="tab"
-            className={`tab ${s.font} text-[0.6rem] tracking-wider ${
+            className={`tab ${s.font} text-[0.55rem] tracking-wider px-3 ${
               location.pathname === "/gold-col" ? "tab-active" : ""
             } `}
           >
@@ -52,7 +52,7 @@ const ColNav = () => {
           <NavLink
             to="/platinum-col"
             role="tab"
-            className={`tab ${s.font} text-[0.6rem] tracking-wider ${
+            className={`tab ${s.font} text-[0.55rem] tracking-wider px-3 ${
               location.pathname === "/platinum-col" ? "tab-active" : ""
             } ${isDisabled ? "opacity-50 pointer-events-none" : ""}`}
           >
@@ -61,7 +61,7 @@ const ColNav = () => {
           <NavLink
             to="/diamond-col"
             role="tab"
-            className={`tab ${s.font} text-[0.6rem] tracking-wider ${
+            className={`tab ${s.font} text-[0.55rem] tracking-wider px-3 ${
               location.pathname === "/diamond-col" ? "tab-active" : ""
                           } ${isDisabled ? "opacity-50 pointer-events-none" : ""}`}
                       
