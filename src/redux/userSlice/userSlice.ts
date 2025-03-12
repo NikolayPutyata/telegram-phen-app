@@ -80,6 +80,7 @@ const userSlice = createSlice({
         state.skins = action.payload.data.skins;
       })
       .addCase(getBoostsAndSkins.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.boosts = action.payload.boosts;
         state.skins = action.payload.skins;
       });
