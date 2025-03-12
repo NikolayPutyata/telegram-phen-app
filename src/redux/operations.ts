@@ -122,7 +122,7 @@ export const getBoostsAndSkins = createAsyncThunk(
   async (userId: number, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('user/getBoostsAndSkins', {
-        id: userId,
+       userId: userId,
       });
       return data;
     } catch (e: unknown) {
