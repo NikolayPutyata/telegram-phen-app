@@ -58,7 +58,7 @@ const TasksDetails = () => {
           </ul>
         </div>
 
-        <h2 className={`${s.font} text-zinc-400 ml-8 my-2 text-sm tracking-wider`}>Special Tasks</h2>
+        {tasks.special.length > 0 ? <><h2 className={`${s.font} text-zinc-400 ml-8 my-2 text-sm tracking-wider`}>Special Tasks</h2>
         <div className="bg-neutral-900 rounded-3xl px-2 py-4 mx-3 mb-32">
           <ul className="flex flex-col gap-5">
             {tasks?.special.map((task) => (
@@ -74,7 +74,7 @@ const TasksDetails = () => {
               />
             ))}
           </ul>
-        </div>
+        </div></> : null}
       </div>
     </>
   );
