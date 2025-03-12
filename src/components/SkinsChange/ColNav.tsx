@@ -10,7 +10,7 @@ const ColNav = () => {
           <h2 className={`${s.font} text-zinc-300 tracking-wider ml-4`}>
           Collections ✨
         </h2>
-      <div className="my-3 mx-2 flex justify-center">
+      <div className="my-3 flex justify-center">
         <div role="tablist" className="tabs tabs-border">
           <NavLink
             to="/"
