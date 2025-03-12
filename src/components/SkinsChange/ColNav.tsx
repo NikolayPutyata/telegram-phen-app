@@ -9,7 +9,7 @@ const ColNav = () => {
     <>
       <div className="my-3 mx-2 flex justify-center">
         <div role="tablist" className="tabs tabs-border">
-          <NavLink
+          {/* <NavLink
             to="/"
             role="tab"
             className={`tab ${s.font} text-[0.6rem] tracking-wider ${
@@ -17,7 +17,7 @@ const ColNav = () => {
             }`}
           >
             Common
-          </NavLink>
+          </NavLink> */}
           <NavLink
             to="/bronse-col"
             role="tab"
