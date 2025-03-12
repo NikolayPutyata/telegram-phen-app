@@ -3,7 +3,7 @@ import s from '/src/App.module.css';
 
 const ColNav = () => {
     const location = useLocation();
-    const isDisabled = true;
+    const isDisabled = false;
     
   return (
     <>
