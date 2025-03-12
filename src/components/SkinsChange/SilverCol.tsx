@@ -22,7 +22,7 @@ const SilverCol = () => {
       <div className="flex items-center justify-center">420</div>
       <img src="/assets/Group 61.png" alt="Phenerium" width="20px" height="25px"/>
     </span>
-    <div className="flex items-center justify-center text-gray-400">+ 10%</div>
+    <div className="flex items-center justify-center text-gray-400 text-sm">+ 10%</div>
   </div>
   <div className="flex flex-col justify-center items-center">
     <button className='btn btn-primary w-32 rounded-4xl self-center bg-gradient-to-r from-blue-500 to-purple-500'>Claim</button>

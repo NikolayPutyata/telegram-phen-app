@@ -17,7 +17,7 @@ const CommonCol = () => {
                 alt="Phenerium"
                 width={'20px'}
                 height={'25px'}
-              /></span> <div className='flex items-center justify-center text-gray-400'>+ 0%</div></div>
+              /></span> <div className='flex items-center justify-center text-gray-400 text-sm'>+ 0%</div></div>
         <div className='flex flex-col justify-center items-center'>
         <button className='btn btn-primary w-32 rounded-4xl self-center bg-gradient-to-r from-blue-500 to-purple-500'>Claim</button>
       </div>
