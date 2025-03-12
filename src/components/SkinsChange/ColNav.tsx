@@ -6,18 +6,21 @@ const ColNav = () => {
     const isDisabled = false;
     
   return (
-    <>
+      <div className="my-7">
+          <h2 className={`${s.font} text-zinc-300 tracking-wider ml-4`}>
+          Collections ✨
+        </h2>
       <div className="my-3 mx-2 flex justify-center">
         <div role="tablist" className="tabs tabs-border">
-          {/* <NavLink
+          <NavLink
             to="/"
             role="tab"
             className={`tab ${s.font} text-[0.6rem] tracking-wider ${
               location.pathname === "/" ? "tab-active" : ""
             }`}
           >
-            Common
-          </NavLink> */}
+            Basic
+          </NavLink>
           <NavLink
             to="/bronse-col"
             role="tab"
@@ -70,7 +73,7 @@ const ColNav = () => {
       </div>
   
       <Outlet />
-    </>
+    </div>
   )
 }
 
