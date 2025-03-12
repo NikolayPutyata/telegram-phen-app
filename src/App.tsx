@@ -18,6 +18,12 @@ import { setBalance } from './redux/walletSlice/walletSlice.ts';
 import { getUserTonBalance } from './utils/getUserTonBalance.ts';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 import { useIsConnectionRestored } from '@tonconnect/ui-react';
+import CommonCol from './components/SkinsChange/CommonCol.tsx';
+import BronseCol from './components/SkinsChange/BronseCol.tsx';
+import SilverCol from './components/SkinsChange/SilverCol.tsx';
+import GoldCol from './components/SkinsChange/GoldCol.tsx';
+import PlatinumCol from './components/SkinsChange/PlatinumCol.tsx';
+import DiamondCol from './components/SkinsChange/DiamondCol.tsx';
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -79,7 +85,14 @@ useEffect(() => {
     <div>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />}>
+          <Route path="/" element={<CommonCol />} />
+          <Route path="bronse-col" element={<BronseCol />} />
+          <Route path="silver-col" element={<SilverCol />} />
+          <Route path="gold-col" element={<GoldCol />} />
+          <Route path="platinum-col" element={<PlatinumCol />} />
+          <Route path="diamond-col" element={<DiamondCol />} />
+        </Route>
         <Route path="/boosts" element={<Leaderbords />} >
           <Route path="/boosts" element={<Boosts />} />
           <Route path="skins" element={<Skins />} />
