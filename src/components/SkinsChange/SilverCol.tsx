@@ -17,15 +17,15 @@ const SilverCol = () => {
       <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783044/planet3_11zon_kbdrpe.webp" alt="" className="object-cover w-full h-full"/>
     </div>
   </div>
-  <div className={`${s.font} flex justify-center text-lg gap-2`}>
+  <div className={`${s.font} flex justify-center text-lg gap-3`}>
     <span className="flex justify-center items-center gap-1">
       <div className="flex items-center justify-center">420</div>
       <img src="/assets/Group 61.png" alt="Phenerium" width="20px" height="25px"/>
     </span>
     <div className="flex items-center justify-center text-gray-400 text-sm">+ 10%</div>
   </div>
-  <div className="flex flex-col justify-center items-center">
-    <button className='btn btn-primary w-32 rounded-4xl self-center bg-gradient-to-r from-blue-500 to-purple-500'>Claim</button>
+  <div className="flex justify-center">
+    <button className='btn btn-primary w-full rounded-4xl self-center bg-gradient-to-r from-blue-500 to-purple-500'>Claim</button>
   </div>
 </div>
 
