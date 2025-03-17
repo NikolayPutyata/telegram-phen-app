@@ -66,6 +66,7 @@ const Friends = () => {
           {t('Invite for free Stars')}
           <img src="/assets/telegram_star.svg" alt="telegram-star" />
         </button>
+        <p className={`${s.font} text-xs tracking-wider italic mt-4 text-zinc-500`}>Where can I get a Telegram referral link?</p>
       </div>
     </div>
   );
