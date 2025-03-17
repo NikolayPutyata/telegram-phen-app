@@ -33,7 +33,7 @@ const LoadingList = () => {
 
   return (
     <motion.ul
-      className="flex flex-col gap-5 ml-7"
+      className="flex flex-col gap-6 ml-7"
       initial="hidden"
       animate="visible" 
       variants={listVariants} 
