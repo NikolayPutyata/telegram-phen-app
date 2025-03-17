@@ -56,7 +56,7 @@ const App = () => {
 
     const loadWithMinimumDelay = async () => {
       const minimumLoadingTime = new Promise((resolve) => {
-        setTimeout(resolve, 3000); 
+        setTimeout(resolve, 5000); 
       });
 
       await Promise.all([initUser(), minimumLoadingTime]);
