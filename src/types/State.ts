@@ -58,5 +58,4 @@ export type UserState = {
     partners: Task[];
     special: Task[];
   };
-  isLoading: boolean;
 };

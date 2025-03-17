@@ -7,9 +7,9 @@ import Leaderbords from './Pages/Leaderbords/Leaderbords.js';
 import Profile from './Pages/Profile/Profile.js';
 import Friends from './components/Friends/Friends.js';
 import TasksDetails from './components/TasksDetails/TasksDetails.js';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getAllBoostsThunk, initUserFromServer } from './redux/operations.js';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AppDispatch } from './redux/store.ts';
 import Boosts from './components/Boosts/Boosts.tsx';
 import Skins from './components/Skins/Skins.tsx';
@@ -25,71 +25,68 @@ import GoldCol from './components/SkinsChange/GoldCol.tsx';
 import PlatinumCol from './components/SkinsChange/PlatinumCol.tsx';
 import DiamondCol from './components/SkinsChange/DiamondCol.tsx';
 import LoadingScreen from './Pages/LoadingScreen/LoadingScreen.tsx';
-import { isLoadingSelector } from './redux/selectors.ts';
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
-
   const [{ connected, account }] = useTonConnectUI();
   const connectionRestored = useIsConnectionRestored();
-  const isLoading = useSelector(isLoadingSelector);
-    
+  const [isLoading, setIsLoading] = useState(true); // Локальное состояние загрузки
 
   useEffect(() => {
     const initUser = async () => {
-      if (window.Telegram && window.Telegram.WebApp) {
-        window.Telegram.WebApp.ready();
-
-        const telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
-      
-        const user = {
-          id: telegramUser.id,
-          username: telegramUser.username,
-          first_name: telegramUser.first_name,
-          last_name: telegramUser.last_name,
-          photo_url: telegramUser.photo_url,
-          language_code: telegramUser.language_code,
-        };
-        dispatch(initUserFromServer(user));
-        
+      try {
+        if (window.Telegram && window.Telegram.WebApp) {
+          window.Telegram.WebApp.ready();
+          const telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
+          const user = {
+            id: telegramUser.id,
+            username: telegramUser.username,
+            first_name: telegramUser.first_name,
+            last_name: telegramUser.last_name,
+            photo_url: telegramUser.photo_url,
+            language_code: telegramUser.language_code,
+          };
+          await dispatch(initUserFromServer(user)).unwrap();
+        }
+        await dispatch(getAllBoostsThunk()).unwrap();
+      } catch (error) {
+        console.error('Initialization failed:', error);
       }
-
-      await dispatch(getAllBoostsThunk());
-
-      
     };
 
-    initUser();
+    const loadWithMinimumDelay = async () => {
+      const minimumLoadingTime = new Promise((resolve) => {
+        setTimeout(resolve, 4000); // Минимум 4 секунды
+      });
+
+      // Запускаем эффекты и минимальную задержку параллельно
+      await Promise.all([initUser(), minimumLoadingTime]);
+      setIsLoading(false); // Убираем экран загрузки после выполнения всех задач
+    };
+
+    loadWithMinimumDelay();
   }, [dispatch]);
 
-
-
-useEffect(() => {
+  useEffect(() => {
     if (!connectionRestored || !connected || !account?.address) return;
 
     const fetchBalance = async () => {
-        
-            const balance = await getUserTonBalance(account.address);
-            dispatch(setBalance(balance));
-        
+      try {
+        const balance = await getUserTonBalance(account.address);
+        dispatch(setBalance(balance));
+      } catch (error) {
+        console.error('Failed to fetch balance:', error);
+      }
     };
 
-    fetchBalance();
-}, [connectionRestored, connected, account, dispatch]);
-
-  // useEffect(() => {
-  //   const getAllData = async () => {
-  //     await dispatch(getAllBoostsThunk());
-  //   };
-  //   getAllData()
-  // }, []);
-
+    fetchBalance(); // Этот эффект выполняется независимо и не влияет на экран загрузки
+  }, [connectionRestored, connected, account, dispatch]);
 
   if (isLoading) {
     return <LoadingScreen />;
   }
-  return (
 
+  return (
     <div>
       <Header />
       <Routes>
@@ -101,7 +98,7 @@ useEffect(() => {
           <Route path="platinum-col" element={<PlatinumCol />} />
           <Route path="diamond-col" element={<DiamondCol />} />
         </Route>
-        <Route path="/boosts" element={<Leaderbords />} >
+        <Route path="/boosts" element={<Leaderbords />}>
           <Route path="/boosts" element={<Boosts />} />
           <Route path="skins" element={<Skins />} />
           <Route path="special" element={<Special />} />
