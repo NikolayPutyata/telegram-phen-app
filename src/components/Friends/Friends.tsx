@@ -62,7 +62,7 @@ const Friends = () => {
       </div>
 
       <div className="flex flex-col justify-center items-center my-4">
-        <p className={`${s.font} text-zinc-400 text-sm m-4 px-4 tracking-wider text-center`}>We also participate in the Telegram affiliate referral program, where you can get a percentage of the Stars your friends spend!
+        <p className={`${s.font} text-zinc-400 text-sm m-4 px-4 tracking-wider text-center`}>We also participate in the Telegram affiliate referral program, where you can get 50% of the Stars your friends spend!
           </p>
         <p className={`${s.font} text-zinc-400 text-sm mb-4 px-4 tracking-wider text-center`}>Paste your Telegram referral link below and share for free Stars!</p>
         <TelegramLinkForm />
