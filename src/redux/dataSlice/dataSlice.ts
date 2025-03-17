@@ -4,10 +4,12 @@ import { getAllBoostsThunk } from "../operations";
 
 interface dataState {
     commonBoosts: Boost[]
+    
 }
 
 const initialState: dataState = {
-    commonBoosts: []
+    commonBoosts: [],
+    
 
 };
 
@@ -17,6 +19,7 @@ const dataSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getAllBoostsThunk.fulfilled, (state, action) => {
+            
             state.commonBoosts = action.payload.data.common;
         })
     }

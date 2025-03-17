@@ -5,7 +5,7 @@ import {
   paymentInPhenerium,
   startFarming,
   taskCompleted,
-  getBoostsAndSkins,
+  getBoostsAndSkins
 } from '../operations';
 import { UserState } from '../../types/State';
 
@@ -31,6 +31,7 @@ const initialState: UserState = {
     partners: [],
     special: [],
   },
+  isLoading: false,
 };
 
 const userSlice = createSlice({
@@ -43,6 +44,9 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(initUserFromServer.pending, (state) => {
+        state.isLoading = true;
+      })
       .addCase(initUserFromServer.fulfilled, (state, action) => {
         const usersData: UserState = action.payload.data;
         state.id = usersData.id;
@@ -59,6 +63,7 @@ const userSlice = createSlice({
         state.currentBoost = usersData.currentBoost;
         state.usersTasks = usersData.usersTasks;
         state.farmingCycle = usersData.farmingCycle;
+        state.isLoading = false;
       })
       .addCase(claimTokens.fulfilled, (state, action) => {
         state.activeBoosts = action.payload.activeBoosts;

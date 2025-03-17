@@ -9,7 +9,7 @@ import Friends from './components/Friends/Friends.js';
 import TasksDetails from './components/TasksDetails/TasksDetails.js';
 import { useEffect } from 'react';
 import { getAllBoostsThunk, initUserFromServer } from './redux/operations.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from './redux/store.ts';
 import Boosts from './components/Boosts/Boosts.tsx';
 import Skins from './components/Skins/Skins.tsx';
@@ -24,12 +24,15 @@ import SilverCol from './components/SkinsChange/SilverCol.tsx';
 import GoldCol from './components/SkinsChange/GoldCol.tsx';
 import PlatinumCol from './components/SkinsChange/PlatinumCol.tsx';
 import DiamondCol from './components/SkinsChange/DiamondCol.tsx';
+import LoadingScreen from './Pages/LoadingScreen/LoadingScreen.tsx';
+import { isLoadingSelector } from './redux/selectors.ts';
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const [{ connected, account }] = useTonConnectUI();
-const connectionRestored = useIsConnectionRestored();
+  const connectionRestored = useIsConnectionRestored();
+  const isLoading = useSelector(isLoadingSelector);
     
 
   useEffect(() => {
@@ -50,6 +53,9 @@ const connectionRestored = useIsConnectionRestored();
         dispatch(initUserFromServer(user));
         
       }
+
+      await dispatch(getAllBoostsThunk());
+
       
     };
 
@@ -71,15 +77,17 @@ useEffect(() => {
     fetchBalance();
 }, [connectionRestored, connected, account, dispatch]);
 
-  useEffect(() => {
-    const getAllBoosts = async () => {
-      await dispatch(getAllBoostsThunk());
-    };
-    getAllBoosts()
-  }, []);
+  // useEffect(() => {
+  //   const getAllData = async () => {
+  //     await dispatch(getAllBoostsThunk());
+  //   };
+  //   getAllData()
+  // }, []);
 
 
-
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
   return (
 
     <div>
