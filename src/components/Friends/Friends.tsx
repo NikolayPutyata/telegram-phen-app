@@ -42,14 +42,6 @@ const Friends = () => {
         </h2>
       </div>
 
-      {friends.length === 0 ? (
-        <div className="flex flex-col justify-center gap-5 items-center my-4">
-          <p className={`${s.font} text-zinc-400 text-sm`}>
-            {t('No friends yet')} 😔
-          </p>
-        </div>
-      ) : null}
-
       {friends.length > 0 ? <FriendsList /> : null}
 
       <div className="flex justify-center">
