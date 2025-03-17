@@ -30,7 +30,7 @@ const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [{ connected, account }] = useTonConnectUI();
   const connectionRestored = useIsConnectionRestored();
-  const [isLoading, setIsLoading] = useState(true); // Локальное состояние загрузки
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const initUser = async () => {
@@ -56,12 +56,11 @@ const App = () => {
 
     const loadWithMinimumDelay = async () => {
       const minimumLoadingTime = new Promise((resolve) => {
-        setTimeout(resolve, 4000); // Минимум 4 секунды
+        setTimeout(resolve, 3000); 
       });
 
-      // Запускаем эффекты и минимальную задержку параллельно
       await Promise.all([initUser(), minimumLoadingTime]);
-      setIsLoading(false); // Убираем экран загрузки после выполнения всех задач
+      setIsLoading(false); 
     };
 
     loadWithMinimumDelay();
@@ -79,7 +78,7 @@ const App = () => {
       }
     };
 
-    fetchBalance(); // Этот эффект выполняется независимо и не влияет на экран загрузки
+    fetchBalance();
   }, [connectionRestored, connected, account, dispatch]);
 
   if (isLoading) {
