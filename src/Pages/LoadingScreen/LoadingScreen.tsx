@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import ProgressBar from 'progressbar.js';
-import LoadingUlItem from './LoadingUlItem';
 import s from '/src/App.module.css';
+import LoadingList from './LoadingList';
+
 
 const LoadingScreen = () => {
   const progressRef = useRef(null);
@@ -35,15 +36,9 @@ const LoadingScreen = () => {
         <img src="/assets/logoLoading.svg" alt="" width={100} />
         <h2 className={`${s.font} text-lg`}>Roadmap</h2>
       </div>
-      <ul className="flex flex-col gap-5 ml-7">
-        <LoadingUlItem text={"Step 1"} />
-        <LoadingUlItem text={"Step 2"} />
-        <LoadingUlItem text={"Step 3"} />
-        <LoadingUlItem text={"Step 4"} />
-        <LoadingUlItem text={"Step 5"} />
-        <LoadingUlItem text={"Step 6"} />
-        <LoadingUlItem text={"Step 7"} />
-      </ul>
+      
+        <LoadingList />
+      
 
       <div className="fixed bottom-16 left-0 right-0 flex justify-center">
        <div className="w-56 h-4 rounded-3xl overflow-hidden">
