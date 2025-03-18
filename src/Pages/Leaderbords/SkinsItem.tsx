@@ -17,7 +17,12 @@ function SkinsItem({ imageUrlSmall, price, bonus, name }: SkinsItemProps) {
       <div className="flex flex-col gap-1">
         <h3 className={`${s.font} text-zinc-300 break-words`}>{name}</h3>
 
-        <p className={`${s.font} text-zinc-400 text-xs mt-1`}>{bonus}</p>
+        <p className={`${s.font} text-zinc-400 text-xs mt-1`}>
+          + {bonus}{' '}
+          <span>
+            <img src="/assets/Group61.png" alt="telegram-star" width={12} />
+          </span>
+        </p>
         <div className="flex items-center gap-1.5 mt-1">
           <p className={`${s.font} text-zinc-300 text-sm`}>{price}</p>
           <img src="/assets/Group61.png" alt="telegram-star" width={16} />
