@@ -1,4 +1,3 @@
-// import s from '/src/App.module.css';
 import SkinsComponent from '../SkinsComponent/SkinsComponent';
 
 const data = {
@@ -11,7 +10,7 @@ const data = {
   planet:
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783195/planet4_11zon_m1l0pi.webp',
   price: '420',
-  plus: '+ 20%',
+  plus: '+ 35%',
   styleBorder: '${s.gradientBg2}',
 };
 
