@@ -1,9 +1,9 @@
 import s from '/src/App.module.css';
 
 type SkinsData = {
-  imgZor: string;
-  imgCor: string;
-  imgCom: string;
+  imgStarFlight: string;
+  imgShip: string;
+  imgComandor: string;
   planet: string;
   price: string;
   plus: string;
@@ -11,9 +11,9 @@ type SkinsData = {
 };
 
 const SkinsComponent: React.FC<SkinsData> = ({
-  imgZor,
-  imgCom,
-  imgCor,
+  imgStarFlight,
+  imgComandor,
+  imgShip,
   planet,
   price,
   plus,
@@ -24,17 +24,25 @@ const SkinsComponent: React.FC<SkinsData> = ({
       <div
         className={`${styleBorder} col-span-2 rounded-3xl border-1 overflow-hidden h-44`}
       >
-        <img src={imgZor} alt="" className="object-cover w-full h-full" />
+        <img
+          src={imgStarFlight}
+          alt=""
+          className="object-cover w-full h-full"
+        />
       </div>
       <div className={`${styleBorder} rounded-3xl border-1 overflow-hidden`}>
-        <img src={imgCor} alt="" className="object-cover w-full h-full" />
+        <img src={imgShip} alt="" className="object-cover w-full h-full" />
       </div>
 
       <div className="grid grid-cols-2 gap-2 rounded-3xl">
         <div
           className={`${styleBorder} bg-red-50 rounded-3xl  border-1  overflow-hidden`}
         >
-          <img src={imgCom} alt="" className="object-cover w-full h-full" />
+          <img
+            src={imgComandor}
+            alt=""
+            className="object-cover w-full h-full"
+          />
         </div>
         <div
           className={`${styleBorder} bg-red-50 rounded-3xl  border-1 overflow-hidden`}

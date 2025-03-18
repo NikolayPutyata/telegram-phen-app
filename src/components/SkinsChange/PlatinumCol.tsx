@@ -1,18 +1,18 @@
-import s from '/src/App.module.css';
+// import s from '/src/App.module.css';
 import SkinsComponent from '../SkinsComponent/SkinsComponent';
 
 const data = {
-  imgZor:
-    'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740682767/shut_11zon_g5onzi.webp',
-  imgCor:
-    'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740926028/gold_station_clq1ri.webp',
-  imgCom:
-    'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740682426/comandor_1_1_11zon_oxopsf.webp',
+  imgStarFlight:
+    'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783198/shu5_11zon_oaeidi.webp',
+  imgShip:
+    'https://res.cloudinary.com/dv1acgeyp/image/upload/v1742288006/platinumBase_11zon_dooccm.webp',
+  imgComandor:
+    'https://res.cloudinary.com/dv1acgeyp/image/upload/v1742288006/platinumBase_11zon_dooccm.webp',
   planet:
-    'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740682664/planet_4_11_11zon_ufeya7.webp',
+    'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783195/planet4_11zon_m1l0pi.webp',
   price: '420',
   plus: '+ 20%',
-  styleBorder: 'border-amber-400',
+  styleBorder: '${s.gradientBg2}',
 };
 
 const PlatinumCol = () => {

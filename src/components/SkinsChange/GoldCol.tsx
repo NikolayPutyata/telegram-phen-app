@@ -1,11 +1,11 @@
 import SkinsComponent from '../SkinsComponent/SkinsComponent';
 
 const data = {
-  imgZor:
+  imgStarFlight:
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740682767/shut_11zon_g5onzi.webp',
-  imgCor:
+  imgShip:
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740926028/gold_station_clq1ri.webp',
-  imgCom:
+  imgComandor:
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740682426/comandor_1_1_11zon_oxopsf.webp',
   planet:
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740682664/planet_4_11_11zon_ufeya7.webp',
