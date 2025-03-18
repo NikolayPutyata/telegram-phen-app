@@ -18,9 +18,8 @@ const dataSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getAllDataThunk.fulfilled, (state, action) => {
-      console.log(action.payload);
-      state.skins = action.payload.data.skins.bronzeCollection;
-      state.commonBoosts = action.payload.data.boosts.common;
+      state.skins = action.payload.skins.bronzeCollection;
+      state.commonBoosts = action.payload.boosts.common;
     });
   },
 });
