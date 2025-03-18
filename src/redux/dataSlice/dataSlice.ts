@@ -1,30 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { Boost, Skin } from "../../types/State";
-import { getAllDataThunk } from "../operations";
+import { createSlice } from '@reduxjs/toolkit';
+import { Boost, Skin } from '../../types/State';
+import { getAllDataThunk } from '../operations';
 
 interface dataState {
-    commonBoosts: Boost[]
-    skins: Skin[]
-    
+  commonBoosts: Boost[];
+  skins: Skin[];
 }
 
 const initialState: dataState = {
-    commonBoosts: [],
-    skins: []
-    
-
+  commonBoosts: [],
+  skins: [],
 };
 
 const dataSlice = createSlice({
-    name: 'data',
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder.addCase(getAllDataThunk.fulfilled, (state, action) => {
-            state.skins = action.payload.data.skins.bronzeCollection;
-            state.commonBoosts = action.payload.data.boosts.common;
-        })
-    }
+  name: 'data',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getAllDataThunk.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.skins = action.payload.data.skins.bronzeCollection;
+      state.commonBoosts = action.payload.data.boosts.common;
+    });
+  },
 });
 
 export default dataSlice.reducer;
