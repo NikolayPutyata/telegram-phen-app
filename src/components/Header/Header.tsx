@@ -14,7 +14,18 @@ const Header = () => {
     <div className="collapse rounded-tl-none rounded-tr-none bg-neutral rounded-b-3xl p-0.5">
       <input type="checkbox" />
       <div className="collapse-title font-semibold flex justify-between items-center px-5">
-        <div className={`${s.font} text-zinc-400 text-sm tracking-wider`}>{userFriendlyAddress ? sliceWalletAddress(userFriendlyAddress) : <div className='flex items-center gap-2'><img src="/assets/Group_66.png" className='w-10'/><p className={`${s.font}  text-zinc-400 text-sm tracking-wider`}>PHENERIUM</p></div>}</div>
+        <div className={`${s.font} text-zinc-400 text-sm tracking-wider`}>
+          {userFriendlyAddress ? (
+            sliceWalletAddress(userFriendlyAddress)
+          ) : (
+            <div className="flex items-center gap-2">
+              <img src="/assets/Group_66.png" className="w-10" />
+              <p className={`${s.font}  text-zinc-400 text-sm tracking-wider`}>
+                PHENERIUM
+              </p>
+            </div>
+          )}
+        </div>
         <PhenTonIcon />
       </div>
       <div className="collapse-content text-sm">
@@ -22,7 +33,7 @@ const Header = () => {
           <li className="flex justify-between">
             <div className="flex items-center gap-2">
               <img
-                src="/assets/Group 61.png"
+                src="/assets/Group61.png"
                 alt="Phenerium"
                 width={'22px'}
                 height={'20px'}
@@ -41,7 +52,9 @@ const Header = () => {
               />
               <p className={`${s.font} text-zinc-300 text-sm`}>$TON</p>
             </div>
-            <span className={`${s.font} text-zinc-300 text-sm`}>{tonBalance}</span>
+            <span className={`${s.font} text-zinc-300 text-sm`}>
+              {tonBalance}
+            </span>
           </li>
         </ul>
       </div>

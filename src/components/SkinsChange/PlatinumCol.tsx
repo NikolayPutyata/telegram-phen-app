@@ -12,7 +12,7 @@ const PlatinumCol = () => {
     <div className={`bg-red-50 rounded-3xl text-black ${s.gradientBg2}  p-[1.2px] overflow-hidden`}><img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783195/planet4_11zon_m1l0pi.webp" alt="" className='object-cover w-full h-full rounded-3xl'/></div>
         </div>
         <div className={`${s.font} flex justify-center text-lg gap-3`}> <span className='flex justify-center items-center gap-1'><div className='flex items-center justify-center'>420</div><img
-                src="/assets/Group 61.png"
+                src="/assets/Group61.png"
                 alt="Phenerium"
                 width={'20px'}
                 height={'25px'}

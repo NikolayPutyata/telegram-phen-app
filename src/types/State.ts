@@ -31,6 +31,7 @@ export interface Skin {
   name: string;
   skin_bonus: number;
   skin_photo_url: string;
+  skin_photo_url_small: string;
   price: string;
 }
 
