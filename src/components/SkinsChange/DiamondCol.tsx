@@ -1,4 +1,5 @@
 import SkinsComponent from '../SkinsComponent/SkinsComponent';
+import s from '/src/App.module.css';
 
 const data = {
   imgStarFlight:
@@ -11,7 +12,8 @@ const data = {
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741774853/Group_67_8_fyflff.png',
   price: '420',
   plus: '+ 50%',
-  styleBorder: '${s.gradientBg}',
+  styleBorder: `${s.gradientBg} p-[1.2px]`,
+  styleImg: 'rounded-3xl',
 };
 const DiamondCol = () => {
   return <SkinsComponent {...data} />;

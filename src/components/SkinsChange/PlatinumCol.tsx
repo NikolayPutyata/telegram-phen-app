@@ -1,4 +1,5 @@
 import SkinsComponent from '../SkinsComponent/SkinsComponent';
+import s from '/src/App.module.css';
 
 const data = {
   imgStarFlight:
@@ -11,7 +12,7 @@ const data = {
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783195/planet4_11zon_m1l0pi.webp',
   price: '420',
   plus: '+ 35%',
-  styleBorder: '${s.gradientBg2}',
+  styleBorder: `${s.gradientBg2} p-[1.2px]`,
 };
 
 const PlatinumCol = () => {

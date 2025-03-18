@@ -11,7 +11,7 @@ const data = {
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740682664/planet_4_11_11zon_ufeya7.webp',
   price: '420',
   plus: '+ 20%',
-  styleBorder: 'border-amber-400',
+  styleBorder: 'border-amber-400 border-1',
 };
 
 const GoldCol = () => {

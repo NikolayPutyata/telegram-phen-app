@@ -8,6 +8,7 @@ type SkinsData = {
   price: string;
   plus: string;
   styleBorder: string;
+  styleImg?: string;
 };
 
 const SkinsComponent: React.FC<SkinsData> = ({
@@ -18,20 +19,25 @@ const SkinsComponent: React.FC<SkinsData> = ({
   price,
   plus,
   styleBorder,
+  styleImg,
 }) => {
   return (
     <div className=" rounded-3xl mx-4 grid grid-cols-2 gap-4">
       <div
-        className={`${styleBorder} col-span-2 rounded-3xl border-1 overflow-hidden h-44`}
+        className={`${styleBorder} col-span-2 rounded-3xl overflow-hidden h-44`}
       >
         <img
           src={imgStarFlight}
           alt=""
-          className="object-cover w-full h-full"
+          className={`object-cover ${styleImg} w-full h-full`}
         />
       </div>
       <div className={`${styleBorder} rounded-3xl border-1 overflow-hidden`}>
-        <img src={imgShip} alt="" className="object-cover w-full h-full" />
+        <img
+          src={imgShip}
+          alt=""
+          className={`object-cover ${styleImg} w-full h-full`}
+        />
       </div>
 
       <div className="grid grid-cols-2 gap-2 rounded-3xl">
