@@ -1,14 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Boost } from "../../types/State";
-import { getAllBoostsThunk } from "../operations";
+import { Boost, Skin } from "../../types/State";
+import { getAllDataThunk } from "../operations";
 
 interface dataState {
     commonBoosts: Boost[]
+    skins: Skin[]
     
 }
 
 const initialState: dataState = {
     commonBoosts: [],
+    skins: []
     
 
 };
@@ -18,9 +20,9 @@ const dataSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(getAllBoostsThunk.fulfilled, (state, action) => {
-            
-            state.commonBoosts = action.payload.data.common;
+        builder.addCase(getAllDataThunk.fulfilled, (state, action) => {
+            state.skins = action.payload.data.skins.bronzeCollection;
+            state.commonBoosts = action.payload.data.boosts.common;
         })
     }
 });

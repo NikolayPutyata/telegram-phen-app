@@ -76,11 +76,11 @@ export const taskCompleted = createAsyncThunk(
   },
 );
 
-export const getAllBoostsThunk = createAsyncThunk(
-  'data/getAllBoosts',
+export const getAllDataThunk = createAsyncThunk(
+  'data/getAllData',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get('data/getAllBoosts');
+      const { data } = await axios.get('data/getAllData');
       return data;
     } catch (e: unknown) {
       if (e instanceof Error) {

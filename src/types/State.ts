@@ -26,6 +26,14 @@ export interface Boost {
   quantity: number;
 }
 
+export interface Skin {
+  id: number;
+  name: string;
+  skin_bonus: number;
+  skin_photo_url: string;
+  price: string;
+}
+
 interface compTask {
   id: number;
   task: string;

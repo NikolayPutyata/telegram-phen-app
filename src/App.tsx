@@ -8,7 +8,7 @@ import Profile from './Pages/Profile/Profile.js';
 import Friends from './components/Friends/Friends.js';
 import TasksDetails from './components/TasksDetails/TasksDetails.js';
 import { useEffect, useState } from 'react';
-import { getAllBoostsThunk, initUserFromServer } from './redux/operations.js';
+import { getAllDataThunk, initUserFromServer } from './redux/operations.js';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './redux/store.ts';
 import Boosts from './components/Boosts/Boosts.tsx';
@@ -48,7 +48,7 @@ const App = () => {
           };
           await dispatch(initUserFromServer(user)).unwrap();
         }
-        await dispatch(getAllBoostsThunk()).unwrap();
+        await dispatch(getAllDataThunk()).unwrap();
       } catch (error) {
         console.error('Initialization failed:', error);
       }
