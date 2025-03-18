@@ -7,7 +7,7 @@ const BronseCol = () => {
     <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741782887/shut1_11zon_kaqreh.webp" alt="" className="object-cover w-full h-full"/>
   </div>
   <div className="rounded-3xl border-1 border-[#cd7f32] overflow-hidden">
-    <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741774739/Group_67_7_oehn0k.png" alt="" className="object-cover w-full h-full"/>
+    <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1742288006/bronzeBase_11zon_slx4lp.webp" alt="" className="object-cover w-full h-full"/>
   </div>
   <div className="grid grid-cols-2 gap-2 rounded-3xl">
     <div className="bg-red-50 rounded-3xl text-black border-1 border-[#cd7f32] overflow-hidden">

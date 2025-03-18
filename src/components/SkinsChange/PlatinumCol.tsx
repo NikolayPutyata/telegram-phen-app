@@ -6,7 +6,7 @@ const PlatinumCol = () => {
 
       <div className=" rounded-3xl mx-4 grid grid-cols-2 gap-4">
         <div className={`col-span-2 rounded-3xl  ${s.gradientBg2} p-[1.2px]  overflow-hidden h-44`}><img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783198/shu5_11zon_oaeidi.webp" alt="" className='object-cover w-full h-full rounded-3xl'/></div>
-  <div className={`rounded-3xl ${s.gradientBg2} p-[1.2px] overflow-hidden`}><img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741774739/Group_67_7_oehn0k.png" alt="" className='object-cover w-full h-full rounded-3xl'/></div>
+  <div className={`rounded-3xl ${s.gradientBg2} p-[1.2px] overflow-hidden`}><img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1742288006/platinumBase_11zon_dooccm.webp" alt="" className='object-cover w-full h-full rounded-3xl'/></div>
   <div className='grid grid-cols-2 gap-2 rounded-3xl'>
     <div className={`bg-red-50 rounded-3xl text-black ${s.gradientBg2}  p-[1.2px] overflow-hidden`}><img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783195/comM_11zon_a5melk.webp" alt="" className='object-cover w-full h-full rounded-3xl'/></div>
     <div className={`bg-red-50 rounded-3xl text-black ${s.gradientBg2}  p-[1.2px] overflow-hidden`}><img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783195/planet4_11zon_m1l0pi.webp" alt="" className='object-cover w-full h-full rounded-3xl'/></div>

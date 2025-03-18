@@ -7,7 +7,7 @@ const SilverCol = () => {
     <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783041/sht3_11zon_jlbihy.webp" alt="" className="object-cover w-full h-full"/>
   </div>
   <div className="rounded-3xl border-1 border-[#C0C0C0] overflow-hidden">
-    <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1741774739/Group_67_7_oehn0k.png" alt="" className="object-cover w-full h-full"/>
+    <img src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1742288006/silverBase_11zon_jdybwi.webp" alt="" className="object-cover w-full h-full"/>
   </div>
   <div className="grid grid-cols-2 gap-2 rounded-3xl">
     <div className="bg-red-50 rounded-3xl text-black border-1 border-[#C0C0C0] overflow-hidden">
