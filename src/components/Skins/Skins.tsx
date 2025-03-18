@@ -21,7 +21,67 @@ const Skins = () => {
         Bronze Collection
       </h2>
       <ul className="flex flex-col gap-6 my-6">
-        {skins?.map((skin) => (
+        {skins.commonCollection.map((skin) => (
+          <SkinsItem
+            key={skin.id}
+            id={skin.id}
+            imageUrlSmall={skin.skin_photo_url_small}
+            price={skin.price}
+            bonus={skin.skin_bonus}
+            name={skin.name}
+          />
+        ))}
+      </ul>
+      <ul className="flex flex-col gap-6 my-6">
+        {skins.bronzeCollection.map((skin) => (
+          <SkinsItem
+            key={skin.id}
+            id={skin.id}
+            imageUrlSmall={skin.skin_photo_url_small}
+            price={skin.price}
+            bonus={skin.skin_bonus}
+            name={skin.name}
+          />
+        ))}
+      </ul>
+      <ul className="flex flex-col gap-6 my-6">
+        {skins.silverCollection.map((skin) => (
+          <SkinsItem
+            key={skin.id}
+            id={skin.id}
+            imageUrlSmall={skin.skin_photo_url_small}
+            price={skin.price}
+            bonus={skin.skin_bonus}
+            name={skin.name}
+          />
+        ))}
+      </ul>
+      <ul className="flex flex-col gap-6 my-6">
+        {skins.goldCollection.map((skin) => (
+          <SkinsItem
+            key={skin.id}
+            id={skin.id}
+            imageUrlSmall={skin.skin_photo_url_small}
+            price={skin.price}
+            bonus={skin.skin_bonus}
+            name={skin.name}
+          />
+        ))}
+      </ul>
+      <ul className="flex flex-col gap-6 my-6">
+        {skins.platinumCollection.map((skin) => (
+          <SkinsItem
+            key={skin.id}
+            id={skin.id}
+            imageUrlSmall={skin.skin_photo_url_small}
+            price={skin.price}
+            bonus={skin.skin_bonus}
+            name={skin.name}
+          />
+        ))}
+      </ul>
+      <ul className="flex flex-col gap-6 my-6">
+        {skins.diamondCollection.map((skin) => (
           <SkinsItem
             key={skin.id}
             id={skin.id}

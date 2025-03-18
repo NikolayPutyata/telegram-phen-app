@@ -4,12 +4,26 @@ import { getAllDataThunk } from '../operations';
 
 interface dataState {
   commonBoosts: Boost[];
-  skins: Skin[];
+  skins: {
+    commonCollection: Skin[];
+    bronzeCollection: Skin[];
+    silverCollection: Skin[];
+    goldCollection: Skin[];
+    platinumCollection: Skin[];
+    diamondCollection: Skin[];
+  };
 }
 
 const initialState: dataState = {
   commonBoosts: [],
-  skins: [],
+  skins: {
+    commonCollection: [],
+    bronzeCollection: [],
+    silverCollection: [],
+    goldCollection: [],
+    platinumCollection: [],
+    diamondCollection: [],
+  },
 };
 
 const dataSlice = createSlice({
@@ -18,7 +32,7 @@ const dataSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getAllDataThunk.fulfilled, (state, action) => {
-      state.skins = action.payload.skins.bronzeCollection;
+      state.skins = action.payload.skins;
       state.commonBoosts = action.payload.boosts.common;
     });
   },
