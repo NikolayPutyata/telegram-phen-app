@@ -1,11 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface TonState {
-    balance: number | null;
+  balance: number | null;
 }
 
 const initialState: TonState = {
-
   balance: null,
 };
 
@@ -13,10 +12,9 @@ const tonSlice = createSlice({
   name: 'wallet',
   initialState,
   reducers: {
-      setBalance(state, action: PayloadAction<number>) {
-  state.balance = action.payload;
-}
-
+    setBalance(state, action: PayloadAction<number>) {
+      state.balance = action.payload;
+    },
   },
 });
 
