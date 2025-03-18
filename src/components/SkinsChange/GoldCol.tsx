@@ -1,6 +1,6 @@
 import SkinsComponent from '../SkinsComponent/SkinsComponent';
 
-const image = {
+const data = {
   imgZor:
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740682767/shut_11zon_g5onzi.webp',
   imgCor:
@@ -15,7 +15,7 @@ const image = {
 };
 
 const GoldCol = () => {
-  return <SkinsComponent {...image} />;
+  return <SkinsComponent {...data} />;
 };
 
 export default GoldCol;
