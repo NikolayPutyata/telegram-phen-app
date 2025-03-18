@@ -21,18 +21,6 @@ const Skins = () => {
         Bronze Collection
       </h2>
       <ul className="flex flex-col gap-6 my-6">
-        {skins.commonCollection.map((skin) => (
-          <SkinsItem
-            key={skin.id}
-            id={skin.id}
-            imageUrlSmall={skin.skin_photo_url_small}
-            price={skin.price}
-            bonus={skin.skin_bonus}
-            name={skin.name}
-          />
-        ))}
-      </ul>
-      <ul className="flex flex-col gap-6 my-6">
         {skins.bronzeCollection.map((skin) => (
           <SkinsItem
             key={skin.id}
@@ -44,6 +32,11 @@ const Skins = () => {
           />
         ))}
       </ul>
+      <h2
+        className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
+      >
+        Silver Collection
+      </h2>
       <ul className="flex flex-col gap-6 my-6">
         {skins.silverCollection.map((skin) => (
           <SkinsItem
@@ -56,6 +49,11 @@ const Skins = () => {
           />
         ))}
       </ul>
+      <h2
+        className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
+      >
+        Gold Collection
+      </h2>
       <ul className="flex flex-col gap-6 my-6">
         {skins.goldCollection.map((skin) => (
           <SkinsItem
@@ -68,6 +66,11 @@ const Skins = () => {
           />
         ))}
       </ul>
+      <h2
+        className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
+      >
+        Platinum Collection
+      </h2>
       <ul className="flex flex-col gap-6 my-6">
         {skins.platinumCollection.map((skin) => (
           <SkinsItem
@@ -80,6 +83,11 @@ const Skins = () => {
           />
         ))}
       </ul>
+      <h2
+        className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
+      >
+        Diamond Collection
+      </h2>
       <ul className="flex flex-col gap-6 my-6">
         {skins.diamondCollection.map((skin) => (
           <SkinsItem
