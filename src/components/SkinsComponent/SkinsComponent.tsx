@@ -32,7 +32,7 @@ const SkinsComponent: React.FC<SkinsData> = ({
           className={`object-cover ${styleImg} w-full h-full`}
         />
       </div>
-      <div className={`${styleBorder} rounded-3xl border-1 overflow-hidden`}>
+      <div className={`${styleBorder} rounded-3xl overflow-hidden`}>
         <img
           src={imgShip}
           alt=""
@@ -41,19 +41,19 @@ const SkinsComponent: React.FC<SkinsData> = ({
       </div>
 
       <div className="grid grid-cols-2 gap-2 rounded-3xl">
-        <div
-          className={`${styleBorder} bg-red-50 rounded-3xl  border-1  overflow-hidden`}
-        >
+        <div className={`${styleBorder} bg-red-50 rounded-3xl overflow-hidden`}>
           <img
             src={imgComandor}
             alt=""
-            className="object-cover w-full h-full"
+            className={`object-cover ${styleImg} w-full h-full`}
           />
         </div>
-        <div
-          className={`${styleBorder} bg-red-50 rounded-3xl  border-1 overflow-hidden`}
-        >
-          <img src={planet} alt="" className="object-cover w-full h-full" />
+        <div className={`${styleBorder} bg-red-50 rounded-3xl overflow-hidden`}>
+          <img
+            src={planet}
+            alt=""
+            className={`object-cover ${styleImg} w-full h-full`}
+          />
         </div>
       </div>
 

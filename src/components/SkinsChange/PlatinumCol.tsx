@@ -13,6 +13,7 @@ const data = {
   price: '420',
   plus: '+ 35%',
   styleBorder: `${s.gradientBg2} p-[1.2px]`,
+  styleImg: 'rounded-3xl',
 };
 
 const PlatinumCol = () => {

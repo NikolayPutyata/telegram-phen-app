@@ -11,7 +11,7 @@ const data = {
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783044/planet3_11zon_kbdrpe.webp',
   price: '420',
   plus: '+ 10%',
-  styleBorder: 'border-[#C0C0C0]',
+  styleBorder: 'border-[#C0C0C0] border-1',
 };
 
 const SilverCol = () => {

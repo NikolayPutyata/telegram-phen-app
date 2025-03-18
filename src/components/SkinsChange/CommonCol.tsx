@@ -11,7 +11,7 @@ const data = {
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741774853/Group_67_8_fyflff.png',
   price: '420',
   plus: '+ 0%',
-  styleBorder: 'border-gray-700',
+  styleBorder: 'border-gray-700  border-1',
 };
 
 const CommonCol = () => {
