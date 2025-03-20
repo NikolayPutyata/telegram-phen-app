@@ -41,7 +41,7 @@ const TelegramLinkForm = () => {
         disabled={isSubmitted}
       />
       {isSubmitted ? (
-        <span className="text-green-500 text-2xl px-5">✅</span>
+        <span className="text-xl px-5">✅</span>
       ) : isLoading ? (
         <div className="flex items-center justify-center w-[70px]">
           <ClipLoader size={15} color={'#ededed'} />
