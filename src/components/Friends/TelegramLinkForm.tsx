@@ -27,6 +27,7 @@ const TelegramLinkForm = () => {
 
     if (!validateLink(link)) {
       setError('Please enter a valid Telegram link');
+      setLink('');
       return;
     }
     setIsLoading(true);
@@ -36,7 +37,8 @@ const TelegramLinkForm = () => {
       setIsSubmitted(true);
     } catch (error) {
       console.error('Failed to submit link:', error);
-      setError('Failed to submit the link. Please try again.');
+      setError('Failed to submit. Try again.');
+      setLink('');
     } finally {
       setIsLoading(false);
     }
@@ -47,27 +49,21 @@ const TelegramLinkForm = () => {
       onSubmit={handleSubmit}
       className="mb-4 grid grid-cols-[4fr_1fr] gap-3 items-center w-full px-7"
     >
-      <div className="relative w-full">
-        <input
-          type="text"
-          value={link}
-          onChange={(e) => {
-            if (!isSubmitted) {
-              setLink(e.target.value);
-              setError(null);
-            }
-          }}
-          className={`${
-            s.font
-          } disabled:border-gray-600 disabled:text-gray-600 text-sm tracking-wider rounded-3xl px-5 py-1 w-full ${
-            error ? 'border-gray-600' : ''
-          }`}
-          disabled={isSubmitted || isLoading}
-        />
-        {error && (
-          <p className="absolute text-gray-600 text-xs mt-1">{error}</p>
-        )}
-      </div>
+      <input
+        type="text"
+        value={link}
+        onChange={(e) => {
+          setLink(e.target.value);
+          setError(null);
+        }}
+        className={`${
+          s.font
+        } disabled:border-gray-600 disabled:text-gray-600 text-sm tracking-wider rounded-3xl px-5 py-1 w-full ${
+          error ? ' text-sm placeholder:text-gray-600' : ''
+        }`}
+        disabled={isSubmitted || isLoading}
+        placeholder={error || ''}
+      />
       {isSubmitted ? (
         <span className="text-xl flex justify-center">✅</span>
       ) : isLoading ? (
@@ -78,7 +74,7 @@ const TelegramLinkForm = () => {
         <button
           type="submit"
           className="btn btn-outline btn-sm rounded-3xl px-5 py-4"
-          disabled={!link || !!error}
+          disabled={!link}
         >
           Done
         </button>
