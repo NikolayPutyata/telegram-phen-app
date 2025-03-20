@@ -12,7 +12,7 @@ const Friends = () => {
 
   const invateFriendFu = (): void => {
     const refCode = `${userId}`;
-    const inviteLink = `https://t.me/phenerium_bot?start=_tgr_${refCode}`;
+    const inviteLink = `https://t.me/phenerium_bot?start=_mup_${refCode}`;
 
     window.Telegram.WebApp.openTelegramLink(
       `https://t.me/share/url?url=${encodeURIComponent(
