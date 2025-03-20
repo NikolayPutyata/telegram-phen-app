@@ -1,12 +1,21 @@
 import s from '/src/App.module.css';
+import { SlArrowLeft } from 'react-icons/sl';
 
 interface Props {
-    text: string;
-}
-const LoadingUlItem = ({ text }: Props) => {
-  return (
-      <li className={s.font}>{text}</li>
-  )
+  text: string;
+  showArrow?: boolean;
+  textColor?: string;
 }
 
-export default LoadingUlItem
+const LoadingUlItem = ({ text, showArrow = false, textColor }: Props) => {
+  return (
+    <div className="flex gap-2 items-center ">
+      <li className={`${s.font} tracking-wider`} style={{ color: textColor }}>
+        {text}
+      </li>
+      {showArrow && <SlArrowLeft color={'#00bafe'} />}
+    </div>
+  );
+};
+
+export default LoadingUlItem;
