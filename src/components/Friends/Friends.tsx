@@ -12,7 +12,7 @@ const Friends = () => {
 
   const invateFriendFu = (): void => {
     const refCode = `${userId}`;
-    const inviteLink = `https://t.me/phenerium_bot?start=${refCode}`;
+    const inviteLink = `https://t.me/phenerium_bot?start=_tgr_${refCode}`;
 
     window.Telegram.WebApp.openTelegramLink(
       `https://t.me/share/url?url=${encodeURIComponent(
@@ -26,7 +26,7 @@ const Friends = () => {
   const isDisabled = true;
 
   return (
-    <div className='mb-32'>
+    <div className="mb-32">
       <div className="px-3">
         <div className="relative w-full h-44 overflow-hidden rounded-4xl mb-4">
           <img
@@ -54,19 +54,33 @@ const Friends = () => {
       </div>
 
       <div className="flex flex-col justify-center items-center my-4">
-        <p className={`${s.font} text-zinc-400 text-sm m-4 px-4 tracking-wider text-center`}>We also participate in the Telegram affiliate referral program, where you can get 50% of the Stars your friends spend!
-          </p>
-        <p className={`${s.font} text-zinc-400 text-sm mb-4 px-4 tracking-wider text-center`}>Paste your Telegram referral link below and share for free Stars!</p>
+        <p
+          className={`${s.font} text-zinc-400 text-sm m-4 px-4 tracking-wider text-center`}
+        >
+          We also participate in the Telegram affiliate referral program, where
+          you can get 50% of the Stars your friends spend!
+        </p>
+        <p
+          className={`${s.font} text-zinc-400 text-sm mb-4 px-4 tracking-wider text-center`}
+        >
+          Paste your Telegram referral link below and share for free Stars!
+        </p>
         <TelegramLinkForm />
         <button
-          className={`btn btn-wide bg-gray-100 rounded-3xl ${isDisabled ? "" : "text-black"}`}
+          className={`btn btn-wide bg-gray-100 rounded-3xl ${
+            isDisabled ? '' : 'text-black'
+          }`}
           onClick={invateFriendFu}
           disabled={isDisabled}
         >
           {t('Invite for free Stars')}
           <img src="/assets/telegram_star.svg" alt="telegram-star" />
         </button>
-        <p className={`${s.font} text-xs tracking-wider italic mt-4 text-zinc-500`}>Where can I get a Telegram referral link?</p>
+        <p
+          className={`${s.font} text-xs tracking-wider italic mt-4 text-zinc-500`}
+        >
+          Where can I get a Telegram referral link?
+        </p>
       </div>
     </div>
   );
