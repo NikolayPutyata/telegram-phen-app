@@ -26,7 +26,7 @@ const TelegramLinkForm = () => {
     if (!link || isSubmitted) return;
 
     if (!validateLink(link)) {
-      setError('Please enter a valid Telegram link');
+      setError('Please enter a valid link');
       setLink('');
       return;
     }
@@ -59,7 +59,7 @@ const TelegramLinkForm = () => {
         className={`${
           s.font
         } disabled:border-gray-600 disabled:text-gray-600 text-sm tracking-wider rounded-3xl px-5 py-1 w-full ${
-          error ? ' text-sm placeholder:text-gray-600' : ''
+          error ? ' placeholder:textarea-sm placeholder:text-gray-600' : ''
         }`}
         disabled={isSubmitted || isLoading}
         placeholder={error || ''}
