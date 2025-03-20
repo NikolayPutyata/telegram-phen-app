@@ -37,9 +37,8 @@ const TelegramLinkForm = () => {
         type="text"
         value={link}
         onChange={(e) => !isSubmitted && setLink(e.target.value)}
-        className={`${s.font} text-sm rounded-3xl px-5 py-1 w-full`}
+        className={`${s.font} text-sm tracking-wider rounded-3xl px-5 py-1 w-full`}
         disabled={isSubmitted}
-        placeholder="Enter your Telegram link"
       />
       {isSubmitted ? (
         <span className="text-green-500 text-2xl px-5">✅</span>
