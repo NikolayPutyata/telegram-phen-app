@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import s from '/src/App.module.css';
 import { useTranslation } from 'react-i18next';
-import { selectUserId } from '../../redux/selectors';
+import { selectRefLink, selectUserId } from '../../redux/selectors';
 import { selectUserFriends } from '../../redux/selectors';
 import FriendsList from './FriendsList';
 import TelegramLinkForm from './TelegramLinkForm';
@@ -9,6 +9,8 @@ import TelegramLinkForm from './TelegramLinkForm';
 const Friends = () => {
   const { t } = useTranslation();
   const userId = useSelector(selectUserId);
+  const refLink = useSelector(selectRefLink);
+  const friends = useSelector(selectUserFriends);
 
   const invateFriendFu = (): void => {
     const refCode = `${userId}`;
@@ -22,8 +24,12 @@ const Friends = () => {
       )}`,
     );
   };
-  const friends = useSelector(selectUserFriends);
-  const isDisabled = true;
+
+  const invateFriendFuWithRefCode = (): void => {
+    window.Telegram.WebApp.openTelegramLink(
+      `https://t.me/share/url?url=${encodeURIComponent(refLink)}`,
+    );
+  };
 
   return (
     <div className="mb-32">
@@ -67,14 +73,19 @@ const Friends = () => {
         </p>
         <TelegramLinkForm />
         <button
-          className={`btn btn-wide bg-gray-100 rounded-3xl ${
-            isDisabled ? '' : 'text-black'
+          className={`flex items-center gap-1.7 btn btn-wide bg-gray-100 rounded-3xl ${
+            refLink.length < 3 ? '' : 'text-black'
           }`}
-          onClick={invateFriendFu}
-          disabled={isDisabled}
+          onClick={invateFriendFuWithRefCode}
+          disabled={refLink.length < 3}
         >
-          {t('Invite for free Stars')}
-          <img src="/assets/telegram_star.svg" alt="telegram-star" />
+          <span>{t('Invite for free Stars')}</span>
+          <img
+            src="/assets/tgPr.png"
+            alt="telegram-star"
+            width={16}
+            className="mt-0.5"
+          />
         </button>
         <p
           className={`${s.font} text-xs tracking-wider italic mt-4 text-zinc-500`}
