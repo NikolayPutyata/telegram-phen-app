@@ -133,3 +133,24 @@ export const getBoostsAndSkins = createAsyncThunk(
     }
   },
 );
+
+export const addRefTgLink = createAsyncThunk(
+  'user/addRefTgLink',
+  async (
+    { userId, link }: { userId: number; link: string },
+    { rejectWithValue },
+  ) => {
+    try {
+      const { data } = await axios.post('user/addRefTgLink', {
+        id: userId,
+        link,
+      });
+      return { link: data.link };
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        return rejectWithValue(e.message);
+      }
+      return rejectWithValue('Unknown error');
+    }
+  },
+);

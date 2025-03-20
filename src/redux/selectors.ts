@@ -9,6 +9,7 @@ export const selectUserActiveBoosts = (state: RootState) =>
   state.user.activeBoosts;
 export const selectUserFriends = (state: RootState): Friend[] =>
   state.user.friends;
+export const selectRefLink = (state: RootState) => state.user.refLink;
 export const selectUserFriendsQuantity = (state: RootState): number =>
   state.user.friends.length;
 export const selectUserId = (state: RootState): number => state.user.id;

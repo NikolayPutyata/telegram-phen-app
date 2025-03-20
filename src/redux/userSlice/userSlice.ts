@@ -5,7 +5,8 @@ import {
   paymentInPhenerium,
   startFarming,
   taskCompleted,
-  getBoostsAndSkins
+  getBoostsAndSkins,
+  addRefTgLink,
 } from '../operations';
 import { UserState } from '../../types/State';
 
@@ -17,6 +18,7 @@ const initialState: UserState = {
   language_code: null,
   tokens: 0,
   friends: [],
+  refLink: '',
   skins: [],
   activeBoosts: [],
   boosts: [],
@@ -52,6 +54,7 @@ const userSlice = createSlice({
         state.language_code = usersData.language_code;
         state.tokens = usersData.tokens;
         state.friends = usersData.friends;
+        state.refLink = usersData.refLink;
         state.skins = usersData.skins;
         state.boosts = usersData.boosts;
         state.activeSkins = usersData.activeSkins;
@@ -67,6 +70,9 @@ const userSlice = createSlice({
       .addCase(taskCompleted.fulfilled, (state, action) => {
         state.usersTasks = action.payload.userTasks;
       })
+      .addCase(addRefTgLink.fulfilled, (state, action) => {
+        state.refLink = action.payload.link;
+      })
       .addCase(startFarming.fulfilled, (state, action) => {
         state.boosts = action.payload.boosts;
         state.activeBoosts = action.payload.activeBoosts;
@@ -80,7 +86,6 @@ const userSlice = createSlice({
         state.skins = action.payload.data.skins;
       })
       .addCase(getBoostsAndSkins.fulfilled, (state, action) => {
-       
         state.boosts = action.payload.boosts;
         state.skins = action.payload.skins;
       });

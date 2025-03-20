@@ -52,6 +52,7 @@ export type UserState = {
   photo_url: string | null;
   language_code: string | null;
   friends: Friend[];
+  refLink: string;
   tokens: number;
   skins: object[];
   activeBoosts: Boost[];
