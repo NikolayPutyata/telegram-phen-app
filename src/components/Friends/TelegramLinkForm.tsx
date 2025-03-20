@@ -37,7 +37,7 @@ const TelegramLinkForm = () => {
         type="text"
         value={link}
         onChange={(e) => !isSubmitted && setLink(e.target.value)}
-        className={`${s.font} text-sm tracking-wider rounded-3xl px-5 py-1 w-full`}
+        className={`${s.font} disabled:border-gray-600 disabled:text-gray-600 text-sm tracking-wider rounded-3xl px-5 py-1 w-full`}
         disabled={isSubmitted}
       />
       {isSubmitted ? (
