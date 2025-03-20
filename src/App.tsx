@@ -37,6 +37,9 @@ const App = () => {
       try {
         if (window.Telegram && window.Telegram.WebApp) {
           window.Telegram.WebApp.ready();
+          window.Telegram.WebApp.disableVerticalSwipes();
+          window.Telegram.WebApp.expand();
+
           const telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
           const user = {
             id: telegramUser.id,
@@ -56,11 +59,11 @@ const App = () => {
 
     const loadWithMinimumDelay = async () => {
       const minimumLoadingTime = new Promise((resolve) => {
-        setTimeout(resolve, 5000); 
+        setTimeout(resolve, 5000);
       });
 
       await Promise.all([initUser(), minimumLoadingTime]);
-      setIsLoading(false); 
+      setIsLoading(false);
     };
 
     loadWithMinimumDelay();
