@@ -28,7 +28,7 @@ const LoadingScreen = () => {
   }, []);
 
   return (
-    <div className="bg-black flex flex-col p-5 min-h-screen gap-10">
+    <div className="bg-[url('/assets/bc.webp')] flex flex-col p-5 min-h-screen gap-10">
       <div className="flex flex-col items-center gap-8 pt-10">
         <img src="/assets/logoLoading.svg" alt="" width={100} />
         <h2 className={`${s.font} text-lg tracking-wider`}>Roadmap</h2>
