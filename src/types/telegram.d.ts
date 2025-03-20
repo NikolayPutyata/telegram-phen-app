@@ -1,4 +1,3 @@
-
 declare global {
   interface TelegramUser {
     id: number;
@@ -13,22 +12,24 @@ declare global {
     Telegram: {
       WebApp: {
         ready: () => void;
+        expand: () => void;
+        disableVerticalSwipes: () => void;
         openTelegramLink: (url: string) => void;
-        initDataUnsafe: TelegramWebAppData; 
+        initDataUnsafe: TelegramWebAppData;
         initData: string;
         MainButton: {
-    setText: (text: string) => void;
-    show: () => void;
-    hide: () => void;
-    onClick: (callback: () => void) => void;
-    offClick: (callback: () => void) => void;
-    setParams: (params: {
-      color?: string;
-      text_color?: string;
-    }) => void;
+          setText: (text: string) => void;
+          show: () => void;
+          hide: () => void;
+          onClick: (callback: () => void) => void;
+          offClick: (callback: () => void) => void;
+          setParams: (params: { color?: string; text_color?: string }) => void;
         };
         sendData: (data: string) => void;
-        openInvoice: (invoiceUrl: string, callback: (status: string) => void) => void;
+        openInvoice: (
+          invoiceUrl: string,
+          callback: (status: string) => void,
+        ) => void;
         openLink: (data: string) => void;
         version: number;
       };
