@@ -1,32 +1,31 @@
-import { motion } from "motion/react"
-import LoadingUlItem from "./LoadingUlItem";
+import { motion } from 'motion/react';
+import LoadingUlItem from './LoadingUlItem';
 
 const LoadingList = () => {
   const listVariants = {
     hidden: {
-      opacity: 0, 
+      opacity: 0,
     },
     visible: {
-      opacity: 1, 
+      opacity: 1,
       transition: {
-        staggerChildren: 0.2, 
-        delayChildren: 0.3, 
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
       },
     },
   };
 
-
   const itemVariants = {
     hidden: {
-      opacity: 0, 
+      opacity: 0,
       y: 20,
     },
     visible: {
       opacity: 1,
-      y: 0, 
+      y: 0,
       transition: {
-        duration: 0.5, 
-        ease: "easeOut", 
+        duration: 0.5,
+        ease: 'easeOut',
       },
     },
   };
@@ -35,29 +34,33 @@ const LoadingList = () => {
     <motion.ul
       className="flex flex-col gap-6 ml-7"
       initial="hidden"
-      animate="visible" 
-      variants={listVariants} 
+      animate="visible"
+      variants={listVariants}
     >
       <motion.div variants={itemVariants}>
-        <LoadingUlItem text={"Step 1"} />
+        <LoadingUlItem text={'Start Project'} />
       </motion.div>
       <motion.div variants={itemVariants}>
-        <LoadingUlItem text={"Step 2"} />
+        <LoadingUlItem
+          text={'Farming Stage'}
+          showArrow={true}
+          textColor={'#00bafe'}
+        />
       </motion.div>
       <motion.div variants={itemVariants}>
-        <LoadingUlItem text={"Step 3"} />
+        <LoadingUlItem text={'Presale Stage'} />
       </motion.div>
       <motion.div variants={itemVariants}>
-        <LoadingUlItem text={"Step 4"} />
+        <LoadingUlItem text={'DEX Listing'} />
       </motion.div>
       <motion.div variants={itemVariants}>
-        <LoadingUlItem text={"Step 5"} />
+        <LoadingUlItem text={'CEX Listing'} />
       </motion.div>
       <motion.div variants={itemVariants}>
-        <LoadingUlItem text={"Step 6"} />
+        <LoadingUlItem text={'Partners Program'} />
       </motion.div>
       <motion.div variants={itemVariants}>
-        <LoadingUlItem text={"Step 7"} />
+        <LoadingUlItem text={'Collaborations'} />
       </motion.div>
     </motion.ul>
   );
