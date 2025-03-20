@@ -56,16 +56,6 @@ const TelegramLinkForm = () => {
           Done
         </button>
       )}
-      {/* <input
-        type="text"
-        className={`${s.font} text-sm rounded-3xl px-5 py-1 w-full`}
-      />
-      <button
-        type="submit"
-        className="btn btn-outline btn-sm rounded-3xl px-5 py-4"
-      >
-        Done
-      </button> */}
     </form>
   );
 };
