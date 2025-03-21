@@ -1,6 +1,6 @@
 import SkinsModal from '../SkinsModal/SkinsModal.tsx';
 import BoostsModal from '../BoostsModal/BoostsModal.tsx';
-import SettingsModal from '../SettingsModal/SettingsModal.tsx';
+import GuideLinkModal from '../GuideLinkModal/GuideLinkModal.tsx';
 import LanguageModal from '../LanguageModal/LanguageModal.tsx';
 import ModalAddBoosts from '../ModalAddBoosts/ModalAddBoosts.tsx';
 import s from '/src/App.module.css';
@@ -18,8 +18,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, changeModal }) => {
         return <BoostsModal />;
       case 'skins':
         return <SkinsModal />;
-      case 'settings':
-        return <SettingsModal />;
+      case 'guide':
+        return <GuideLinkModal />;
       case 'language':
         return <LanguageModal onClose={onClose} />;
       case 'addBoosts':
