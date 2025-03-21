@@ -94,7 +94,7 @@ const Friends = () => {
         <button
           type="button"
           onClick={() => setIsModalOpenGuideLink(true)}
-          className={`${s.font} text-xs tracking-wider italic mt-4 text-zinc-500`}
+          className={`${s.font} text-xs tracking-wider border-b border-zinc-500 italic mt-4 text-zinc-500`}
         >
           Where can I get a Telegram referral link?
         </button>
