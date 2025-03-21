@@ -13,16 +13,32 @@ const TelegramLinkForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [link, setLink] = useState(refLink || '');
   const [isSubmitted, setIsSubmitted] = useState(!!refLink);
+  const [error, setError] = useState<string | null>(null);
+
+  const linkRegex =
+    /^https:\/\/t\.me\/phenerium_bot\?start=_tgr_-[A-Za-z0-9]+$/;
+  const validateLink = (value: string): boolean => {
+    return linkRegex.test(value);
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!link || isSubmitted) return;
+
+    if (!validateLink(link)) {
+      setError('Please enter a valid link');
+      setLink('');
+      return;
+    }
     setIsLoading(true);
+    setError(null);
     try {
       await dispatch(addRefTgLink({ userId, link })).unwrap();
       setIsSubmitted(true);
     } catch (error) {
       console.error('Failed to submit link:', error);
+      setError('Failed to submit. Try again.');
+      setLink('');
     } finally {
       setIsLoading(false);
     }
@@ -31,14 +47,22 @@ const TelegramLinkForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mb-4 grid grid-cols-[4fr_1fr] gap-3 items-center w-full px-7"
+      className="mb-8 grid grid-cols-[4fr_1fr] gap-3 items-center w-full px-7"
     >
       <input
         type="text"
         value={link}
-        onChange={(e) => !isSubmitted && setLink(e.target.value)}
-        className={`${s.font} disabled:border-gray-600 disabled:text-gray-600 text-sm tracking-wider rounded-3xl px-5 py-1 w-full`}
-        disabled={isSubmitted}
+        onChange={(e) => {
+          setLink(e.target.value);
+          setError(null);
+        }}
+        className={`${
+          s.font
+        } disabled:border-gray-600 disabled:text-gray-600 text-sm tracking-wider rounded-3xl px-5 py-2 w-full ${
+          error ? ' placeholder:textarea-sm placeholder:text-gray-600' : ''
+        }`}
+        disabled={isSubmitted || isLoading}
+        placeholder={error || ''}
       />
       {isSubmitted ? (
         <span className="text-xl flex justify-center">✅</span>
@@ -49,7 +73,7 @@ const TelegramLinkForm = () => {
       ) : (
         <button
           type="submit"
-          className="btn btn-outline btn-sm rounded-3xl px-5 py-4"
+          className="btn btn-outline btn-sm rounded-3xl px-5 py-5"
           disabled={!link}
         >
           Done
