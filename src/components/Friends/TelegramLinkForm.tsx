@@ -47,7 +47,7 @@ const TelegramLinkForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mb-4 grid grid-cols-[4fr_1fr] gap-3 items-center w-full px-7"
+      className="mb-8 grid grid-cols-[4fr_1fr] gap-3 items-center w-full px-7"
     >
       <input
         type="text"
