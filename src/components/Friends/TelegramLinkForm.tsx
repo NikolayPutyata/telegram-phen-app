@@ -58,7 +58,7 @@ const TelegramLinkForm = () => {
         }}
         className={`${
           s.font
-        } disabled:border-gray-600 disabled:text-gray-600 text-sm tracking-wider rounded-3xl px-5 py-1 w-full ${
+        } disabled:border-gray-600 disabled:text-gray-600 text-sm tracking-wider rounded-3xl px-5 py-2 w-full ${
           error ? ' placeholder:textarea-sm placeholder:text-gray-600' : ''
         }`}
         disabled={isSubmitted || isLoading}
@@ -73,7 +73,7 @@ const TelegramLinkForm = () => {
       ) : (
         <button
           type="submit"
-          className="btn btn-outline btn-sm rounded-3xl px-5 py-4"
+          className="btn btn-outline btn-sm rounded-3xl px-5 py-5"
           disabled={!link}
         >
           Done
