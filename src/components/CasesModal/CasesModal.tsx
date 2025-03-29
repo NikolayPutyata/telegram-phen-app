@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import axios from 'axios'; // Для відправки на сервер
+import axios from 'axios';
 
 interface Boost {
   id: number;
@@ -48,13 +48,13 @@ const boosts: Boost[] = [
 const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedBoost, setSelectedBoost] = useState<Boost | null>(null);
-  const userId = 'some-user-id'; // Замініть на реальний userId з вашого стану
+  const userId = 'some-user-id'; // Замініть на реальний userId
 
   const handleAnimation = useCallback(async () => {
     setIsAnimating(true);
-    setSelectedBoost(null);
+    setSelectedBoost(null); // Скидаємо вибір перед початком
 
-    // Через 5 секунд обираємо рандомний буст
+    // Через 2 секунди з'являються бусти, через 5 секунд обираємо рандомний буст
     setTimeout(() => {
       const randomBoost = boosts[Math.floor(Math.random() * boosts.length)];
       setSelectedBoost(randomBoost);
@@ -67,12 +67,13 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
         })
         .catch((err) => console.error('Error sending boost to server:', err));
 
-      // Завершення анімації через 4.5 секунди після вибору
+      // Завершення анімації через 4 секунди після вибору (1s glow + 1s scale + 2s flyout)
       setTimeout(() => {
         setIsAnimating(false);
+        setSelectedBoost(null); // Очищаємо вибір після завершення
         onClose();
-      }, 4500);
-    }, 7000); // 2 секунди (фон) + 5 секунд (підсвітка)
+      }, 4000);
+    }, 7000); // 2s (фон + поява) + 5s (підсвітка)
   }, [onClose, userId]);
 
   useEffect(() => {
@@ -95,28 +96,31 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
   const glowAnimation = {
     animate: {
       boxShadow: [
-        '0 0 10px rgba(255, 255, 255, 0.5)',
-        '0 0 20px rgba(255, 255, 255, 1)',
-        '0 0 10px rgba(255, 255, 255, 0.5)',
+        '0 0 20px rgba(255, 255, 255, 0.7)',
+        '0 0 40px rgba(255, 255, 255, 1)',
+        '0 0 20px rgba(255, 255, 255, 0.7)',
       ],
       transition: { duration: 0.5, repeat: Infinity, repeatDelay: 0.5 },
     },
   };
 
-  const winnerGlow = {
+  const winnerAnimation = {
+    initial: { boxShadow: '0 0 20px rgba(255, 255, 255, 0.7)', scale: 1 },
     animate: {
-      boxShadow: '0 0 40px rgba(255, 255, 255, 1)',
-      scale: 1.2,
-      transition: { duration: 1 },
-    },
-  };
-
-  const flyOut = {
-    animate: {
-      x: 300,
-      y: -300,
-      opacity: 0,
-      transition: { duration: 2.5, delay: 1 },
+      boxShadow: '0 0 50px rgba(255, 255, 255, 1)', // Яскравіше підсвічування
+      scale: 1.2, // Збільшення
+      x: 300, // Виліт вправо
+      y: -300, // Виліт вгору
+      opacity: 0, // Зникнення
+      transition: {
+        duration: 4,
+        times: [0, 0.25, 0.5, 1], // 1s glow, 1s scale, 2s flyout
+        boxShadow: { duration: 1 },
+        scale: { duration: 1, delay: 1 },
+        x: { duration: 2, delay: 2 },
+        y: { duration: 2, delay: 2 },
+        opacity: { duration: 2, delay: 2 },
+      },
     },
   };
 
@@ -142,27 +146,29 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
             />
           </motion.div>
 
-          <div className="relative flex flex-col items-center gap-8 z-10">
+          <div className="relative flex flex-col items-center gap-12 z-10">
             {boosts.map((boost, index) => (
               <motion.img
                 key={boost.id}
                 src={boost.photo}
                 alt={boost.name}
-                className="w-34 h-34 rounded-lg"
+                className="w-30 h-30 rounded-lg"
                 initial={boostAppear.initial}
-                animate={{
-                  ...boostAppear.animate,
-                  ...(isAnimating &&
-                    !selectedBoost && {
-                      ...glowAnimation.animate,
-                      transition: {
-                        ...glowAnimation.animate.transition,
-                        delay: 2 + index * 0.125, // Послідовне підсвічування
-                      },
-                    }),
-                  ...(selectedBoost?.id === boost.id && winnerGlow.animate),
-                  ...(selectedBoost?.id === boost.id && flyOut.animate),
-                }}
+                animate={
+                  selectedBoost?.id === boost.id
+                    ? winnerAnimation.animate
+                    : {
+                        ...boostAppear.animate,
+                        ...(isAnimating &&
+                          !selectedBoost && {
+                            ...glowAnimation.animate,
+                            transition: {
+                              ...glowAnimation.animate.transition,
+                              delay: 2 + index * 0.125, // Послідовне підсвічування
+                            },
+                          }),
+                      }
+                }
               />
             ))}
           </div>
