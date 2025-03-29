@@ -1,8 +1,10 @@
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import s from '/src/App.module.css';
 import { useTranslation } from 'react-i18next';
 import { selectRefLink, selectUserId } from '../../redux/selectors';
 import { selectUserFriends } from '../../redux/selectors';
+import Modal from '../../components/Modal/Modal';
 import FriendsList from './FriendsList';
 import TelegramLinkForm from './TelegramLinkForm';
 
@@ -11,6 +13,8 @@ const Friends = () => {
   const userId = useSelector(selectUserId);
   const refLink = useSelector(selectRefLink);
   const friends = useSelector(selectUserFriends);
+
+  const [isModalOpenGuideLink, setIsModalOpenGuideLink] = useState(false);
 
   const invateFriendFu = (): void => {
     const refCode = `${userId}`;
@@ -67,7 +71,7 @@ const Friends = () => {
           you can get 50% of the Stars your friends spend!
         </p>
         <p
-          className={`${s.font} text-zinc-400 text-sm mb-4 px-4 tracking-wider text-center`}
+          className={`${s.font} text-zinc-400 text-sm  mb-8 px-4 tracking-wider text-center`}
         >
           Paste your Telegram referral link below and share for free Stars!
         </p>
@@ -87,12 +91,20 @@ const Friends = () => {
             className="mt-0.5"
           />
         </button>
-        <p
-          className={`${s.font} text-xs tracking-wider italic mt-4 text-zinc-500`}
+        <button
+          type="button"
+          onClick={() => setIsModalOpenGuideLink(true)}
+          className={`${s.font} text-xs tracking-wider border-b border-zinc-500 italic mt-3 text-zinc-500`}
         >
           Where can I get a Telegram referral link?
-        </p>
+        </button>
       </div>
+
+      <Modal
+        isOpen={isModalOpenGuideLink}
+        changeModal="guide"
+        onClose={() => setIsModalOpenGuideLink(false)}
+      />
     </div>
   );
 };
