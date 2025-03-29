@@ -1,55 +1,87 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// import { useSelector } from 'react-redux';
-// import { sendCase } from '../../redux/operations';
-// import { selectUserId } from '../../redux/selectors';
-// import { AppDispatch } from '../../redux/store';
 
-interface CasesModalProps {
+interface BoostItem {
+  id: number;
+  photo: string;
+  boost: string;
+  name: string;
+}
+
+interface BoostsModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
+const BoostsModal = ({ isOpen, onClose }: BoostsModalProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
-  const [isCaseOpen, setIsCaseOpen] = useState(false);
-  const [selectedSpecial, setSelectedSpecial] = useState<{
-    imgSrc: string;
-    idItem: number;
-  } | null>(null);
+  const [selectedBoost, setSelectedBoost] = useState<BoostItem | null>(null);
 
-  // const dispatch = useDispatch()<AppDispatch>;
-  // const userId = useSelector(selectUserId);
+  const boosts: BoostItem[] = [
+    {
+      id: 99,
+      photo:
+        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740677691/1000_zufakh.png',
+      boost: '1000 PHEN',
+      name: '1000 PHEN',
+    },
+    {
+      id: 14,
+      photo:
+        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740656126/medic_11zon_dyygxi.webp',
+      boost: 'X10',
+      name: 'Medical Team',
+    },
+    {
+      id: 41,
+      photo:
+        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741782889/planet1_11zon_jnb5cd.webp',
+      boost: '',
+      name: 'Orionus',
+    },
+    {
+      id: 31,
+      photo:
+        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741782887/com_11zon_halzjs.webp',
+      boost: '',
+      name: 'Jack Snack',
+    },
+  ];
 
-  const handleOpenCase = useCallback(async () => {
-    const boosts = [{ imgSrc: '/assets/engine.webp', idItem: 10 }];
-    const specialBoosts = [{ imgSrc: '/assets/shuttle-2.webp', idItem: 11 }];
-
-    const getRandomSpecial = () => {
-      const allSpecial = [...boosts, ...specialBoosts];
-      return allSpecial[Math.floor(Math.random() * allSpecial.length)];
-    };
-    const randomSpecial = getRandomSpecial();
-    setSelectedSpecial(randomSpecial);
-    // await dispatch(sendCase({ id: userId, specialId: [randomSpecial.idItem] }));
-
+  const handleStartAnimation = useCallback(async () => {
     setIsAnimating(true);
 
-    setTimeout(() => {
-      setIsCaseOpen(true);
+    // Поява всіх бустів через 2 секунди
+    setTimeout(async () => {
+      // Рандомний вибір буста
+      const randomBoost = boosts[Math.floor(Math.random() * boosts.length)];
+      setSelectedBoost(randomBoost);
+
+      // Симуляція відправки на сервер (розкоментуйте і додайте реальний dispatch)
+      // await dispatch(sendBoost({ userId, boostId: randomBoost.id }));
+
+      // Підсвітка по черзі протягом 5 секунд
       setTimeout(() => {
-        setIsAnimating(false);
-        setIsCaseOpen(false);
-        onClose();
-      }, 4000);
-    }, 2800);
+        // Зупинка на рандомному бусті + яскраве підсвічування (1 секунда)
+        setTimeout(() => {
+          // Збільшення картинки (1 секунда)
+          setTimeout(() => {
+            // Виліт вправо-вгору (2.5 секунди)
+            setTimeout(() => {
+              setIsAnimating(false);
+              onClose();
+            }, 2500);
+          }, 1000);
+        }, 1000);
+      }, 5000);
+    }, 2000);
   }, [onClose]);
 
   useEffect(() => {
     if (isOpen && !isAnimating) {
-      handleOpenCase();
+      handleStartAnimation();
     }
-  }, [isOpen, isAnimating, handleOpenCase]);
+  }, [isOpen, isAnimating, handleStartAnimation]);
 
   const backgroundAnimation = {
     initial: { opacity: 0 },
@@ -57,44 +89,37 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     exit: { opacity: 0, transition: { duration: 0.5 } },
   };
 
-  const caseAnimation = {
-    initial: { opacity: 0, scale: 0 },
-    animate: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5, delay: 0.5 },
-    },
-    exit: { opacity: 0, transition: { duration: 0.5 } },
+  const boostAppear = {
+    initial: { opacity: 0, y: 50 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  const shakeAnimation = {
+  const glowAnimation = {
     animate: {
-      x: [0, 10, -10, 10, -10, 0],
-      transition: { duration: 0.4, repeat: 2.5, ease: 'easeInOut', delay: 1.6 },
+      boxShadow: [
+        '0 0 10px rgba(255, 255, 255, 0.5)',
+        '0 0 20px rgba(255, 255, 255, 1)',
+        '0 0 10px rgba(255, 255, 255, 0.5)',
+      ],
+      transition: { duration: 0.5, repeat: Infinity },
     },
   };
 
-  const openCaseAnimation = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 0.5 } },
-    exit: { opacity: 0, transition: { duration: 0.5 } },
+  const finalGlow = {
+    animate: {
+      boxShadow: '0 0 40px rgba(255, 255, 255, 1)',
+      scale: 1.2,
+      transition: { duration: 1 },
+    },
   };
 
-  const specialAnimation = {
-    initial: { opacity: 0, scale: 0, y: 60 },
+  const flyOut = {
     animate: {
-      opacity: [0, 1, 1, 1, 0],
-      scale: [0, 1, 1, 1.2, 0],
-      y: [60, 0, 0, 0, -300],
-      x: [0, 0, 0, 0, 300],
-      transition: {
-        duration: 4,
-        times: [0, 0.0698, 0.3023, 0.4186, 1],
-        delay: 1.1,
-        ease: ['easeOut', 'linear', 'easeInOut', 'easeIn'],
-      },
+      x: 300,
+      y: -300,
+      opacity: 0,
+      transition: { duration: 2.5, ease: 'easeIn' },
     },
-    exit: { opacity: 0, scale: 0, transition: { duration: 0 } },
   };
 
   return (
@@ -106,61 +131,41 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div className="relative w-full h-1/1">
-            <motion.div
-              className="absolute w-full h-full overflow-hidden"
-              initial={backgroundAnimation.initial}
-              animate={backgroundAnimation.animate}
-              exit={backgroundAnimation.exit}
-            >
-              <img
-                src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389388/sklad_hustzi.webp"
-                alt="Warehouse"
-                className="object-cover w-full h-full"
+          <motion.div
+            className="absolute w-full h-full overflow-hidden"
+            initial={backgroundAnimation.initial}
+            animate={backgroundAnimation.animate}
+            exit={backgroundAnimation.exit}
+          >
+            <img
+              src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389388/sklad_hustzi.webp"
+              alt="Background"
+              className="object-cover w-full h-full"
+            />
+          </motion.div>
+
+          <div className="relative flex flex-col items-center gap-8 z-10">
+            {boosts.map((boost, index) => (
+              <motion.img
+                key={boost.id}
+                src={boost.photo}
+                alt={boost.name}
+                className="w-32 h-32 rounded-lg"
+                initial={boostAppear.initial}
+                animate={
+                  selectedBoost?.id === boost.id && isAnimating
+                    ? { ...boostAppear.animate, ...flyOut.animate }
+                    : selectedBoost?.id === boost.id
+                    ? { ...boostAppear.animate, ...finalGlow.animate }
+                    : index * 0.5 < 5 // 5 секунд підсвітки
+                    ? { ...boostAppear.animate, ...glowAnimation.animate }
+                    : boostAppear.animate
+                }
+                transition={{
+                  delay: 2 + index * 0.1, // Поява через 2 секунди з невеликим зміщенням
+                }}
               />
-            </motion.div>
-
-            <AnimatePresence>
-              {!isCaseOpen && (
-                <motion.img
-                  src="/assets/language/sticker.webp"
-                  alt="case-close"
-                  className="absolute bottom-[100px] left-1/2 -translate-x-1/2 z-10 w-70 h-54"
-                  initial={caseAnimation.initial}
-                  animate={
-                    isAnimating
-                      ? { ...caseAnimation.animate, ...shakeAnimation.animate }
-                      : caseAnimation.animate
-                  }
-                />
-              )}
-            </AnimatePresence>
-
-            <AnimatePresence>
-              {isCaseOpen && (
-                <motion.img
-                  src="/assets/language/sticker.open.webp"
-                  alt="case-open"
-                  className="absolute bottom-[100px] left-1/2 transform -translate-x-1/2 z-10 w-70 h-100 shadow-lg"
-                  initial={openCaseAnimation.initial}
-                  animate={openCaseAnimation.animate}
-                  exit={openCaseAnimation.exit}
-                />
-              )}
-            </AnimatePresence>
-
-            <AnimatePresence>
-              {isCaseOpen && selectedSpecial && (
-                <motion.img
-                  src={selectedSpecial.imgSrc}
-                  alt="Special"
-                  className="absolute bottom-[300px] left-1/2 rounded-4xl -translate-x-1/2 z-30 w-30 h-30 shadow-white shadow-xl"
-                  initial={specialAnimation.initial}
-                  animate={specialAnimation.animate}
-                  exit={specialAnimation.exit}
-                />
-              )}
-            </AnimatePresence>
+            ))}
           </div>
         </motion.div>
       )}
@@ -168,4 +173,4 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
   );
 };
 
-export default CasesModal;
+export default BoostsModal;
