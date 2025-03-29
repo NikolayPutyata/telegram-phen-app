@@ -99,7 +99,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
         '0 0 40px rgba(255, 255, 255, 1)', // Максимальна ширша яскрава біла тінь
         '0 0 4px rgba(255, 255, 255, 0.5)', // Повернення до початкової
       ],
-      transition: { duration: 0.8, repeat: Infinity, repeatDelay: 0.7 },
+      transition: { duration: 0.8, repeat: Infinity, repeatDelay: 0.5 },
     },
   };
 
@@ -107,10 +107,10 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     initial: { boxShadow: '0 0 10px rgba(255, 255, 255, 0.5)', scale: 1 },
     animate: {
       // boxShadow: '0 0 50px rgba(255, 255, 255, 1)', // Яскравіше підсвічування
-      scale: 1.4, // Збільшення
-      x: 300, // Виліт вправо
-      y: -300, // Виліт вгору
-      opacity: 0, // Зникнення
+      scale: 1.55, // Збільшення
+      x: 300,
+      y: -300,
+      opacity: 0,
       transition: {
         duration: 4,
         times: [0, 0.25, 0.5, 1], // 1s glow, 1s scale, 2s flyout
@@ -145,7 +145,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
             />
           </motion.div>
 
-          <div className="relative flex flex-col items-center gap-12 z-10">
+          <div className="relative flex flex-col items-center gap-14 z-10">
             {boosts.map((boost, index) => (
               <motion.img
                 key={boost.id}
@@ -163,9 +163,10 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
                             ...glowAnimation.animate,
                             transition: {
                               ...glowAnimation.animate.transition,
-                              delay: 2 + index * 0.125, // Послідовне підсвічування
+                              delay: 2 + index * 0.18, // Послідовне підсвічування
                             },
                           }),
+                        ...(selectedBoost && { boxShadow: 'none' }),
                       }
                 }
               />
