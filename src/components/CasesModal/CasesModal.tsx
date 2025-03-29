@@ -95,18 +95,18 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
   const glowAnimation = {
     animate: {
       boxShadow: [
-        '0 0 4px rgba(50, 50, 50, 0.7)', // Початкова темна тінь
-        '0 0 40px rgba(50, 50, 50, 1)', // Максимальна темна тінь
-        '0 0 4px rgba(50, 50, 50, 0.7)', // Повернення до початкової
+        '0 0 4px rgba(255, 255, 255, 0.5)', // Початкова ширша біла тінь
+        '0 0 40px rgba(255, 255, 255, 1)', // Максимальна ширша яскрава біла тінь
+        '0 0 4px rgba(255, 255, 255, 0.5)', // Повернення до початкової
       ],
       transition: { duration: 0.8, repeat: Infinity, repeatDelay: 0.7 },
     },
   };
 
   const winnerAnimation = {
-    initial: { boxShadow: '0 0 20px rgba(255, 255, 255, 0.7)', scale: 1 },
+    initial: { boxShadow: '0 0 10px rgba(255, 255, 255, 0.5)', scale: 1 },
     animate: {
-      boxShadow: '0 0 50px rgba(50, 50, 50, 1)', // Яскравіше підсвічування
+      // boxShadow: '0 0 50px rgba(255, 255, 255, 1)', // Яскравіше підсвічування
       scale: 1.4, // Збільшення
       x: 300, // Виліт вправо
       y: -300, // Виліт вгору
