@@ -1,6 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import axios from 'axios';
+// import { useSelector } from 'react-redux';
+// import { selectUserId } from '../../redux/selectors';
+// import { sendCase } from '../../redux/operations';
+// import { AppDispatch } from '../../redux/store';
 
 interface Boost {
   id: number;
@@ -48,24 +51,19 @@ const boosts: Boost[] = [
 const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedBoost, setSelectedBoost] = useState<Boost | null>(null);
-  const userId = 'some-user-id'; // Замініть на реальний userId
+  // const dispatch = useDispatch()<AppDispatch>;
+  // const userId = useSelector(selectUserId);
 
   const handleAnimation = useCallback(async () => {
     setIsAnimating(true);
-    setSelectedBoost(null); // Скидаємо вибір перед початком
+    setSelectedBoost(null);
 
     // Через 2 секунди з'являються бусти, через 5 секунд обираємо рандомний буст
     setTimeout(() => {
       const randomBoost = boosts[Math.floor(Math.random() * boosts.length)];
       setSelectedBoost(randomBoost);
 
-      // Відправка на сервер
-      axios
-        .post('your-server-endpoint', {
-          userId,
-          boostId: randomBoost.id,
-        })
-        .catch((err) => console.error('Error sending boost to server:', err));
+      // await dispatch(sendCase({ id: userId, boostId: [randomBoost.idItem] }));
 
       setTimeout(() => {
         setIsAnimating(false);
@@ -73,7 +71,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
         onClose();
       }, 4000);
     }, 7000);
-  }, [onClose, userId]);
+  }, [onClose]);
 
   useEffect(() => {
     if (isOpen && !isAnimating) {
@@ -95,11 +93,11 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
   const glowAnimation = {
     animate: {
       boxShadow: [
-        '0 0 4px rgba(255, 255, 255, 0.5)', // Початкова ширша біла тінь
+        '0 0 4px rgba(255, 255, 255, 0.5)',
         '0 0 40px rgba(255, 255, 255, 1)', // Максимальна ширша яскрава біла тінь
-        '0 0 4px rgba(255, 255, 255, 0.5)', // Повернення до початкової
+        '0 0 4px rgba(255, 255, 255, 0.5)',
       ],
-      transition: { duration: 0.8, repeat: Infinity, repeatDelay: 0.5 },
+      transition: { duration: 0.8, repeat: Infinity, repeatDelay: 0.2 },
     },
   };
 
@@ -107,13 +105,13 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     initial: { boxShadow: '0 0 10px rgba(255, 255, 255, 0.5)', scale: 1 },
     animate: {
       // boxShadow: '0 0 50px rgba(255, 255, 255, 1)', // Яскравіше підсвічування
-      scale: 1.55, // Збільшення
+      scale: 1.35, // Збільшення
       x: 300,
       y: -300,
       opacity: 0,
       transition: {
         duration: 4,
-        times: [0, 0.25, 0.5, 1], // 1s glow, 1s scale, 2s flyout
+        times: [0, 0.25, 0.5, 1],
         boxShadow: { duration: 1 },
         scale: { duration: 1, delay: 1 },
         x: { duration: 2, delay: 2 },
@@ -163,7 +161,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
                             ...glowAnimation.animate,
                             transition: {
                               ...glowAnimation.animate.transition,
-                              delay: 2 + index * 0.18, // Послідовне підсвічування
+                              delay: 2 + index * 0.18,
                             },
                           }),
                         ...(selectedBoost && { boxShadow: 'none' }),
