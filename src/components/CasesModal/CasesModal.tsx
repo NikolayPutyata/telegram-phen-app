@@ -67,13 +67,12 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
         })
         .catch((err) => console.error('Error sending boost to server:', err));
 
-      // Завершення анімації через 4 секунди після вибору (1s glow + 1s scale + 2s flyout)
       setTimeout(() => {
         setIsAnimating(false);
-        setSelectedBoost(null); // Очищаємо вибір після завершення
+        setSelectedBoost(null);
         onClose();
       }, 4000);
-    }, 7000); // 2s (фон + поява) + 5s (підсвітка)
+    }, 7000);
   }, [onClose, userId]);
 
   useEffect(() => {
@@ -90,25 +89,25 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
 
   const boostAppear = {
     initial: { opacity: 0, y: 50 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 2 } },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 1 } },
   };
 
   const glowAnimation = {
     animate: {
       boxShadow: [
-        '0 0 20px rgba(255, 255, 255, 0.7)',
-        '0 0 40px rgba(255, 255, 255, 1)',
-        '0 0 20px rgba(255, 255, 255, 0.7)',
+        '0 0 4px rgba(50, 50, 50, 0.7)', // Початкова темна тінь
+        '0 0 40px rgba(50, 50, 50, 1)', // Максимальна темна тінь
+        '0 0 4px rgba(50, 50, 50, 0.7)', // Повернення до початкової
       ],
-      transition: { duration: 0.5, repeat: Infinity, repeatDelay: 0.5 },
+      transition: { duration: 0.8, repeat: Infinity, repeatDelay: 0.7 },
     },
   };
 
   const winnerAnimation = {
     initial: { boxShadow: '0 0 20px rgba(255, 255, 255, 0.7)', scale: 1 },
     animate: {
-      boxShadow: '0 0 50px rgba(255, 255, 255, 1)', // Яскравіше підсвічування
-      scale: 1.2, // Збільшення
+      boxShadow: '0 0 50px rgba(50, 50, 50, 1)', // Яскравіше підсвічування
+      scale: 1.4, // Збільшення
       x: 300, // Виліт вправо
       y: -300, // Виліт вгору
       opacity: 0, // Зникнення
@@ -152,7 +151,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
                 key={boost.id}
                 src={boost.photo}
                 alt={boost.name}
-                className="w-30 h-30 rounded-lg"
+                className="w-32 h-32 rounded-3xl"
                 initial={boostAppear.initial}
                 animate={
                   selectedBoost?.id === boost.id
