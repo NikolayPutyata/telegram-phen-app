@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// import { useSelector } from 'react-redux';
-// import { selectUserId } from '../../redux/selectors';
-// import { sendCase } from '../../redux/operations';
-// import { AppDispatch } from '../../redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUserId } from '../../redux/selectors';
+import { sendCase } from '../../redux/operations';
+import { AppDispatch } from '../../redux/store';
 
 interface Boost {
   id: number;
@@ -51,19 +51,19 @@ const boosts: Boost[] = [
 const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedBoost, setSelectedBoost] = useState<Boost | null>(null);
-  // const dispatch = useDispatch()<AppDispatch>;
-  // const userId = useSelector(selectUserId);
+  const dispatch = useDispatch<AppDispatch>();
+  const userId = useSelector(selectUserId);
 
   const handleAnimation = useCallback(async () => {
     setIsAnimating(true);
     setSelectedBoost(null);
 
     // Через 2 секунди з'являються бусти, через 5 секунд обираємо рандомний буст
-    setTimeout(() => {
+    setTimeout(async () => {
       const randomBoost = boosts[Math.floor(Math.random() * boosts.length)];
       setSelectedBoost(randomBoost);
 
-      // await dispatch(sendCase({ id: userId, boostId: [randomBoost.idItem] }));
+      await dispatch(sendCase({ userId, boostId: randomBoost.id }));
 
       setTimeout(() => {
         setIsAnimating(false);
@@ -71,7 +71,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
         onClose();
       }, 4000);
     }, 7000);
-  }, [onClose]);
+  }, [onClose, userId, dispatch]);
 
   useEffect(() => {
     if (isOpen && !isAnimating) {
