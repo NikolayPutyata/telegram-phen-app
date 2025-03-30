@@ -15,8 +15,7 @@ const TelegramLinkForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(!!refLink);
   const [error, setError] = useState<string | null>(null);
 
-  const linkRegex =
-    /^https:\/\/t\.me\/phenerium_bot\?start=_tgr_-[A-Za-z0-9]+$/;
+  const linkRegex = /^https:\/\/t\.me\/phenerium_bot\?start=_tgr_[A-Za-z0-9]+$/;
   const validateLink = (value: string): boolean => {
     return linkRegex.test(value);
   };
