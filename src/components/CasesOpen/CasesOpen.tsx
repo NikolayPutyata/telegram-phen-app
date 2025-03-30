@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import CasesModal from '../CasesModal/CasesModal.tsx';
+// import { useSelector } from 'react-redux';
+// import { selectCaseBoosts } from '../../redux/selectors';
 
 const CasesOpen = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // const caseBoosts = useSelector(selectCaseBoosts);
 
   return (
     <>

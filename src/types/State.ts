@@ -63,6 +63,7 @@ export type UserState = {
   completedTasks: compTask[];
   farmingCycle: number;
   tokensToGet: number;
+  caseBoosts: [];
   usersTasks: {
     gaming: TelegramTask[];
     partners: Task[];
