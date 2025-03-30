@@ -112,13 +112,13 @@ const CasesModal = ({ isOpen, onClose, caseBoosts }: CasesModalProps) => {
             />
           </motion.div>
 
-          <div className="relative flex flex-col items-center gap-14 z-10">
+          <div className="relative flex flex-col items-center gap-12 z-10">
             {caseBoosts.map((boost, index) => (
               <motion.img
                 key={boost.id}
                 src={boost.photo}
                 alt={boost.name}
-                className="w-32 h-32 rounded-3xl"
+                className="w-29 h-29 rounded-3xl"
                 initial={boostAppear.initial}
                 animate={
                   selectedBoost?.id === boost.id
