@@ -15,40 +15,10 @@ interface Boost {
 interface CasesModalProps {
   isOpen: boolean;
   onClose: () => void;
+  caseBoosts: Boost[];
 }
 
-const boosts: Boost[] = [
-  {
-    id: 99,
-    photo:
-      'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740677691/1000_zufakh.png',
-    boost: '1000 PHEN',
-    name: '1000 PHEN',
-  },
-  {
-    id: 14,
-    photo:
-      'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740656126/medic_11zon_dyygxi.webp',
-    boost: 'X10',
-    name: 'Medical Team',
-  },
-  {
-    id: 41,
-    photo:
-      'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741782889/planet1_11zon_jnb5cd.webp',
-    boost: '',
-    name: 'Orionus',
-  },
-  {
-    id: 31,
-    photo:
-      'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741782887/com_11zon_halzjs.webp',
-    boost: '',
-    name: 'Jack Snack',
-  },
-];
-
-const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
+const CasesModal = ({ isOpen, onClose, caseBoosts }: CasesModalProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedBoost, setSelectedBoost] = useState<Boost | null>(null);
   const dispatch = useDispatch<AppDispatch>();
@@ -58,9 +28,9 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
     setIsAnimating(true);
     setSelectedBoost(null);
 
-    // Через 2 секунди з'являються бусти, через 5 секунд обираємо рандомний буст
     setTimeout(async () => {
-      const randomBoost = boosts[Math.floor(Math.random() * boosts.length)];
+      const randomBoost =
+        caseBoosts[Math.floor(Math.random() * caseBoosts.length)];
       setSelectedBoost(randomBoost);
 
       await dispatch(sendCase({ userId, boostId: randomBoost.id }));
@@ -71,7 +41,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
         onClose();
       }, 4000);
     }, 7000);
-  }, [onClose, userId, dispatch]);
+  }, [onClose, userId, dispatch, caseBoosts]);
 
   useEffect(() => {
     if (isOpen && !isAnimating) {
@@ -144,7 +114,7 @@ const CasesModal = ({ isOpen, onClose }: CasesModalProps) => {
           </motion.div>
 
           <div className="relative flex flex-col items-center gap-14 z-10">
-            {boosts.map((boost, index) => (
+            {caseBoosts.map((boost, index) => (
               <motion.img
                 key={boost.id}
                 src={boost.photo}

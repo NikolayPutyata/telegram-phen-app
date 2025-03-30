@@ -45,6 +45,13 @@ export interface Friend {
   name: string;
 }
 
+export interface Case {
+  id: number;
+  photo: string;
+  boost: string;
+  name: string;
+}
+
 export type UserState = {
   id: number;
   username: string | null;
@@ -63,7 +70,7 @@ export type UserState = {
   completedTasks: compTask[];
   farmingCycle: number;
   tokensToGet: number;
-  caseBoosts: [];
+  caseBoosts: Case[];
   usersTasks: {
     gaming: TelegramTask[];
     partners: Task[];
