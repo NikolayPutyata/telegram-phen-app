@@ -64,7 +64,7 @@ const CasesModal = ({ isOpen, onClose, caseBoosts }: CasesModalProps) => {
     animate: {
       boxShadow: [
         '0 0 4px rgba(255, 255, 255, 0.5)',
-        '0 0 40px rgba(255, 255, 255, 1)', // Максимальна ширша яскрава біла тінь
+        '0 0 40px rgba(255, 255, 255, 1)',
         '0 0 4px rgba(255, 255, 255, 0.5)',
       ],
       transition: { duration: 0.8, repeat: Infinity, repeatDelay: 0.2 },
@@ -74,8 +74,7 @@ const CasesModal = ({ isOpen, onClose, caseBoosts }: CasesModalProps) => {
   const winnerAnimation = {
     initial: { boxShadow: '0 0 10px rgba(255, 255, 255, 0.5)', scale: 1 },
     animate: {
-      // boxShadow: '0 0 50px rgba(255, 255, 255, 1)', // Яскравіше підсвічування
-      scale: 1.35, // Збільшення
+      scale: 1.35,
       x: 300,
       y: -300,
       opacity: 0,
