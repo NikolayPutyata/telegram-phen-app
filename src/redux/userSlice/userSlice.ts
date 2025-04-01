@@ -34,6 +34,8 @@ const initialState: UserState = {
       id: 611,
       name: 'Nebula Core',
       desc: 'Regular Space Case',
+      imageUrl:
+        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389387/case_2_p187b3.webp',
       price: 10,
       prize: [
         {
@@ -70,6 +72,8 @@ const initialState: UserState = {
       id: 612,
       name: 'CryoVault-X',
       desc: 'Creon Constellation Case',
+      imageUrl:
+        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389387/case_1_ziutac.webp',
       price: 20,
       prize: [
         {
@@ -106,6 +110,8 @@ const initialState: UserState = {
       id: 613,
       name: 'Titanium Lockbox',
       desc: 'Titanium Case of Andromeda',
+      imageUrl:
+        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740499548/case_3_qifs7i.webp',
       price: 50,
       prize: [
         {
@@ -142,6 +148,8 @@ const initialState: UserState = {
       id: 614,
       name: 'Aurum Prime',
       desc: 'Golden Case of Retribution',
+      imageUrl:
+        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740499548/case_4_xrg3rz.webp',
       price: 100,
       prize: [
         {

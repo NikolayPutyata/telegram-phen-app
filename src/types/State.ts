@@ -55,6 +55,7 @@ export interface CasePrize {
 export interface Case {
   id: number;
   desc: string;
+  imageUrl: string;
   price: number;
   name: string;
   prize: CasePrize[];
