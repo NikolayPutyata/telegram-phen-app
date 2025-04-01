@@ -32,7 +32,7 @@ function SpecialItem({ caseBoosts }: SpecialItemProps) {
 
     window.Telegram.WebApp.openInvoice(invoiceLink, (status) => {
       if (status === 'paid') {
-        setSelectedBoosts(caseBoosts.prize); // Зберігаємо масив prize у стан
+        setSelectedBoosts(caseBoosts.prize);
         setIsModalOpen(true);
         setIsLoading(false);
       } else if (status === 'cancelled' || status === 'failed') {
@@ -71,6 +71,7 @@ function SpecialItem({ caseBoosts }: SpecialItemProps) {
       </li>
       <CasesModal
         isOpen={isModalOpen}
+        userId={userId}
         boosts={selectedBoosts}
         onClose={() => setIsModalOpen(false)}
       />

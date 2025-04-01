@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUserId } from '../../redux/selectors';
+import { useDispatch } from 'react-redux';
 import { sendCase } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 
@@ -16,13 +15,13 @@ interface CasesModalProps {
   isOpen: boolean;
   onClose: () => void;
   boosts: Boost[];
+  userId: number;
 }
 
-const CasesModal = ({ isOpen, onClose, boosts }: CasesModalProps) => {
+const CasesModal = ({ isOpen, onClose, boosts, userId }: CasesModalProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedBoost, setSelectedBoost] = useState<Boost | null>(null);
   const dispatch = useDispatch<AppDispatch>();
-  const userId = useSelector(selectUserId);
 
   const handleAnimation = useCallback(async () => {
     setIsAnimating(true);
