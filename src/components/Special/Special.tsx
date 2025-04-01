@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import SpecialCaseItem from '../../Pages/Leaderbords/SpecialCaseItem';
 import SpecialRobotItem from '../../Pages/Leaderbords/SpecialRobotItem';
 import s from '/src/App.module.css';
-// import CasesOpen from '../CasesOpen/CasesOpen';
 import { selectFarmingCycle, selectCaseBoosts } from '../../redux/selectors';
 
 interface robotsItem {
@@ -89,7 +88,6 @@ const Special = () => {
           ))}
         </ul>
       </section>
-      {/* <CasesOpen /> */}
     </div>
   );
 };
