@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 import { createStarInvoice } from '../../utils/createStarInvoice';
 import s from '/src/App.module.css';
-import { selectUserId } from '../../redux/selectors';
+import { selectUserId, selectCaseBoosts } from '../../redux/selectors';
+import CasesModal from '../../components/CasesModal/CasesModal';
 import { ClipLoader } from 'react-spinners';
 import { useState } from 'react';
 
@@ -23,6 +24,9 @@ function SpecialItem({
   collectionId,
 }: SpecialItemProps) {
   const userId = useSelector(selectUserId);
+  const caseBoosts = useSelector(selectCaseBoosts);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleBuyClick = async () => {
@@ -65,12 +69,17 @@ function SpecialItem({
         </div>
         <button
           className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500"
-          onClick={handleBuyClick}
+          onClick={handleBuyClick}  onClick={() => setIsModalOpen(true)}
         >
           {isLoading ? <ClipLoader size={17} color={'#ededed'} /> : 'Buy'}
         </button>
       </div>
     </li>
+    <CasesModal
+    isOpen={isModalOpen}
+    boosts={caseBoosts.}
+    onClose={() => setIsModalOpen(false)}
+  />
   );
 }
 

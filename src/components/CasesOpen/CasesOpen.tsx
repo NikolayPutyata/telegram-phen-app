@@ -14,7 +14,7 @@ const CasesOpen = () => {
       </button>
       <CasesModal
         isOpen={isModalOpen}
-        caseBoosts={caseBoosts}
+        boosts={caseBoosts}
         onClose={() => setIsModalOpen(false)}
       />
     </>

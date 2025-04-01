@@ -15,10 +15,10 @@ interface Boost {
 interface CasesModalProps {
   isOpen: boolean;
   onClose: () => void;
-  caseBoosts: Boost[];
+  boosts: Boost[];
 }
 
-const CasesModal = ({ isOpen, onClose, caseBoosts }: CasesModalProps) => {
+const CasesModal = ({ isOpen, onClose, boosts }: CasesModalProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedBoost, setSelectedBoost] = useState<Boost | null>(null);
   const dispatch = useDispatch<AppDispatch>();
@@ -29,8 +29,7 @@ const CasesModal = ({ isOpen, onClose, caseBoosts }: CasesModalProps) => {
     setSelectedBoost(null);
 
     setTimeout(async () => {
-      const randomBoost =
-        caseBoosts[Math.floor(Math.random() * caseBoosts.length)];
+      const randomBoost = boosts[Math.floor(Math.random() * boosts.length)];
       setSelectedBoost(randomBoost);
 
       await dispatch(sendCase({ userId, boostId: randomBoost.id }));
@@ -41,7 +40,7 @@ const CasesModal = ({ isOpen, onClose, caseBoosts }: CasesModalProps) => {
         onClose();
       }, 4000);
     }, 7000);
-  }, [onClose, userId, dispatch, caseBoosts]);
+  }, [onClose, userId, dispatch, boosts]);
 
   useEffect(() => {
     if (isOpen && !isAnimating) {
@@ -113,7 +112,7 @@ const CasesModal = ({ isOpen, onClose, caseBoosts }: CasesModalProps) => {
           </motion.div>
 
           <div className="relative flex flex-col items-center gap-12 z-10">
-            {caseBoosts.map((boost, index) => (
+            {boosts.map((boost, index) => (
               <motion.img
                 key={boost.id}
                 src={boost.photo}
