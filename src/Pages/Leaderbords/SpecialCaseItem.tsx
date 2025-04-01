@@ -11,7 +11,7 @@ interface SpecialItemProps {
   caseBoosts: Case;
 }
 
-function SpecialItem({ caseBoosts }: SpecialItemProps) {
+function SpecialCaseItem({ caseBoosts }: SpecialItemProps) {
   const userId = useSelector(selectUserId);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -79,4 +79,4 @@ function SpecialItem({ caseBoosts }: SpecialItemProps) {
   );
 }
 
-export default SpecialItem;
+export default SpecialCaseItem;
