@@ -7,6 +7,7 @@ import {
   taskCompleted,
   getBoostsAndSkins,
   addRefTgLink,
+  sendCase,
 } from '../operations';
 import { UserState } from '../../types/State';
 
@@ -28,6 +29,36 @@ const initialState: UserState = {
   farmingCycleInMilisec: 0,
   farmingCycle: 0,
   tokensToGet: 0,
+  caseBoosts: [
+    {
+      id: 99,
+      photo:
+        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740677691/1000_zufakh.png',
+      boost: '1000 PHEN',
+      name: '1000 PHEN',
+    },
+    {
+      id: 14,
+      photo:
+        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740656126/medic_11zon_dyygxi.webp',
+      boost: 'X10',
+      name: 'Medical Team',
+    },
+    {
+      id: 41,
+      photo:
+        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741782889/planet1_11zon_jnb5cd.webp',
+      boost: '',
+      name: 'Orionus',
+    },
+    {
+      id: 31,
+      photo:
+        'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741782887/com_11zon_halzjs.webp',
+      boost: '',
+      name: 'Jack Snack',
+    },
+  ],
   usersTasks: {
     gaming: [],
     partners: [],
@@ -88,6 +119,9 @@ const userSlice = createSlice({
       .addCase(getBoostsAndSkins.fulfilled, (state, action) => {
         state.boosts = action.payload.boosts;
         state.skins = action.payload.skins;
+      })
+      .addCase(sendCase.fulfilled, (state, action) => {
+        state.caseBoosts = action.payload.data.caseBoosts;
       });
   },
 });
