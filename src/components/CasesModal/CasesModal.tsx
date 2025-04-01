@@ -31,7 +31,11 @@ const CasesModal = ({ isOpen, onClose, boosts, userId }: CasesModalProps) => {
       const randomBoost = boosts[Math.floor(Math.random() * boosts.length)];
       setSelectedBoost(randomBoost);
 
-      await dispatch(sendCase({ userId, boostId: randomBoost.id }));
+      try {
+        await dispatch(sendCase({ userId, boostId: randomBoost.id }));
+      } catch (error) {
+        console.error('Failed to send case to server:', error);
+      }
 
       setTimeout(() => {
         setIsAnimating(false);
