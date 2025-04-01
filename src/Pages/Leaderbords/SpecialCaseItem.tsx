@@ -1,13 +1,17 @@
 import { useSelector } from 'react-redux';
-import { createStarInvoice } from '../../utils/createStarInvoice';
-import s from '/src/App.module.css';
-import { selectUserId } from '../../redux/selectors';
-import { Case, CasePrize } from '../../types/State';
-import CasesModal from '../../components/CasesModal/CasesModal';
-import { ClipLoader } from 'react-spinners';
 import { useState } from 'react';
+import { ClipLoader } from 'react-spinners';
+import { createStarInvoice } from '../../utils/createStarInvoice';
+import { Case, CasePrize } from '../../types/State';
+import { selectUserId } from '../../redux/selectors';
+import CasesModal from '../../components/CasesModal/CasesModal';
+import s from '/src/App.module.css';
 
-function SpecialItem({ caseBoosts }: Case) {
+interface SpecialItemProps {
+  caseBoosts: Case;
+}
+
+function SpecialItem({ caseBoosts }: SpecialItemProps) {
   const userId = useSelector(selectUserId);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,19 +27,13 @@ function SpecialItem({ caseBoosts }: Case) {
       prices: [{ label: 'Price', amount: Number(caseBoosts.price) }],
       currency: 'XTR',
       provider_token: '',
-      payload: `ORDER_${userId}_${caseBoosts.Id}_${caseBoosts.id}`,
+      payload: `ORDER_${userId}_${caseBoosts.id}_${caseBoosts.id}`,
     });
 
     window.Telegram.WebApp.openInvoice(invoiceLink, (status) => {
       if (status === 'paid') {
-        // Знаходимо обраний кейс за id
-        const selectedCase = caseBoosts.find(
-          (caseItem) => caseItem.id === caseBoosts.id,
-        );
-        if (selectedCase) {
-          setSelectedBoosts(selectedCase.prize); // Зберігаємо масив prize у стан
-          setIsModalOpen(true); // Відкриваємо модалку
-        }
+        setSelectedBoosts(caseBoosts.prize); // Зберігаємо масив prize у стан
+        setIsModalOpen(true);
         setIsLoading(false);
       } else if (status === 'cancelled' || status === 'failed') {
         setIsLoading(false);

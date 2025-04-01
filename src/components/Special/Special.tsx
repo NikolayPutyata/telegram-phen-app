@@ -62,11 +62,8 @@ const Special = () => {
           Cases
         </h2>
         <ul className="flex flex-col gap-6 ">
-          {caseBoosts.map((case) => (
-            <SpecialCaseItem
-              key={case.id}
-              caseBoosts={case}
-            />
+          {caseBoosts.map((caseItem) => (
+            <SpecialCaseItem key={caseItem.id} caseBoosts={caseItem} />
           ))}
         </ul>
       </section>
