@@ -1,10 +1,46 @@
+import { ClipLoader } from 'react-spinners';
 import SkinsItem from '../../Pages/Leaderbords/SkinsItem';
-import { selectSkins } from '../../redux/selectors';
+import { selectSkins, selectUserId } from '../../redux/selectors';
 import s from '/src/App.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { createStarInvoice } from '../../utils/createStarInvoice';
+import { getBoostsAndSkins } from '../../redux/operations';
+import { AppDispatch } from '../../redux/store';
 
 const Skins = () => {
   const skins = useSelector(selectSkins);
+  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
+  const userId = useSelector(selectUserId);
+
+  const handleBuyClick = async (
+    name: string,
+    price: string,
+    desc: string,
+    collectionId: number,
+    idItem: number,
+  ) => {
+    setIsLoading(true);
+
+    const invoiceLink = await createStarInvoice({
+      title: name,
+      description: desc,
+      prices: [{ label: 'Price', amount: Number(price) }],
+      currency: 'XTR',
+      provider_token: '',
+      payload: `ORDER_${userId}_${collectionId}_${idItem}`,
+    });
+
+    window.Telegram.WebApp.openInvoice(invoiceLink, async (status) => {
+      if (status === 'paid') {
+        await dispatch(getBoostsAndSkins(userId));
+        setIsLoading(false);
+      } else if (status === 'cancelled' || status === 'failed') {
+        setIsLoading(false);
+      }
+    });
+  };
 
   return (
     <div className="px-3 mb-32 mt-2 tracking-wider">
@@ -37,8 +73,54 @@ const Skins = () => {
       >
         Silver Collection
       </h2>
+
+      <div className="flex px-3 justify-start gap-6">
+        <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
+          <img
+            src={skins.silverCollection[0].skin_photo_url_small}
+            alt="standart avatar"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <h3 className={`${s.font} text-zinc-300 break-words`}>
+            {skins.silverCollection[0].name}
+          </h3>
+
+          <div className="mt-1 flex gap-1 items-center">
+            <p className={`${s.font} text-zinc-400 text-xs`}>
+              + {skins.silverCollection[0].skin_bonus}
+            </p>
+            <span>
+              <img src="/assets/Group61.png" alt="telegram-star" width={12} />
+            </span>
+          </div>
+          <div className="flex items-center gap-1.5 mt-1">
+            <p className={`${s.font} text-zinc-300 text-sm`}>
+              {skins.silverCollection[0].price}
+            </p>
+            <img src="/assets/Group61.png" alt="telegram-star" width={16} />
+          </div>
+
+          <button
+            className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500"
+            onClick={() =>
+              handleBuyClick(
+                skins.silverCollection[0].name,
+                skins.silverCollection[0].price,
+                skins.silverCollection[0].name,
+                1,
+                skins.silverCollection[0].id,
+              )
+            }
+            disabled={isLoading}
+          >
+            {isLoading ? <ClipLoader size={17} color={'#ededed'} /> : 'Buy'}
+          </button>
+        </div>
+      </div>
+
       <ul className="flex flex-col gap-6 my-6">
-        {skins.silverCollection.map((skin) => (
+        {skins.silverCollection.slice(1).map((skin) => (
           <SkinsItem
             key={skin.id}
             id={skin.id}
@@ -49,7 +131,8 @@ const Skins = () => {
           />
         ))}
       </ul>
-      <h2
+
+      {/* <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
         Gold Collection
@@ -99,7 +182,7 @@ const Skins = () => {
             name={skin.name}
           />
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };
