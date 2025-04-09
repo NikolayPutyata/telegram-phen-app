@@ -88,8 +88,6 @@ export type UserState = {
   completedTasks: compTask[];
   farmingCycle: number;
   tokensToGet: number;
-  robot: Robot[];
-  caseBoosts: Case[];
   usersTasks: {
     gaming: TelegramTask[];
     partners: Task[];

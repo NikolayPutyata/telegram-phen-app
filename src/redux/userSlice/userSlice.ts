@@ -7,7 +7,6 @@ import {
   taskCompleted,
   getBoostsAndSkins,
   addRefTgLink,
-  casesAndRobots,
 } from '../operations';
 import { UserState } from '../../types/State';
 
@@ -29,8 +28,6 @@ const initialState: UserState = {
   farmingCycleInMilisec: 0,
   farmingCycle: 0,
   tokensToGet: 0,
-  robot: [],
-  caseBoosts: [],
   usersTasks: {
     gaming: [],
     partners: [],
@@ -91,10 +88,6 @@ const userSlice = createSlice({
       .addCase(getBoostsAndSkins.fulfilled, (state, action) => {
         state.boosts = action.payload.boosts;
         state.skins = action.payload.skins;
-      })
-      .addCase(casesAndRobots.fulfilled, (state, action) => {
-        state.caseBoosts = action.payload.data.caseBoosts;
-        state.robot = action.payload.data.robot;
       });
   },
 });
