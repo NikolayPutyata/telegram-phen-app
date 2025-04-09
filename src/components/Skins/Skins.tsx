@@ -1,4 +1,3 @@
-import { ClipLoader } from 'react-spinners';
 import SkinsItem from '../../Pages/Leaderbords/SkinsItem';
 import { selectSkins, selectUserId } from '../../redux/selectors';
 import s from '/src/App.module.css';
