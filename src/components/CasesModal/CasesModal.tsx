@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUserId } from '../../redux/selectors';
+import { useDispatch } from 'react-redux';
 import { sendCase } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 
@@ -15,25 +14,28 @@ interface Boost {
 interface CasesModalProps {
   isOpen: boolean;
   onClose: () => void;
-  caseBoosts: Boost[];
+  boosts: Boost[];
+  userId: number;
 }
 
-const CasesModal = ({ isOpen, onClose, caseBoosts }: CasesModalProps) => {
+const CasesModal = ({ isOpen, onClose, boosts, userId }: CasesModalProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedBoost, setSelectedBoost] = useState<Boost | null>(null);
   const dispatch = useDispatch<AppDispatch>();
-  const userId = useSelector(selectUserId);
 
   const handleAnimation = useCallback(async () => {
     setIsAnimating(true);
     setSelectedBoost(null);
 
     setTimeout(async () => {
-      const randomBoost =
-        caseBoosts[Math.floor(Math.random() * caseBoosts.length)];
+      const randomBoost = boosts[Math.floor(Math.random() * boosts.length)];
       setSelectedBoost(randomBoost);
 
-      await dispatch(sendCase({ userId, boostId: randomBoost.id }));
+      try {
+        await dispatch(sendCase({ userId, boostId: randomBoost.id }));
+      } catch (error) {
+        console.error('Failed to send case to server:', error);
+      }
 
       setTimeout(() => {
         setIsAnimating(false);
@@ -41,7 +43,7 @@ const CasesModal = ({ isOpen, onClose, caseBoosts }: CasesModalProps) => {
         onClose();
       }, 4000);
     }, 7000);
-  }, [onClose, userId, dispatch, caseBoosts]);
+  }, [onClose, userId, dispatch, boosts]);
 
   useEffect(() => {
     if (isOpen && !isAnimating) {
@@ -113,7 +115,7 @@ const CasesModal = ({ isOpen, onClose, caseBoosts }: CasesModalProps) => {
           </motion.div>
 
           <div className="relative flex flex-col items-center gap-12 z-10">
-            {caseBoosts.map((boost, index) => (
+            {boosts.map((boost, index) => (
               <motion.img
                 key={boost.id}
                 src={boost.photo}

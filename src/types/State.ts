@@ -45,11 +45,21 @@ export interface Friend {
   name: string;
 }
 
+export interface CasePrize {
+  id: number;
+  boost: string;
+  photo: string;
+  name: string;
+}
+
 export interface Case {
   id: number;
-  photo: string;
-  boost: string;
+  desc: string;
+  imageUrl: string;
+  price: number;
   name: string;
+  collectionId: number;
+  prize: CasePrize[];
 }
 
 export type UserState = {

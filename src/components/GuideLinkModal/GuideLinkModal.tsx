@@ -12,7 +12,7 @@ const GaideLinkModal = () => {
             Open Phenerium, and go to the info menu.
           </p>
           <img
-            src="/assets/language/photo_y.jpg"
+            src="/assets/guide/guide-1.jpg"
             alt=""
             className="object-cover w-full h-full"
           />
@@ -25,7 +25,7 @@ const GaideLinkModal = () => {
             Scroll to "Affiliate Program" and select one.
           </p>
           <img
-            src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261781/friends_yda58q.webp"
+            src="/assets/guide/guide-2.jpg"
             alt=""
             className="object-cover w-full h-full"
           />
@@ -38,7 +38,7 @@ const GaideLinkModal = () => {
             Locate the referral link and copy it.
           </p>
           <img
-            src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261781/friends_yda58q.webp"
+            src="/assets/guide/guide-3.jpg"
             alt=""
             className="object-cover w-full h-full"
           />
@@ -51,7 +51,7 @@ const GaideLinkModal = () => {
             Return to Phenerium and go to the 'Friends' section.
           </p>
           <img
-            src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261781/friends_yda58q.webp"
+            src="/assets/guide/guide-4.jpg"
             alt=""
             className="object-cover w-full h-full"
           />
@@ -65,7 +65,7 @@ const GaideLinkModal = () => {
             Paste the link into the field and press "Done".
           </p>
           <img
-            src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261781/friends_yda58q.webp"
+            src="/assets/guide/guide-5.jpg"
             alt=""
             className="object-cover w-full h-full"
           />
@@ -79,7 +79,7 @@ const GaideLinkModal = () => {
             Bonus will be credited automatically after submission.
           </p>
           <img
-            src="https://res.cloudinary.com/dv1acgeyp/image/upload/v1739261781/friends_yda58q.webp"
+            src="/assets/guide/guide-6.jpg"
             alt=""
             className="object-cover w-full h-full"
           />
