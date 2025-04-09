@@ -49,7 +49,7 @@ const Skins = () => {
         Bronze Collection
       </h2>
       <ul className="flex flex-col gap-6 my-6">
-        {skins.bronzeCollection.map((skin) => (
+        {skins?.bronzeCollection.map((skin) => (
           <SkinsItem
             key={skin.id}
             id={skin.id}
@@ -76,7 +76,7 @@ const Skins = () => {
         </div>
         <div className="flex flex-col gap-1">
           <h3 className={`${s.font} text-zinc-300 break-words`}>
-            {skins.silverCollection[0].name}
+            {skins?.silverCollection[0].name}
           </h3>
           <div className="mt-1 flex gap-1 items-center">
             <p className={`${s.font} text-zinc-400 text-xs`}>
@@ -109,7 +109,7 @@ const Skins = () => {
         </div>
       </div>
       <ul className="flex flex-col gap-6 my-6">
-        {skins.silverCollection.slice(1).map((skin) => (
+        {skins?.silverCollection.slice(1).map((skin) => (
           <SkinsItem
             key={skin.id}
             id={skin.id}
@@ -126,7 +126,7 @@ const Skins = () => {
       >
         Gold Collection
       </h2>
-      {skins.goldCollection.slice(0, 2).map((skin, index) => (
+      {skins?.goldCollection.slice(0, 2).map((skin, index) => (
         <div key={skin.id} className="flex px-3 justify-start gap-6 my-6">
           <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
             <img
@@ -162,7 +162,7 @@ const Skins = () => {
         </div>
       ))}
       <ul className="flex flex-col gap-6 my-6">
-        {skins.goldCollection.slice(2).map((skin) => (
+        {skins?.goldCollection.slice(2).map((skin) => (
           <SkinsItem
             key={skin.id}
             id={skin.id}
@@ -180,7 +180,7 @@ const Skins = () => {
       >
         Platinum Collection
       </h2>
-      {skins.platinumCollection.slice(0, 3).map((skin, index) => (
+      {skins?.platinumCollection.slice(0, 3).map((skin, index) => (
         <div key={skin.id} className="flex px-3 justify-start gap-6 my-6">
           <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
             <img
@@ -216,7 +216,7 @@ const Skins = () => {
         </div>
       ))}
       <ul className="flex flex-col gap-6 my-6">
-        {skins.platinumCollection.slice(3).map((skin) => (
+        {skins?.platinumCollection.slice(3).map((skin) => (
           <SkinsItem
             key={skin.id}
             id={skin.id}
@@ -234,7 +234,7 @@ const Skins = () => {
       >
         Diamond Collection
       </h2>
-      {skins.diamondCollection.map((skin, index) => (
+      {skins?.diamondCollection.map((skin, index) => (
         <div key={skin.id} className="flex px-3 justify-start gap-6 my-6">
           <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
             <img
