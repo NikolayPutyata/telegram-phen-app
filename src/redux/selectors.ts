@@ -20,5 +20,5 @@ export const selectTokensToGet = (state: RootState) => state.user.tokensToGet;
 export const selectCommonBoosts = (state: RootState) => state.data.commonBoosts;
 export const selectUserSkins = (state: RootState) => state.user.skins;
 export const selectSkins = (state: RootState) => state.data.skins;
-export const selectCaseBoosts = (state: RootState) => state.data.caseBoosts;
-export const selectRobot = (state: RootState) => state.data.robot;
+export const selectCases = (state: RootState) => state.data.cases;
+export const selectRobots = (state: RootState) => state.data.robots;

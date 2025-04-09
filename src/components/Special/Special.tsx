@@ -4,14 +4,14 @@ import SpecialRobotItem from '../../Pages/Leaderbords/SpecialRobotItem';
 import s from '/src/App.module.css';
 import {
   selectFarmingCycle,
-  selectCaseBoosts,
-  selectRobot,
+  selectCases,
+  selectRobots,
 } from '../../redux/selectors';
 
 const Special = () => {
   const farmingCycle = useSelector(selectFarmingCycle);
-  const caseBoosts = useSelector(selectCaseBoosts);
-  const robots = useSelector(selectRobot);
+  const cases = useSelector(selectCases);
+  const robots = useSelector(selectRobots);
 
   const getShowBuyButton = (robotId: number) => {
     if (farmingCycle === 24) return false;
@@ -36,7 +36,7 @@ const Special = () => {
           Cases
         </h2>
         <ul className="flex flex-col gap-6 ">
-          {caseBoosts.map((caseItem) => (
+          {cases?.map((caseItem) => (
             <SpecialCaseItem key={caseItem.id} caseBoosts={caseItem} />
           ))}
         </ul>
@@ -49,7 +49,7 @@ const Special = () => {
           Robot Assistants
         </h2>
         <ul className="flex flex-col gap-6 ">
-          {robots.map((special) => (
+          {robots?.map((special) => (
             <SpecialRobotItem
               key={special.id}
               id={special.id}
