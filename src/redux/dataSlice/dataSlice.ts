@@ -4,8 +4,8 @@ import { getAllDataThunk } from '../operations';
 
 interface dataState {
   commonBoosts: Boost[];
-  caseBoosts: Case[];
-  robot: Robot[];
+  cases: Case[];
+  robots: Robot[];
   skins: {
     commonCollection: Skin[];
     bronzeCollection: Skin[];
@@ -18,8 +18,8 @@ interface dataState {
 
 const initialState: dataState = {
   commonBoosts: [],
-  caseBoosts: [],
-  robot: [],
+  cases: [],
+  robots: [],
   skins: {
     commonCollection: [],
     bronzeCollection: [],
@@ -38,8 +38,8 @@ const dataSlice = createSlice({
     builder.addCase(getAllDataThunk.fulfilled, (state, action) => {
       state.skins = action.payload.skins;
       state.commonBoosts = action.payload.boosts.common;
-      state.caseBoosts = action.payload.caseBoosts;
-      state.robot = action.payload.robot;
+      state.cases = action.payload.cases;
+      state.robots = action.payload.robots;
     });
   },
 });
