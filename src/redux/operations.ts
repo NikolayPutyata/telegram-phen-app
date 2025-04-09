@@ -155,14 +155,14 @@ export const addRefTgLink = createAsyncThunk(
   },
 );
 
-export const sendCase = createAsyncThunk(
-  'user/sendCase',
+export const sendBoost = createAsyncThunk(
+  'user/sendBoost',
   async (
     { userId, boostId }: { userId: number; boostId: number },
     { rejectWithValue },
   ) => {
     try {
-      const { data } = await axios.post('user/sendCase', {
+      const { data } = await axios.post('user/sendBoost', {
         userId,
         boostId,
       });

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useDispatch } from 'react-redux';
-import { sendCase } from '../../redux/operations';
+import { sendBoost } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 
 interface Boost {
@@ -32,7 +32,7 @@ const CasesModal = ({ isOpen, onClose, boosts, userId }: CasesModalProps) => {
       setSelectedBoost(randomBoost);
 
       try {
-        await dispatch(sendCase({ userId, boostId: randomBoost.id }));
+        await dispatch(sendBoost({ userId, boostId: randomBoost.id }));
       } catch (error) {
         console.error('Failed to send case to server:', error);
       }

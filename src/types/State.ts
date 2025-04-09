@@ -61,6 +61,14 @@ export interface Case {
   collectionId: number;
   prize: CasePrize[];
 }
+export interface Robot {
+  id: number;
+  description: string;
+  imageUrl: string;
+  price: string;
+  title: string;
+  collectionId: number;
+}
 
 export type UserState = {
   id: number;
@@ -80,7 +88,6 @@ export type UserState = {
   completedTasks: compTask[];
   farmingCycle: number;
   tokensToGet: number;
-  caseBoosts: Case[];
   usersTasks: {
     gaming: TelegramTask[];
     partners: Task[];

@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Boost, Skin } from '../../types/State';
+import { Boost, Skin, Case, Robot } from '../../types/State';
 import { getAllDataThunk } from '../operations';
 
 interface dataState {
   commonBoosts: Boost[];
+  caseBoosts: Case[];
+  robot: Robot[];
   skins: {
     commonCollection: Skin[];
     bronzeCollection: Skin[];
@@ -16,6 +18,8 @@ interface dataState {
 
 const initialState: dataState = {
   commonBoosts: [],
+  caseBoosts: [],
+  robot: [],
   skins: {
     commonCollection: [],
     bronzeCollection: [],
@@ -34,6 +38,8 @@ const dataSlice = createSlice({
     builder.addCase(getAllDataThunk.fulfilled, (state, action) => {
       state.skins = action.payload.skins;
       state.commonBoosts = action.payload.boosts.common;
+      state.caseBoosts = action.payload.caseBoosts;
+      state.robot = action.payload.robot;
     });
   },
 });
