@@ -121,8 +121,7 @@ const Skins = () => {
         ))}
       </ul>
 
-      {/* Gold Collection */}
-      <h2
+      {/* <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
         Gold Collection
@@ -175,7 +174,7 @@ const Skins = () => {
         ))}
       </ul>
 
-      {/* Platinum Collection */}
+     
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
@@ -229,7 +228,7 @@ const Skins = () => {
         ))}
       </ul>
 
-      {/* Diamond Collection */}
+      
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
@@ -269,7 +268,7 @@ const Skins = () => {
             </button>
           </div>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };
