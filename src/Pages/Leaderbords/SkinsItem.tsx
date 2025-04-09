@@ -1,4 +1,10 @@
+import { useState } from 'react';
 import s from '/src/App.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from '../../redux/store';
+import { paymentInPhenerium } from '../../redux/operations';
+import { selectUserId } from '../../redux/selectors';
+import { ClipLoader } from 'react-spinners';
 
 interface SkinsItemProps {
   id: number;
@@ -8,7 +14,22 @@ interface SkinsItemProps {
   bonus: number;
 }
 
-function SkinsItem({ imageUrlSmall, price, bonus, name }: SkinsItemProps) {
+function SkinsItem({ imageUrlSmall, price, bonus, name, id }: SkinsItemProps) {
+  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
+  const userId = useSelector(selectUserId);
+
+  const handeBuyInPhenerium = async (
+    amount: number,
+    idItem: number,
+    collectionId: number,
+  ) => {
+    setIsLoading(true);
+    const memo = `ORDER_${userId}_${collectionId}_${idItem}`;
+    await dispatch(paymentInPhenerium({ memo, amount }));
+    setIsLoading(false);
+  };
+
   return (
     <li className="flex px-3 justify-start gap-6">
       <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
@@ -28,8 +49,12 @@ function SkinsItem({ imageUrlSmall, price, bonus, name }: SkinsItemProps) {
           <img src="/assets/Group61.png" alt="telegram-star" width={16} />
         </div>
 
-        <button className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500">
-          Buy
+        <button
+          className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500"
+          onClick={() => handeBuyInPhenerium(Number(price), id, 1)}
+          disabled={isLoading}
+        >
+          {isLoading ? <ClipLoader size={17} color={'#ededed'} /> : 'Buy'}
         </button>
       </div>
     </li>
