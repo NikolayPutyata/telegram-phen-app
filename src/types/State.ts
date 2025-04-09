@@ -58,6 +58,7 @@ export interface Case {
   imageUrl: string;
   price: number;
   name: string;
+  collectionId: number;
   prize: CasePrize[];
 }
 

@@ -37,6 +37,7 @@ const initialState: UserState = {
       imageUrl:
         'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389387/case_2_p187b3.webp',
       price: 10,
+      collectionId: 4,
       prize: [
         {
           id: 99,
@@ -75,6 +76,7 @@ const initialState: UserState = {
       imageUrl:
         'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740389387/case_1_ziutac.webp',
       price: 20,
+      collectionId: 4,
       prize: [
         {
           id: 98,
@@ -113,6 +115,7 @@ const initialState: UserState = {
       imageUrl:
         'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740499548/case_3_qifs7i.webp',
       price: 50,
+      collectionId: 4,
       prize: [
         {
           id: 97,
@@ -151,6 +154,7 @@ const initialState: UserState = {
       imageUrl:
         'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740499548/case_4_xrg3rz.webp',
       price: 100,
+      collectionId: 4,
       prize: [
         {
           id: 96,
