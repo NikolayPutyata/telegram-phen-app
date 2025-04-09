@@ -38,8 +38,8 @@ const dataSlice = createSlice({
     builder.addCase(getAllDataThunk.fulfilled, (state, action) => {
       state.skins = action.payload.skins;
       state.commonBoosts = action.payload.boosts.common;
-      state.caseBoosts = action.payload.data.caseBoosts;
-      state.robot = action.payload.data.robot;
+      state.caseBoosts = action.payload.caseBoosts;
+      state.robot = action.payload.robot;
     });
   },
 });
