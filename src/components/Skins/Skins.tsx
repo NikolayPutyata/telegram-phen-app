@@ -68,24 +68,24 @@ const Skins = () => {
           />
         ))}
       </ul>
+
+      {/* Silver Collection */}
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider my-6`}
       >
         Silver Collection
       </h2>
-
       <div className="flex px-3 justify-start gap-6">
         <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
           <img
             src={skins.silverCollection[0].skin_photo_url_small}
-            alt="standart avatar"
+            alt="silver avatar"
           />
         </div>
         <div className="flex flex-col gap-1">
           <h3 className={`${s.font} text-zinc-300 break-words`}>
             {skins.silverCollection[0].name}
           </h3>
-
           <div className="mt-1 flex gap-1 items-center">
             <p className={`${s.font} text-zinc-400 text-xs`}>
               + {skins.silverCollection[0].skin_bonus}
@@ -100,7 +100,6 @@ const Skins = () => {
             </p>
             <img src="/assets/telegram_star.svg" alt="telegram-star" />
           </div>
-
           <button
             className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500"
             onClick={() =>
@@ -118,7 +117,6 @@ const Skins = () => {
           </button>
         </div>
       </div>
-
       <ul className="flex flex-col gap-6 my-6">
         {skins.silverCollection.slice(1).map((skin) => (
           <SkinsItem
@@ -132,13 +130,50 @@ const Skins = () => {
         ))}
       </ul>
 
-      {/* <h2
+      {/* Gold Collection */}
+      <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
         Gold Collection
       </h2>
+      {skins.goldCollection.slice(0, 2).map((skin, index) => (
+        <div key={skin.id} className="flex px-3 justify-start gap-6 my-6">
+          <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
+            <img
+              src={skin.skin_photo_url_small}
+              alt={`gold avatar ${index + 1}`}
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <h3 className={`${s.font} text-zinc-300 break-words`}>
+              {skin.name}
+            </h3>
+            <div className="mt-1 flex gap-1 items-center">
+              <p className={`${s.font} text-zinc-400 text-xs`}>
+                + {skin.skin_bonus}
+              </p>
+              <span>
+                <img src="/assets/Group61.png" alt="telegram-star" width={12} />
+              </span>
+            </div>
+            <div className="flex items-center gap-1.5 mt-1">
+              <p className={`${s.font} text-zinc-300 text-sm`}>{skin.price}</p>
+              <img src="/assets/telegram_star.svg" alt="telegram-star" />
+            </div>
+            <button
+              className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500"
+              onClick={() =>
+                handleBuyClick(skin.name, skin.price, skin.name, 1, skin.id)
+              }
+              disabled={isLoading}
+            >
+              {isLoading ? <ClipLoader size={17} color={'#ededed'} /> : 'Buy'}
+            </button>
+          </div>
+        </div>
+      ))}
       <ul className="flex flex-col gap-6 my-6">
-        {skins.goldCollection.map((skin) => (
+        {skins.goldCollection.slice(2).map((skin) => (
           <SkinsItem
             key={skin.id}
             id={skin.id}
@@ -149,13 +184,51 @@ const Skins = () => {
           />
         ))}
       </ul>
+
+      {/* Platinum Collection */}
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
         Platinum Collection
       </h2>
+      {skins.platinumCollection.slice(0, 3).map((skin, index) => (
+        <div key={skin.id} className="flex px-3 justify-start gap-6 my-6">
+          <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
+            <img
+              src={skin.skin_photo_url_small}
+              alt={`platinum avatar ${index + 1}`}
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <h3 className={`${s.font} text-zinc-300 break-words`}>
+              {skin.name}
+            </h3>
+            <div className="mt-1 flex gap-1 items-center">
+              <p className={`${s.font} text-zinc-400 text-xs`}>
+                + {skin.skin_bonus}
+              </p>
+              <span>
+                <img src="/assets/Group61.png" alt="telegram-star" width={12} />
+              </span>
+            </div>
+            <div className="flex items-center gap-1.5 mt-1">
+              <p className={`${s.font} text-zinc-300 text-sm`}>{skin.price}</p>
+              <img src="/assets/telegram_star.svg" alt="telegram-star" />
+            </div>
+            <button
+              className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500"
+              onClick={() =>
+                handleBuyClick(skin.name, skin.price, skin.name, 1, skin.id)
+              }
+              disabled={isLoading}
+            >
+              {isLoading ? <ClipLoader size={17} color={'#ededed'} /> : 'Buy'}
+            </button>
+          </div>
+        </div>
+      ))}
       <ul className="flex flex-col gap-6 my-6">
-        {skins.platinumCollection.map((skin) => (
+        {skins.platinumCollection.slice(3).map((skin) => (
           <SkinsItem
             key={skin.id}
             id={skin.id}
@@ -166,23 +239,49 @@ const Skins = () => {
           />
         ))}
       </ul>
+
+      {/* Diamond Collection */}
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
         Diamond Collection
       </h2>
-      <ul className="flex flex-col gap-6 my-6">
-        {skins.diamondCollection.map((skin) => (
-          <SkinsItem
-            key={skin.id}
-            id={skin.id}
-            imageUrlSmall={skin.skin_photo_url_small}
-            price={skin.price}
-            bonus={skin.skin_bonus}
-            name={skin.name}
-          />
-        ))}
-      </ul> */}
+      {skins.diamondCollection.map((skin, index) => (
+        <div key={skin.id} className="flex px-3 justify-start gap-6 my-6">
+          <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
+            <img
+              src={skin.skin_photo_url_small}
+              alt={`diamond avatar ${index + 1}`}
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <h3 className={`${s.font} text-zinc-300 break-words`}>
+              {skin.name}
+            </h3>
+            <div className="mt-1 flex gap-1 items-center">
+              <p className={`${s.font} text-zinc-400 text-xs`}>
+                + {skin.skin_bonus}
+              </p>
+              <span>
+                <img src="/assets/Group61.png" alt="telegram-star" width={12} />
+              </span>
+            </div>
+            <div className="flex items-center gap-1.5 mt-1">
+              <p className={`${s.font} text-zinc-300 text-sm`}>{skin.price}</p>
+              <img src="/assets/telegram_star.svg" alt="telegram-star" />
+            </div>
+            <button
+              className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500"
+              onClick={() =>
+                handleBuyClick(skin.name, skin.price, skin.name, 1, skin.id)
+              }
+              disabled={isLoading}
+            >
+              {isLoading ? <ClipLoader size={17} color={'#ededed'} /> : 'Buy'}
+            </button>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
