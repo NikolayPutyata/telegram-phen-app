@@ -69,7 +69,7 @@ const Skins = () => {
         ))}
       </ul>
       <h2
-        className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
+        className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider my-6`}
       >
         Silver Collection
       </h2>
