@@ -154,3 +154,24 @@ export const addRefTgLink = createAsyncThunk(
     }
   },
 );
+
+export const sendCase = createAsyncThunk(
+  'user/sendCase',
+  async (
+    { userId, boostId }: { userId: number; boostId: number },
+    { rejectWithValue },
+  ) => {
+    try {
+      const { data } = await axios.post('user/sendCase', {
+        userId,
+        boostId,
+      });
+      return data;
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        return rejectWithValue(e.message);
+      }
+      return rejectWithValue('Unknown error');
+    }
+  },
+);
