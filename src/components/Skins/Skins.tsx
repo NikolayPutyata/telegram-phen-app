@@ -98,7 +98,7 @@ const Skins = () => {
             <p className={`${s.font} text-zinc-300 text-sm`}>
               {skins.silverCollection[0].price}
             </p>
-            <img src="/assets/Group61.png" alt="telegram-star" width={16} />
+            <img src="/assets/telegram_star.svg" alt="telegram-star" />
           </div>
 
           <button
