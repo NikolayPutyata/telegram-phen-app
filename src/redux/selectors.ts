@@ -21,3 +21,4 @@ export const selectCommonBoosts = (state: RootState) => state.data.commonBoosts;
 export const selectUserSkins = (state: RootState) => state.user.skins;
 export const selectSkins = (state: RootState) => state.data.skins;
 export const selectCaseBoosts = (state: RootState) => state.user.caseBoosts;
+export const selectRobot = (state: RootState) => state.user.robot;

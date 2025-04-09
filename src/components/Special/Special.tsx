@@ -2,41 +2,16 @@ import { useSelector } from 'react-redux';
 import SpecialCaseItem from '../../Pages/Leaderbords/SpecialCaseItem';
 import SpecialRobotItem from '../../Pages/Leaderbords/SpecialRobotItem';
 import s from '/src/App.module.css';
-import { selectFarmingCycle, selectCaseBoosts } from '../../redux/selectors';
-
-interface robotsItem {
-  id: number;
-  title: string;
-  price: string;
-  description: string;
-  imageUrl: string;
-  collectionId: number;
-}
-
-const robots: robotsItem[] = [
-  {
-    id: 5,
-    title: 'X2VR',
-    price: '1',
-    description: 'Increases the farming cycle to 12 h.',
-    imageUrl:
-      'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740498348/robot_2_eddxh1.webp',
-    collectionId: 5,
-  },
-  {
-    id: 6,
-    title: 'X5TP',
-    price: '2',
-    description: 'Increases the farming cycle to 24 h.',
-    imageUrl:
-      'https://res.cloudinary.com/dv1acgeyp/image/upload/v1740498348/robot_1_11zon_e9jnzk.webp',
-    collectionId: 5,
-  },
-];
+import {
+  selectFarmingCycle,
+  selectCaseBoosts,
+  selectRobot,
+} from '../../redux/selectors';
 
 const Special = () => {
   const farmingCycle = useSelector(selectFarmingCycle);
   const caseBoosts = useSelector(selectCaseBoosts);
+  const robots = useSelector(selectRobot);
 
   const getShowBuyButton = (robotId: number) => {
     if (farmingCycle === 24) return false;
