@@ -25,6 +25,7 @@ import GoldCol from './components/SkinsChange/GoldCol.tsx';
 import PlatinumCol from './components/SkinsChange/PlatinumCol.tsx';
 import DiamondCol from './components/SkinsChange/DiamondCol.tsx';
 import LoadingScreen from './Pages/LoadingScreen/LoadingScreen.tsx';
+import Game from './components/Game/Game.tsx';
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -109,6 +110,7 @@ const App = () => {
           <Route path="/tasks" element={<TasksDetails />} />
           <Route path="friends" element={<Friends />} />
         </Route>
+        <Route path="/game" element={<Game />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
       <Footer />
