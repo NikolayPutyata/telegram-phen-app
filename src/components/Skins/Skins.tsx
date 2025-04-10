@@ -121,7 +121,7 @@ const Skins = () => {
         ))}
       </ul>
 
-      {/* <h2
+       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
         Gold Collection
@@ -268,7 +268,7 @@ const Skins = () => {
             </button>
           </div>
         </div>
-      ))} */}
+      ))}
     </div>
   );
 };
