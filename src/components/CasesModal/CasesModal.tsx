@@ -15,7 +15,6 @@ interface CasesModalProps {
   isOpen: boolean;
   onClose: () => void;
   boosts: Boost[];
-  collectionId: number;
   userId: number;
 }
 

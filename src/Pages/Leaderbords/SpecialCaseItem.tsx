@@ -71,7 +71,6 @@ function SpecialCaseItem({ caseBoosts }: SpecialItemProps) {
       </li>
       <CasesModal
         isOpen={isModalOpen}
-        collectionId={caseBoosts.collectionId}
         userId={userId}
         boosts={selectedBoosts}
         onClose={() => setIsModalOpen(false)}
