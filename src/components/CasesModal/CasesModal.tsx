@@ -19,17 +19,39 @@ interface CasesModalProps {
   userId: number;
 }
 
-const CasesModal = ({
-  isOpen,
-  onClose,
-  boosts,
-  collectionId,
-  userId,
-}: CasesModalProps) => {
+const CasesModal = ({ isOpen, onClose, boosts, userId }: CasesModalProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedBoost, setSelectedBoost] = useState<Boost | null>(null);
   const dispatch = useDispatch<AppDispatch>();
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // const handleAnimation = useCallback(async () => {
+  //   setIsAnimating(true);
+  //   setSelectedBoost(null);
+
+  //   setTimeout(async () => {
+  //     const randomBoost = boosts[Math.floor(Math.random() * boosts.length)];
+  //     setSelectedBoost(randomBoost);
+
+  //     try {
+  //       await dispatch(
+  //         sendPrize({
+  //           userId,
+  //           boostId: randomBoost.id,
+  //           collectionId,
+  //         }),
+  //       );
+  //     } catch (error) {
+  //       console.error('Failed to send case to server:', error);
+  //     }
+
+  //     setTimeout(() => {
+  //       setIsAnimating(false);
+  //       setSelectedBoost(null);
+  //       onClose();
+  //     }, 4000);
+  //   }, 7000);
+  // }, [onClose, userId, dispatch, boosts, collectionId]);
 
   const handleAnimation = useCallback(async () => {
     setIsAnimating(true);
@@ -38,6 +60,19 @@ const CasesModal = ({
     setTimeout(async () => {
       const randomBoost = boosts[Math.floor(Math.random() * boosts.length)];
       setSelectedBoost(randomBoost);
+
+      let collectionId: number;
+      const boostIdStr = randomBoost.id.toString();
+
+      if (boostIdStr.startsWith('9')) {
+        collectionId = 1;
+      } else if (boostIdStr.startsWith('1')) {
+        collectionId = 2;
+      } else if (boostIdStr.startsWith('3') || boostIdStr.startsWith('4')) {
+        collectionId = 3;
+      } else {
+        collectionId = 1;
+      }
 
       try {
         await dispatch(
@@ -57,7 +92,7 @@ const CasesModal = ({
         onClose();
       }, 4000);
     }, 7000);
-  }, [onClose, userId, dispatch, boosts, collectionId]);
+  }, [onClose, userId, dispatch, boosts]);
 
   useEffect(() => {
     if (isOpen && audioRef.current) {
