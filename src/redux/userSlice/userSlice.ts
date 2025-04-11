@@ -7,6 +7,7 @@ import {
   taskCompleted,
   getBoostsAndSkins,
   addRefTgLink,
+  sendPrize,
 } from '../operations';
 import { UserState } from '../../types/State';
 
@@ -88,6 +89,10 @@ const userSlice = createSlice({
       .addCase(getBoostsAndSkins.fulfilled, (state, action) => {
         state.boosts = action.payload.boosts;
         state.skins = action.payload.skins;
+      })
+      .addCase(sendPrize.fulfilled, (state, action) => {
+        state.tokens = action.payload.tokens;
+        state.boosts = action.payload.boosts;
       });
   },
 });

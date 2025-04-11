@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useDispatch } from 'react-redux';
-import { sendBoost } from '../../redux/operations';
+import { sendPrize } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 
 interface Boost {
@@ -15,13 +15,21 @@ interface CasesModalProps {
   isOpen: boolean;
   onClose: () => void;
   boosts: Boost[];
+  collectionId: number;
   userId: number;
 }
 
-const CasesModal = ({ isOpen, onClose, boosts, userId }: CasesModalProps) => {
+const CasesModal = ({
+  isOpen,
+  onClose,
+  boosts,
+  collectionId,
+  userId,
+}: CasesModalProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedBoost, setSelectedBoost] = useState<Boost | null>(null);
   const dispatch = useDispatch<AppDispatch>();
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handleAnimation = useCallback(async () => {
     setIsAnimating(true);
@@ -32,7 +40,13 @@ const CasesModal = ({ isOpen, onClose, boosts, userId }: CasesModalProps) => {
       setSelectedBoost(randomBoost);
 
       try {
-        await dispatch(sendBoost({ userId, boostId: randomBoost.id }));
+        await dispatch(
+          sendPrize({
+            userId,
+            boostId: randomBoost.id,
+            collectionId,
+          }),
+        );
       } catch (error) {
         console.error('Failed to send case to server:', error);
       }
@@ -43,7 +57,18 @@ const CasesModal = ({ isOpen, onClose, boosts, userId }: CasesModalProps) => {
         onClose();
       }, 4000);
     }, 7000);
-  }, [onClose, userId, dispatch, boosts]);
+  }, [onClose, userId, dispatch, boosts, collectionId]);
+
+  useEffect(() => {
+    if (isOpen && audioRef.current) {
+      audioRef.current.play().catch((error) => {
+        console.error('Failed to play audio:', error);
+      });
+    } else if (!isOpen && audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen && !isAnimating) {
@@ -82,6 +107,7 @@ const CasesModal = ({ isOpen, onClose, boosts, userId }: CasesModalProps) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
+          <audio ref={audioRef} src="/src/sounds/boost.mp3" loop />
           <motion.div
             className="absolute w-full h-full overflow-hidden"
             initial={backgroundAnimation.initial}
