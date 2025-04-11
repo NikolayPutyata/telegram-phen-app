@@ -73,25 +73,6 @@ const CasesModal = ({ isOpen, onClose, boosts, userId }: CasesModalProps) => {
     },
   };
 
-  const winnerAnimation = {
-    initial: { boxShadow: '0 0 10px rgba(255, 255, 255, 0.5)', scale: 1 },
-    animate: {
-      scale: 1.35,
-      x: 300,
-      y: -300,
-      opacity: 0,
-      transition: {
-        duration: 4,
-        times: [0, 0.25, 0.5, 1],
-        boxShadow: { duration: 1 },
-        scale: { duration: 1, delay: 1 },
-        x: { duration: 2, delay: 2 },
-        y: { duration: 2, delay: 2 },
-        opacity: { duration: 2, delay: 2 },
-      },
-    },
-  };
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -104,7 +85,11 @@ const CasesModal = ({ isOpen, onClose, boosts, userId }: CasesModalProps) => {
           <motion.div
             className="absolute w-full h-full overflow-hidden"
             initial={backgroundAnimation.initial}
-            animate={backgroundAnimation.animate}
+            animate={{
+              ...backgroundAnimation.animate,
+              filter: selectedBoost ? 'blur(8px)' : 'blur(0px)',
+              transition: { duration: 0.5 },
+            }}
             exit={backgroundAnimation.exit}
           >
             <img
@@ -115,31 +100,49 @@ const CasesModal = ({ isOpen, onClose, boosts, userId }: CasesModalProps) => {
           </motion.div>
 
           <div className="relative flex flex-col items-center gap-12 z-10">
-            {boosts.map((boost, index) => (
-              <motion.img
-                key={boost.id}
-                src={boost.photo}
-                alt={boost.name}
-                className="w-29 h-29 rounded-3xl"
-                initial={boostAppear.initial}
-                animate={
-                  selectedBoost?.id === boost.id
-                    ? winnerAnimation.animate
-                    : {
-                        ...boostAppear.animate,
-                        ...(isAnimating &&
-                          !selectedBoost && {
-                            ...glowAnimation.animate,
-                            transition: {
-                              ...glowAnimation.animate.transition,
-                              delay: 2 + index * 0.18,
-                            },
-                          }),
-                        ...(selectedBoost && { boxShadow: 'none' }),
-                      }
-                }
-              />
-            ))}
+            {!selectedBoost &&
+              boosts.map((boost, index) => (
+                <motion.img
+                  key={boost.id}
+                  src={boost.photo}
+                  alt={boost.name}
+                  className="w-29 h-29 rounded-3xl"
+                  initial={boostAppear.initial}
+                  animate={{
+                    ...boostAppear.animate,
+                    ...(isAnimating && {
+                      ...glowAnimation.animate,
+                      transition: {
+                        ...glowAnimation.animate.transition,
+                        delay: 2 + index * 0.18,
+                      },
+                    }),
+                  }}
+                />
+              ))}
+
+            {selectedBoost && (
+              <motion.div
+                className="flex flex-col items-center gap-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 0.5 } }}
+              >
+                <div className="text-center text-white">
+                  <h3 className="text-4xl mb-1 font-bold">
+                    {selectedBoost.name}
+                  </h3>
+                  <p className="text-2xl">{selectedBoost.boost}</p>
+                </div>
+
+                <motion.img
+                  src={selectedBoost.photo}
+                  alt={selectedBoost.name}
+                  className="w-40 h-40 rounded-3xl"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { duration: 0.5 } }}
+                />
+              </motion.div>
+            )}
           </div>
         </motion.div>
       )}
