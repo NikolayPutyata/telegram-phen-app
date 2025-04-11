@@ -11,10 +11,9 @@ interface SkinsItemProps {
   name: string;
   imageUrlSmall: string;
   price: string;
-  bonus: number;
 }
 
-function SkinsItem({ imageUrlSmall, price, bonus, name, id }: SkinsItemProps) {
+function SkinsItem({ imageUrlSmall, price, name, id }: SkinsItemProps) {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector(selectUserId);
@@ -38,12 +37,12 @@ function SkinsItem({ imageUrlSmall, price, bonus, name, id }: SkinsItemProps) {
       <div className="flex flex-col gap-1">
         <h3 className={`${s.font} text-zinc-300 break-words`}>{name}</h3>
 
-        <div className="mt-1 flex gap-1 items-center">
+        {/* <div className="mt-1 flex gap-1 items-center">
           <p className={`${s.font} text-zinc-400 text-xs`}>+ {bonus}</p>
           <span>
             <img src="/assets/Group61.png" alt="telegram-star" width={12} />
           </span>
-        </div>
+        </div> */}
         <div className="flex items-center gap-1.5 mt-1">
           <p className={`${s.font} text-zinc-300 text-sm`}>{price}</p>
           <img src="/assets/Group61.png" alt="telegram-star" width={16} />
