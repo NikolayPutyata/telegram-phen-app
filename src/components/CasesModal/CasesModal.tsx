@@ -24,34 +24,6 @@ const CasesModal = ({ isOpen, onClose, boosts, userId }: CasesModalProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // const handleAnimation = useCallback(async () => {
-  //   setIsAnimating(true);
-  //   setSelectedBoost(null);
-
-  //   setTimeout(async () => {
-  //     const randomBoost = boosts[Math.floor(Math.random() * boosts.length)];
-  //     setSelectedBoost(randomBoost);
-
-  //     try {
-  //       await dispatch(
-  //         sendPrize({
-  //           userId,
-  //           boostId: randomBoost.id,
-  //           collectionId,
-  //         }),
-  //       );
-  //     } catch (error) {
-  //       console.error('Failed to send case to server:', error);
-  //     }
-
-  //     setTimeout(() => {
-  //       setIsAnimating(false);
-  //       setSelectedBoost(null);
-  //       onClose();
-  //     }, 4000);
-  //   }, 7000);
-  // }, [onClose, userId, dispatch, boosts, collectionId]);
-
   const handleAnimation = useCallback(async () => {
     setIsAnimating(true);
     setSelectedBoost(null);
