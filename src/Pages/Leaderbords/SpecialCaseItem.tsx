@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
-// import { createStarInvoice } from '../../utils/createStarInvoice';
+import { createStarInvoice } from '../../utils/createStarInvoice';
 import { Case, CasePrize } from '../../types/State';
 import { selectUserId } from '../../redux/selectors';
 import CasesModal from '../../components/CasesModal/CasesModal';
@@ -18,37 +18,27 @@ function SpecialCaseItem({ caseBoosts }: SpecialItemProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedBoosts, setSelectedBoosts] = useState<CasePrize[]>([]);
 
-  // const handleBuyClick = async () => {
-  //   setIsLoading(true);
-
-  //   const invoiceLink = await createStarInvoice({
-  //     title: caseBoosts.name,
-  //     description: caseBoosts.desc,
-  //     prices: [{ label: 'Price', amount: Number(caseBoosts.price) }],
-  //     currency: 'XTR',
-  //     provider_token: '',
-  //     payload: `ORDER_${userId}_${caseBoosts.id}_${caseBoosts.collectionId}`,
-  //   });
-
-  //   window.Telegram.WebApp.openInvoice(invoiceLink, (status) => {
-  //     if (status === 'paid') {
-  //       setSelectedBoosts(caseBoosts.prize);
-  //       setIsModalOpen(true);
-  //       setIsLoading(false);
-  //     } else if (status === 'cancelled' || status === 'failed') {
-  //       setIsLoading(false);
-  //     }
-  //   });
-  // };
-
   const handleBuyClick = async () => {
     setIsLoading(true);
 
-    setTimeout(() => {
-      setSelectedBoosts(caseBoosts.prize);
-      setIsModalOpen(true);
-      setIsLoading(false);
-    }, 1000);
+    const invoiceLink = await createStarInvoice({
+      title: caseBoosts.name,
+      description: caseBoosts.desc,
+      prices: [{ label: 'Price', amount: Number(caseBoosts.price) }],
+      currency: 'XTR',
+      provider_token: '',
+      payload: `ORDER_${userId}_${caseBoosts.id}_${caseBoosts.collectionId}`,
+    });
+
+    window.Telegram.WebApp.openInvoice(invoiceLink, (status) => {
+      if (status === 'paid') {
+        setSelectedBoosts(caseBoosts.prize);
+        setIsModalOpen(true);
+        setIsLoading(false);
+      } else if (status === 'cancelled' || status === 'failed') {
+        setIsLoading(false);
+      }
+    });
   };
 
   return (
