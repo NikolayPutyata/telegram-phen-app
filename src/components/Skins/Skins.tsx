@@ -55,7 +55,6 @@ const Skins = () => {
             id={skin.id}
             imageUrlSmall={skin.skin_photo_url_small}
             price={skin.price}
-            bonus={skin.skin_bonus}
             name={skin.name}
           />
         ))}
@@ -78,14 +77,14 @@ const Skins = () => {
           <h3 className={`${s.font} text-zinc-300 break-words`}>
             {skins?.silverCollection[0].name}
           </h3>
-          <div className="mt-1 flex gap-1 items-center">
+          {/* <div className="mt-1 flex gap-1 items-center">
             <p className={`${s.font} text-zinc-400 text-xs`}>
               + {skins.silverCollection[0].skin_bonus}
             </p>
             <span>
               <img src="/assets/Group61.png" alt="telegram-star" width={12} />
             </span>
-          </div>
+          </div> */}
           <div className="flex items-center gap-1.5 mt-1">
             <p className={`${s.font} text-zinc-300 text-sm`}>
               {skins.silverCollection[0].price}
@@ -115,13 +114,12 @@ const Skins = () => {
             id={skin.id}
             imageUrlSmall={skin.skin_photo_url_small}
             price={skin.price}
-            bonus={skin.skin_bonus}
             name={skin.name}
           />
         ))}
       </ul>
 
-      {/* <h2
+      <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
         Gold Collection
@@ -138,14 +136,7 @@ const Skins = () => {
             <h3 className={`${s.font} text-zinc-300 break-words`}>
               {skin.name}
             </h3>
-            <div className="mt-1 flex gap-1 items-center">
-              <p className={`${s.font} text-zinc-400 text-xs`}>
-                + {skin.skin_bonus}
-              </p>
-              <span>
-                <img src="/assets/Group61.png" alt="telegram-star" width={12} />
-              </span>
-            </div>
+
             <div className="flex items-center gap-1.5 mt-1">
               <p className={`${s.font} text-zinc-300 text-sm`}>{skin.price}</p>
               <img src="/assets/telegram_star.svg" alt="telegram-star" />
@@ -168,13 +159,11 @@ const Skins = () => {
             id={skin.id}
             imageUrlSmall={skin.skin_photo_url_small}
             price={skin.price}
-            bonus={skin.skin_bonus}
             name={skin.name}
           />
         ))}
       </ul>
 
-     
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
@@ -192,14 +181,7 @@ const Skins = () => {
             <h3 className={`${s.font} text-zinc-300 break-words`}>
               {skin.name}
             </h3>
-            <div className="mt-1 flex gap-1 items-center">
-              <p className={`${s.font} text-zinc-400 text-xs`}>
-                + {skin.skin_bonus}
-              </p>
-              <span>
-                <img src="/assets/Group61.png" alt="telegram-star" width={12} />
-              </span>
-            </div>
+
             <div className="flex items-center gap-1.5 mt-1">
               <p className={`${s.font} text-zinc-300 text-sm`}>{skin.price}</p>
               <img src="/assets/telegram_star.svg" alt="telegram-star" />
@@ -222,13 +204,11 @@ const Skins = () => {
             id={skin.id}
             imageUrlSmall={skin.skin_photo_url_small}
             price={skin.price}
-            bonus={skin.skin_bonus}
             name={skin.name}
           />
         ))}
       </ul>
 
-      
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
@@ -246,14 +226,7 @@ const Skins = () => {
             <h3 className={`${s.font} text-zinc-300 break-words`}>
               {skin.name}
             </h3>
-            <div className="mt-1 flex gap-1 items-center">
-              <p className={`${s.font} text-zinc-400 text-xs`}>
-                + {skin.skin_bonus}
-              </p>
-              <span>
-                <img src="/assets/Group61.png" alt="telegram-star" width={12} />
-              </span>
-            </div>
+
             <div className="flex items-center gap-1.5 mt-1">
               <p className={`${s.font} text-zinc-300 text-sm`}>{skin.price}</p>
               <img src="/assets/telegram_star.svg" alt="telegram-star" />
@@ -268,7 +241,7 @@ const Skins = () => {
             </button>
           </div>
         </div>
-      ))} */}
+      ))}
     </div>
   );
 };
