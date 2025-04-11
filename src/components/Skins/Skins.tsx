@@ -119,7 +119,7 @@ const Skins = () => {
         ))}
       </ul>
 
-       <h2
+      <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
         Gold Collection
@@ -136,7 +136,7 @@ const Skins = () => {
             <h3 className={`${s.font} text-zinc-300 break-words`}>
               {skin.name}
             </h3>
-            
+
             <div className="flex items-center gap-1.5 mt-1">
               <p className={`${s.font} text-zinc-300 text-sm`}>{skin.price}</p>
               <img src="/assets/telegram_star.svg" alt="telegram-star" />
@@ -159,13 +159,11 @@ const Skins = () => {
             id={skin.id}
             imageUrlSmall={skin.skin_photo_url_small}
             price={skin.price}
-            bonus={skin.skin_bonus}
             name={skin.name}
           />
         ))}
       </ul>
 
-     
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
@@ -183,7 +181,7 @@ const Skins = () => {
             <h3 className={`${s.font} text-zinc-300 break-words`}>
               {skin.name}
             </h3>
-            
+
             <div className="flex items-center gap-1.5 mt-1">
               <p className={`${s.font} text-zinc-300 text-sm`}>{skin.price}</p>
               <img src="/assets/telegram_star.svg" alt="telegram-star" />
@@ -206,13 +204,11 @@ const Skins = () => {
             id={skin.id}
             imageUrlSmall={skin.skin_photo_url_small}
             price={skin.price}
-            bonus={skin.skin_bonus}
             name={skin.name}
           />
         ))}
       </ul>
 
-      
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
@@ -230,7 +226,7 @@ const Skins = () => {
             <h3 className={`${s.font} text-zinc-300 break-words`}>
               {skin.name}
             </h3>
-            
+
             <div className="flex items-center gap-1.5 mt-1">
               <p className={`${s.font} text-zinc-300 text-sm`}>{skin.price}</p>
               <img src="/assets/telegram_star.svg" alt="telegram-star" />
