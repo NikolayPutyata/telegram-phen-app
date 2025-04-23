@@ -55,6 +55,11 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ onClose }) => {
       name: 'हिन्दी',
       src: '/assets/language/hindi.svg',
     },
+    {
+      code: 'ar',
+      name: 'العربية',
+      src: '/assets/language/arabic.svg',
+    },
   ];
   const handleLanguageChange = (code: string) => {
     i18n.changeLanguage(code);
