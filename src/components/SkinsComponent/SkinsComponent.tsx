@@ -1,4 +1,5 @@
 import s from '/src/App.module.css';
+import { useTranslation } from 'react-i18next';
 
 type SkinsData = {
   imgStarFlight: string;
@@ -21,6 +22,8 @@ const SkinsComponent: React.FC<SkinsData> = ({
   styleBorder,
   styleImg,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className=" rounded-3xl mx-4 grid grid-cols-2 gap-4">
       <div
@@ -75,7 +78,7 @@ const SkinsComponent: React.FC<SkinsData> = ({
 
       <div className="flex flex-col justify-center items-center">
         <button className="btn btn-primary w-full rounded-4xl self-center bg-gradient-to-r from-blue-500 to-purple-500 animate-gradient">
-          Claim
+          {t('Claim')}
         </button>
       </div>
     </div>

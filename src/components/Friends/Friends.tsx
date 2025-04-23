@@ -67,13 +67,16 @@ const Friends = () => {
         <p
           className={`${s.font} text-zinc-400 text-sm m-4 px-4 tracking-wider text-center`}
         >
-          We also participate in the Telegram affiliate referral program, where
-          you can get 50% of the Stars your friends spend!
+          {t(
+            'We also participate in the Telegram affiliate referral program, where you can get 50% of the Stars your friends spend!',
+          )}
         </p>
         <p
           className={`${s.font} text-zinc-400 text-sm  mb-8 px-4 tracking-wider text-center`}
         >
-          Paste your Telegram referral link below and share for free Stars!
+          {t(
+            'Paste your Telegram referral link below and share for free Stars!',
+          )}
         </p>
         <TelegramLinkForm />
         <button
@@ -96,7 +99,7 @@ const Friends = () => {
           onClick={() => setIsModalOpenGuideLink(true)}
           className={`${s.font} text-xs tracking-wider border-b border-zinc-500 italic mt-3 text-zinc-500`}
         >
-          Where can I get a Telegram referral link?
+          {t('Where can I get a Telegram referral link?')}
         </button>
       </div>
 

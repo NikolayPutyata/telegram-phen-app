@@ -7,6 +7,7 @@ interface LanguageModalProps {
 
 const LanguageModal: React.FC<LanguageModalProps> = ({ onClose }) => {
   const { i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const languages = [
     {
@@ -70,7 +71,7 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ onClose }) => {
     <div className="p-6 flex-col flex items-center">
       <div className="flex justify-center items-center gap-1 mb-3">
         <h2 className={`${s.font} text-zinc-300 text-xl tracking-wider`}>
-          Select Language
+          {t('Select Language')}
         </h2>
         <div className="w-6 h-6 flex justify-center items-end">
           <img src="/assets/language/language.svg" className="w-5 h-5" />

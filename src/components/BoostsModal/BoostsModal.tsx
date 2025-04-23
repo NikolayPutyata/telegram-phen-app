@@ -1,9 +1,11 @@
 import s from '/src/App.module.css';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { selectUserBoosts } from '../../redux/selectors';
 
 const BoostsModal = () => {
   const boosts = useSelector(selectUserBoosts);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -17,10 +19,11 @@ const BoostsModal = () => {
 
               <div className="flex justify-start flex-col">
                 <h3 className="text-zinc-300 mb-2 break-words">{boost.name}</h3>
-                <div className='flex gap-3'>
+                <div className="flex gap-3">
                   <p className="text-zinc-400 text-sm mb-2">
-                  X {boost.boost_bonus}
-                </p><p className="text-zinc-400 text-sm">qty: {boost.quantity}</p>
+                    X {boost.boost_bonus}
+                  </p>
+                  <p className="text-zinc-400 text-sm">qty: {boost.quantity}</p>
                 </div>
               </div>
             </li>
@@ -30,7 +33,7 @@ const BoostsModal = () => {
         <p
           className={`${s.font} text-zinc-300  break-words tracking-wider text-center p-6 text-sm`}
         >
-          You dont have any boosts 😔
+          {t('You dont have any boosts 😔')}
         </p>
       )}
     </>
@@ -38,6 +41,3 @@ const BoostsModal = () => {
 };
 
 export default BoostsModal;
-
-
-

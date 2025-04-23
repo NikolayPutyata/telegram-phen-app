@@ -1,4 +1,3 @@
-// import { useTranslation } from 'react-i18next';
 import s from '/src/App.module.css';
 
 interface Boost {
@@ -13,8 +12,6 @@ interface ActiveBoostsProps {
 }
 
 const ActiveBoosts: React.FC<ActiveBoostsProps> = ({ activeBoosts }) => {
-  //   const { t } = useTranslation();
-
   return (
     <ul className="flex px-10 flex-col gap-2">
       {activeBoosts?.map((boost) => (
@@ -27,9 +24,7 @@ const ActiveBoosts: React.FC<ActiveBoostsProps> = ({ activeBoosts }) => {
             {boost.name}
           </h3>
 
-          <p className={`${s.font} text-zinc-400`}>
-            X {boost.boost_bonus}
-          </p>
+          <p className={`${s.font} text-zinc-400`}>X {boost.boost_bonus}</p>
         </li>
       ))}
     </ul>

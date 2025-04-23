@@ -1,8 +1,8 @@
-import SkinsModal from '../SkinsModal/SkinsModal.tsx';
 import BoostsModal from '../BoostsModal/BoostsModal.tsx';
 import GuideLinkModal from '../GuideLinkModal/GuideLinkModal.tsx';
 import LanguageModal from '../LanguageModal/LanguageModal.tsx';
 import ModalAddBoosts from '../ModalAddBoosts/ModalAddBoosts.tsx';
+import { useTranslation } from 'react-i18next';
 import s from '/src/App.module.css';
 
 type ModalProps = {
@@ -12,12 +12,12 @@ type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, changeModal }) => {
+  const { t } = useTranslation();
+
   const renderModalContent = () => {
     switch (changeModal) {
       case 'boosts':
         return <BoostsModal />;
-      case 'skins':
-        return <SkinsModal />;
       case 'guide':
         return <GuideLinkModal />;
       case 'language':
@@ -26,7 +26,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, changeModal }) => {
         return <ModalAddBoosts onClose={onClose} />;
       default:
         return (
-          <p className={`${s.font} text-zinc-300 tracking-wider`}>No content</p>
+          <p className={`${s.font} text-zinc-300 tracking-wider`}>
+            {t('No content')}
+          </p>
         );
     }
   };

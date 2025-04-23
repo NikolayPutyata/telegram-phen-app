@@ -5,11 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createStarInvoice } from '../../utils/createStarInvoice';
 import { getBoostsAndSkins } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
+import { useTranslation } from 'react-i18next';
 
 const Skins = () => {
   const skins = useSelector(selectSkins);
   const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector(selectUserId);
+  const { t } = useTranslation();
 
   const handleBuyClick = async (
     name: string,
@@ -46,7 +48,7 @@ const Skins = () => {
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
-        Bronze Collection
+        {t('Bronze Collection')}
       </h2>
       <ul className="flex flex-col gap-6 my-6">
         {skins?.bronzeCollection.map((skin) => (
@@ -64,7 +66,7 @@ const Skins = () => {
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider my-6`}
       >
-        Silver Collection
+        {t('Silver Collection')}
       </h2>
       <div className="flex px-3 justify-start gap-6">
         <div className="flex flex-col justify-center w-30 h-30 overflow-hidden rounded-3xl">
@@ -103,7 +105,7 @@ const Skins = () => {
               )
             }
           >
-            Buy
+            {t('Buy')}
           </button>
         </div>
       </div>
@@ -122,7 +124,7 @@ const Skins = () => {
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
-        Gold Collection
+        {t('Gold Collection')}
       </h2>
       {skins?.goldCollection.slice(0, 2).map((skin, index) => (
         <div key={skin.id} className="flex px-3 justify-start gap-6 my-6">
@@ -147,7 +149,7 @@ const Skins = () => {
                 handleBuyClick(skin.name, skin.price, skin.name, 1, skin.id)
               }
             >
-              Buy
+              {t('Buy')}
             </button>
           </div>
         </div>
@@ -167,7 +169,7 @@ const Skins = () => {
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
-        Platinum Collection
+        {t('Platinum Collection')}
       </h2>
       {skins?.platinumCollection.slice(0, 3).map((skin, index) => (
         <div key={skin.id} className="flex px-3 justify-start gap-6 my-6">
@@ -192,7 +194,7 @@ const Skins = () => {
                 handleBuyClick(skin.name, skin.price, skin.name, 1, skin.id)
               }
             >
-              Buy
+              {t('Buy')}
             </button>
           </div>
         </div>
@@ -212,7 +214,7 @@ const Skins = () => {
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
-        Diamond Collection
+        {t('Diamond Collection')}
       </h2>
       {skins?.diamondCollection.map((skin, index) => (
         <div key={skin.id} className="flex px-3 justify-start gap-6 my-6">
@@ -237,7 +239,7 @@ const Skins = () => {
                 handleBuyClick(skin.name, skin.price, skin.name, 1, skin.id)
               }
             >
-              Buy
+              {t('Buy')}
             </button>
           </div>
         </div>

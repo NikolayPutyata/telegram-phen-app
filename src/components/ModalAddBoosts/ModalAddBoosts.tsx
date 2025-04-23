@@ -1,4 +1,4 @@
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectUserBoosts,
@@ -14,7 +14,7 @@ interface LanguageModalProps {
 
 const ModalAddBoosts: React.FC<LanguageModalProps> = ({ onClose }) => {
   const dispatch = useDispatch();
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const addBoosts = useSelector(selectUserBoosts);
   const activeBoosts = useSelector(selectUserActiveBoosts);
 
@@ -97,7 +97,7 @@ const ModalAddBoosts: React.FC<LanguageModalProps> = ({ onClose }) => {
             disabled={selectedBoosts.length === 0}
           >
             <p className={`${s.font} text-zinc-300 tracking-wider text-sm`}>
-              Add Boosts
+              {t('Add Boosts')}
             </p>
           </button>
         </>
@@ -105,7 +105,7 @@ const ModalAddBoosts: React.FC<LanguageModalProps> = ({ onClose }) => {
         <p
           className={`${s.font} text-zinc-300  break-words tracking-wider text-center p-6 text-sm`}
         >
-          You dont have any boosts 😔
+          {t('You dont have any boosts 😔')}
         </p>
       )}
     </div>

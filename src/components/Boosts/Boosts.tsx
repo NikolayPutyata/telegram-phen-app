@@ -3,6 +3,7 @@ import BoostsItem from '../../Pages/Leaderbords/BoostsItem';
 import { selectCommonBoosts, selectUserId } from '../../redux/selectors';
 import s from '/src/App.module.css';
 import { paymentInPhenerium } from '../../redux/operations';
+import { useTranslation } from 'react-i18next';
 import { AppDispatch } from '../../redux/store';
 import { ClipLoader } from 'react-spinners';
 import { useState } from 'react';
@@ -11,6 +12,7 @@ const Boosts = () => {
   const boosts = useSelector(selectCommonBoosts);
   const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector(selectUserId);
+  const { t } = useTranslation();
   const [IsLoading, setIsLoading] = useState(false);
 
   const handeBuyInPhenerium = async (
@@ -36,7 +38,7 @@ const Boosts = () => {
       <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider mt-6`}
       >
-        Farming Boosts
+        {t('Farming Boosts')}
       </h2>
 
       {boosts?.length > 0 && (
@@ -72,7 +74,11 @@ const Boosts = () => {
                 )
               }
             >
-              {IsLoading ? <ClipLoader size={17} color={'#ededed'} /> : 'Buy'}
+              {IsLoading ? (
+                <ClipLoader size={17} color={'#ededed'} />
+              ) : (
+                <span>{t('Buy')}</span>
+              )}
             </button>
           </div>
         </div>

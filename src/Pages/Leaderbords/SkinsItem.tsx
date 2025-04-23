@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../redux/store';
 import { paymentInPhenerium } from '../../redux/operations';
 import { selectUserId } from '../../redux/selectors';
+import { useTranslation } from 'react-i18next';
 import { ClipLoader } from 'react-spinners';
 
 interface SkinsItemProps {
@@ -17,6 +18,7 @@ function SkinsItem({ imageUrlSmall, price, name, id }: SkinsItemProps) {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector(selectUserId);
+  const { t } = useTranslation();
 
   const handeBuyInPhenerium = async (
     amount: number,
@@ -53,7 +55,11 @@ function SkinsItem({ imageUrlSmall, price, name, id }: SkinsItemProps) {
           onClick={() => handeBuyInPhenerium(Number(price), id, 1)}
           disabled={isLoading}
         >
-          {isLoading ? <ClipLoader size={17} color={'#ededed'} /> : 'Buy'}
+          {isLoading ? (
+            <ClipLoader size={17} color={'#ededed'} />
+          ) : (
+            <span>{t('Buy')}</span>
+          )}
         </button>
       </div>
     </li>
