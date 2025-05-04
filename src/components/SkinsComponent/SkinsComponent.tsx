@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import s from '/src/App.module.css';
 import { selectUserId } from '../../redux/selectors';
-import { getCollectionItem } from '../../redux/operations';
+import { claimSkinsBonus } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 
 type SkinsData = {
@@ -93,7 +93,7 @@ const SkinsComponent: React.FC<SkinsData> = ({
         <button
           className="btn btn-primary w-full rounded-4xl self-center bg-gradient-to-r from-blue-500 to-purple-500 animate-gradient disabled:opacity-50"
           onClick={() =>
-            dispatch(getCollectionItem({ userId, colId, collectedIndexes }))
+            dispatch(claimSkinsBonus({ userId, colId, collectedIndexes }))
           }
         >
           Claim

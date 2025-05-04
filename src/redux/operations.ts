@@ -181,8 +181,8 @@ export const sendPrize = createAsyncThunk(
   },
 );
 
-export const getCollectionItem = createAsyncThunk(
-  'user/getCollectionItem',
+export const claimSkinsBonus = createAsyncThunk(
+  'farm/claimSkinsBonus',
   async (
     {
       userId,
@@ -192,7 +192,7 @@ export const getCollectionItem = createAsyncThunk(
     { rejectWithValue },
   ) => {
     try {
-      const { data } = await axios.post('user/getCollectionItem', {
+      const { data } = await axios.post('farm/claimSkinsBonus', {
         id: userId,
         colId,
         indexArray: collectedIndexes,

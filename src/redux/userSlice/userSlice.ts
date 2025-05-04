@@ -8,7 +8,7 @@ import {
   getBoostsAndSkins,
   addRefTgLink,
   sendPrize,
-  getCollectionItem,
+  claimSkinsBonus,
 } from '../operations';
 import { UserState } from '../../types/State';
 
@@ -67,7 +67,7 @@ const userSlice = createSlice({
         state.farmingCycle = usersData.farmingCycle;
         state.skinsCollection = usersData.skinsCollection;
       })
-      .addCase(getCollectionItem.fulfilled, (state, action) => {
+      .addCase(claimSkinsBonus.fulfilled, (state, action) => {
         state.skinsCollection = action.payload.skinsCollection;
         state.tokens = action.payload.tokens;
       })
