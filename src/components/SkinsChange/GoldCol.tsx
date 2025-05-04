@@ -15,6 +15,7 @@ const data = {
   price: '420',
   plus: '+ 20%',
   styleBorder: `${s.gradientBg3} p-[1.2px]`,
+  styleImg: 'rounded-3xl',
 };
 
 const GoldCol = () => {

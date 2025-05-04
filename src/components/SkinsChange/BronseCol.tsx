@@ -15,6 +15,7 @@ const data = {
   price: '420',
   plus: '+ 5%',
   styleBorder: `${s.gradientBg5} p-[1.2px]`,
+  styleImg: 'rounded-3xl',
 };
 
 const BronseCol = () => {

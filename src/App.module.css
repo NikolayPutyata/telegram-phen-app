@@ -13,17 +13,17 @@
   animation: gradientShift 2s ease infinite;
 }
 .gradientBg3 {
-  background: linear-gradient(45deg, gold, yellow, rgb(160, 136, 0));
+  background: linear-gradient(45deg, gold, rgb(170, 170, 0), rgb(145, 123, 0));
   background-size: 200% 200%;
   animation: gradientShift 2s ease infinite;
 }
 .gradientBg4 {
-  background: linear-gradient(45deg, #0b1f56, #89b6ed, #1e40af);
+  background: linear-gradient(45deg, white, #d6d6d6, #898989);
   background-size: 200% 200%;
   animation: gradientShift 2s ease infinite;
 }
 .gradientBg5 {
-  background: linear-gradient(45deg, #0b1f56, #89b6ed, #1e40af);
+  background: linear-gradient(45deg, #cd7f32, #ff9f3f, #653f18);
   background-size: 200% 200%;
   animation: gradientShift 2s ease infinite;
 }

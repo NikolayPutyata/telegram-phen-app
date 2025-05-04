@@ -15,6 +15,7 @@ const data = {
   price: '420',
   plus: '+ 10%',
   styleBorder: `${s.gradientBg4} p-[1.2px]`,
+  styleImg: 'rounded-3xl',
 };
 
 const SilverCol = () => {
