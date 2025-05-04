@@ -19,14 +19,24 @@ const data = {
 };
 
 const PlatinumCol = () => {
-  
-    const skinsCollection = useSelector(selectSkinsCollection);
-    // const colId = 2;
-    // const userId = useSelector(selectUserId);
-    const collection = skinsCollection[4];
-    const images = collection.images;
-  
-    return <SkinsComponent {...data} images={images} />;
+  const skinsCollection = useSelector(selectSkinsCollection);
+  const colId = 5;
+
+  const collection = skinsCollection[4];
+  const images = collection.images;
+
+   const collectedIndexes = images
+     .map((isCollected, index) => (isCollected ? index : null))
+     .filter((index) => index !== null);
+
+   return (
+     <SkinsComponent
+       {...data}
+       images={images}
+       collectedIndexes={collectedIndexes}
+       colId={colId}
+     />
+   );
 };
 
 export default PlatinumCol;

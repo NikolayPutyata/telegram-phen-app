@@ -1,38 +1,38 @@
 import SkinsItem from '../../Pages/Leaderbords/SkinsItem';
-import { selectSkins, selectUserId } from '../../redux/selectors';
+import { selectSkins } from '../../redux/selectors';
 import s from '/src/App.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { createStarInvoice } from '../../utils/createStarInvoice';
-import { getBoostsAndSkins } from '../../redux/operations';
-import { AppDispatch } from '../../redux/store';
+import { useSelector } from 'react-redux';
+// import { createStarInvoice } from '../../utils/createStarInvoice';
+// import { getBoostsAndSkins } from '../../redux/operations';
+// import { AppDispatch } from '../../redux/store';
 
 const Skins = () => {
   const skins = useSelector(selectSkins);
-  const dispatch = useDispatch<AppDispatch>();
-  const userId = useSelector(selectUserId);
+  // const dispatch = useDispatch<AppDispatch>();
+  // const userId = useSelector(selectUserId);
 
-  const handleBuyClick = async (
-    name: string,
-    price: string,
-    desc: string,
-    collectionId: number,
-    idItem: number,
-  ) => {
-    const invoiceLink = await createStarInvoice({
-      title: name,
-      description: desc,
-      prices: [{ label: 'Price', amount: Number(price) }],
-      currency: 'XTR',
-      provider_token: '',
-      payload: `ORDER_${userId}_${collectionId}_${idItem}`,
-    });
+  // const handleBuyClick = async (
+  //   name: string,
+  //   price: string,
+  //   desc: string,
+  //   collectionId: number,
+  //   idItem: number,
+  // ) => {
+  //   const invoiceLink = await createStarInvoice({
+  //     title: name,
+  //     description: desc,
+  //     prices: [{ label: 'Price', amount: Number(price) }],
+  //     currency: 'XTR',
+  //     provider_token: '',
+  //     payload: `ORDER_${userId}_${collectionId}_${idItem}`,
+  //   });
 
-    window.Telegram.WebApp.openInvoice(invoiceLink, async (status) => {
-      if (status === 'paid') {
-        await dispatch(getBoostsAndSkins(userId));
-      }
-    });
-  };
+  //   window.Telegram.WebApp.openInvoice(invoiceLink, async (status) => {
+  //     if (status === 'paid') {
+  //       await dispatch(getBoostsAndSkins(userId));
+  //     }
+  //   });
+  // };
 
   return (
     <div className="px-3 mb-32 mt-2 tracking-wider">
@@ -61,7 +61,7 @@ const Skins = () => {
       </ul>
 
       {/* Silver Collection */}
-      <h2
+      {/* <h2
         className={`${s.font} text-zinc-400 ml-4 text-sm tracking-wider my-6`}
       >
         Silver Collection
@@ -77,14 +77,6 @@ const Skins = () => {
           <h3 className={`${s.font} text-zinc-300 break-words`}>
             {skins?.silverCollection[0].name}
           </h3>
-          {/* <div className="mt-1 flex gap-1 items-center">
-            <p className={`${s.font} text-zinc-400 text-xs`}>
-              + {skins.silverCollection[0].skin_bonus}
-            </p>
-            <span>
-              <img src="/assets/Group61.png" alt="telegram-star" width={12} />
-            </span>
-          </div> */}
           <div className="flex items-center gap-1.5 mt-1">
             <p className={`${s.font} text-zinc-300 text-sm`}>
               {skins.silverCollection[0].price}
@@ -241,7 +233,7 @@ const Skins = () => {
             </button>
           </div>
         </div>
-      ))}
+      ))}*/}
     </div>
   );
 };

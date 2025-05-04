@@ -1,4 +1,8 @@
+import { useDispatch, useSelector } from 'react-redux';
 import s from '/src/App.module.css';
+import { selectUserId } from '../../redux/selectors';
+import { getCollectionItem } from '../../redux/operations';
+import { AppDispatch } from '../../redux/store';
 
 type SkinsData = {
   imgStarFlight: string;
@@ -10,6 +14,8 @@ type SkinsData = {
   styleBorder: string;
   styleImg?: string;
   images: boolean[];
+  collectedIndexes: number[];
+  colId: number;
 };
 
 const SkinsComponent: React.FC<SkinsData> = ({
@@ -22,7 +28,12 @@ const SkinsComponent: React.FC<SkinsData> = ({
   styleBorder,
   styleImg,
   images,
+  collectedIndexes,
+  colId,
 }) => {
+  const userId = useSelector(selectUserId);
+  const dispatch = useDispatch<AppDispatch>();
+
   const renderImage = (src: string, isCollected: boolean) => {
     if (isCollected) {
       return (
@@ -79,7 +90,12 @@ const SkinsComponent: React.FC<SkinsData> = ({
       </div>
 
       <div className="flex flex-col justify-center items-center">
-        <button className="btn btn-primary w-full rounded-4xl self-center bg-gradient-to-r from-blue-500 to-purple-500 animate-gradient disabled:opacity-50">
+        <button
+          className="btn btn-primary w-full rounded-4xl self-center bg-gradient-to-r from-blue-500 to-purple-500 animate-gradient disabled:opacity-50"
+          onClick={() =>
+            dispatch(getCollectionItem({ userId, colId, collectedIndexes }))
+          }
+        >
           Claim
         </button>
       </div>

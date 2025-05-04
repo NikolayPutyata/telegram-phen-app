@@ -18,12 +18,22 @@ const data = {
 
 const BronseCol = () => {
   const skinsCollection = useSelector(selectSkinsCollection);
-  // const colId = 2;
-  // const userId = useSelector(selectUserId);
+  const colId = 2;
   const collection = skinsCollection[1];
   const images = collection.images;
 
-  return <SkinsComponent {...data} images={images} />;
+  const collectedIndexes = images
+    .map((isCollected, index) => (isCollected ? index : null))
+    .filter((index) => index !== null);
+
+  return (
+    <SkinsComponent
+      {...data}
+      images={images}
+      collectedIndexes={collectedIndexes}
+      colId={colId}
+    />
+  );
 };
 
 export default BronseCol;

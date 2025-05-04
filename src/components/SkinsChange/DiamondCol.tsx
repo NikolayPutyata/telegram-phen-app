@@ -19,12 +19,23 @@ const data = {
 };
 const DiamondCol = () => {
   const skinsCollection = useSelector(selectSkinsCollection);
-  // const colId = 2;
-  // const userId = useSelector(selectUserId);
+  const colId = 6;
+
   const collection = skinsCollection[5];
   const images = collection.images;
 
-  return <SkinsComponent {...data} images={images} />;
+  const collectedIndexes = images
+    .map((isCollected, index) => (isCollected ? index : null))
+    .filter((index) => index !== null);
+
+  return (
+    <SkinsComponent
+      {...data}
+      images={images}
+      collectedIndexes={collectedIndexes}
+      colId={colId}
+    />
+  );
 };
 
 export default DiamondCol;

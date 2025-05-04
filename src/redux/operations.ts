@@ -180,3 +180,29 @@ export const sendPrize = createAsyncThunk(
     }
   },
 );
+
+export const getCollectionItem = createAsyncThunk(
+  'user/getCollectionItem',
+  async (
+    {
+      userId,
+      colId,
+      collectedIndexes,
+    }: { userId: number; colId: number; collectedIndexes: number[] },
+    { rejectWithValue },
+  ) => {
+    try {
+      const { data } = await axios.post('user/getCollectionItem', {
+        id: userId,
+        colId,
+        indexArray: collectedIndexes,
+      });
+      return data;
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        return rejectWithValue(e.message);
+      }
+      return rejectWithValue('Unknown error');
+    }
+  },
+);
