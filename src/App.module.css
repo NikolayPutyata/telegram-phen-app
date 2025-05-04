@@ -18,7 +18,7 @@
   animation: gradientShift 2s ease infinite;
 }
 .gradientBg4 {
-  background: linear-gradient(45deg, white, #d6d6d6, #898989);
+  background: linear-gradient(45deg, #c3c3c3, #ffffff, #434343);
   background-size: 200% 200%;
   animation: gradientShift 2s ease infinite;
 }
