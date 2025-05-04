@@ -14,7 +14,6 @@ const data = {
   price: '420',
   plus: '+ 0%',
   styleBorder: 'border-gray-700  border-1',
-  styleImg: 'rounded-3xl',
 };
 
 const CommonCol = () => {
