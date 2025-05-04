@@ -206,3 +206,25 @@ export const claimSkinsBonus = createAsyncThunk(
     }
   },
 );
+
+export const getCollectionItemPrize = createAsyncThunk(
+  'user/getCollectionItem',
+  async (
+    { userId, colId, index }: { userId: number; colId: number; index: number },
+    { rejectWithValue },
+  ) => {
+    try {
+      const { data } = await axios.post('user/getCollectionItem', {
+        id: userId,
+        colId,
+        index,
+      });
+      return data;
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        return rejectWithValue(e.message);
+      }
+      return rejectWithValue('Unknown error');
+    }
+  },
+);

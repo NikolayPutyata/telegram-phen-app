@@ -100,6 +100,7 @@ const userSlice = createSlice({
       .addCase(sendPrize.fulfilled, (state, action) => {
         state.tokens = action.payload.tokens;
         state.boosts = action.payload.boosts;
+        state.skinsCollection = action.payload.skinsCollections;
       });
   },
 });
