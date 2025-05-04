@@ -25,18 +25,18 @@ const PlatinumCol = () => {
   const collection = skinsCollection[4];
   const images = collection.images;
 
-   const collectedIndexes = images
-     .map((isCollected, index) => (isCollected ? index : null))
-     .filter((index) => index !== null);
+  const collectedIndexes = images
+    .map((isCollected, index) => (isCollected ? index : null))
+    .filter((index) => index !== null);
 
-   return (
-     <SkinsComponent
-       {...data}
-       images={images}
-       collectedIndexes={collectedIndexes}
-       colId={colId}
-     />
-   );
+  return (
+    <SkinsComponent
+      {...data}
+      images={images}
+      collectedIndexes={collectedIndexes}
+      colId={colId}
+    />
+  );
 };
 
 export default PlatinumCol;

@@ -1,3 +1,4 @@
+import s from '/src/App.module.css';
 import { useSelector } from 'react-redux';
 import SkinsComponent from '../SkinsComponent/SkinsComponent';
 import { selectSkinsCollection } from '../../redux/selectors';
@@ -13,7 +14,7 @@ const data = {
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741782889/planet1_11zon_jnb5cd.webp',
   price: '420',
   plus: '+ 5%',
-  styleBorder: 'border-[#cd7f32] border-1',
+  styleBorder: `${s.gradientBg5} p-[1.2px]`,
 };
 
 const BronseCol = () => {
