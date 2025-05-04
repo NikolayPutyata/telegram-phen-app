@@ -1,4 +1,6 @@
+import { useSelector } from 'react-redux';
 import SkinsComponent from '../SkinsComponent/SkinsComponent';
+import { selectSkinsCollection } from '../../redux/selectors';
 
 const data = {
   imgStarFlight:
@@ -15,7 +17,13 @@ const data = {
 };
 
 const SilverCol = () => {
-  return <SkinsComponent {...data} />;
+  const skinsCollection = useSelector(selectSkinsCollection);
+  // const colId = 2;
+  // const userId = useSelector(selectUserId);
+  const collection = skinsCollection[2];
+  const images = collection.images;
+
+  return <SkinsComponent {...data} images={images} />;
 };
 
 export default SilverCol;

@@ -70,6 +70,11 @@ export interface Robot {
   collectionId: number;
 }
 
+interface Collection {
+  idUserCollection: number;
+  images: [boolean];
+}
+
 export type UserState = {
   id: number;
   username: string | null;
@@ -93,4 +98,5 @@ export type UserState = {
     partners: Task[];
     special: Task[];
   };
+  skinsCollection: Collection[];
 };
