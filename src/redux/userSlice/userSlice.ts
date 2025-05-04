@@ -9,6 +9,7 @@ import {
   addRefTgLink,
   sendPrize,
   claimSkinsBonus,
+  buySkinInPhenerium,
 } from '../operations';
 import { UserState } from '../../types/State';
 
@@ -68,6 +69,10 @@ const userSlice = createSlice({
         state.skinsCollection = usersData.skinsCollection;
       })
       .addCase(claimSkinsBonus.fulfilled, (state, action) => {
+        state.skinsCollection = action.payload.skinsCollection;
+        state.tokens = action.payload.tokens;
+      })
+      .addCase(buySkinInPhenerium.fulfilled, (state, action) => {
         state.skinsCollection = action.payload.skinsCollection;
         state.tokens = action.payload.tokens;
       })

@@ -228,3 +228,24 @@ export const getCollectionItemPrize = createAsyncThunk(
     }
   },
 );
+
+export const buySkinInPhenerium = createAsyncThunk(
+  'payment/buySkinInPhenerium',
+  async (
+    { amount, memo }: { amount: number; memo: string },
+    { rejectWithValue },
+  ) => {
+    try {
+      const { data } = await axios.post('payment/buySkinInPhenerium', {
+        amount,
+        memo,
+      });
+      return data;
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        return rejectWithValue(e.message);
+      }
+      return rejectWithValue('Unknown error');
+    }
+  },
+);

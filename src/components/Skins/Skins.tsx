@@ -49,13 +49,15 @@ const Skins = () => {
         Bronze Collection
       </h2>
       <ul className="flex flex-col gap-6 my-6">
-        {skins?.bronzeCollection.map((skin) => (
+        {skins?.bronzeCollection.map((skin, index) => (
           <SkinsItem
             key={skin.id}
             id={skin.id}
             imageUrlSmall={skin.skin_photo_url_small}
             price={skin.price}
             name={skin.name}
+            colId={2}
+            index={index}
           />
         ))}
       </ul>
@@ -99,13 +101,15 @@ const Skins = () => {
         </div>
       </div>
       <ul className="flex flex-col gap-6 my-6">
-        {skins?.silverCollection.slice(1).map((skin) => (
+        {skins?.silverCollection.slice(1).map((skin, index) => (
           <SkinsItem
             key={skin.id}
             id={skin.id}
             imageUrlSmall={skin.skin_photo_url_small}
             price={skin.price}
             name={skin.name}
+            colId={3}
+            index={index}
           />
         ))}
       </ul>
@@ -144,13 +148,15 @@ const Skins = () => {
         </div>
       ))}
       <ul className="flex flex-col gap-6 my-6">
-        {skins?.goldCollection.slice(2).map((skin) => (
+        {skins?.goldCollection.slice(2).map((skin, index) => (
           <SkinsItem
             key={skin.id}
             id={skin.id}
             imageUrlSmall={skin.skin_photo_url_small}
             price={skin.price}
             name={skin.name}
+            colId={4}
+            index={index}
           />
         ))}
       </ul>
@@ -189,13 +195,15 @@ const Skins = () => {
         </div>
       ))}
       <ul className="flex flex-col gap-6 my-6">
-        {skins?.platinumCollection.slice(3).map((skin) => (
+        {skins?.platinumCollection.slice(3).map((skin, index) => (
           <SkinsItem
             key={skin.id}
             id={skin.id}
             imageUrlSmall={skin.skin_photo_url_small}
             price={skin.price}
             name={skin.name}
+            colId={5}
+            index={index}
           />
         ))}
       </ul>
