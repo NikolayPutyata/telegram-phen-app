@@ -6,7 +6,7 @@ const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="dock bg-neutral text-neutral-content rounded-tl-4xl rounded-tr-4xl">
+    <div className="dock bg-neutral text-neutral-content text-center rounded-tl-4xl rounded-tr-4xl">
       <Link to={'/'} className={location.pathname === '/' ? 'dock-active' : ''}>
         <img src="/assets/home.svg" alt="" width={24} />
         <span className="dock-label">{t('Home')}</span>
