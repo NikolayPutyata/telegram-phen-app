@@ -5,6 +5,7 @@ import { createStarInvoice } from '../../utils/createStarInvoice';
 import { Case, CasePrize } from '../../types/State';
 import { selectUserId } from '../../redux/selectors';
 import CasesModal from '../../components/CasesModal/CasesModal';
+import { useTranslation } from 'react-i18next';
 import s from '/src/App.module.css';
 
 interface SpecialItemProps {
@@ -13,6 +14,7 @@ interface SpecialItemProps {
 
 function SpecialCaseItem({ caseBoosts }: SpecialItemProps) {
   const userId = useSelector(selectUserId);
+  const { t } = useTranslation();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -65,7 +67,11 @@ function SpecialCaseItem({ caseBoosts }: SpecialItemProps) {
             className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500"
             onClick={handleBuyClick}
           >
-            {isLoading ? <ClipLoader size={17} color={'#ededed'} /> : 'Buy'}
+            {isLoading ? (
+              <ClipLoader size={17} color={'#ededed'} />
+            ) : (
+              <span>{t('Buy')}</span>
+            )}
           </button>
         </div>
       </li>

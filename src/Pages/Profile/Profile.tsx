@@ -19,7 +19,6 @@ const Profile = () => {
   const firstName = useSelector(selectUserFirstName);
 
   const [isModalOpenBoosts, setIsModalOpenBoosts] = useState(false);
-  const [isModalOpenSkins, setIsModalOpenSkins] = useState(false);
   const [isModalOpenLanguage, setIsModalOpenLanguage] = useState(false);
 
   return (
@@ -43,7 +42,7 @@ const Profile = () => {
             {t('Total tokens')}
           </p>
           <p className={`${s.font} text-zinc-300 tracking-wider`}>
-            {tokens} {t('PHEN')}
+            {tokens} PHEN
           </p>
         </div>
 
@@ -53,10 +52,6 @@ const Profile = () => {
           <ProfileListItem
             onClickFu={() => setIsModalOpenBoosts(true)}
             title={t('Boosts')}
-          />
-          <ProfileListItem
-            onClickFu={() => setIsModalOpenSkins(true)}
-            title={t('Skins')}
           />
           <ProfileListItem
             onClickFu={() => setIsModalOpenLanguage(true)}
@@ -71,12 +66,6 @@ const Profile = () => {
           isOpen={isModalOpenBoosts}
           changeModal="boosts"
           onClose={() => setIsModalOpenBoosts(false)}
-        />
-
-        <Modal
-          isOpen={isModalOpenSkins}
-          changeModal="skins"
-          onClose={() => setIsModalOpenSkins(false)}
         />
 
         <Modal

@@ -25,6 +25,8 @@ function SpecialRobotItem({
   showBuyButton,
 }: SpecialRobotItemProps) {
   const userId = useSelector(selectUserId);
+  const { t } = useTranslation();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const handleBuyClick = async () => {
@@ -70,7 +72,11 @@ function SpecialRobotItem({
             className="btn btn-primary w-24 h-8 rounded-4xl mt-1 bg-gradient-to-r from-blue-500 to-purple-500"
             onClick={handleBuyClick}
           >
-            {isLoading ? <ClipLoader size={17} color={'#ededed'} /> : 'Buy'}
+            {isLoading ? (
+              <ClipLoader size={17} color={'#ededed'} />
+            ) : (
+              <span>{t('Buy')}</span>
+            )}
           </button>
         )}
       </div>

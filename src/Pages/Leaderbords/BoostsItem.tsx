@@ -6,6 +6,7 @@ import { getBoostsAndSkins } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
 import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
+import { useTranslation } from 'react-i18next';
 
 type BoostsItemProps = {
   boost_photo_url: string;
@@ -28,6 +29,8 @@ const BoostsItem: React.FC<BoostsItemProps> = ({
 }) => {
   const userId = useSelector(selectUserId);
   const dispatch = useDispatch<AppDispatch>();
+  const { t } = useTranslation();
+
   const [isLoading, setIsLoading] = useState(false);
   // const [tonConnectUI] = useTonConnectUI();
 
@@ -81,7 +84,11 @@ const BoostsItem: React.FC<BoostsItemProps> = ({
           onClick={handleBuyClick}
           disabled={isLoading}
         >
-          {isLoading ? <ClipLoader size={17} color={'#ededed'} /> : 'Buy'}
+          {isLoading ? (
+            <ClipLoader size={17} color={'#ededed'} />
+          ) : (
+            <span>{t('Buy')}</span>
+          )}
         </button>
       </div>
     </li>

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import s from '/src/App.module.css';
+import { useTranslation } from 'react-i18next';
 import { selectUserId } from '../../redux/selectors';
 import { claimSkinsBonus } from '../../redux/operations';
 import { AppDispatch } from '../../redux/store';
@@ -31,6 +32,7 @@ const SkinsComponent: React.FC<SkinsData> = ({
   collectedIndexes,
   colId,
 }) => {
+  const { t } = useTranslation();
   const userId = useSelector(selectUserId);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -96,7 +98,7 @@ const SkinsComponent: React.FC<SkinsData> = ({
             dispatch(claimSkinsBonus({ userId, colId, collectedIndexes }))
           }
         >
-          Claim
+          {t('Claim')}
         </button>
       </div>
     </div>

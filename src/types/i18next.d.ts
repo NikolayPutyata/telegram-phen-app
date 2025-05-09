@@ -13,6 +13,7 @@ declare module 'i18next' {
       ja: typeof import('../locales/ja.json');
       zh: typeof import('../locales/zh.json');
       hi: typeof import('../locales/hi.json');
+      ar: typeof import('../locales/ar.json');
     };
   }
 }

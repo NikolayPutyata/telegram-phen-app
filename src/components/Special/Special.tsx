@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import SpecialCaseItem from '../../Pages/Leaderbords/SpecialCaseItem';
 import SpecialRobotItem from '../../Pages/Leaderbords/SpecialRobotItem';
 import s from '/src/App.module.css';
@@ -12,6 +13,7 @@ const Special = () => {
   const farmingCycle = useSelector(selectFarmingCycle);
   const cases = useSelector(selectCases);
   const robots = useSelector(selectRobots);
+  const { t } = useTranslation();
 
   const getShowBuyButton = (robotId: number) => {
     if (farmingCycle === 24) return false;
@@ -33,7 +35,7 @@ const Special = () => {
         <h2
           className={`${s.font} text-zinc-400 ml-4  mt-6 mb-6 text-sm tracking-wider`}
         >
-          Cases
+          {t('Cases')}
         </h2>
         <ul className="flex flex-col gap-6 ">
           {cases?.map((caseItem) => (
@@ -46,7 +48,7 @@ const Special = () => {
         <h2
           className={`${s.font} text-zinc-400 ml-4 mt-9 mb-6 text-sm tracking-wider`}
         >
-          Robot Assistants
+          {t('Robot Assistants')}
         </h2>
         <ul className="flex flex-col gap-6 ">
           {robots?.map((special) => (

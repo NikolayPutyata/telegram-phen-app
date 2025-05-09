@@ -2,9 +2,11 @@ import { useEffect, useRef } from 'react';
 import ProgressBar from 'progressbar.js';
 import s from '/src/App.module.css';
 import LoadingList from './LoadingList';
+import { useTranslation } from 'react-i18next';
 
 const LoadingScreen = () => {
   const progressRef = useRef(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const bar = new ProgressBar.Line(progressRef.current, {
@@ -31,7 +33,7 @@ const LoadingScreen = () => {
     <div className="bg-[url('/assets/bc.webp')] flex flex-col p-5 min-h-screen gap-10">
       <div className="flex flex-col items-center gap-8 pt-10">
         <img src="/assets/logoLoading.svg" alt="" width={100} />
-        <h2 className={`${s.font} text-lg tracking-wider`}>Roadmap</h2>
+        <h2 className={`${s.font} text-lg tracking-wider`}>{t('Roadmap')}</h2>
       </div>
 
       <LoadingList />

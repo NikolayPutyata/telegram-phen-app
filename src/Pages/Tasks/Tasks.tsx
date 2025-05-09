@@ -1,8 +1,10 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import s from '/src/App.module.css';
 
 const Tasks = () => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -15,7 +17,7 @@ const Tasks = () => {
               location.pathname === '/tasks' ? 'tab-active' : ''
             }`}
           >
-            Tasks
+            {t('Tasks')}
           </NavLink>
           <NavLink
             to="/tasks/friends"
@@ -24,7 +26,7 @@ const Tasks = () => {
               location.pathname === '/tasks/friends' ? 'tab-active' : ''
             }`}
           >
-            Friends
+            {t('Friends')}
           </NavLink>
         </div>
       </div>
