@@ -12,6 +12,21 @@
   background-size: 200% 200%;
   animation: gradientShift 2s ease infinite;
 }
+.gradientBg3 {
+  background: linear-gradient(45deg, gold, rgb(170, 170, 0), rgb(145, 123, 0));
+  background-size: 200% 200%;
+  animation: gradientShift 2s ease infinite;
+}
+.gradientBg4 {
+  background: linear-gradient(45deg, #c3c3c3, #ffffff, #434343);
+  background-size: 200% 200%;
+  animation: gradientShift 2s ease infinite;
+}
+.gradientBg5 {
+  background: linear-gradient(45deg, #cd7f32, #ff9f3f, #653f18);
+  background-size: 200% 200%;
+  animation: gradientShift 2s ease infinite;
+}
 
 @keyframes gradientShift {
   0% {

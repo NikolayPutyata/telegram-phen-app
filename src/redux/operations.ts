@@ -180,3 +180,72 @@ export const sendPrize = createAsyncThunk(
     }
   },
 );
+
+export const claimSkinsBonus = createAsyncThunk(
+  'farm/claimSkinsBonus',
+  async (
+    {
+      userId,
+      colId,
+      collectedIndexes,
+    }: { userId: number; colId: number; collectedIndexes: number[] },
+    { rejectWithValue },
+  ) => {
+    try {
+      const { data } = await axios.post('farm/claimSkinsBonus', {
+        id: userId,
+        colId,
+        indexArray: collectedIndexes,
+      });
+      return data;
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        return rejectWithValue(e.message);
+      }
+      return rejectWithValue('Unknown error');
+    }
+  },
+);
+
+export const getCollectionItemPrize = createAsyncThunk(
+  'user/getCollectionItem',
+  async (
+    { userId, colId, index }: { userId: number; colId: number; index: number },
+    { rejectWithValue },
+  ) => {
+    try {
+      const { data } = await axios.post('user/getCollectionItem', {
+        id: userId,
+        colId,
+        index,
+      });
+      return data;
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        return rejectWithValue(e.message);
+      }
+      return rejectWithValue('Unknown error');
+    }
+  },
+);
+
+export const buySkinInPhenerium = createAsyncThunk(
+  'payment/buySkinInPhenerium',
+  async (
+    { amount, memo }: { amount: number; memo: string },
+    { rejectWithValue },
+  ) => {
+    try {
+      const { data } = await axios.post('payment/buySkinInPhenerium', {
+        amount,
+        memo,
+      });
+      return data;
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        return rejectWithValue(e.message);
+      }
+      return rejectWithValue('Unknown error');
+    }
+  },
+);

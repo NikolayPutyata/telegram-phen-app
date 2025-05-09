@@ -1,4 +1,7 @@
+import { useSelector } from 'react-redux';
 import SkinsComponent from '../SkinsComponent/SkinsComponent';
+import { selectSkinsCollection } from '../../redux/selectors';
+import s from '/src/App.module.css';
 
 const data = {
   imgStarFlight:
@@ -11,11 +14,29 @@ const data = {
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741783044/planet3_11zon_kbdrpe.webp',
   price: '420',
   plus: '+ 10%',
-  styleBorder: 'border-[#C0C0C0] border-1',
+  styleBorder: `${s.gradientBg4} p-[1.2px]`,
+  styleImg: 'rounded-3xl',
 };
 
 const SilverCol = () => {
-  return <SkinsComponent {...data} />;
+  const skinsCollection = useSelector(selectSkinsCollection);
+  const colId = 3;
+
+  const collection = skinsCollection[2];
+  const images = collection.images;
+
+  const collectedIndexes = images
+    .map((isCollected, index) => (isCollected ? index : null))
+    .filter((index) => index !== null);
+
+  return (
+    <SkinsComponent
+      {...data}
+      images={images}
+      collectedIndexes={collectedIndexes}
+      colId={colId}
+    />
+  );
 };
 
 export default SilverCol;

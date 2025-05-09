@@ -9,7 +9,7 @@ const Tasks = () => {
   return (
     <>
       <div className="my-3">
-        <div role="tablist" className="tabs tabs-border">
+        <div role="tablist" className="tabs tabs-border grid grid-cols-2">
           <NavLink
             to="/tasks"
             role="tab"

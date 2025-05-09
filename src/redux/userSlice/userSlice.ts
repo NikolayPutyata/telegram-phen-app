@@ -8,6 +8,8 @@ import {
   getBoostsAndSkins,
   addRefTgLink,
   sendPrize,
+  claimSkinsBonus,
+  buySkinInPhenerium,
 } from '../operations';
 import { UserState } from '../../types/State';
 
@@ -34,6 +36,7 @@ const initialState: UserState = {
     partners: [],
     special: [],
   },
+  skinsCollection: [],
 };
 
 const userSlice = createSlice({
@@ -63,6 +66,15 @@ const userSlice = createSlice({
         state.currentBoost = usersData.currentBoost;
         state.usersTasks = usersData.usersTasks;
         state.farmingCycle = usersData.farmingCycle;
+        state.skinsCollection = usersData.skinsCollection;
+      })
+      .addCase(claimSkinsBonus.fulfilled, (state, action) => {
+        state.skinsCollection = action.payload.skinsCollection;
+        state.tokens = action.payload.tokens;
+      })
+      .addCase(buySkinInPhenerium.fulfilled, (state, action) => {
+        state.skinsCollection = action.payload.skinsCollection;
+        state.tokens = action.payload.tokens;
       })
       .addCase(claimTokens.fulfilled, (state, action) => {
         state.activeBoosts = action.payload.activeBoosts;
@@ -93,6 +105,7 @@ const userSlice = createSlice({
       .addCase(sendPrize.fulfilled, (state, action) => {
         state.tokens = action.payload.tokens;
         state.boosts = action.payload.boosts;
+        state.skinsCollection = action.payload.skinsCollection;
       });
   },
 });

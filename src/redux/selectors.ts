@@ -22,3 +22,4 @@ export const selectUserSkins = (state: RootState) => state.user.skins;
 export const selectSkins = (state: RootState) => state.data.skins;
 export const selectCases = (state: RootState) => state.data.cases;
 export const selectRobots = (state: RootState) => state.data.robots;
+export const selectSkinsCollection = (state: RootState) => state.user.skinsCollection;

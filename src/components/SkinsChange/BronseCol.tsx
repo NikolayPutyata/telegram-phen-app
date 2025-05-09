@@ -1,4 +1,7 @@
+import s from '/src/App.module.css';
+import { useSelector } from 'react-redux';
 import SkinsComponent from '../SkinsComponent/SkinsComponent';
+import { selectSkinsCollection } from '../../redux/selectors';
 
 const data = {
   imgStarFlight:
@@ -11,11 +14,28 @@ const data = {
     'https://res.cloudinary.com/dv1acgeyp/image/upload/v1741782889/planet1_11zon_jnb5cd.webp',
   price: '420',
   plus: '+ 5%',
-  styleBorder: 'border-[#cd7f32] border-1',
+  styleBorder: `${s.gradientBg5} p-[1.2px]`,
+  styleImg: 'rounded-3xl',
 };
 
 const BronseCol = () => {
-  return <SkinsComponent {...data} />;
+  const skinsCollection = useSelector(selectSkinsCollection);
+  const colId = 2;
+  const collection = skinsCollection[1];
+  const images = collection.images;
+
+  const collectedIndexes = images
+    .map((isCollected, index) => (isCollected ? index : null))
+    .filter((index) => index !== null);
+
+  return (
+    <SkinsComponent
+      {...data}
+      images={images}
+      collectedIndexes={collectedIndexes}
+      colId={colId}
+    />
+  );
 };
 
 export default BronseCol;
